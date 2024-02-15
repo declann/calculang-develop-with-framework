@@ -107,7 +107,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wave", function() { return wave; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "semi_circle", function() { return semi_circle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "result", function() { return result; });
-
 const x = ({ x_in }) => x_in;
 const n = ({ n_in }) => n_in;
 const radius = ({ radius_in }) => radius_in;

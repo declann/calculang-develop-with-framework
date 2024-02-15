@@ -1,6 +1,11 @@
 {
   "type": "module",
   "private": true,
+  "author": {
+    "name": "Declan Naughton",
+    "email": "declann1990@gmail.com"
+  },
+  "license": "AGPL-3.0-only",
   "scripts": {
     "clean": "rm -rf docs/.observablehq/cache",
     "build": "rm -rf dist && observable build",

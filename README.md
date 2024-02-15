@@ -1,4 +1,25 @@
-# a DX pattern
+# a DX pattern for calculang, using Framework
+
+Suggestions:
+
+- Fork and then
+- update Author details in `package.json`
+- tag your repo with calculang, for discoverability
+- develop something cool and share it!
+
+Cool and license-permitting, shared things will be considered for `calculang.party`, a community gallery for calculang.
+
+For more about calculang, see [calculang.dev](https://calculang.dev/).
+
+## This is a DX pattern
+
+The D in DX stands for developer: DX is developer experience.
+
+UX is also relevant, or targetting a less-technical: user, audience.
+
+This is a separate and later goal, but will feed into `calculang.party` also, with the ability to modify and [remix](https://en.scratch-wiki.info/wiki/Remix) calculations and their outputs directly.
+
+# below is default readme information from Framework
 
 This is an [Observable Framework](https://observablehq.com/framework) project. To start the local preview server, run:
 

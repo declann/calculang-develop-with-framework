@@ -7,6 +7,7 @@
   },
   "license": "AGPL-3.0-only",
   "scripts": {
+    "cul-compile:graphing-calcs": "npx cul-js compile ./docs/graphing-calcs/cul/calcs.cul.js && cp  ./docs/graphing-calcs/cul/calcs_esm/cul_scope_0.mjs  ./docs/graphing-calcs/cul/calcs_esm/cul_scope_0.js",
     "cul-compile:flower": "npx cul-js compile ./docs/flower/cul/flower.cul.js && cp ./docs/flower/cul/flower_esm/cul_scope_0.mjs ./docs/flower/cul/flower_esm/cul_scope_0.js",
     "clean": "rm -rf docs/.observablehq/cache",
     "build": "rm -rf dist && observable build",

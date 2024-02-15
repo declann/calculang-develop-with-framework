@@ -102,15 +102,26 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return x; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return n; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "radius", function() { return radius; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "line", function() { return line; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sin", function() { return sin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wave", function() { return wave; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "semi_circle", function() { return semi_circle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "result", function() { return result; });
 
 const x = ({ x_in }) => x_in;
 const n = ({ n_in }) => n_in;
+const radius = ({ radius_in }) => radius_in;
 
 const line = ({ x_in }) => Math.abs(x({ x_in }));
 
-const sin = ({ x_in, n_in }) => Math.sin(x({ x_in }) * n({ n_in }));
+const wave = ({ x_in, n_in }) => Math.sin(x({ x_in }) * n({ n_in }));
+
+const semi_circle = ({ x_in, radius_in }) => {
+  if (Math.abs(x({ x_in })) > radius({ radius_in })) return 0;else
+  return (radius({ radius_in }) ** 2 - x({ x_in }) ** 2) ** 0.5;
+};
+
+const result = ({ x_in, radius_in, n_in }) => line({ x_in }) + semi_circle({ x_in, radius_in }) * wave({ x_in, n_in });
 
 /***/ })
 /******/ ]);

@@ -1,8 +1,8 @@
 ---
-title: Graphing Calcs
+title: Graphing Calcs ❤️
 ---
 
-# Graphing Calcs
+# Graphing Calcs ❤️
 
 ```js
 import * as model from './cul/calcs_esm/cul_scope_0.js'
@@ -14,24 +14,27 @@ import { calcuvizspec } from "../components/helpers.js"
 
 ```js
 const n_in = view(Inputs.range([0,20], {step:0.1, value:1, label:'n_in'}))
+const radius_in = view(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}))
 ```
 
 ```js
 
-let spec = await calcuvizspec({
+let spec = calcuvizspec({
   models: [model],
-  input_cursors: [{n_in}],
+  input_cursors: [{n_in, radius_in}],
   mark: {type:'line', point: false},
   encodings: {
-    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.1) },
+    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.05) },
     y: { name: 'value', type: 'quantitative' },
-    //color: {'name': 'value', type: 'quantitative', scale: {scheme: 'brownbluegreen', reverse: true}, legend: false,  },
     row: {
       name: 'formula', sort:'descending',
-      domain: ['line', 'x', 'sin']
+      domain: ['line', 'x', 'wave', 'semi_circle', 'result']
+    },
+    color: {
+      name: 'formula', sort:'descending', legend: false
     }
   },
-  width: 500,
+  width: 700,
   height: 200,
 
   // viz customizations:

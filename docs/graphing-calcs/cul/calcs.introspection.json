@@ -60,6 +60,36 @@
         "n_in"
       ]
     },
+    "0_radius": {
+      "cul_scope_id": 0,
+      "name": "radius",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 22,
+          "index": 80
+        },
+        "end": {
+          "line": 4,
+          "column": 37,
+          "index": 95
+        }
+      },
+      "inputs": [
+        "radius_in"
+      ]
+    },
+    "0_radius_in": {
+      "cul_scope_id": 0,
+      "name": "radius_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "radius_in"
+      ]
+    },
     "0_line": {
       "cul_scope_id": 0,
       "name": "line",
@@ -67,39 +97,84 @@
       "reason": "definition",
       "loc": {
         "start": {
-          "line": 5,
+          "line": 6,
           "column": 20,
-          "index": 79
+          "index": 117
         },
         "end": {
-          "line": 5,
+          "line": 6,
           "column": 39,
-          "index": 98
+          "index": 136
         }
       },
       "inputs": [
         "x_in"
       ]
     },
-    "0_sin": {
+    "0_wave": {
       "cul_scope_id": 0,
-      "name": "sin",
+      "name": "wave",
       "cul_source_scope_id": 0,
       "reason": "definition",
       "loc": {
         "start": {
-          "line": 7,
-          "column": 19,
-          "index": 120
+          "line": 8,
+          "column": 20,
+          "index": 159
         },
         "end": {
-          "line": 7,
-          "column": 44,
-          "index": 145
+          "line": 8,
+          "column": 45,
+          "index": 184
         }
       },
       "inputs": [
         "x_in",
+        "n_in"
+      ]
+    },
+    "0_semi_circle": {
+      "cul_scope_id": 0,
+      "name": "semi_circle",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 27,
+          "index": 214
+        },
+        "end": {
+          "line": 13,
+          "column": 1,
+          "index": 314
+        }
+      },
+      "inputs": [
+        "x_in",
+        "radius_in"
+      ]
+    },
+    "0_result": {
+      "cul_scope_id": 0,
+      "name": "result",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 22,
+          "index": 339
+        },
+        "end": {
+          "line": 15,
+          "column": 59,
+          "index": 376
+        }
+      },
+      "inputs": [
+        "x_in",
+        "radius_in",
         "n_in"
       ]
     }
@@ -116,20 +191,67 @@
       "reason": "input"
     },
     {
+      "to": "0_radius",
+      "from": "0_radius_in",
+      "reason": "input"
+    },
+    {
       "to": "0_line",
       "from": "0_x",
       "reason": "call",
       "negs": []
     },
     {
-      "to": "0_sin",
+      "to": "0_wave",
       "from": "0_x",
       "reason": "call",
       "negs": []
     },
     {
-      "to": "0_sin",
+      "to": "0_wave",
       "from": "0_n",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_x",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_radius",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_radius",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_x",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_line",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_semi_circle",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_wave",
       "reason": "call",
       "negs": []
     }
@@ -151,13 +273,28 @@
     "0_n_in": [
       "n_in"
     ],
+    "0_radius": [
+      "radius_in"
+    ],
+    "0_radius_in": [
+      "radius_in"
+    ],
     "0_line": [
       "x_in"
     ],
-    "0_sin": [
+    "0_wave": [
       "x_in",
+      "n_in"
+    ],
+    "0_semi_circle": [
+      "x_in",
+      "radius_in"
+    ],
+    "0_result": [
+      "x_in",
+      "radius_in",
       "n_in"
     ]
   },
-  "dot": "digraph {\n  \"0_x\" [cul_scope_id=0,name=x,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x_in,label=\"0_x inputs: x_in\"]\n  \"0_x_in\" [cul_scope_id=0,name=x_in,cul_source_scope_id=0,reason=\"input definition\",inputs=x_in,label=\"0_x_in inputs: x_in\"]\n  \"0_n\" [cul_scope_id=0,name=n,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=n_in,label=\"0_n inputs: n_in\"]\n  \"0_n_in\" [cul_scope_id=0,name=n_in,cul_source_scope_id=0,reason=\"input definition\",inputs=n_in,label=\"0_n_in inputs: n_in\"]\n  \"0_line\" [cul_scope_id=0,name=line,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x_in,label=\"0_line inputs: x_in\"]\n  \"0_sin\" [cul_scope_id=0,name=sin,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,n_in\",label=\"0_sin inputs: x_in,n_in\"]\n  \"0_x_in\" -> \"0_x\" [value=\"[object Object]\",label=\"input +x_in\"]\n  \"0_n_in\" -> \"0_n\" [value=\"[object Object]\",label=\"input +n_in\"]\n  \"0_x\" -> \"0_line\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_x\" -> \"0_sin\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_n\" -> \"0_sin\" [value=\"[object Object]\",label=\"call -\"]\n}\n"
+  "dot": "digraph {\n  \"0_x\" [cul_scope_id=0,name=x,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x_in,label=\"0_x inputs: x_in\"]\n  \"0_x_in\" [cul_scope_id=0,name=x_in,cul_source_scope_id=0,reason=\"input definition\",inputs=x_in,label=\"0_x_in inputs: x_in\"]\n  \"0_n\" [cul_scope_id=0,name=n,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=n_in,label=\"0_n inputs: n_in\"]\n  \"0_n_in\" [cul_scope_id=0,name=n_in,cul_source_scope_id=0,reason=\"input definition\",inputs=n_in,label=\"0_n_in inputs: n_in\"]\n  \"0_radius\" [cul_scope_id=0,name=radius,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=radius_in,label=\"0_radius inputs: radius_in\"]\n  \"0_radius_in\" [cul_scope_id=0,name=radius_in,cul_source_scope_id=0,reason=\"input definition\",inputs=radius_in,label=\"0_radius_in inputs: radius_in\"]\n  \"0_line\" [cul_scope_id=0,name=line,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x_in,label=\"0_line inputs: x_in\"]\n  \"0_wave\" [cul_scope_id=0,name=wave,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,n_in\",label=\"0_wave inputs: x_in,n_in\"]\n  \"0_semi_circle\" [cul_scope_id=0,name=semi_circle,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,radius_in\",label=\"0_semi_circle inputs: x_in,radius_in\"]\n  \"0_result\" [cul_scope_id=0,name=result,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,radius_in,n_in\",label=\"0_result inputs: x_in,radius_in,n_in\"]\n  \"0_x_in\" -> \"0_x\" [value=\"[object Object]\",label=\"input +x_in\"]\n  \"0_n_in\" -> \"0_n\" [value=\"[object Object]\",label=\"input +n_in\"]\n  \"0_radius_in\" -> \"0_radius\" [value=\"[object Object]\",label=\"input +radius_in\"]\n  \"0_x\" -> \"0_line\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_x\" -> \"0_wave\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_n\" -> \"0_wave\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_x\" -> \"0_semi_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_radius\" -> \"0_semi_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_line\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_semi_circle\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_wave\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n}\n"
 }

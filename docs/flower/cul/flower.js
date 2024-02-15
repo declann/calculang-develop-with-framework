@@ -139,6 +139,7 @@ min(
     sqrt((column({ column_in }) - 50.5) ** 2 + (row({ row_in }) - 50.5) ** 2)
   )
 );
+
 const head = ({ column_in, row_in }) =>
 min(1, max(0, 19 - sqrt((column({ column_in }) - 50.5) ** 2 + (row({ row_in }) - 50.5) ** 2)));
 

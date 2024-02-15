@@ -22,6 +22,7 @@ export const petals = () =>
         sqrt((column() - 50.5) ** 2 + (row() - 50.5) ** 2)
     )
   );
+
 export const head = () =>
   min(1, max(0, 19 - sqrt((column() - 50.5) ** 2 + (row() - 50.5) ** 2)));
 

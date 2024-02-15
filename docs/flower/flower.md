@@ -74,8 +74,11 @@ import * as vegaLite from "npm:vega-lite";
 import * as vegaLiteApi from "npm:vega-lite-api";
 
 const vl = vegaLiteApi.register(vega, vegaLite);
+```
 
-view(await vl.render({
+```js
+// splitting blocks seems to be important; no await needed. {} also good?
+vl.render({
   spec
-}))
+})
 ```

@@ -7,6 +7,7 @@
   },
   "license": "AGPL-3.0-only",
   "scripts": {
+    "cul-compile:flower": "npx cul-js compile ./docs/flower/cul/flower.cul.js && cp ./docs/flower/cul/flower_esm/cul_scope_0.mjs ./docs/flower/cul/flower_esm/cul_scope_0.js",
     "clean": "rm -rf docs/.observablehq/cache",
     "build": "rm -rf dist && observable build",
     "dev": "observable preview",
@@ -20,5 +21,8 @@
   },
   "engines": {
     "node": ">=20.6"
+  },
+  "devDependencies": {
+    "@calculang/calculang-js": "^0.1.0-alpha.6"
   }
 }

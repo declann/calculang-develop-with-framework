@@ -1,4 +1,6 @@
-import {csvFormat, tsvParse} from "d3-dsv";
+// this was in the Framework default template
+
+/*import {csvFormat, tsvParse} from "d3-dsv";
 import {utcParse} from "d3-time-format";
 
 async function text(url) {
@@ -59,3 +61,4 @@ const launchHistory = tsvParse(await text("https://planet4589.org/space/gcat/tsv
 
 // Write out csv formatted data.
 process.stdout.write(csvFormat(launchHistory));
+*/

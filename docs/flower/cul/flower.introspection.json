@@ -1,0 +1,713 @@
+{
+  "cul_functions": {
+    "0_petals": {
+      "cul_scope_id": 0,
+      "name": "petals",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 22,
+          "index": 695
+        },
+        "end": {
+          "line": 24,
+          "column": 3,
+          "index": 970
+        }
+      },
+      "inputs": [
+        "petal_size_in",
+        "petal_num_in",
+        "column_in",
+        "row_in",
+        "petals_roundy_spikiness_in"
+      ]
+    },
+    "0_head": {
+      "cul_scope_id": 0,
+      "name": "head",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 20,
+          "index": 992
+        },
+        "end": {
+          "line": 26,
+          "column": 73,
+          "index": 1071
+        }
+      },
+      "inputs": [
+        "column_in",
+        "row_in"
+      ]
+    },
+    "0_circle": {
+      "cul_scope_id": 0,
+      "name": "circle",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 22,
+          "index": 1096
+        },
+        "end": {
+          "line": 29,
+          "column": 57,
+          "index": 1204
+        }
+      },
+      "inputs": [
+        "column_in",
+        "x0_in",
+        "row_in",
+        "y0_in",
+        "r_in"
+      ]
+    },
+    "0_face_eyes": {
+      "cul_scope_id": 0,
+      "name": "face_eyes",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 25,
+          "index": 1334
+        },
+        "end": {
+          "line": 38,
+          "column": 50,
+          "index": 1543
+        }
+      },
+      "inputs": [
+        "column_in",
+        "row_in"
+      ]
+    },
+    "0_face_mouth": {
+      "cul_scope_id": 0,
+      "name": "face_mouth",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 26,
+          "index": 1572
+        },
+        "end": {
+          "line": 46,
+          "column": 3,
+          "index": 1710
+        }
+      },
+      "inputs": [
+        "row_in",
+        "column_in"
+      ]
+    },
+    "0_face": {
+      "cul_scope_id": 0,
+      "name": "face",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 20,
+          "index": 1733
+        },
+        "end": {
+          "line": 48,
+          "column": 52,
+          "index": 1765
+        }
+      },
+      "inputs": [
+        "column_in",
+        "row_in"
+      ]
+    },
+    "0_result": {
+      "cul_scope_id": 0,
+      "name": "result",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 50,
+          "column": 22,
+          "index": 1790
+        },
+        "end": {
+          "line": 50,
+          "column": 54,
+          "index": 1822
+        }
+      },
+      "inputs": [
+        "petal_size_in",
+        "petal_num_in",
+        "column_in",
+        "row_in",
+        "petals_roundy_spikiness_in"
+      ]
+    },
+    "0_row": {
+      "cul_scope_id": 0,
+      "name": "row",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 19,
+          "index": 2009
+        },
+        "end": {
+          "line": 61,
+          "column": 31,
+          "index": 2021
+        }
+      },
+      "inputs": [
+        "row_in"
+      ]
+    },
+    "0_row_in": {
+      "cul_scope_id": 0,
+      "name": "row_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "row_in"
+      ]
+    },
+    "0_column": {
+      "cul_scope_id": 0,
+      "name": "column",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 22,
+          "index": 2045
+        },
+        "end": {
+          "line": 62,
+          "column": 37,
+          "index": 2060
+        }
+      },
+      "inputs": [
+        "column_in"
+      ]
+    },
+    "0_column_in": {
+      "cul_scope_id": 0,
+      "name": "column_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "column_in"
+      ]
+    },
+    "0_petal_size": {
+      "cul_scope_id": 0,
+      "name": "petal_size",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 64,
+          "column": 26,
+          "index": 2089
+        },
+        "end": {
+          "line": 64,
+          "column": 45,
+          "index": 2108
+        }
+      },
+      "inputs": [
+        "petal_size_in"
+      ]
+    },
+    "0_petal_size_in": {
+      "cul_scope_id": 0,
+      "name": "petal_size_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "petal_size_in"
+      ]
+    },
+    "0_petal_num": {
+      "cul_scope_id": 0,
+      "name": "petal_num",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 65,
+          "column": 25,
+          "index": 2135
+        },
+        "end": {
+          "line": 65,
+          "column": 43,
+          "index": 2153
+        }
+      },
+      "inputs": [
+        "petal_num_in"
+      ]
+    },
+    "0_petal_num_in": {
+      "cul_scope_id": 0,
+      "name": "petal_num_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "petal_num_in"
+      ]
+    },
+    "0_petals_roundy_spikiness": {
+      "cul_scope_id": 0,
+      "name": "petals_roundy_spikiness",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 66,
+          "column": 39,
+          "index": 2194
+        },
+        "end": {
+          "line": 66,
+          "column": 71,
+          "index": 2226
+        }
+      },
+      "inputs": [
+        "petals_roundy_spikiness_in"
+      ]
+    },
+    "0_petals_roundy_spikiness_in": {
+      "cul_scope_id": 0,
+      "name": "petals_roundy_spikiness_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "petals_roundy_spikiness_in"
+      ]
+    },
+    "0_x0": {
+      "cul_scope_id": 0,
+      "name": "x0",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 69,
+          "column": 18,
+          "index": 2261
+        },
+        "end": {
+          "line": 69,
+          "column": 29,
+          "index": 2272
+        }
+      },
+      "inputs": [
+        "x0_in"
+      ]
+    },
+    "0_x0_in": {
+      "cul_scope_id": 0,
+      "name": "x0_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "x0_in"
+      ]
+    },
+    "0_y0": {
+      "cul_scope_id": 0,
+      "name": "y0",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 70,
+          "column": 18,
+          "index": 2292
+        },
+        "end": {
+          "line": 70,
+          "column": 29,
+          "index": 2303
+        }
+      },
+      "inputs": [
+        "y0_in"
+      ]
+    },
+    "0_y0_in": {
+      "cul_scope_id": 0,
+      "name": "y0_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "y0_in"
+      ]
+    },
+    "0_r": {
+      "cul_scope_id": 0,
+      "name": "r",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 17,
+          "index": 2322
+        },
+        "end": {
+          "line": 71,
+          "column": 27,
+          "index": 2332
+        }
+      },
+      "inputs": [
+        "r_in"
+      ]
+    },
+    "0_r_in": {
+      "cul_scope_id": 0,
+      "name": "r_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "r_in"
+      ]
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_petals",
+      "from": "0_petal_size",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_petals",
+      "from": "0_petal_num",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_petals",
+      "from": "0_column",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_petals",
+      "from": "0_row",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_petals",
+      "from": "0_petals_roundy_spikiness",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_petals",
+      "from": "0_column",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_petals",
+      "from": "0_row",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_head",
+      "from": "0_column",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_head",
+      "from": "0_row",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_circle",
+      "from": "0_column",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_circle",
+      "from": "0_x0",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_circle",
+      "from": "0_row",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_circle",
+      "from": "0_y0",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_circle",
+      "from": "0_r",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_face_eyes",
+      "from": "0_circle",
+      "reason": "call",
+      "negs": [
+        "r_in",
+        "x0_in",
+        "y0_in"
+      ]
+    },
+    {
+      "to": "0_face_eyes",
+      "from": "0_circle",
+      "reason": "call",
+      "negs": [
+        "r_in",
+        "x0_in",
+        "y0_in"
+      ]
+    },
+    {
+      "to": "0_face_eyes",
+      "from": "0_circle",
+      "reason": "call",
+      "negs": [
+        "r_in",
+        "x0_in",
+        "y0_in"
+      ]
+    },
+    {
+      "to": "0_face_eyes",
+      "from": "0_circle",
+      "reason": "call",
+      "negs": [
+        "r_in",
+        "x0_in",
+        "y0_in"
+      ]
+    },
+    {
+      "to": "0_face_mouth",
+      "from": "0_row",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_face_mouth",
+      "from": "0_column",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_face_mouth",
+      "from": "0_row",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_face",
+      "from": "0_face_eyes",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_face",
+      "from": "0_face_mouth",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_petals",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_head",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_face",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_row",
+      "from": "0_row_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_column",
+      "from": "0_column_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_petal_size",
+      "from": "0_petal_size_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_petal_num",
+      "from": "0_petal_num_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_petals_roundy_spikiness",
+      "from": "0_petals_roundy_spikiness_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_x0",
+      "from": "0_x0_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_y0",
+      "from": "0_y0_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_r",
+      "from": "0_r_in",
+      "reason": "input"
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./flower.cul.js"
+  },
+  "import_sources_to_resource": {},
+  "cul_input_map": {
+    "0_petals": [
+      "petal_size_in",
+      "petal_num_in",
+      "column_in",
+      "row_in",
+      "petals_roundy_spikiness_in"
+    ],
+    "0_head": [
+      "column_in",
+      "row_in"
+    ],
+    "0_circle": [
+      "column_in",
+      "x0_in",
+      "row_in",
+      "y0_in",
+      "r_in"
+    ],
+    "0_face_eyes": [
+      "column_in",
+      "row_in"
+    ],
+    "0_face_mouth": [
+      "row_in",
+      "column_in"
+    ],
+    "0_face": [
+      "column_in",
+      "row_in"
+    ],
+    "0_result": [
+      "petal_size_in",
+      "petal_num_in",
+      "column_in",
+      "row_in",
+      "petals_roundy_spikiness_in"
+    ],
+    "0_row": [
+      "row_in"
+    ],
+    "0_row_in": [
+      "row_in"
+    ],
+    "0_column": [
+      "column_in"
+    ],
+    "0_column_in": [
+      "column_in"
+    ],
+    "0_petal_size": [
+      "petal_size_in"
+    ],
+    "0_petal_size_in": [
+      "petal_size_in"
+    ],
+    "0_petal_num": [
+      "petal_num_in"
+    ],
+    "0_petal_num_in": [
+      "petal_num_in"
+    ],
+    "0_petals_roundy_spikiness": [
+      "petals_roundy_spikiness_in"
+    ],
+    "0_petals_roundy_spikiness_in": [
+      "petals_roundy_spikiness_in"
+    ],
+    "0_x0": [
+      "x0_in"
+    ],
+    "0_x0_in": [
+      "x0_in"
+    ],
+    "0_y0": [
+      "y0_in"
+    ],
+    "0_y0_in": [
+      "y0_in"
+    ],
+    "0_r": [
+      "r_in"
+    ],
+    "0_r_in": [
+      "r_in"
+    ]
+  },
+  "dot": "digraph {\n  \"0_petals\" [cul_scope_id=0,name=petals,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"petal_size_in,petal_num_in,column_in,row_in,petals_roundy_spikiness_in\",label=\"0_petals inputs: petal_size_in,petal_num_in,column_in,row_in,petals_roundy_spikiness_in\"]\n  \"0_head\" [cul_scope_id=0,name=head,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"column_in,row_in\",label=\"0_head inputs: column_in,row_in\"]\n  \"0_circle\" [cul_scope_id=0,name=circle,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"column_in,x0_in,row_in,y0_in,r_in\",label=\"0_circle inputs: column_in,x0_in,row_in,y0_in,r_in\"]\n  \"0_face_eyes\" [cul_scope_id=0,name=face_eyes,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"column_in,row_in\",label=\"0_face_eyes inputs: column_in,row_in\"]\n  \"0_face_mouth\" [cul_scope_id=0,name=face_mouth,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"row_in,column_in\",label=\"0_face_mouth inputs: row_in,column_in\"]\n  \"0_face\" [cul_scope_id=0,name=face,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"column_in,row_in\",label=\"0_face inputs: column_in,row_in\"]\n  \"0_result\" [cul_scope_id=0,name=result,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"petal_size_in,petal_num_in,column_in,row_in,petals_roundy_spikiness_in\",label=\"0_result inputs: petal_size_in,petal_num_in,column_in,row_in,petals_roundy_spikiness_in\"]\n  \"0_row\" [cul_scope_id=0,name=row,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=row_in,label=\"0_row inputs: row_in\"]\n  \"0_row_in\" [cul_scope_id=0,name=row_in,cul_source_scope_id=0,reason=\"input definition\",inputs=row_in,label=\"0_row_in inputs: row_in\"]\n  \"0_column\" [cul_scope_id=0,name=column,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=column_in,label=\"0_column inputs: column_in\"]\n  \"0_column_in\" [cul_scope_id=0,name=column_in,cul_source_scope_id=0,reason=\"input definition\",inputs=column_in,label=\"0_column_in inputs: column_in\"]\n  \"0_petal_size\" [cul_scope_id=0,name=petal_size,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=petal_size_in,label=\"0_petal_size inputs: petal_size_in\"]\n  \"0_petal_size_in\" [cul_scope_id=0,name=petal_size_in,cul_source_scope_id=0,reason=\"input definition\",inputs=petal_size_in,label=\"0_petal_size_in inputs: petal_size_in\"]\n  \"0_petal_num\" [cul_scope_id=0,name=petal_num,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=petal_num_in,label=\"0_petal_num inputs: petal_num_in\"]\n  \"0_petal_num_in\" [cul_scope_id=0,name=petal_num_in,cul_source_scope_id=0,reason=\"input definition\",inputs=petal_num_in,label=\"0_petal_num_in inputs: petal_num_in\"]\n  \"0_petals_roundy_spikiness\" [cul_scope_id=0,name=petals_roundy_spikiness,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=petals_roundy_spikiness_in,label=\"0_petals_roundy_spikiness inputs: petals_roundy_spikiness_in\"]\n  \"0_petals_roundy_spikiness_in\" [cul_scope_id=0,name=petals_roundy_spikiness_in,cul_source_scope_id=0,reason=\"input definition\",inputs=petals_roundy_spikiness_in,label=\"0_petals_roundy_spikiness_in inputs: petals_roundy_spikiness_in\"]\n  \"0_x0\" [cul_scope_id=0,name=x0,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x0_in,label=\"0_x0 inputs: x0_in\"]\n  \"0_x0_in\" [cul_scope_id=0,name=x0_in,cul_source_scope_id=0,reason=\"input definition\",inputs=x0_in,label=\"0_x0_in inputs: x0_in\"]\n  \"0_y0\" [cul_scope_id=0,name=y0,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=y0_in,label=\"0_y0 inputs: y0_in\"]\n  \"0_y0_in\" [cul_scope_id=0,name=y0_in,cul_source_scope_id=0,reason=\"input definition\",inputs=y0_in,label=\"0_y0_in inputs: y0_in\"]\n  \"0_r\" [cul_scope_id=0,name=r,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=r_in,label=\"0_r inputs: r_in\"]\n  \"0_r_in\" [cul_scope_id=0,name=r_in,cul_source_scope_id=0,reason=\"input definition\",inputs=r_in,label=\"0_r_in inputs: r_in\"]\n  \"0_petal_size\" -> \"0_petals\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_petal_num\" -> \"0_petals\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_column\" -> \"0_petals\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_row\" -> \"0_petals\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_petals_roundy_spikiness\" -> \"0_petals\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_column\" -> \"0_head\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_row\" -> \"0_head\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_column\" -> \"0_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_x0\" -> \"0_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_row\" -> \"0_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_y0\" -> \"0_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_r\" -> \"0_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_circle\" -> \"0_face_eyes\" [value=\"[object Object]\",label=\"call -r_in,x0_in,y0_in\"]\n  \"0_row\" -> \"0_face_mouth\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_column\" -> \"0_face_mouth\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_face_eyes\" -> \"0_face\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_face_mouth\" -> \"0_face\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_petals\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_head\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_face\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_row_in\" -> \"0_row\" [value=\"[object Object]\",label=\"input +row_in\"]\n  \"0_column_in\" -> \"0_column\" [value=\"[object Object]\",label=\"input +column_in\"]\n  \"0_petal_size_in\" -> \"0_petal_size\" [value=\"[object Object]\",label=\"input +petal_size_in\"]\n  \"0_petal_num_in\" -> \"0_petal_num\" [value=\"[object Object]\",label=\"input +petal_num_in\"]\n  \"0_petals_roundy_spikiness_in\" -> \"0_petals_roundy_spikiness\" [value=\"[object Object]\",label=\"input +petals_roundy_spikiness_in\"]\n  \"0_x0_in\" -> \"0_x0\" [value=\"[object Object]\",label=\"input +x0_in\"]\n  \"0_y0_in\" -> \"0_y0\" [value=\"[object Object]\",label=\"input +y0_in\"]\n  \"0_r_in\" -> \"0_r\" [value=\"[object Object]\",label=\"input +r_in\"]\n}\n"
+}

@@ -1,5 +1,6 @@
 ---
 title: Graphing Calcs ❤️
+toc: false
 ---
 
 # Graphing Calcs ❤️
@@ -21,53 +22,53 @@ display(model)
 import { calcuvizspec } from "../components/helpers.js"
 ```
 
+---
+
+## inputs ⚙️
+
 ```js
-const n_in = view(Inputs.range([0,20], {step:0.1, value:1, label:'n_in'}))
+const n_in = view(Inputs.range([0,20], {step:0.1, value:8, label:'n_in'}))
 const radius_in = view(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}))
 ```
 ---
 
-<details><summary>Code</summary><!-- manual, for demo purposes -->
+## viz 🖌️
+
+<details><summary>Code</summary><!-- manual now, for demo purposes -->
 <pre>
-let spec = calcuvizspec({
-  models: [model],
-  input_cursors: [{n_in, radius_in}],
-  mark: {type:'line', point: false},
-  encodings: {
-    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
-    y: { name: 'value', type: 'quantitative' },
-    row: {
-      name: 'formula', sort:'descending',
-      domain: formulae_not_inputs
+vl.render({
+  spec: calcuvizspec({
+    models: [model],
+    input_cursors: [{n_in, radius_in}],
+    mark: {type:'line', point: false},
+    encodings: {
+      x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
+      y: { name: 'value', type: 'quantitative' },
+      row: { name: 'formula', domain: formulae_not_inputs },
+      color: { name: 'formula', legend: false }
     },
-    color: {
-      name: 'formula', sort:'descending', legend: false
-    }
-  },
-  width: 700,
-  height: 200
+    width: 400,
+    height: 150
+  })
 })
 </pre>
 </details>
 
 ```js
-let spec = calcuvizspec({
-  models: [model],
-  input_cursors: [{n_in, radius_in}],
-  mark: {type:'line', point: false},
-  encodings: {
-    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
-    y: { name: 'value', type: 'quantitative' },
-    row: {
-      name: 'formula', sort:'descending',
-      domain: formulae_not_inputs
+vl.render({
+  spec: calcuvizspec({
+    models: [model],
+    input_cursors: [{n_in, radius_in}],
+    mark: {type:'line', point: false},
+    encodings: {
+      x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
+      y: { name: 'value', type: 'quantitative' },
+      row: { name: 'formula', domain: formulae_not_inputs },
+      color: { name: 'formula', legend: false }
     },
-    color: {
-      name: 'formula', sort:'descending', legend: false
-    }
-  },
-  width: 700,
-  height: 200
+    width: 400,
+    height: 150
+  })
 })
 ```
 
@@ -79,10 +80,4 @@ import * as vegaLite from "npm:vega-lite";
 import * as vegaLiteApi from "npm:vega-lite-api";
 
 const vl = vegaLiteApi.register(vega, vegaLite);
-```
-
-```js
-vl.render({
-  spec
-})
 ```

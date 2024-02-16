@@ -7,35 +7,45 @@ toc: false
 
 <div class="grid grid-cols-2" style="grid-auto-rows: min-content; gap: 0.5rem">
   <div class="grid-rowspan-2 card" style="background: lightgreen">
-    <h1>calculang ✍️</h1>
-    <details open><summary>f(x)</summary>
+    <h1>calculang</h1>
+    <details open><summary>f(x) ✍️</summary>
     <pre>
-lots
-and lots
-and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-    and lots
-of formulas
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
+f(x)
 (and pre gets mashed by Framework if I leave breaks?)</pre>
     </details>
   </div>

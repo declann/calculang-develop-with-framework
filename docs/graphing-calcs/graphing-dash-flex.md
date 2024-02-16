@@ -3,21 +3,19 @@ title: Graphing Dash 🏃 wip 🚧 Grid-Flex version
 toc: false
 ---
 
-# Graphing Dash 🏃 🚧 Grid-Flex version
-
 <style>
 #observablehq-main {
   max-width: 2000px;
 }
 
 .wrapper {
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
 }
 
 .wrapper > div {
-  height: 100vh; /* bad when collapsed!!! */
   padding: 1rem;
   border-radius: 20px;
 }
@@ -39,9 +37,9 @@ toc: false
 <div class="wrapper">
   <div class="lhs" style="background: lightgreen">
     <div class="grow">
-    <h1>calculang</h1>
+    <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
-    <details><summary>f(x) ✍️</summary>
+    <details><summary>calculang ✍️</summary>
     <pre>
 f(x)
 f(x)
@@ -84,6 +82,7 @@ f(x)
     </div>
   </div>
   <div class="rhs" style="background: pink">
+    <h1>🎨</h1>
     <div class="card">
     <details open><summary>inputs ⚙️</summary>
     ${view(Inputs.bind(Inputs.range([0,20], {step:0.1, value:8, label:'n_in'}), n_in_Input))}

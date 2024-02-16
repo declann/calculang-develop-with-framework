@@ -26,7 +26,7 @@ import { calcuvizspec } from "../components/helpers.js"
 
 ## inputs ⚙️
 
-```js
+```js echo
 const n_in = view(Inputs.range([0,20], {step:0.1, value:8, label:'n_in'}))
 const radius_in = view(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}))
 ```
@@ -34,7 +34,7 @@ const radius_in = view(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in
 
 ## viz 🖌️
 
-<details><summary>Code</summary><!-- manual now, for demo purposes -->
+<details><summary>Code</summary>
 <pre>
 vl.render({
   spec: calcuvizspec({
@@ -54,7 +54,7 @@ vl.render({
 </pre>
 </details>
 
-```js
+```js echo
 vl.render({
   spec: calcuvizspec({
     models: [model],

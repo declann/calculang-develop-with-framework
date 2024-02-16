@@ -1,5 +1,5 @@
 ---
-title: Graphing Dash 🏃 wip 🚧 Grid-Flex version
+title: Graphing Dash 🏃
 toc: false
 ---
 

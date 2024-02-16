@@ -6,8 +6,17 @@ title: Graphing Calcs ❤️
 
 ```js
 import * as model from './cul/calcs_esm/cul_scope_0.js'
+import {FileAttachment} from "npm:@observablehq/stdlib";
 
-view(model)
+const introspection = await FileAttachment('./cul/calcs.introspection.json').json()
+
+const inputs = Object.values(introspection.cul_functions).filter(d => d.reason == 'input definition').map(d => d.name).sort()
+
+const formulae_not_inputs = Object.values(introspection.cul_functions).filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+
+display(introspection)
+
+display(model)
 
 import { calcuvizspec } from "../components/helpers.js"
 ```
@@ -24,11 +33,11 @@ let spec = calcuvizspec({
   input_cursors: [{n_in, radius_in}],
   mark: {type:'line', point: false},
   encodings: {
-    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.05) },
+    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
     y: { name: 'value', type: 'quantitative' },
     row: {
       name: 'formula', sort:'descending',
-      domain: ['line', 'x', 'wave', 'semi_circle', 'result']
+      domain: formulae_not_inputs
     },
     color: {
       name: 'formula', sort:'descending', legend: false

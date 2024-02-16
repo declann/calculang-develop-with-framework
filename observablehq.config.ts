@@ -19,7 +19,7 @@ export default {
   // Some additional configuration options and their defaults:
   // theme: "default", // try "light", "dark", "slate", etc.
   // header: "", // what to show in the header (HTML)
-  // footer: "Built with Observable.", // what to show in the footer (HTML)
+  footer: `Made with 💓 and <a href="https://calculang.dev">calculang</a>`, // what to show in the footer (HTML)
   // toc: true, // whether to show the table of contents
   // pager: true, // whether to show previous & next links in the footer
   // root: "docs", // path to the source root for preview

@@ -8,6 +8,10 @@ toc: false
   max-width: 2000px;
 }
 
+pre {
+  white-space: pre-wrap;
+}
+
 /*details[open] > summary.calculang {
   background: #aaa4;
   border: 1px dotted orange;
@@ -62,9 +66,9 @@ details > summary.calculang {
     <div class="grow">
     <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
-    <details><summary class="calculang">calculang ✍️</summary>
-    <pre class="f">${_.range(0,100).map(d => "hi\n").join('\n')}
-    </pre>
+    <details open><summary class="calculang">calculang ✍️</summary>
+    <pre class="f">${toggle ? cul : esm}
+    </pre>${view(Inputs.bind(Inputs.toggle({label:'input/output'}), toggle_Input))}
     </details>
     </div>
   </div>
@@ -90,7 +94,8 @@ details > summary.calculang {
       color: { name: 'formula', legend: false }
     },
     width: 200,
-    height: 50
+    height: 50,
+    spec_post_process: spec => {spec.background='rgba(0,0,0,0)'; return spec}
   })
 })}
   </div>
@@ -104,6 +109,8 @@ import * as model from './cul/calcs_esm/cul_scope_0.js'
 import {FileAttachment} from "npm:@observablehq/stdlib";
 
 const introspection = await FileAttachment('./cul/calcs.introspection.json').json()
+const cul = await FileAttachment('./cul/calcs.cul.js').text()
+const esm = await FileAttachment('./cul/calcs_esm/cul_scope_0.js').text()
 
 const inputs = Object.values(introspection.cul_functions).filter(d => d.reason == 'input definition').map(d => d.name).sort()
 
@@ -122,6 +129,9 @@ const n_in_Input = Inputs.input(8);
 const n_in = Generators.input(n_in_Input);
 const radius_in_Input = Inputs.input(7);
 const radius_in = Generators.input(radius_in_Input);
+
+const toggle_Input = Inputs.input(7);
+const toggle = Generators.input(toggle_Input);
 ```
 
 ```js

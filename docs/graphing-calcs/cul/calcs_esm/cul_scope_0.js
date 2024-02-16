@@ -11,8 +11,5 @@ export const semi_circle = ({ x_in, radius_in }) => {
   return (radius({ radius_in }) ** 2 - x({ x_in }) ** 2) ** 0.5;
 };
 
-export const result = ({ x_in, radius_in, n_in }) => line({ x_in }) + semi_circle({ x_in, radius_in }) * wave({ x_in, n_in });
-
-// source maps don't work; not serving the resource
-
-//# sourceMappingURL=cul_scope_0.js.map
+export const result = ({ x_in, radius_in, n_in }) =>
+line({ x_in }) + semi_circle({ x_in, radius_in }) * wave({ x_in, n_in });

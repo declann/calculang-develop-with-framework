@@ -5,10 +5,39 @@ toc: false
 
 # Graphing Dash 🏃 🚧
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2" style="grid-auto-rows: min-content; gap: 0.5rem">
   <div class="grid-rowspan-2 card" style="background: lightgreen">
     <h1>calculang ✍️</h1>
-    <p>⏳</p>
+    <details open><summary>f(x)</summary>
+    <pre>
+lots
+and lots
+and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+    and lots
+of formulas
+(and pre gets mashed by Framework if I leave breaks?)</pre>
+    </details>
   </div>
   <div class="card" style="background: pink">
     <details open><summary>inputs ⚙️</summary>
@@ -28,7 +57,7 @@ toc: false
       row: { name: 'formula', domain: formulae_not_inputs },
       color: { name: 'formula', legend: false }
     },
-    width: width/3,
+    width: 200,
     height: 50
   })
 })}

@@ -41,6 +41,10 @@ details > summary {
   gap: 1rem;
 }
 
+.lhs:has(div details:not([open])) {
+  width: 150px;
+}
+
 .observablehq-pre-container {
   margin: 1rem 0; /* -1rem -> 0 */
 }
@@ -52,6 +56,7 @@ details > summary {
 
   height: fit-content;
 }
+
 
 .lhs, .rhs {
   display: flex;

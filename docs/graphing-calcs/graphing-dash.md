@@ -8,6 +8,10 @@ toc: false
   max-width: 2000px;
 }
 
+#observablehq-center {
+  margin: 0.8rem;
+}
+
 pre {
   white-space: pre-wrap;
 }
@@ -42,7 +46,7 @@ details > summary {
 }
 
 .wrapper > div {
-  padding: 20px;
+  padding: 0.5rem;
   /*max-height:50vh;*/
   border-radius: 20px;
 
@@ -63,7 +67,6 @@ details > summary {
 .f {
   max-height: 60vh;
   min-height: 100px;
-
 }
 
 </style>
@@ -73,7 +76,7 @@ details > summary {
     <div class="grow">
     <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
-    <details open><summary class="calculang">calculang ✍️</summary>
+    <details><summary class="calculang">calculang ✍️</summary>
     <pre class="f">${toggle == 'cul' ? cul : esm}</pre>${view(Inputs.bind(Inputs.radio(new Map([["calculang ✍️", "cul"], ["javascript ✨","js"]]), {value:"cul"}), toggle_Input))}
     </details>
     </div>

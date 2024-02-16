@@ -67,7 +67,8 @@ vl.render({
       color: { name: 'formula', legend: false }
     },
     width: 400,
-    height: 150
+    height: 150,
+    //spec_post_process: spec => {spec.width = "container"; return spec}
   })
 })
 ```

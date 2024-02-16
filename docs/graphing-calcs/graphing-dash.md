@@ -102,9 +102,9 @@ details > summary {
       row: { name: 'formula', domain: formulae_not_inputs },
       color: { name: 'formula', legend: false }
     },
-    width:width-150, // messy !!!
+    width:width-150, // messy !!! container width works but overstates
     height: 50,
-    spec_post_process: spec => {spec.background='rgba(0,0,0,0)'; return spec}
+    spec_post_process: spec => {/*spec.width = "container";*/ spec.background='rgba(0,0,0,0)'; return spec}
   }))
   return result
     })

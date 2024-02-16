@@ -89,10 +89,10 @@ details > summary {
     ${view(Inputs.bind(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}), radius_in_Input))}
     </details>
     </div>
-  <div class="card">
-    <p style="color:brown">calcd width=${width} is far too big; using 200px:</p>
-    ${vl.render({
-  spec: calcuvizspec({
+  <div class="card" id="viz"></div>
+  <div style="visibility:hidden">
+  ${resize(width => {
+      const result = embed('#viz', calcuvizspec({
     models: [model],
     input_cursors: [{n_in:n_in, radius_in}],
     mark: {type:'line', point: false},
@@ -102,11 +102,13 @@ details > summary {
       row: { name: 'formula', domain: formulae_not_inputs },
       color: { name: 'formula', legend: false }
     },
-    width: 200,
+    width:width-150, // messy !!!
     height: 50,
     spec_post_process: spec => {spec.background='rgba(0,0,0,0)'; return spec}
-  })
-})}
+  }))
+  return result
+    })
+  }
   </div>
   </div>
 </div>
@@ -125,15 +127,15 @@ const inputs = Object.values(introspection.cul_functions).filter(d => d.reason =
 
 const formulae_not_inputs = Object.values(introspection.cul_functions).filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
 
-//display(introspection)
-
-//display(model)
-
 import { calcuvizspec } from "../components/helpers.js"
 ```
 
 
 ```js
+import embed from 'npm:vega-embed';
+
+//const embed = 
+
 const n_in_Input = Inputs.input(8);
 const n_in = Generators.input(n_in_Input);
 const radius_in_Input = Inputs.input(7);

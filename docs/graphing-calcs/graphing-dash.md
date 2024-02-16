@@ -20,14 +20,14 @@ label {
   font-weight: bold;
 }
 
-/*details[open] > summary.calculang {
+details[open] > summary.calculang {
   background: #aaa4;
-  border: 1px dotted orange;
-}*/
+  /*border: 1px dotted orange;*/
+}
 
 details > summary.calculang {
   border: 1px dashed orange;
-  background: #aaa4;
+  background: #faa4;
 }
 
 details > summary {
@@ -42,7 +42,16 @@ details > summary {
 }
 
 .lhs:has(div details:not([open])) {
+  
   width: 150px;
+  opacity: 0.6;
+  transition: width 200ms linear, opacity 200ms linear;
+}
+
+.lhs:has(div details:not([open])):hover {
+  opacity: 1;
+  transition: width 200ms linear, opacity 60ms linear;
+
 }
 
 .observablehq-pre-container {
@@ -53,14 +62,17 @@ details > summary {
   padding: 0.5rem;
   /*max-height:50vh;*/
   border-radius: 20px;
-
   height: fit-content;
+  width: 90%;
+  transition: width 200ms linear;
 }
 
 
 .lhs, .rhs {
   display: flex;
   flex-flow: column;
+  transition: width 100ms linear;
+
 }
 
 
@@ -103,7 +115,7 @@ details > summary {
     mark: {type:'line', point: false, clip:true},
     encodings: {
       x: { name: 'x_in', type: 'quantitative', grid:false, domain: _.range(-10,10,0.01) },
-      y: { name: 'value', type: 'quantitative', grid:false, "scale": {"domain": [-21,21]}},
+      y: { name: 'value', type: 'quantitative', grid:false, "scale": {"domain": [-10,18]}},
       row: { name: 'formula', domain: formulae_not_inputs },
       color: { name: 'formula', legend: false }
     },

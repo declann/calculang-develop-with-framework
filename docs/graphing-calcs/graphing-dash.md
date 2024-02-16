@@ -1,68 +1,82 @@
 ---
-title: Graphing Dash 🏃 wip 🚧 Grid version
+title: Graphing Dash 🏃 wip 🚧 Grid-Flex version
 toc: false
 ---
-
-# Graphing Dash 🏃 🚧 Grid version
 
 <style>
 #observablehq-main {
   max-width: 2000px;
 }
+
+/*details[open] > summary.calculang {
+  background: #aaa4;
+  border: 1px dotted orange;
+}*/
+
+details > summary.calculang {
+  border: 1px dashed orange;
+  background: #aaa4;
+  font-weight: bold;
+}
+
+.wrapper {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.observablehq-pre-container {
+  margin: 1rem 0; /* -1rem -> 0 */
+}
+
+.wrapper > div {
+  padding: 20px;
+  /*max-height:50vh;*/
+  border-radius: 20px;
+
+  height: fit-content;
+}
+
+.lhs, .rhs {
+  display: flex;
+  flex-flow: column;
+}
+
+
+.grow {
+  flex-grow: 1;
+  min-height: 100px;
+}
+
+.f {
+  max-height: 60vh;
+  min-height: 100px;
+
+}
+
 </style>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: auto; gap: 0.5rem">
-  <div class="grid-rowspan-2 card" style="background: lightgreen">
-    <h1>calculang</h1>
+<div class="wrapper">
+  <div class="lhs" style="background: lightgreen">
+    <div class="grow">
+    <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
-    <details open><summary>f(x) ✍️</summary>
-    <pre>
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-(and pre gets mashed by Framework if I leave breaks?)</pre>
+    <details><summary class="calculang">calculang ✍️</summary>
+    <pre class="f">${_.range(0,100).map(d => "hi\n").join('\n')}
+    </pre>
     </details>
+    </div>
   </div>
-  <div class="card" style="background: pink">
+  <div class="rhs" style="background: pink">
+    <h1>🎨</h1>
+    <div class="card">
     <details open><summary>inputs ⚙️</summary>
     ${view(Inputs.bind(Inputs.range([0,20], {step:0.1, value:8, label:'n_in'}), n_in_Input))}
     ${view(Inputs.bind(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}), radius_in_Input))}
     </details>
-  </div>
-  <div class="card" style="background: pink">
+    </div>
+  <div class="card">
     <p style="color:brown">calcd width=${width} is far too big; using 200px:</p>
     ${vl.render({
   spec: calcuvizspec({
@@ -79,6 +93,7 @@ f(x)
     height: 50
   })
 })}
+  </div>
   </div>
 </div>
 

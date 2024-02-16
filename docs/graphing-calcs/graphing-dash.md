@@ -14,6 +14,7 @@ toc: false
 <div class="grid grid-cols-2" style="grid-auto-rows: auto; gap: 0.5rem">
   <div class="grid-rowspan-2 card" style="background: lightgreen">
     <h1>calculang</h1>
+    <!-- can I collapse things responsively? -->
     <details open><summary>f(x) ✍️</summary>
     <pre>
 f(x)
@@ -62,6 +63,7 @@ f(x)
     </details>
   </div>
   <div class="card" style="background: pink">
+    <p style="color:brown">calcd width=${width} is far too big; using 200px:</p>
     ${vl.render({
   spec: calcuvizspec({
     models: [model],

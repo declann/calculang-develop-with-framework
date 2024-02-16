@@ -25,9 +25,10 @@ import { calcuvizspec } from "../components/helpers.js"
 const n_in = view(Inputs.range([0,20], {step:0.1, value:1, label:'n_in'}))
 const radius_in = view(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}))
 ```
+---
 
-```js
-
+<details><summary>Code</summary><!-- manual, for demo purposes -->
+<pre>
 let spec = calcuvizspec({
   models: [model],
   input_cursors: [{n_in, radius_in}],
@@ -44,18 +45,30 @@ let spec = calcuvizspec({
     }
   },
   width: 700,
-  height: 200,
-
-  // viz customizations:
-  spec_post_process: spec => {
-    //spec.encoding.x.axis = { grid: false, domain: false, ticks: 0, labels: false }
-    //spec.encoding.y.axis = { grid: false, domain: false, ticks: 0, labels: false }
-    return spec
-  }
+  height: 200
 })
+</pre>
+</details>
 
-view(spec)
-
+```js
+let spec = calcuvizspec({
+  models: [model],
+  input_cursors: [{n_in, radius_in}],
+  mark: {type:'line', point: false},
+  encodings: {
+    x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
+    y: { name: 'value', type: 'quantitative' },
+    row: {
+      name: 'formula', sort:'descending',
+      domain: formulae_not_inputs
+    },
+    color: {
+      name: 'formula', sort:'descending', legend: false
+    }
+  },
+  width: 700,
+  height: 200
+})
 ```
 
 ```js

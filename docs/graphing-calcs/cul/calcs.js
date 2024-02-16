@@ -111,7 +111,7 @@ const x = ({ x_in }) => x_in;
 const n = ({ n_in }) => n_in;
 const radius = ({ radius_in }) => radius_in;
 
-const line = ({ x_in }) => Math.abs(x({ x_in }));
+const line = ({ x_in }) => Math.abs(2 * x({ x_in }));
 
 const wave = ({ x_in, n_in }) => Math.sin(x({ x_in }) * n({ n_in }));
 

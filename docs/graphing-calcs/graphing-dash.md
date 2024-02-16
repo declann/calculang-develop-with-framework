@@ -5,7 +5,7 @@ toc: false
 
 <style>
 #observablehq-main {
-  max-width: 2000px;
+  max-width: 1500px;
 }
 
 #observablehq-center {
@@ -85,8 +85,8 @@ details > summary {
     <h1>🎨</h1>
     <div class="card">
     <details open><summary>inputs ⚙️</summary>
-    ${view(Inputs.bind(Inputs.range([0,20], {step:0.1, value:8, label:'n_in'}), n_in_Input))}
-    ${view(Inputs.bind(Inputs.range([0,20], {step:0.1, value:7, label:'radius_in'}), radius_in_Input))}
+    ${view(Inputs.bind(Inputs.range([0,25], {step:0.1, value:8, label:'n_in'}), n_in_Input))}
+    ${view(Inputs.bind(Inputs.range([0,10], {step:0.1, value:7, label:'radius_in'}), radius_in_Input))}
     </details>
     </div>
   <div class="card" id="viz"></div>
@@ -95,14 +95,14 @@ details > summary {
       const result = embed('#viz', calcuvizspec({
     models: [model],
     input_cursors: [{n_in:n_in, radius_in}],
-    mark: {type:'line', point: false},
+    mark: {type:'line', point: false, clip:true},
     encodings: {
-      x: { name: 'x_in', type: 'quantitative', domain: _.range(-10,10,0.01) },
-      y: { name: 'value', type: 'quantitative' },
+      x: { name: 'x_in', type: 'quantitative', grid:false, domain: _.range(-10,10,0.01) },
+      y: { name: 'value', type: 'quantitative', grid:false, "scale": {"domain": [-21,21]}},
       row: { name: 'formula', domain: formulae_not_inputs },
       color: { name: 'formula', legend: false }
     },
-    width:width-150, // messy !!! container width works but overstates
+    width:Math.min(300,width-150), // messy !!! container width works but overstates
     height: 50,
     spec_post_process: spec => {/*spec.width = "container";*/ spec.background='rgba(0,0,0,0)'; return spec}
   }))

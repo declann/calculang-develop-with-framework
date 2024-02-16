@@ -2,7 +2,7 @@ export const x = ({ x_in }) => x_in;
 export const n = ({ n_in }) => n_in;
 export const radius = ({ radius_in }) => radius_in;
 
-export const line = ({ x_in }) => Math.abs(x({ x_in }));
+export const line = ({ x_in }) => Math.abs(2 * x({ x_in }));
 
 export const wave = ({ x_in, n_in }) => Math.sin(x({ x_in }) * n({ n_in }));
 

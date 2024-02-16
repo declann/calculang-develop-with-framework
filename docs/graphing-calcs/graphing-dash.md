@@ -28,7 +28,7 @@ toc: false
       row: { name: 'formula', domain: formulae_not_inputs },
       color: { name: 'formula', legend: false }
     },
-    width: 200,
+    width: width/3,
     height: 50
   })
 })}

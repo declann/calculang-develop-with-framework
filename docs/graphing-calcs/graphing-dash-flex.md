@@ -8,6 +8,17 @@ toc: false
   max-width: 2000px;
 }
 
+/*details[open] > summary.calculang {
+  background: #aaa4;
+  border: 1px dotted orange;
+}*/
+
+details > summary.calculang {
+  border: 1px dashed orange;
+  background: #aaa4;
+  font-weight: bold;
+}
+
 .wrapper {
   margin-top: 30px;
   display: grid;
@@ -15,9 +26,16 @@ toc: false
   gap: 1rem;
 }
 
+.observablehq-pre-container {
+  margin: 1rem 0; /* -1rem -> 0 */
+}
+
 .wrapper > div {
-  padding: 1rem;
+  padding: 20px;
+  /*max-height:50vh;*/
   border-radius: 20px;
+
+  height: fit-content;
 }
 
 .lhs, .rhs {
@@ -31,6 +49,11 @@ toc: false
   min-height: 100px;
 }
 
+.f {
+  max-height: 60vh;
+  min-height: 100px;
+
+}
 
 </style>
 
@@ -39,45 +62,9 @@ toc: false
     <div class="grow">
     <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
-    <details><summary>calculang ✍️</summary>
-    <pre>
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-f(x)
-(and pre gets mashed by Framework if I leave breaks?)</pre>
+    <details><summary class="calculang">calculang ✍️</summary>
+    <pre class="f">${_.range(0,100).map(d => "hi\n").join('\n')}
+    </pre>
     </details>
     </div>
   </div>

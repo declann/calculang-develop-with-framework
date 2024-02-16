@@ -1,11 +1,11 @@
 ---
-title: Graphing Dash 🏃 wip 🚧
+title: Graphing Dash 🏃 wip 🚧 Grid version
 toc: false
 ---
 
-# Graphing Dash 🏃 🚧
+# Graphing Dash 🏃 🚧 Grid version
 
-<div class="grid grid-cols-2" style="grid-auto-rows: min-content; gap: 0.5rem">
+<div class="grid grid-cols-2" style="grid-auto-rows: auto; gap: 0.5rem">
   <div class="grid-rowspan-2 card" style="background: lightgreen">
     <h1>calculang</h1>
     <details open><summary>f(x) ✍️</summary>

@@ -12,6 +12,10 @@ pre {
   white-space: pre-wrap;
 }
 
+label {
+  font-weight: bold;
+}
+
 /*details[open] > summary.calculang {
   background: #aaa4;
   border: 1px dotted orange;
@@ -20,6 +24,9 @@ pre {
 details > summary.calculang {
   border: 1px dashed orange;
   background: #aaa4;
+}
+
+details > summary {
   font-weight: bold;
 }
 
@@ -67,8 +74,7 @@ details > summary.calculang {
     <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
     <details open><summary class="calculang">calculang ✍️</summary>
-    <pre class="f">${toggle ? cul : esm}
-    </pre>${view(Inputs.bind(Inputs.toggle({label:'input/output'}), toggle_Input))}
+    <pre class="f">${toggle == 'cul' ? cul : esm}</pre>${view(Inputs.bind(Inputs.radio(new Map([["calculang ✍️", "cul"], ["javascript ✨","js"]]), {value:"cul"}), toggle_Input))}
     </details>
     </div>
   </div>
@@ -130,7 +136,7 @@ const n_in = Generators.input(n_in_Input);
 const radius_in_Input = Inputs.input(7);
 const radius_in = Generators.input(radius_in_Input);
 
-const toggle_Input = Inputs.input(7);
+const toggle_Input = Inputs.input("cul");
 const toggle = Generators.input(toggle_Input);
 ```
 

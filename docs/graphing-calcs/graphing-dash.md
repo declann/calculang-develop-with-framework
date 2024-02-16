@@ -5,6 +5,12 @@ toc: false
 
 # Graphing Dash 🏃 🚧 Grid version
 
+<style>
+#observablehq-main {
+  max-width: 2000px;
+}
+</style>
+
 <div class="grid grid-cols-2" style="grid-auto-rows: auto; gap: 0.5rem">
   <div class="grid-rowspan-2 card" style="background: lightgreen">
     <h1>calculang</h1>

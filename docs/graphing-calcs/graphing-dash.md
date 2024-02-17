@@ -22,12 +22,15 @@ label {
 
 details[open] > summary.calculang {
   background: #aaa4;
+  cursor: zoom-out;
   /*border: 1px dotted orange;*/
 }
 
 details > summary.calculang {
   border: 1px dashed orange;
   background: #faa4;
+  user-select: none;
+  cursor: zoom-in;
 }
 
 details > summary {
@@ -45,7 +48,7 @@ details > summary {
   
   width: 150px;
   opacity: 0.6;
-  transition: width 200ms linear, opacity 200ms linear;
+  transition: width 100ms ease-out opacity 200ms linear;
 }
 
 .lhs:has(div details:not([open])):hover {
@@ -64,15 +67,13 @@ details > summary {
   border-radius: 20px;
   height: fit-content;
   width: 90%;
-  transition: width 200ms linear;
+  transition: width 200ms ease-out;
 }
 
 
 .lhs, .rhs {
   display: flex;
   flex-flow: column;
-  transition: width 100ms linear;
-
 }
 
 

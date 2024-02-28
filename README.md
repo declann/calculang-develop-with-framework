@@ -1,6 +1,6 @@
 # a DX pattern for calculang, using Framework
 
-Suggestions:
+Possibilities:
 
 - Fork and then
 - update Author details in `package.json`
@@ -11,64 +11,10 @@ Cool and license-permitting, shared things will be considered for `calculang.par
 
 For more about calculang, see [calculang.dev](https://calculang.dev/).
 
-## This is a DX pattern
+## and UX patterns
 
-The D in DX stands for developer: DX is developer experience.
+UX is a separate and later goal, but will feed into `calculang.party` also, with the ability to modify and [remix](https://en.scratch-wiki.info/wiki/Remix) calculations and their outputs directly.
 
-UX is also relevant, or targetting a less-technical: user, audience.
+This UX work has started with the calculang editor included in pages.
 
-This is a separate and later goal, but will feed into `calculang.party` also, with the ability to modify and [remix](https://en.scratch-wiki.info/wiki/Remix) calculations and their outputs directly.
-
-# below is default readme information from Framework
-
-This is an [Observable Framework](https://observablehq.com/framework) project. To start the local preview server, run:
-
-```
-npm run dev
-```
-
-Then visit <http://localhost:3000> to preview your project.
-
-For more, see <https://observablehq.com/framework/getting-started>.
-
-## Project structure
-
-A typical Framework project looks like this:
-
-```ini
-.
-├─ docs
-│  ├─ components
-│  │  └─ timeline.js           # an importable module
-│  ├─ data
-│  │  ├─ launches.csv.js       # a data loader
-│  │  └─ events.json           # a static data file
-│  ├─ example-dashboard.md     # a page
-│  ├─ example-report.md        # another page
-│  └─ index.md                 # the home page
-├─ .gitignore
-├─ observablehq.config.ts      # the project config file
-├─ package.json
-└─ README.md
-```
-
-**`docs`** - This is the “source root” — where your source files live. Pages go here. Each page is a Markdown file. Observable Framework uses [file-based routing](https://observablehq.com/framework/routing), which means that the name of the file controls where the page is served. You can create as many pages as you like. Use folders to organize your pages.
-
-**`docs/index.md`** - This is the home page for your site. You can have as many additional pages as you’d like, but you should always have a home page, too.
-
-**`docs/data`** - You can put [data loaders](https://observablehq.com/framework/loaders) or static data files anywhere in your source root, but we recommend putting them here.
-
-**`docs/components`** - You can put shared [JavaScript modules](https://observablehq.com/framework/javascript/imports) anywhere in your source root, but we recommend putting them here. This helps you pull code out of Markdown files and into JavaScript modules, making it easier to reuse code across pages, write tests and run linters, and even share code with vanilla web applications.
-
-**`observablehq.config.ts`** - This is the [project configuration](https://observablehq.com/framework/config) file, such as the pages and sections in the sidebar navigation, and the project’s title.
-
-## Command reference
-
-| Command           | Description                                              |
-| ----------------- | -------------------------------------------------------- |
-| `npm install`            | Install or reinstall dependencies                        |
-| `npm run dev`        | Start local preview server                               |
-| `npm run build`      | Build your static site, generating `./dist`              |
-| `npm run deploy`     | Deploy your project to Observable                        |
-| `npm run clean`      | Clear the local data loader cache                        |
-| `npm run observable` | Run commands like `observable help`                      |
+If you want to help make this better, contact me!

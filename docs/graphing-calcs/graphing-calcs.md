@@ -1,9 +1,9 @@
 ---
-title: Graphing Calcs ❤️
+title: ❤️ (old-style)
 toc: false
 ---
 
-# Graphing Calcs ❤️
+# Graphing Calcs ❤️ (old-style)
 
 ```js
 import * as model from './cul/calcs_esm/cul_scope_0.js'

@@ -1,5 +1,5 @@
 ---
-title: Flower Calcs 🌸
+title: 🌸 (old-style)
 ---
 
 # Flower calcs 🌸

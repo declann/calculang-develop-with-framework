@@ -1,0 +1,118 @@
+@import url("observablehq:default.css");
+@import url("observablehq:theme-air.css");
+
+#observablehq-main {
+  max-width: 1500px;
+}
+
+#observablehq-center {
+  margin: 0.8rem;
+}
+
+input#observablehq-sidebar-toggle::before {
+  height: 2rem; /* stand out for mobile; but I reclaimed that space */
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+label {
+  font-weight: bold;
+}
+
+.lhs details {
+  margin:10px 0; /* 0->6px creates a indentation effect */
+}
+
+details[open] > summary.calculang {
+  background: #aaa4;
+  cursor: zoom-out;
+  /*border: 1px dotted orange;*/
+}
+
+details > summary {
+  user-select: none;
+}
+
+details > summary.calculang {
+  border: 1px dashed orange;
+  background: #faa4;
+  cursor: zoom-in;
+}
+
+details > summary.calculang {
+  font-weight: bold;
+}
+
+.wrapper {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+}
+
+.lhs:has(div details.calculang:not([open])) {
+  width: 150px;
+  opacity: 0.6;
+  transition: width 100ms ease-out opacity 200ms linear;
+}
+
+.lhs:has(div details.calculang:not([open])):hover {
+  opacity: 1;
+  transition: width 200ms linear, opacity 60ms linear;
+
+}
+
+.observablehq-pre-container {
+  margin: 1rem 0; /* -1rem -> 0 */
+}
+
+pre {
+  margin: 1rem 0;
+}
+
+.wrapper > div {
+  padding: 0.5rem;
+  /*max-height:50vh;*/
+  border-radius: 20px;
+  height: fit-content;
+  width: 90%;
+  transition: width 200ms ease-out;
+}
+
+
+.lhs, .rhs {
+  display: flex;
+  flex-flow: column;
+}
+
+
+.grow {
+  flex-grow: 1;
+  min-height: 100px;
+}
+
+.f {
+  max-height: 60vh;
+  min-height: 100px;
+}
+
+
+
+
+.calculang_title {
+  background-color: rgba(100,200,100,0.1);
+  border-radius: 2px;
+  font-weight: bold;
+}
+.calculang_call:not(.calculang_call_input) {
+  background-color: lightblue;
+  border-radius: 3px;
+  cursor: zoom-in;
+}
+.calculang_call.calculang_call_input {
+  background-color: lightpink;
+  border-radius: 3px;
+  cursor: zoom-in;
+}

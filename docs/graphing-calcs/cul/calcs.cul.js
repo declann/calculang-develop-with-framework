@@ -1,8 +1,4 @@
-export const x = () => x_in;
-export const n = () => n_in;
-export const radius = () => radius_in;
-
-export const line = () => Math.abs(2*x());
+export const line = () => 2*Math.abs(x());
 
 export const wave = () => Math.sin(x() * n());
 
@@ -11,5 +7,9 @@ export const semi_circle = () => {
   else return (radius() ** 2 - x() ** 2) ** 0.5;
 };
 
-export const result = () =>
+export const heart = () =>
       line() + semi_circle() * wave();
+
+export const x = () => x_in;
+export const n = () => n_in;
+export const radius = () => radius_in;

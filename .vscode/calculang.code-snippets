@@ -13,6 +13,13 @@
 			"export const $1 = () => $2"
 		]
 	},
+	"cul function": {
+		"scope": "javascript",
+		"prefix": "prev",
+		"body": [
+			"$1({$2_in:$2() - 1})"
+		]
+	},
 	"cul accumulator": {
 		"scope": "javascript",
 		"prefix": "culacc",

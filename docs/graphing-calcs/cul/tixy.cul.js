@@ -1,4 +1,4 @@
-
+// hello
 // inspired by
 // https://tixi.land by Martin Kleppe https://twitter.com/aemkei
 
@@ -43,7 +43,7 @@ export const mousey = () => mousey_in
 
 // provide i and Math shortcuts:
 export const i = () => y()*16+x()
-const {sin, cos, /*random, use seeded random for memo*/ min, max, abs, sqrt, ceil} = Math;
+export const {sin, cos, /*random, use seeded random for memo*/ min, max, abs, sqrt, ceil} = Math; // MUST export for selection eval
 // positive used to map to color channel
 export const positive = () => v() >= 0;
 // v_clamped used to map to size

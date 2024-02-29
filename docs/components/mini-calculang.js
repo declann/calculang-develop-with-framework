@@ -336,12 +336,13 @@ export const compileWithMemo = input => {
 
   console.log("formulae_not_inputs", formulae_not_inputs)
 
-  let a = "import {memoize} from 'https://cdn.jsdelivr.net/npm/underscore/+esm'//'https://esm.run/underscore';\n\n" + input; // chk using https://github.com/rsms/js-lru/tree/master
+  let a = input; // chk using https://github.com/rsms/js-lru/tree/master
 
   formulae_not_inputs.forEach(d => {
-    a = a.replaceAll(' ' + d + ' =', ' ' + d+ '$ =')
+    a = a.replaceAll(' ' + d + ' =', ' ' + d+ '$=') // conserve positions hack !
   })
 
+  a += "import {memoize} from 'https://cdn.jsdelivr.net/npm/underscore/+esm'//'https://esm.run/underscore';\n\n"
 
   a = a + formulae_not_inputs.map(d => `\n// memoization\n\nexport const ${d}$m = memoize(${d}$, JSON.stringify);\nexport const ${d} = (a) => {
     return ${d}$m(a);

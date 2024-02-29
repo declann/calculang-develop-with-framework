@@ -5,7 +5,12 @@ toc: false
 
 ```js
 import {Scrubber} from '../components/scrubber.js'
+
+import * as lineColumn from 'npm:line-column';
+
+import { SourceMapConsumer } from 'npm:source-map-js';
 ```
+
 
 Inspired by [tixy.land](https://twitter.com/aemkei/status/1323399877611708416); in development.
 
@@ -18,18 +23,10 @@ const start_doc = cul_default
 
 const doc = Mutable(start_doc) // I still have doc Input below, remove?
 
-const selection = Mutable("")
+const selection = Mutable({from:{line:10,column:31}, to:{line:10,column:34}})
 
 const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}, updateSelection: s => {selection.value = s}})
 ```
-
-select+F8=
-
-```js
-selection
-```
-
-TODO map to calculang compiled code and reactively update
 
 ```js
 //_.range(0,t_in).map(d => calcudata({models:[model], input_domains:{x_in:_.range(0,15), y_in: _.range(0,15)}, outputs: ['alive'], input_cursors:[{size_in:15, initial_grid_in, t_in:d}]}));
@@ -47,10 +44,12 @@ TODO map to calculang compiled code and reactively update
     ${display(editor.dom)}
     <details><summary>javascript ✨</summary>
     <span style="font-style: italic">generated from calculang</span> ⬆️
-    ${view(Inputs.textarea({value:esm, rows:60, resize: true, disabled:true}))}
+    ${view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))}
     </details>
     <details><summary>dev tools 🧰</summary>
     ${"todo"}
+    ${display(Object.keys(introspection))}
+    ${display(JSON.stringify([...introspection.cul_links]))}
     </details>
     </details>
     </div>
@@ -59,11 +58,15 @@ TODO map to calculang compiled code and reactively update
     <h1>🎨</h1>
     <div class="card">
     <details open><summary>inputs ⚙️</summary>
-    ${view(Inputs.bind(Scrubber(_.range(0,20,1/20), {delay: 1000/20, autoplay: false, format:d => d3.format('.2f')(d)}), t_in_Input))}
+    ${view(Inputs.bind(Scrubber(_.range(0,8,1/20), {delay: 1000/20, autoplay: true, alternate:true, format:d => d3.format('.2f')(d)}), t_in_Input))}
+    <!--${/*view(Inputs.bind(Inputs.range([0,8], {step:0.1}), t_in_Input))*/t_in}-->
     </details>
     </div>
   <div class="card" id="viz"></div>
+  <h3>eval-on-select (select formula text, then activate with F8)</h3>
   <div class="card" id="viz2"></div>
+  <details open><summary>compiled selection (via sourcemap)</summary>
+  <pre>${display(selection_esm)}</pre></details> <!-- editing html breaks my visuals -->
   </div>
 </div>
 
@@ -91,7 +94,7 @@ calculang/output is also highly portable and uniform.</details>
 
 ---
 
-## visual 1 (main output)
+## visual 1 (main output, with mouse interactivity)
 
 ```js echo
 const spec = ({
@@ -137,7 +140,6 @@ const viz = embed('#viz', spec, {patch: [{
 
 ```js echo
 const data_source = calcuvegadata({
-  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
   models: [model],
   spec,
   domains: {
@@ -145,13 +147,17 @@ const data_source = calcuvegadata({
     y_in: _.range(0,size_in)
   },
   input_cursors: [
-    { t_in, mousex_in, mousey_in, random_seed_in:'x' }
+    { t_in, mousex_in, mousey_in, random_seed_in }
   ]
 })
 ```
 
 ```js echo
-viz.view.data("data", data_source)/*.resize()*/.run();
+viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
+```
+
+```js echo
+const random_seed_in = 'x' // reactive issues if mixed in mutable updates blocks
 ```
 
 ```js echo
@@ -159,11 +165,10 @@ const mousex_in = Mutable(8)
 const mousey_in = Mutable(8)
 
 viz.view.addSignalListener('mousex', a => {
-  console.log('mousex', viz.view.signal('mousex'))
+  console.log('mousex', a)
   mousex_in.value = viz.view.signal('mousex')
 })
 viz.view.addSignalListener('mousey', a => {
-  console.log('mousey', viz.view.signal('mousey'))
   mousey_in.value = viz.view.signal('mousey')
 })
 ```
@@ -172,26 +177,49 @@ viz.view.addSignalListener('mousey', a => {
 
 ## visual 2
  
-Using `calcuvizspec`: more ergonomic dx but performance poor for interactivity:
 
 ```js echo
-const viz2 = embed('#viz2', calcuvizspec({
-  models: [model],
-  input_cursors: [{t_in, mousex_in, mousey_in}],
+const spec2 = ({
+  // vega-lite
   mark: {type:'text', point: false, filled: true},
-  encodings: {
-    x: { name: 'x_in', type: 'ordinal', domain: _.range(0,size_in) },
-    y: { name: 'y_in', type: 'ordinal', domain: _.range(0,size_in) },
-    text: { name: 'v', format: ('.1f') },
-    color: { name: 'v', type: 'quantitative', legend: false }
+  encoding: {
+    x: { field: 'x_in', type: 'quantitative', scale: {nice:false, domain:[-1,16]} },
+    y: { field: 'y_in', type: 'quantitative', sort:'descending', scale: {nice:false, domain:[-1,16]} },
+    text: { field: 'selection_fn', format: ('.1f') },
+    color: { field: 'selection_fn', type: 'quantitative', legend: false/*, scale: {domain:[0,1] }*/}
   },
-  width: Math.min(400-30,rhs_width-30),
+  data: { name: "data" },
+  datasets: {
+    data: [],
+  },
+  autosize: { "type": "fit", "contains": "padding"},
+  width: Math.min(500,rhs_width-30),
   height: 300,
-  spec_post_process: spec => { spec.autosize = { "type": "fit", "contains": "padding"};
-    spec.background='rgba(0,0,0,0)'; return spec }
-}))
+  background:'rgba(0,0,0,0)'
+})
+
+const viz2 = embed('#viz2', spec2)
 ```
 
+```js echo
+const data_source2 = calcuvegadata({
+  models: [{selection_fn: (a) => selection_fn(model,a)}],
+  spec: spec2,
+  domains: {
+    x_in: _.range(0,size_in),
+    y_in: _.range(0,size_in)
+  },
+  input_cursors: [
+    { t_in, mousex_in, mousey_in, random_seed_in }
+  ]
+})
+```
+
+```js echo
+viz2.view.data("data", data_source2)/*.resize()*/.run(); // turn off resize
+```
+
+---
 
 ```js echo
 const size_in = 16
@@ -204,7 +232,7 @@ const rhs_width = Generators.width(document.querySelector(".rhs")); // keep as a
 
 ```js
 
-const esm = compileWithMemo(doc).code
+const esm = compileWithMemo(doc)
 const introspection = introspection2(doc)
 //display(introspection.cul_input_map)
 //display(introspection)
@@ -218,7 +246,7 @@ const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d =
 //display(formulae_not_inputs)
 
 
-const model = await import(URL.createObjectURL(new Blob([esm], { type: "text/javascript" })).toString())
+const model = await import(URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" })).toString())
 
 //display(model)
 
@@ -242,3 +270,64 @@ import embed_ from 'npm:vega-embed';
 
 const embed = (a,b,options) => embed_(a,b, {renderer:'svg', ...options});
 ```
+
+---
+
+eval-on-select
+
+```js
+const sourcemap = new SourceMapConsumer(esm.map)
+
+const selection_start = sourcemap.generatedPositionFor({...selection.from, source:"unknown"})
+const selection_end = sourcemap.generatedPositionFor({...selection.to, source:"unknown"})
+
+const esm_split = esm.code.split('\n')
+
+display(selection_start)
+display(selection_end)
+```
+
+```js
+const selection_esm = esm.code.slice(index_start+1,index_end+1)
+```
+
+```js
+const index_start =lineColumn.default(esm.code).toIndex(selection_start)
+const index_end =lineColumn.default(esm.code).toIndex(selection_end)
+```
+
+```js echo
+// all inputs must be maintianed here to pass to selection function
+
+const ins = ({x_in: 8, y_in:8, t_in, random_seed_in, mousex_in, mousey_in})
+```
+
+```js
+
+//const x_in = 3;
+
+
+const exec = selection_esm
+
+//const exec_f = new Function("model", "x_in", `return ${exec}`)(model, x_in)
+
+//display(exec_f) // Works
+
+//display(new Function("model", "{x_in,y_in}", `window.bb = 10; return bb+x_in+y_in`)(model, ins)) // works
+
+// super dangerous and insecure window assignment here but trying as alt to manual replacement; for manual replacement see reactive workings
+// TOFIX when i integrate reactive workings
+
+const selection_fn = new Function("model", "{"+Object.keys(ins).join(",")+"}", `Object.assign(window, model); return ${exec}`)
+
+display(selection_fn(model, ins))
+
+
+//display(new Function("model", "{x_in,y_in}", `return x_in+y_in`)(model, ins)) // works
+
+
+//display(bb)
+
+```
+
+todo maintain eval selection range with edits? Alt.: don't react to edits by freezing into Mutable, but this is poor.

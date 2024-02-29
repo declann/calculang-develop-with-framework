@@ -384,12 +384,17 @@ const expand = function (view) {
 
 // based on expand above
 const expand_calculang = updateSelection => function (view) {
+  debugger;
   console.log("expand calculang", view)
   view.dispatch(
     view.state.changeByRange((range) => {
       const result = evaluate(view.state.sliceDoc(range.from, range.to));
 
-      updateSelection(view.state.sliceDoc(range.from, range.to))
+      updateSelection({/*range.from*/from: {line:view.state.doc.lineAt(view.state.selection.main.from).number,
+        column:view.state.selection.ranges[0].from - view.state.doc.lineAt(view.state.selection.main.from).from}, 
+        to:{line:view.state.doc.lineAt(view.state.selection.main.to).number,
+          column:view.state.selection.ranges[0].to - view.state.doc.lineAt(view.state.selection.main.to).from}})
+      //updateSelection(view.state.sliceDoc(range.from, range.to))
 
       // Evaluation errored, don’t do anything
       if (result === false || 1) return { range };

@@ -1,23 +1,24 @@
 ---
-title: tixy.land clone (poc)
+title: tixy-ish 🎨
 toc: false
 ---
 
 ```js
-import {Scrubber} from '../components/scrubber.js'
+import {Scrubber} from './components/scrubber.js'
 
 import * as lineColumn from 'npm:line-column';
 
 import { SourceMapConsumer } from 'npm:source-map-js';
 ```
 
+# tixy-ish
 
-Inspired by [tixy.land](https://twitter.com/aemkei/status/1323399877611708416); in development.
+Inspired by [tixy.land](https://twitter.com/aemkei/status/1323399877611708416); in development; [open to contributions](https://github.com/declann/calculang-develop-with-framework/docs/tixyish.md)!
 
 ```js
-import {editor as editorCm, config as eslintConfig} from './editor.bundle.js'
+import {editor as editorCm, config as eslintConfig} from './graphing-calcs/editor.bundle.js'
 
-import {calcuvegadata} from '../components/calcuvegadata.js'
+import {calcuvegadata} from './components/calcuvegadata.js'
 
 const start_doc = cul_default
 
@@ -26,12 +27,6 @@ const doc = Mutable(start_doc) // I still have doc Input below, remove?
 const selection = Mutable({from:{line:7,column:23}, to:{line:7,column:65}})
 
 const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}, updateSelection: s => {selection.value = s}})
-```
-
-```js
-//_.range(0,t_in).map(d => calcudata({models:[model], input_domains:{x_in:_.range(0,15), y_in: _.range(0,15)}, outputs: ['alive'], input_cursors:[{size_in:15, initial_grid_in, t_in:d}]}));
-  //  console.log('end')
-
 ```
 
 <div class="wrapper">
@@ -261,9 +256,9 @@ import {FileAttachment} from "npm:@observablehq/stdlib";
 
 const cul_default = await FileAttachment('./cul/tixy.cul.js').text()
 
-import { calcuvizspec, calcudata } from "../components/helpers.js"
+import { calcuvizspec, calcudata } from "./components/helpers.js"
 
-import { compile, introspection2, compileWithMemo } from "../components/mini-calculang.js"
+import { compile, introspection2, compileWithMemo } from "./components/mini-calculang.js"
 ```
 
 

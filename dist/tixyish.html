@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>tixy.land clone (poc) | some calculang things</title>
+<title>tixy-ish 🎨 | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="../_import/custom-style.css">
+<link rel="preload" as="style" href="./_import/custom-style.css">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="../_observablehq/stdlib/inputs.css">
-<link rel="stylesheet" type="text/css" href="../_import/custom-style.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.css">
-<link rel="modulepreload" href="../_import/components/calcuvegadata.js?sha=7a928fe52021581e13b89961406c20843351e50c35b764010ecfbe1f37ac76c4">
-<link rel="modulepreload" href="../_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a">
-<link rel="modulepreload" href="../_import/components/mini-calculang.js?sha=e4872dbaf95ee5ec0b810e1e943345f30adce8d8b8a1b25935091d07ef762bfa">
-<link rel="modulepreload" href="../_import/components/scrubber.js?sha=1acf720c74afa19787ae0c83487051939ab75585847f9bcb9c263ba7cee08215">
-<link rel="modulepreload" href="../_import/graphing-calcs/editor.bundle.js?sha=afca5692763be21eb50db2e755034aedaeb899a0fca656ed74a873a759e99cef">
-<link rel="modulepreload" href="../_observablehq/client.js">
-<link rel="modulepreload" href="../_observablehq/runtime.js">
-<link rel="modulepreload" href="../_observablehq/stdlib.js">
-<link rel="modulepreload" href="../_observablehq/stdlib/inputs.js">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="./_import/components/calcuvegadata.js?sha=7a928fe52021581e13b89961406c20843351e50c35b764010ecfbe1f37ac76c4">
+<link rel="modulepreload" href="./_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a">
+<link rel="modulepreload" href="./_import/components/mini-calculang.js?sha=e4872dbaf95ee5ec0b810e1e943345f30adce8d8b8a1b25935091d07ef762bfa">
+<link rel="modulepreload" href="./_import/components/scrubber.js?sha=1acf720c74afa19787ae0c83487051939ab75585847f9bcb9c263ba7cee08215">
+<link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.js?sha=afca5692763be21eb50db2e755034aedaeb899a0fca656ed74a873a759e99cef">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.1.13/+esm">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/compassql@0.21.2/+esm">
@@ -109,34 +109,28 @@
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega@5.26.1/+esm">
 <script type="module">
 
-import {define} from "../_observablehq/client.js";
+import {define} from "./_observablehq/client.js";
 
-define({id: "7b629865", outputs: ["Scrubber","lineColumn","SourceMapConsumer"], body: async () => {
-const [{Scrubber}, lineColumn, {SourceMapConsumer}] = await Promise.all([import("../_import/components/scrubber.js?sha=1acf720c74afa19787ae0c83487051939ab75585847f9bcb9c263ba7cee08215"), import("https://cdn.jsdelivr.net/npm/line-column@1.0.2/+esm"), import("https://cdn.jsdelivr.net/npm/source-map-js@1.0.2/+esm")]);
+define({id: "a3e249e2", outputs: ["Scrubber","lineColumn","SourceMapConsumer"], body: async () => {
+const [{Scrubber}, lineColumn, {SourceMapConsumer}] = await Promise.all([import("./_import/components/scrubber.js?sha=1acf720c74afa19787ae0c83487051939ab75585847f9bcb9c263ba7cee08215"), import("https://cdn.jsdelivr.net/npm/line-column@1.0.2/+esm"), import("https://cdn.jsdelivr.net/npm/source-map-js@1.0.2/+esm")]);
 
 
 
 return {Scrubber,lineColumn,SourceMapConsumer};
 }});
 
-define({id: "4ff1f098", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","selection","editor"], body: async (cul_default,Mutable) => {
-const [{editor: editorCm, config: eslintConfig}, {calcuvegadata}] = await Promise.all([import("../_import/graphing-calcs/editor.bundle.js?sha=afca5692763be21eb50db2e755034aedaeb899a0fca656ed74a873a759e99cef"), import("../_import/components/calcuvegadata.js?sha=7a928fe52021581e13b89961406c20843351e50c35b764010ecfbe1f37ac76c4")]);
+define({id: "751948f3", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","selection","editor"], body: async (cul_default,Mutable) => {
+const [{editor: editorCm, config: eslintConfig}, {calcuvegadata}] = await Promise.all([import("./_import/graphing-calcs/editor.bundle.js?sha=afca5692763be21eb50db2e755034aedaeb899a0fca656ed74a873a759e99cef"), import("./_import/components/calcuvegadata.js?sha=7a928fe52021581e13b89961406c20843351e50c35b764010ecfbe1f37ac76c4")]);
 
 
 const start_doc = cul_default
 
 const doc = Mutable(start_doc) // I still have doc Input below, remove?
 
-const selection = Mutable({from:{line:10,column:31}, to:{line:10,column:34}})
+const selection = Mutable({from:{line:7,column:23}, to:{line:7,column:65}})
 
 const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}, updateSelection: s => {selection.value = s}})
 return {editorCm,eslintConfig,calcuvegadata,start_doc,doc,selection,editor};
-}});
-
-define({id: "961c59d7", body: () => {
-//_.range(0,t_in).map(d => calcudata({models:[model], input_domains:{x_in:_.range(0,15), y_in: _.range(0,15)}, outputs: ['alive'], input_cursors:[{size_in:15, initial_grid_in, t_in:d}]}));
-  //  console.log('end')
-
 }});
 
 define({id: "1a748ae6", inline: true, inputs: ["display","editor"], body: (display,editor) => {
@@ -175,14 +169,15 @@ define({id: "0663b417", inline: true, inputs: ["display","selection_esm"], body:
 display(selection_esm)
 }});
 
-define({id: "92b0bc54", inputs: ["_","size_in","rhs_width","embed"], outputs: ["spec","viz"], body: (_,size_in,rhs_width,embed) => {
+define({id: "d69b9fcb", inputs: ["_","size_in","rhs_width","embed"], outputs: ["spec","viz"], body: (_,size_in,rhs_width,embed) => {
 const spec = ({
   // vega-lite
+  title: "v",
   mark: {type:'point', point: false, filled: true},
   encoding: {
     x: { field: 'x_in', type: 'quantitative', domain: _.range(0,size_in), scale: {nice:false, domain:[-1,16]} },
     y: { field: 'y_in', type: 'quantitative', domain: _.range(0,size_in), sort:'descending', scale: {nice:false, domain:[-1,16]} },
-    size: { field: 'v_clamped', type: 'quantitative', scale: {domain:[0,1]} },
+    size: { field: 'abs_v_clamped', type: 'quantitative', scale: {domain:[0,1]} },
     //color: {value: 'red'}
     color: { field: 'positive', type: 'nominal', scale: {domain:[false, true], range: ['orange','red'] }}, // todo color calcd from model?
     shape: { field: 'positive', type: 'nominal', scale: {domain:[false, true], range: ['diamond','circle'] }} // todo color calcd from model?
@@ -256,9 +251,10 @@ viz.view.addSignalListener('mousey', a => {
 return {mousex_in,mousey_in};
 }});
 
-define({id: "a3dcf434", inputs: ["rhs_width","embed"], outputs: ["spec2","viz2"], body: (rhs_width,embed) => {
+define({id: "b9cc4f0a", inputs: ["rhs_width","embed"], outputs: ["spec2","viz2"], body: (rhs_width,embed) => {
 const spec2 = ({
   // vega-lite
+  title: "selection",
   mark: {type:'text', point: false, filled: true},
   encoding: {
     x: { field: 'x_in', type: 'quantitative', scale: {nice:false, domain:[-1,16]} },
@@ -332,8 +328,8 @@ const model = await import(URL.createObjectURL(new Blob([esm.code], { type: "tex
 return {esm,introspection,inputs,formulae_not_inputs,model};
 }});
 
-define({id: "c30c8c38", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo"], files: [{"name":"./cul/tixy.cul.js","mimeType":"application/javascript","path":"../_file/graphing-calcs/cul/tixy.cul.js"}], body: async () => {
-const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("../_observablehq/stdlib.js"), import("../_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a"), import("../_import/components/mini-calculang.js?sha=e4872dbaf95ee5ec0b810e1e943345f30adce8d8b8a1b25935091d07ef762bfa")]);
+define({id: "2fd2cf19", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo"], files: [{"name":"./cul/tixy.cul.js","mimeType":"application/javascript","path":"./_file/cul/tixy.cul.js"}], body: async () => {
+const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("./_observablehq/stdlib.js"), import("./_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a"), import("./_import/components/mini-calculang.js?sha=e4872dbaf95ee5ec0b810e1e943345f30adce8d8b8a1b25935091d07ef762bfa")]);
 
 const cul_default = await FileAttachment('./cul/tixy.cul.js').text()
 
@@ -367,9 +363,12 @@ const selection_esm = esm.code.slice(index_start+1,index_end+1)
 return {selection_esm};
 }});
 
-define({id: "e4c55e59", inputs: ["lineColumn","esm","selection_start","selection_end"], outputs: ["index_start","index_end"], body: (lineColumn,esm,selection_start,selection_end) => {
+define({id: "301ac0f1", inputs: ["lineColumn","esm","selection_start","selection_end","display","selection"], outputs: ["index_start","index_end"], body: (lineColumn,esm,selection_start,selection_end,display,selection) => {
 const index_start =lineColumn.default(esm.code).toIndex(selection_start)
 const index_end =lineColumn.default(esm.code).toIndex(selection_end)
+
+display("selection:")
+display(selection)
 return {index_start,index_end};
 }});
 
@@ -380,7 +379,7 @@ const ins = ({x_in: 8, y_in:8, t_in, random_seed_in, mousex_in, mousey_in})
 return {ins};
 }});
 
-define({id: "9112cd11", inputs: ["selection_esm","ins","display","model"], outputs: ["exec","selection_fn"], body: (selection_esm,ins,display,model) => {
+define({id: "e58b7881", inputs: ["selection_esm","ins","display","model"], outputs: ["exec","selection_fn"], body: (selection_esm,ins,display,model) => {
 //const x_in = 3;
 
 
@@ -392,9 +391,9 @@ const exec = selection_esm
 
 //display(new Function("model", "{x_in,y_in}", `window.bb = 10; return bb+x_in+y_in`)(model, ins)) // works
 
+
 // super dangerous and insecure window assignment here but trying as alt to manual replacement; for manual replacement see reactive workings
 // TOFIX when i integrate reactive workings
-
 const selection_fn = new Function("model", "{"+Object.keys(ins).join(",")+"}", `Object.assign(window, model); return ${exec}`)
 
 display(selection_fn(model, ins))
@@ -414,28 +413,28 @@ return {exec,selection_fn};
 <nav id="observablehq-sidebar">
   <ol>
     <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
-    <li class="observablehq-link"><a href="../">some calculang things</a></li>
+    <li class="observablehq-link"><a href="./">some calculang things</a></li>
   </ol>
   <ol>
-    <li class="observablehq-link"><a href="../dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
-    <li class="observablehq-link"><a href="../flower/flower">🌸 (old-style)</a></li>
-    <li class="observablehq-link"><a href="./graphing-calcs">❤️ (old-style)</a></li>
-    <li class="observablehq-link"><a href="./graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
-    <li class="observablehq-link"><a href="./graphing-edit-cm-gol">Editable Game of Life</a></li>
-    <li class="observablehq-link"><a href="./graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
-    <li class="observablehq-link"><a href="./graphing-edit-music">Editable Music 🎶 (beta)</a></li>
-    <li class="observablehq-link"><a href="./graphing-edit">Editable ❤️</a></li>
-    <li class="observablehq-link observablehq-link-active"><a href="./tixy-land">tixy.land clone (poc)</a></li>
-    <li class="observablehq-link"><a href="../shader/shader">Editable Shader 🧊</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./tixyish">tixy-ish 🎨</a></li>
+    <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
+    <li class="observablehq-link"><a href="./flower/flower">🌸 (old-style)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-calcs">❤️ (old-style)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit">Editable ❤️</a></li>
+    <li class="observablehq-link"><a href="./shader/shader">Editable Shader 🧊</a></li>
   </ol>
 </nav>
 <script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
-<div id="cell-7b629865" class="observablehq observablehq--block"></div>
-<p>Inspired by <a href="https://twitter.com/aemkei/status/1323399877611708416">tixy.land</a>; in development.</p>
-<div id="cell-4ff1f098" class="observablehq observablehq--block"></div>
-<div id="cell-961c59d7" class="observablehq observablehq--block"></div>
+<div id="cell-a3e249e2" class="observablehq observablehq--block"></div>
+<h1 id="tixy-ish" tabindex="-1"><a class="observablehq-header-anchor" href="#tixy-ish">tixy-ish</a></h1>
+<p>Inspired by <a href="https://twitter.com/aemkei/status/1323399877611708416">tixy.land</a>; in development; <a href="https://github.com/declann/calculang-develop-with-framework/docs/tixyish.md">open to contributions</a>!</p>
+<div id="cell-751948f3" class="observablehq observablehq--block"></div>
 <div class="wrapper">
   <div class="lhs" style="background: lightgreen">
     <div class="grow">
@@ -485,14 +484,15 @@ return {exec,selection_fn};
 calculang/output is also highly portable and uniform.</details>
 <hr>
 <h2 id="visual-1-(main-output%2C-with-mouse-interactivity)" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-1-(main-output%2C-with-mouse-interactivity)">visual 1 (main output, with mouse interactivity)</a></h2>
-<div><div id="cell-92b0bc54" class="observablehq observablehq--block"></div>
+<div><div id="cell-d69b9fcb" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
+  <span class="hljs-attr">title</span>: <span class="hljs-string">"v"</span>,
   <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>},
   <span class="hljs-attr">encoding</span>: {
     <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">domain</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in), <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
     <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'y_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">domain</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in), <span class="hljs-attr">sort</span>:<span class="hljs-string">'descending'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
-    <span class="hljs-attr">size</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'v_clamped'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]} },
+    <span class="hljs-attr">size</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'abs_v_clamped'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]} },
     <span class="hljs-comment">//color: {value: 'red'}</span>
     <span class="hljs-attr">color</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'positive'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>], <span class="hljs-attr">range</span>: [<span class="hljs-string">'orange'</span>,<span class="hljs-string">'red'</span>] }}, <span class="hljs-comment">// todo color calcd from model?</span>
     <span class="hljs-attr">shape</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'positive'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>], <span class="hljs-attr">range</span>: [<span class="hljs-string">'diamond'</span>,<span class="hljs-string">'circle'</span>] }} <span class="hljs-comment">// todo color calcd from model?</span>
@@ -559,9 +559,10 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
 </code></pre>
 </div><hr>
 <h2 id="visual-2" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-2">visual 2</a></h2>
-<div><div id="cell-a3dcf434" class="observablehq observablehq--block"></div>
+<div><div id="cell-b9cc4f0a" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec2 = ({
   <span class="hljs-comment">// vega-lite</span>
+  <span class="hljs-attr">title</span>: <span class="hljs-string">"selection"</span>,
   <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'text'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>},
   <span class="hljs-attr">encoding</span>: {
     <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
@@ -607,20 +608,21 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
 <span class="hljs-keyword">const</span> rhs_width = <span class="hljs-title class_">Generators</span>.<span class="hljs-title function_">width</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">".rhs"</span>)); <span class="hljs-comment">// keep as a generator for reactivity</span>
 </code></pre>
 </div><div id="cell-222def3f" class="observablehq observablehq--block"></div>
-<div id="cell-c30c8c38" class="observablehq observablehq--block"></div>
+<div id="cell-2fd2cf19" class="observablehq observablehq--block"></div>
 <div id="cell-b1870f13" class="observablehq observablehq--block"></div>
 <hr>
 <p>eval-on-select</p>
 <div id="cell-6878cf4f" class="observablehq observablehq--block"></div>
 <div id="cell-178d48fc" class="observablehq observablehq--block"></div>
-<div id="cell-e4c55e59" class="observablehq observablehq--block"></div>
+<div id="cell-301ac0f1" class="observablehq observablehq--block"></div>
 <div><div id="cell-9109c35b" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-comment">// all inputs must be maintianed here to pass to selection function</span>
 
 <span class="hljs-keyword">const</span> ins = ({<span class="hljs-attr">x_in</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">y_in</span>:<span class="hljs-number">8</span>, t_in, random_seed_in, mousex_in, mousey_in})
 </code></pre>
-</div><div id="cell-9112cd11" class="observablehq observablehq--block"></div>
-<p>todo maintain eval selection range with edits? Alt.: don't react to edits by freezing into Mutable, but this is poor.</p>
+</div><div id="cell-e58b7881" class="observablehq observablehq--block"></div>
+<p>todo maintain eval selection range with edits? Alt.: don't react to edits by freezing into Mutable, but this is poor.
+and multi-selection (concatenating useful imo)</p>
 </main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev">calculang</a></div>

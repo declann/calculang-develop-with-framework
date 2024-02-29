@@ -246,7 +246,7 @@ let editor = ({ doc, update, updateSelection }) => {
       EditorView.lineWrapping,
       EditorView.theme({
         "&": {
-          height: "300px",
+          height: "60vh",
           background: "white",
           marginTop: "10px",
           fontSize: "1rem",

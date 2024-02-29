@@ -325,13 +325,13 @@ let editor = ({ doc, update, updateSelection }) => {
       // https://observablehq.com/@tophtucker/eval-in-place
       keymap.of([
         {
-          key: "F9",
+          key: "F8", // clashes with breakpoints when devtools open
           run: expand
         }
       ]),
       keymap.of([
         {
-          key: "F8",
+          key: "F9",
           run: expand_calculang(updateSelection)
         }
       ]),

@@ -58,7 +58,7 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
     </details>
     </div>
   <div class="card" id="viz"></div>
-  <h3>eval-on-select (select formula text, then activate with F8)</h3>
+  <h3>eval-on-select (select formula text, then activate with F9)</h3>
   <div class="card" id="viz2"></div>
   <details open><summary>compiled selection (via sourcemap)</summary>
   <pre>${display(selection_esm)}</pre></details> <!-- editing html breaks my visuals -->

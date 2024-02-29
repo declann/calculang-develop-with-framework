@@ -384,7 +384,7 @@ const expand = function (view) {
 
 // based on expand above
 const expand_calculang = updateSelection => function (view) {
-  debugger;
+  //debugger;
   console.log("expand calculang", view)
   view.dispatch(
     view.state.changeByRange((range) => {

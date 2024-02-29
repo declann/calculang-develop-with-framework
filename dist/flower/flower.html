@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>🌸 (old-style) | some calculang things</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="../_import/custom-style.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="../_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="../_import/custom-style.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="../_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a">
+<link rel="modulepreload" href="../_import/flower/cul/flower_esm/cul_scope_0.js?sha=125af9d3a4a0f0e686cc5b98d20ef2e4b1bfd3772e14fdb021da82c26afde7b5">
+<link rel="modulepreload" href="../_observablehq/client.js">
+<link rel="modulepreload" href="../_observablehq/runtime.js">
+<link rel="modulepreload" href="../_observablehq/stdlib.js">
+<link rel="modulepreload" href="../_observablehq/stdlib/inputs.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/compassql@0.21.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-color@3.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-delaunay@6.0.4/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-dispatch@3.0.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-dsv@3.0.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-force@3.0.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-format@3.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-geo-projection@4.0.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-geo@3.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-hierarchy@3.1.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-interpolate@3.0.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-path@3.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-quadtree@3.0.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require@1.3.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-scale@4.0.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-shape@3.2.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-time-format@4.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-time@3.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-timer@3.0.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/delaunator@5.0.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/htl@0.3.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/internmap@2.0.3/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/isoformat@0.2.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/lodash@4.17.21/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/robust-predicates@3.0.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-canvas@1.2.7/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-crossfilter@4.1.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-dataflow@5.7.5/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-encode@4.9.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-event-selector@3.0.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-expression@5.1.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-force@4.2.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-format@1.1.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-functions@5.14.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-geo@4.4.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-hierarchy@4.1.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-label@1.2.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-loader@4.5.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-parser@6.2.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-projection@1.6.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-regression@1.2.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-runtime@6.1.4/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scale@7.3.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scenegraph@4.11.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scenegraph@4.11.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scenegraph@4.11.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-selections@5.4.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-statistics@1.9.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-time@2.1.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-transforms@4.11.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-transforms@4.11.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-util@1.17.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-view-transforms@4.5.9/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-view@5.11.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-view@5.12.0/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-voronoi@4.2.2/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-wordcloud@4.1.4/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega@5.26.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega@5.27.0/+esm">
+<script type="module">
+
+import {define} from "../_observablehq/client.js";
+
+define({id: "e38556f0", inputs: ["view"], outputs: ["model"], body: async (view) => {
+const model = await import("../_import/flower/cul/flower_esm/cul_scope_0.js?sha=125af9d3a4a0f0e686cc5b98d20ef2e4b1bfd3772e14fdb021da82c26afde7b5");
+//flower = require('https://calculang.dev/models/maths-art/flower/flower.js')
+
+//import * as model from 'https://calculang.dev/models/maths-art/flower/flower.js'
+
+//import * as model from '../components/cul_scope_0.js'
+
+view(model)
+return {model};
+}});
+
+define({id: "38681bb7", inputs: ["view","Inputs"], outputs: ["petal_num_in","petal_size_in","petals_roundy_spikiness_in","flower_big"], body: (view,Inputs) => {
+view(3+3) // we do this with view to see things and we don't do viewof for inputs as in OHQ:
+
+const petal_num_in = view(Inputs.range([0,50], {label:'# petals', value: 7, step: 1}))
+const petal_size_in = view(Inputs.range([0,50], {label:'petal size', value: 30, step:1}))
+const petals_roundy_spikiness_in = view(Inputs.range([0,2], {label:'petals roundy/spikiness', value: 0.5, step:0.1}))
+const flower_big = view(Inputs.toggle({label:'big?', value: false}))
+return {petal_num_in,petal_size_in,petals_roundy_spikiness_in,flower_big};
+}});
+
+define({id: "d169ab6f", outputs: ["calcuvizspec"], body: async () => {
+const {calcuvizspec} = await import("../_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a");
+// embed isn't working, so I do it differently below
+//import embed from "npm:vega-embed";
+
+// we can't import from OHQ
+//import notebook from "@declann/little-calculang-helpers";
+
+// so I ported key "little-calculang-helpers" here:
+
+return {calcuvizspec};
+}});
+
+define({id: "1afd5059", inputs: ["calcuvizspec","model","petal_num_in","petal_size_in","petals_roundy_spikiness_in","_","flower_big","view"], outputs: ["spec"], body: (calcuvizspec,model,petal_num_in,petal_size_in,petals_roundy_spikiness_in,_,flower_big,view) => {
+//view(//embed(
+  let spec = calcuvizspec({
+    models: [model],
+    input_cursors: [{petal_num_in,petal_size_in, petals_roundy_spikiness_in}],
+    mark: 'rect', // heatmap
+    encodings: {
+      x: { name: 'column_in', type: 'nominal', domain: _.range(0,101,1) },
+      y: { name: 'row_in', type: 'nominal', domain: _.range(0,101,1) },
+      color: {'name': 'value', type: 'quantitative', scale: {scheme: 'brownbluegreen', reverse: true}, legend: false,  },
+      row: {
+        name: 'formula', sort:'descending',
+        domain: ['result', 'petals', 'head','face']
+      }
+    },
+    width: 300*(flower_big ? 1.5 : 0.8),
+    height: 250*(flower_big ? 1.5 : 0.6),
+
+    // viz customizations:
+    spec_post_process: spec => {
+      spec.encoding.x.axis = { grid: false, domain: false, ticks: 0, labels: false }
+      spec.encoding.y.axis = { grid: false, domain: false, ticks: 0, labels: false }
+      return spec
+    }
+  })
+//)//)
+
+view(spec)
+
+return {spec};
+}});
+
+define({id: "3cf99463", outputs: ["vega","vegaLite","vegaLiteApi","vl"], body: async () => {
+const [vega, vegaLite, vegaLiteApi] = await Promise.all([import("https://cdn.jsdelivr.net/npm/vega@5.27.0/+esm"), import("https://cdn.jsdelivr.net/npm/vega-lite@5.16.3/+esm"), import("https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0/+esm")]);
+// from https://observablehq.com/framework/lib/vega-lite
+// because embed doesn't work? (=> no tooltips)
+
+const vl = vegaLiteApi.register(vega, vegaLite);
+return {vega,vegaLite,vegaLiteApi,vl};
+}});
+
+define({id: "79f8d9cb", inputs: ["vl","spec","display"], body: async (vl,spec,display) => {
+display(await(
+// splitting blocks seems to be important; no await needed. {} also good?
+vl.render({
+  spec
+})
+))
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="../">some calculang things</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="../dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./flower">🌸 (old-style)</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/graphing-calcs">❤️ (old-style)</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/graphing-edit">Editable ❤️</a></li>
+    <li class="observablehq-link"><a href="../graphing-calcs/tixy-land">tixy.land clone (poc)</a></li>
+    <li class="observablehq-link"><a href="../shader/shader">Editable Shader 🧊</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<aside id="observablehq-toc" data-selector="#observablehq-main h1:not(:first-of-type), #observablehq-main h2:not(h1 + h2):has(a.observablehq-header-anchor)">
+<nav>
+</nav>
+</aside>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="flower-calcs-%F0%9F%8C%B8" tabindex="-1"><a class="observablehq-header-anchor" href="#flower-calcs-%F0%9F%8C%B8">Flower calcs 🌸</a></h1>
+<div id="cell-e38556f0" class="observablehq observablehq--block"></div>
+<div id="cell-38681bb7" class="observablehq observablehq--block"></div>
+<div id="cell-d169ab6f" class="observablehq observablehq--block"></div>
+<div id="cell-1afd5059" class="observablehq observablehq--block"></div>
+<div id="cell-3cf99463" class="observablehq observablehq--block"></div>
+<div id="cell-79f8d9cb" class="observablehq observablehq--block observablehq--loading"></div>
+</main>
+<footer id="observablehq-footer">
+<div>Made with 💓 and <a href="https://calculang.dev">calculang</a></div>
+</footer>
+</div>

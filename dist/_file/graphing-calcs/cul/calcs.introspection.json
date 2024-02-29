@@ -1,0 +1,300 @@
+{
+  "cul_functions": {
+    "0_x": {
+      "cul_scope_id": 0,
+      "name": "x",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 17,
+          "index": 17
+        },
+        "end": {
+          "line": 1,
+          "column": 27,
+          "index": 27
+        }
+      },
+      "inputs": [
+        "x_in"
+      ]
+    },
+    "0_x_in": {
+      "cul_scope_id": 0,
+      "name": "x_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "x_in"
+      ]
+    },
+    "0_n": {
+      "cul_scope_id": 0,
+      "name": "n",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 17,
+          "index": 46
+        },
+        "end": {
+          "line": 2,
+          "column": 27,
+          "index": 56
+        }
+      },
+      "inputs": [
+        "n_in"
+      ]
+    },
+    "0_n_in": {
+      "cul_scope_id": 0,
+      "name": "n_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "n_in"
+      ]
+    },
+    "0_radius": {
+      "cul_scope_id": 0,
+      "name": "radius",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 22,
+          "index": 80
+        },
+        "end": {
+          "line": 3,
+          "column": 37,
+          "index": 95
+        }
+      },
+      "inputs": [
+        "radius_in"
+      ]
+    },
+    "0_radius_in": {
+      "cul_scope_id": 0,
+      "name": "radius_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "radius_in"
+      ]
+    },
+    "0_line": {
+      "cul_scope_id": 0,
+      "name": "line",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 20,
+          "index": 118
+        },
+        "end": {
+          "line": 5,
+          "column": 41,
+          "index": 139
+        }
+      },
+      "inputs": [
+        "x_in"
+      ]
+    },
+    "0_wave": {
+      "cul_scope_id": 0,
+      "name": "wave",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 20,
+          "index": 162
+        },
+        "end": {
+          "line": 7,
+          "column": 45,
+          "index": 187
+        }
+      },
+      "inputs": [
+        "x_in",
+        "n_in"
+      ]
+    },
+    "0_semi_circle": {
+      "cul_scope_id": 0,
+      "name": "semi_circle",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 27,
+          "index": 217
+        },
+        "end": {
+          "line": 12,
+          "column": 1,
+          "index": 317
+        }
+      },
+      "inputs": [
+        "x_in",
+        "radius_in"
+      ]
+    },
+    "0_result": {
+      "cul_scope_id": 0,
+      "name": "result",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 22,
+          "index": 342
+        },
+        "end": {
+          "line": 15,
+          "column": 37,
+          "index": 385
+        }
+      },
+      "inputs": [
+        "x_in",
+        "radius_in",
+        "n_in"
+      ]
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_x",
+      "from": "0_x_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_n",
+      "from": "0_n_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_radius",
+      "from": "0_radius_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_line",
+      "from": "0_x",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_wave",
+      "from": "0_x",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_wave",
+      "from": "0_n",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_x",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_radius",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_radius",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_semi_circle",
+      "from": "0_x",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_line",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_semi_circle",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_result",
+      "from": "0_wave",
+      "reason": "call",
+      "negs": []
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./calcs.cul.js"
+  },
+  "import_sources_to_resource": {},
+  "cul_input_map": {
+    "0_x": [
+      "x_in"
+    ],
+    "0_x_in": [
+      "x_in"
+    ],
+    "0_n": [
+      "n_in"
+    ],
+    "0_n_in": [
+      "n_in"
+    ],
+    "0_radius": [
+      "radius_in"
+    ],
+    "0_radius_in": [
+      "radius_in"
+    ],
+    "0_line": [
+      "x_in"
+    ],
+    "0_wave": [
+      "x_in",
+      "n_in"
+    ],
+    "0_semi_circle": [
+      "x_in",
+      "radius_in"
+    ],
+    "0_result": [
+      "x_in",
+      "radius_in",
+      "n_in"
+    ]
+  },
+  "dot": "digraph {\n  \"0_x\" [cul_scope_id=0,name=x,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x_in,label=\"0_x inputs: x_in\"]\n  \"0_x_in\" [cul_scope_id=0,name=x_in,cul_source_scope_id=0,reason=\"input definition\",inputs=x_in,label=\"0_x_in inputs: x_in\"]\n  \"0_n\" [cul_scope_id=0,name=n,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=n_in,label=\"0_n inputs: n_in\"]\n  \"0_n_in\" [cul_scope_id=0,name=n_in,cul_source_scope_id=0,reason=\"input definition\",inputs=n_in,label=\"0_n_in inputs: n_in\"]\n  \"0_radius\" [cul_scope_id=0,name=radius,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=radius_in,label=\"0_radius inputs: radius_in\"]\n  \"0_radius_in\" [cul_scope_id=0,name=radius_in,cul_source_scope_id=0,reason=\"input definition\",inputs=radius_in,label=\"0_radius_in inputs: radius_in\"]\n  \"0_line\" [cul_scope_id=0,name=line,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=x_in,label=\"0_line inputs: x_in\"]\n  \"0_wave\" [cul_scope_id=0,name=wave,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,n_in\",label=\"0_wave inputs: x_in,n_in\"]\n  \"0_semi_circle\" [cul_scope_id=0,name=semi_circle,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,radius_in\",label=\"0_semi_circle inputs: x_in,radius_in\"]\n  \"0_result\" [cul_scope_id=0,name=result,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"x_in,radius_in,n_in\",label=\"0_result inputs: x_in,radius_in,n_in\"]\n  \"0_x_in\" -> \"0_x\" [value=\"[object Object]\",label=\"input +x_in\"]\n  \"0_n_in\" -> \"0_n\" [value=\"[object Object]\",label=\"input +n_in\"]\n  \"0_radius_in\" -> \"0_radius\" [value=\"[object Object]\",label=\"input +radius_in\"]\n  \"0_x\" -> \"0_line\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_x\" -> \"0_wave\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_n\" -> \"0_wave\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_x\" -> \"0_semi_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_radius\" -> \"0_semi_circle\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_line\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_semi_circle\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_wave\" -> \"0_result\" [value=\"[object Object]\",label=\"call -\"]\n}\n"
+}

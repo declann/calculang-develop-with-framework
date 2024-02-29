@@ -23,7 +23,7 @@ const start_doc = cul_default
 
 const doc = Mutable(start_doc) // I still have doc Input below, remove?
 
-const selection = Mutable({from:{line:10,column:31}, to:{line:10,column:34}})
+const selection = Mutable({from:{line:7,column:23}, to:{line:7,column:65}})
 
 const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}, updateSelection: s => {selection.value = s}})
 ```
@@ -99,11 +99,12 @@ calculang/output is also highly portable and uniform.</details>
 ```js echo
 const spec = ({
   // vega-lite
+  title: "v",
   mark: {type:'point', point: false, filled: true},
   encoding: {
     x: { field: 'x_in', type: 'quantitative', domain: _.range(0,size_in), scale: {nice:false, domain:[-1,16]} },
     y: { field: 'y_in', type: 'quantitative', domain: _.range(0,size_in), sort:'descending', scale: {nice:false, domain:[-1,16]} },
-    size: { field: 'v_clamped', type: 'quantitative', scale: {domain:[0,1]} },
+    size: { field: 'abs_v_clamped', type: 'quantitative', scale: {domain:[0,1]} },
     //color: {value: 'red'}
     color: { field: 'positive', type: 'nominal', scale: {domain:[false, true], range: ['orange','red'] }}, // todo color calcd from model?
     shape: { field: 'positive', type: 'nominal', scale: {domain:[false, true], range: ['diamond','circle'] }} // todo color calcd from model?
@@ -181,6 +182,7 @@ viz.view.addSignalListener('mousey', a => {
 ```js echo
 const spec2 = ({
   // vega-lite
+  title: "selection",
   mark: {type:'text', point: false, filled: true},
   encoding: {
     x: { field: 'x_in', type: 'quantitative', scale: {nice:false, domain:[-1,16]} },
@@ -294,6 +296,9 @@ const selection_esm = esm.code.slice(index_start+1,index_end+1)
 ```js
 const index_start =lineColumn.default(esm.code).toIndex(selection_start)
 const index_end =lineColumn.default(esm.code).toIndex(selection_end)
+
+display("selection:")
+display(selection)
 ```
 
 ```js echo
@@ -315,9 +320,9 @@ const exec = selection_esm
 
 //display(new Function("model", "{x_in,y_in}", `window.bb = 10; return bb+x_in+y_in`)(model, ins)) // works
 
+
 // super dangerous and insecure window assignment here but trying as alt to manual replacement; for manual replacement see reactive workings
 // TOFIX when i integrate reactive workings
-
 const selection_fn = new Function("model", "{"+Object.keys(ins).join(",")+"}", `Object.assign(window, model); return ${exec}`)
 
 display(selection_fn(model, ins))
@@ -331,3 +336,4 @@ display(selection_fn(model, ins))
 ```
 
 todo maintain eval selection range with edits? Alt.: don't react to edits by freezing into Mutable, but this is poor.
+and multi-selection (concatenating useful imo)

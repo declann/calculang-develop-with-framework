@@ -6,6 +6,9 @@
 
 export const v = () => 0.8*sin(t()-sqrt(5*(x())**2 + 4*(y())**2))
 
+// beating heart
+//export const v = () => ((x()-8) ** 2 + ((y()-9)*-1 - Math.abs((x()-8)) ** 0.5) ** 2) /(30*sin(t()*4))&1
+
 // here we can use mouse position::
 //export const v = () => 0.05/(2-sqrt((x()-mousex())**2+(y()-mousey())**2))
 //export const v = () => sqrt((x()-mousex())**2+(y()-mousey())**2)/16-0.3*mousey()/16

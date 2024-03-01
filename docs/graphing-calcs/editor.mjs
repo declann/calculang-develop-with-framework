@@ -335,6 +335,12 @@ let editor = ({ doc, update, updateSelection }) => {
           run: expand_calculang(updateSelection)
         }
       ]),
+      keymap.of([
+        {
+          key: "ctrl-e",
+          run: expand_calculang(updateSelection)
+        }
+      ]),
 
       linter(
         view => {

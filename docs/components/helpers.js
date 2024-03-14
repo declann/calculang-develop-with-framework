@@ -55,7 +55,10 @@ function copy(obj) {
 
 
 
-
+// cursor takes priority over domain, but
+// this api has no concept that some domains not mapped
+// so combinatorial explosion happens if not used carefully
+// (be deliberate about domains provided!)
 export const calcudata = ({
   models,
   introspections = [] /*now not needed, see TODOs*/,
@@ -84,7 +87,7 @@ export const calcudata = ({
   ); // cartesianProduct wants a funny array structure
 
   // complete inputs model needs by adding inputs from the cursor:
-  cp = cp.map((d) => ({ ...input_cursors[d.input_cursor_id], ...d })); // TODO no overlap/error checking here. pref to domains, not inputs
+  cp = cp.map((d) => ({ ...d, ...input_cursors[d.input_cursor_id] })); // TODO no overlap/error checking here. ~~pref to domains, not inputs~~ now pref to inputs 4/3/24
 
   // now we run the model:
   //cp = cp.map(d => ({...d, value: models[d.model_id][d.formula](d)})) // no resriction to necessary inputs formula-specific or not TODO? +pushing some unnecessary fields to model... problem?

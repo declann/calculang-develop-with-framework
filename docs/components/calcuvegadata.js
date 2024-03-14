@@ -22,6 +22,7 @@ export const mappings = (spec) => {
 }
 
 export const calcuvegadata = ({ models, spec, domains, input_cursors }) => {
+  //debugger
   if (!models.length) return;
   let mapped = mappings(spec),
     outputs,
@@ -42,7 +43,8 @@ export const calcuvegadata = ({ models, spec, domains, input_cursors }) => {
   //console.log(models, domains, input_cursors, outputs, pivot);
   return calcudata({
     models,
-    input_domains: domains,
+    // restrict domains passed to calcudata to those that are used (mapped)
+    input_domains: Object.entries(domains).reduce((acc, [k,v]) => {if (mapped.includes(k)) acc[k] = v; return acc}, ({})),//domains,
     input_cursors: input_cursors.map((d) => {
       let o = {};
       Object.entries(d).forEach(([k, v]) => {

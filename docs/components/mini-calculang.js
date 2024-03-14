@@ -332,7 +332,9 @@ export const compileWithMemo = input => {
 
   const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
 
-  const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+  const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d != "memo_hash" && d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+
+  const has_memo_hash = introspection.cul_functions.has("0_memo_hash")
 
   console.log("formulae_not_inputs", formulae_not_inputs)
 
@@ -344,7 +346,7 @@ export const compileWithMemo = input => {
 
   a += "import {memoize} from 'https://cdn.jsdelivr.net/npm/underscore/+esm'//'https://esm.run/underscore';\n\n"
 
-  a = a + formulae_not_inputs.map(d => `\n// memoization\n\nexport const ${d}$m = memoize(${d}$, JSON.stringify);\nexport const ${d} = (a) => {
+  a = a + formulae_not_inputs.map(d => `\n// memoization\n\nexport const ${d}$m = memoize(${d}$, ${has_memo_hash ? "memo_hash$" : "JSON.stringify"});\nexport const ${d} = (a) => {
     return ${d}$m(a);
     // eslint-disable-next-line no-undef
     ${d}$(); // never run, but here to "trick" calculang graph logic

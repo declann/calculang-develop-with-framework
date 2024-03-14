@@ -13,7 +13,7 @@
 			"export const $1 = () => $2"
 		]
 	},
-	"cul function": {
+	"cul prev": {
 		"scope": "javascript",
 		"prefix": "prev",
 		"body": [

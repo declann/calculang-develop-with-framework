@@ -9,6 +9,9 @@ export const v = () => 0.8*sin(t()-sqrt(5*(x())**2 + 4*(y())**2))
 // beating heart, modified from https://calculang.dev/examples-viewer?id=heart-contour
 //export const v = () => ((x()-8)**2+(9-y()-abs((x()-8))**0.5)**2)/(30*sin(t()*4))&1
 
+// todo https://observablehq.com/d/a741f9a27e8c0e73
+// the fn here should be usable?
+
 // here we can use mouse position::
 //export const v = () => 0.05/(2-sqrt((x()-mousex())**2+(y()-mousey())**2))
 //export const v = () => sqrt((x()-mousex())**2+(y()-mousey())**2)/16-0.3*mousey()/16

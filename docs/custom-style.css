@@ -116,3 +116,22 @@ pre {
   border-radius: 3px;
   /*cursor: zoom-in;*/
 }
+
+
+@keyframes flash {
+  from { background-color: var(--theme-blue); }
+  to { background-color: none; }
+}
+.flash {
+  animation-name: flash;
+  animation-duration: 3s;
+}
+@keyframes flashout {
+  from { background-color: pink; }
+  to { opacity: 0.01; visibility:hidden; display:none }
+}
+.flashout {
+  animation-name: flashout;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}

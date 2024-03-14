@@ -7,26 +7,6 @@ Ref: [Up and Down the Ladder of Abstraction](https://worrydream.com/LadderOfAbst
 
 "The keep-the-car-on-the-road algorithm is a favorite example of Alan Kay when demonstrating Etoys" ...
 
-<style>
-@keyframes flash {
-  from { background-color: var(--theme-blue); }
-  to { background-color: none; }
-}
-.flash {
-  animation-name: flash;
-  animation-duration: 3s;
-}
-@keyframes flashout {
-  from { background-color: pink; }
-  to { opacity: 0.01; visibility:hidden; display:none }
-}
-.flashout {
-  animation-name: flashout;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-}
-</style>
-
 *and some other wip things*
 
 ```js

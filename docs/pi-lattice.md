@@ -40,7 +40,7 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
     </div>
   </div>
   <div class="rhs" style="background: pink">
-    <h1>🎨 Pi 🥮 by lattice</h1>
+    <h1>🎨 Pi by lattice 🥮</h1>
     <div class="card">
     <details open><summary>inputs ⚙️</summary>
     ${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, alternate:false, loop:false,/*format:d => d3.format('.2f')(d)*/}), n_in_Input))}

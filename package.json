@@ -12,8 +12,8 @@
     "cul-compile:shader": "npx cul-js compile ./docs/graphing-calcs/cul/shader.cul.js && cp ./docs/graphing-calcs/cul/shader_esm/cul_scope_0.mjs  ./docs/graphing-calcs/cul/shader_esm/cul_scope_0.js",
     "cul-compile:graphing-calcs": "npx cul-js compile ./docs/graphing-calcs/cul/calcs.cul.js && cp  ./docs/graphing-calcs/cul/calcs_esm/cul_scope_0.mjs  ./docs/graphing-calcs/cul/calcs_esm/cul_scope_0.js",
     "cul-compile:flower": "npx cul-js compile ./docs/flower/cul/flower.cul.js && cp ./docs/flower/cul/flower_esm/cul_scope_0.mjs ./docs/flower/cul/flower_esm/cul_scope_0.js",
-    "clean": "rm -rf docs/.observablehq/cache",
-    "build": "rm -rf dist && observable build",
+    "clean": "rimraf docs/.observablehq/cache",
+    "build": "rimraf dist && observable build",
     "dev": "observable preview",
     "deploy": "observable deploy",
     "observable": "observable"
@@ -33,9 +33,10 @@
     "underscore": "^1.13.6"
   },
   "engines": {
-    "node": ">=20.6"
+    "node": ">=18"
   },
   "devDependencies": {
+    "rimraf": "^5.0.5",
     "@calculang/calculang-js": "^0.1.0-alpha.6"
   }
 }

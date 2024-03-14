@@ -1,88 +1,87 @@
 ---
-title: Pi lattice dev
+title: Pi 🥮 by lattice
 toc: false
-draft: true
 ---
 
 ```js
-import {up} from './components/reactive-inputs.js'
+
+import {Scrubber} from './components/scrubber.js'
+
+import {editor as editorCm, config as eslintConfig} from './graphing-calcs/editor.bundle.js'
+
+import {calcuvegadata} from './components/calcuvegadata.js'
+
+
+const start_doc = cul_default
+
+const doc = Mutable(start_doc) // I still have doc Input below, remove?
+
+const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
 ```
 
-```js
-display(introspection)
-```
-
-```js
-// define inputs
-const minibinds = ({
-  n_in: Inputs.range([1,75], {label: 'n', step: 1}),
-  // inclusive_in: Inputs.toggle() doesnt work ?!
-  inclusive_in: Inputs.range([0,1], {label:'inclusive off/on', step:1}),
-  //i_in: html`<input disabled>`
-})
-```
-
-
-```js
-minibinds; // when minibinds change, we really want to delete and recreate inputs
-document.querySelectorAll('.flash').forEach(d => d.remove())
-inputs_ui.dataset.inputs = '' // up ran first? so use fake to control order:
-const fake = ''
-```
-
-
-```js
-const inputs_ui = document.createElement('div')
-```
-
-```js
-console.log("don't repeat")
-
-const cursor_Input = Inputs.input({})//Mutable({})
-const cursor = Generators.input(cursor_Input)
-
-display(inputs_ui)
-```
-
-```js
-display(inputs)
-
-display(model)
-```
-
-
-### inputs cursor:
-
-```js
-display(cursor)
-```
-
-
-```js
-fake;
-cursor; // need to react to changes to cursor
-up(inputs_ui, cursor_Input, inputs, model, minibinds); // must keep minibinds sep. to pick up updates
-// because needs to detect removal for flash (above)
-```
-
-
-
-<div id="viz"></div>
-
-inside ${model.count_inside({...cursor})}
-
-pi approx ${model.pi_approximation({...cursor})}
-
+<div class="wrapper">
+  <div class="lhs" style="background: lightgreen">
+    <div class="grow">
+    <h1>ƒ</h1>
+    <!-- can I collapse things responsively? -->
+    <details class="calculang"><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
+    <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
+    ${display(editor.dom)}
+    <details><summary>javascript ✨</summary>
+    <span style="font-style: italic">generated from calculang</span> ⬆️
+    ${view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))}
+    </details>
+    <details><summary>dev tools 🧰</summary>
+    ${"todo"}
+    ${display(Object.keys(introspection))}
+    ${display(JSON.stringify([...introspection.cul_links]))}
+    </details>
+    </details>
+    </div>
+  </div>
+  <div class="rhs" style="background: pink">
+    <h1>🎨 Pi 🥮 by lattice</h1>
+    <div class="card">
+    <details open><summary>inputs ⚙️</summary>
+    ${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, alternate:false, loop:false,/*format:d => d3.format('.2f')(d)*/}), n_in_Input))}
+    </details>
+    </div>
+  <span>Press <strong>play</strong> for an improving approximation of <strong>π</strong> based on approximating the area of a unit circle using a lattice!</span>
+  <details style="background:lightgreen; padding: 0.5rem; margin: 0.5rem; border: 1px solid blue"><summary style="font-weight:bold">calculang 🔍💬🧮</summary>
+  <span>This pi approximation is made with <a href="https://calculang.dev">calculang<a>, <span style="font-weight:bold">a language for calculations for transparency and certainty about numbers</span> 🔍💬🧮<br/>
+  <p>On left/top, you can find and edit the formulas (but this is WIP and very dangerous).
+  <p>Better to find the source code <a href="https://github.com/declann/calculang-develop-with-framework/">on GitHub</a> and PRs are welcome.</p>
+  </details>
+  <details style="padding: 0.5rem; margin: 0.5rem"><summary style="">inspiration 🧙</summary><p><a href="https://www.geogebra.org/m/kwty4hsz">A Geogebra example</a> I found linked in the <a href="https://www.geogebra.org/u/kmhkmh">wikipedia article for Pi</a>. I replicate this approach/numbers.</p>
+  <p>Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.</p>
+  </details>
+</span>
+<span>Calculated area inside unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units squared; *4 ⇒</span>
+<h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>
+<span>⇒ error <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
+  <div class="card" id="viz"></div>
 <details><summary>📜</summary>
 
-```js echo
+```js
 const pis = [5, 10, 20,30,50,55,60,65,70,75]
-  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({...cursor, n_in}), error: model.error({...cursor, n_in})}))
+  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({ n_in}), error: model.error({ n_in})}))
 
 display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximation: d3.format(',.10f'), error: d3.format(',.4f') }}))
 ```
 
 </details>
+  <p><strong>See also</strong> more approximations for pi using calculang in my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>; and a separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
+</div>
+</div>
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 
 ---
 
@@ -98,123 +97,72 @@ calculang/output is also highly portable and uniform.</details>
 
 ---
 
-
-## visual 1 (main output, with mouse interactivity)
+## visual 1
 
 ```js echo
-const vs_i = {
-  encodings: {
-    x: 'x',
-    y: 'y',
-    color: 'inside',
-    size: '',
-    shape: '',
-    opacity: '',
-    detail: 'i_in'
-  }
-}
-
-const domains = {
-    //x_in: [..._.range(0,1,0.01), 1],
-    //y_in: [..._.range(0,1,0.01), 1],
-    i_in: _.range(0,cursor.n_in ** 2)
-  };
-
 const spec = ({
   // vega-lite
-  //layer: [{
-    mark: {type:'point', tooltip:true, filled:true},
-    encoding: {
-      x: { field: vs_i.encodings.x, type: 'quantitative', scale: { domain: [0,1]} },
-      y: { field: vs_i.encodings.y, type: 'quantitative', scale: { domain: [0,1]}  },
-      color: {field:vs_i.encodings.color, type: 'nominal', sort: 'descending', legend: true},
-      detail: {field:vs_i.encodings.detail}, // I guess works
-      //row: {field:vs_i.encodings.row}, // TODO (this vega lite)
-      //col: {field:vs_i.encodings.col}, // TODO (this vega lite)
-      size: {field:vs_i.encodings.size},
-      shape: {field:vs_i.encodings.shape},
-      //anim__: {field:vs_i.encodings.anim},
-      opacity: vs_i.encodings.shape != '' ? {field:vs_i.encodings.shape} : {}, // OVERRIDES APPROACH?
-    },
-    data: { name: "data" },
-  //},
-  //],
-  // autosize breaks consistency when mappings change
-  //autosize: { "type": "fit", "contains": "padding"},
-  width: 400,//Math.min(400,rhs_width-30),
-  height: 300,
-  background:'rgba(0,0,0,0)',
+  title: "points",
+  mark: {type:'point', tooltip:true, filled:true},
+  encoding: {
+    x: { field: 'x', type: 'quantitative', scale: { domain: [0,1]} },
+    y: { field: 'y', type: 'quantitative', scale: { domain: [0,1]}  },
+    color: {field: 'inside', type: 'nominal', sort: 'descending'},
+    detail: {field: 'i_in', type: 'nominal'},
+  },
+  data: { name: "data" },
+  autosize: { "type": "fit", "contains": "padding"},
+  width: Math.min(500,rhs_width-30),//Math.min(400,rhs_width),
+  height: Math.min(500,rhs_width-30)/1.2,//Math.min(400,rhs_width-30),
+  background:'rgba(0,0,0,0)'
 })
 
 // interactivity via vega signals and listeners
 const viz = embed('#viz', spec)
 ```
 
-new messing:
-
-```js echo
-import * as traverseObj from "npm:object-traversal";
-import {uniq} from "npm:underscore";
-
-
-const p = (spec) => {
-
-  const mappings = (spec) => {
-  let v = [];
-  traverseObj.traverse(spec, (a) => {
-    //console.log(a);
-    if (a.key == "field") {
-      v.push({ field: a.value, input_domain: a.parent.input_domain });
-      //console.log("CAPTURE ", a); // CAPTURE MARK AND TYPE ALSO?
-    }
-  });
-  return /*_.*/uniq(v.map((d) => d.field)); // return {mapped, summary}
-  }
-
-  console.log('dn', mappings(spec))
-}
-
-p(spec)
-```
-
 ```js echo
 const data_source = calcuvegadata({
   models: [model],
-  spec: spec,
-  domains,
+  spec,
+  domains: {
+    i_in: _.range(0,n_in*n_in)
+  },
   input_cursors: [
-    cursor
+    { n_in }
   ]
 })
-
-display(spec)
-
-display(data_source)
-
-//display(Inputs.table(data_source))
 ```
 
 ```js echo
-viz.view.data("data", data_source).resize().run(); // turn off resize
-```
-
-
-```js echo
-const size_in = 16
-
+viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
 ```
 
 ```js
 
-const esm = compileWithMemo(cul_default)
-const introspection = introspection2(cul_default)
+const esm = compileWithMemo(doc)
+const introspection = introspection2(doc)
+//display(introspection.cul_input_map) todo put under devtools
+//display(introspection)
 
 const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
 
+//display(Object.values(introspection.cul_functions))
+//display([...introspection.cul_functions.values()])
+
 const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+//display(formulae_not_inputs)
 
 
-const model = await import(URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" })).toString())
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
+
+//display(model)
+
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
+
 ```
 
 
@@ -223,15 +171,23 @@ import {FileAttachment} from "npm:@observablehq/stdlib";
 
 const cul_default = await FileAttachment('./cul/pi-lattice.cul.js').text()
 
-import { calcuvizspec, calcudata } from "./components/helpers.js"
+import { calcuvizspec } from "./components/helpers.js"
 
 import { compile, introspection2, compileWithMemo } from "./components/mini-calculang.js"
-import {Scrubber} from './components/scrubber.js'
-
-import {calcuvegadata} from './components/calcuvegadata.js'
+```
 
 
-import embed_ from 'npm:vega-embed';
+```js
+import embed from 'npm:vega-embed';
 
-const embed = (a,b,options) => embed_(a,b, {renderer:'svg', ...options});
+const n_in_Input = Inputs.input(2);
+const n_in = Generators.input(n_in_Input);
+
+const rhs_width = Generators.width(document.querySelector(".rhs")); // keep as a generator for reactivity
+
+
+// circular definition if I use cul_default ?!
+const cul_Input = Inputs.input(cul_default);
+const cul = Generators.input(cul_Input);
+
 ```

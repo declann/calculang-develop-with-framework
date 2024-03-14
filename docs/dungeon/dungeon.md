@@ -3,19 +3,32 @@ title: Dungeon Generator 👹👾🔫
 toc: false
 ---
 
+```js
+import {editor as editorCm, config as eslintConfig} from '../graphing-calcs/editor.bundle.js'
+
+const start_doc = cul_default
+
+const doc = Mutable(start_doc) // I still have doc Input below, remove?
+
+const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
+```
+
 <div class="wrapper">
   <div class="lhs" style="background: lightgreen">
     <div class="grow">
     <h1>ƒ</h1>
+    <!-- can I collapse things responsively? -->
     <details class="calculang"><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
-    <span style="font-style: italic">editable!</span> 🧙‍♂️
-    <!--<pre class="f">-->${view(Inputs.bind(Inputs.textarea({ rows:60, resize: true}), cul_Input))}<!--</pre>-->
+    <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
+    ${display(editor.dom)}
     <details><summary>javascript ✨</summary>
-    <span style="font-style: italic">generated from calculang</span> ⬆️ (memo option on)
-    ${view(Inputs.textarea({value:esm,  rows:60, resize: true, disabled:true}))}
+    <span style="font-style: italic">generated from calculang</span> ⬆️
+    ${view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))}
     </details>
     <details><summary>dev tools 🧰</summary>
     ${"todo"}
+    ${display(Object.keys(introspection))}
+    ${display(JSON.stringify([...introspection.cul_links]))}
     </details>
     </details>
     </div>
@@ -133,8 +146,8 @@ const field_viz = width => {
 
 ```js
 
-const esm = compileWithMemo(cul).code
-const introspection = introspection2(cul)
+const esm = compileWithMemo(doc)
+const introspection = introspection2(doc)
 //display(introspection.cul_input_map) todo put under devtools
 //display(introspection)
 
@@ -147,10 +160,14 @@ const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d =
 //display(formulae_not_inputs)
 
 
-const model = await import(URL.createObjectURL(new Blob([esm], { type: "text/javascript" })).toString())
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
 
 //display(model)
 
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
 ```
 
@@ -189,14 +206,4 @@ const toggle = Generators.input(toggle_Input);
 const cul_Input = Inputs.input(cul_default);
 const cul = Generators.input(cul_Input);
 
-```
-
-```js
-// from https://observablehq.com/framework/lib/vega-lite
-// because embed doesn't work? (=> no tooltips)
-/*import * as vega from "npm:vega";
-import * as vegaLite from "npm:vega-lite";
-import * as vegaLiteApi from "npm:vega-lite-api";
-
-const vl = vegaLiteApi.register(vega, vegaLite);*/
 ```

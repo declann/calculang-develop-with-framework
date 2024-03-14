@@ -1,13 +1,8 @@
 ---
 title: Pi lattice dev
 toc: false
+draft: true
 ---
-
-Ref: [Up and Down the Ladder of Abstraction](https://worrydream.com/LadderOfAbstraction/) by Bret Victor
-
-"The keep-the-car-on-the-road algorithm is a favorite example of Alan Kay when demonstrating Etoys" ...
-
-*and some other wip things*
 
 ```js
 import {up} from './components/reactive-inputs.js'
@@ -16,6 +11,7 @@ import {up} from './components/reactive-inputs.js'
 ```js
 // define inputs
 const minibinds = ({
+  num_steps_in: Inputs.range([1,100], {label: '# steps', step: 1})
 })
 ```
 
@@ -89,18 +85,20 @@ calculang/output is also highly portable and uniform.</details>
 ```js echo
 const vs_i = {
   encodings: {
-    x: 'x_in',
-    y: 'y_in',
+    x: 'x',
+    y: 'y',
     color: 'inside',
     size: '',
     shape: '',
-    opacity: ''
+    opacity: '',
+    detail: 'i_in'
   }
 }
 
 const domains = {
-    x_in: [..._.range(0,1,0.01), 1],
-    y_in: [..._.range(0,1,0.01), 1],
+    //x_in: [..._.range(0,1,0.01), 1],
+    //y_in: [..._.range(0,1,0.01), 1],
+    i_in: _.range(0,cursor.num_steps_in ** 2)
   };
 
 const spec = ({
@@ -110,8 +108,8 @@ const spec = ({
     encoding: {
       x: { field: vs_i.encodings.x, type: 'nominal', axis:null },
       y: { field: vs_i.encodings.y, type: 'nominal', axis:null, sort: 'descending' },
-      color: {field:vs_i.encodings.color, type: 'nominal', scale: {range:'diverging'}, legend: false},
-      //detail: {field:vs_i.encodings.detail}, // I guess works
+      color: {field:vs_i.encodings.color, type: 'nominal', sort: 'descending', legend: true},
+      detail: {field:vs_i.encodings.detail}, // I guess works
       //row: {field:vs_i.encodings.row}, // TODO (this vega lite)
       //col: {field:vs_i.encodings.col}, // TODO (this vega lite)
       size: {field:vs_i.encodings.size},

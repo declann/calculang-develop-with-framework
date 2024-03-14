@@ -11,3 +11,8 @@ export const step_size = () => 1/num_steps()
 
 export const inside = () => Math.hypot(x(), y()) < 1 ? 1 : 0;
 
+export const count_inside = () => {
+  if (i() == -1) return 0
+  else return count_inside({i_in:i()-1})+inside()
+}
+

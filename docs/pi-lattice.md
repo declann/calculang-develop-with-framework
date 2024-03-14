@@ -65,6 +65,12 @@ up(inputs_ui, cursor_Input, inputs, model, minibinds); // must keep minibinds se
 
 <div id="viz"></div>
 
+count inside ${model.count_inside({...cursor, i_in: cursor.num_steps_in ** 2})}
+
+${model.count_inside({...cursor, i_in: cursor.num_steps_in ** 2}) / cursor.num_steps_in ** 2}
+
+${4 * model.count_inside({...cursor, i_in: cursor.num_steps_in ** 2}) / cursor.num_steps_in ** 2}
+
 ---
 
 
@@ -106,8 +112,8 @@ const spec = ({
   //layer: [{
     mark: {type:'point', tooltip:true},
     encoding: {
-      x: { field: vs_i.encodings.x, type: 'nominal', axis:null },
-      y: { field: vs_i.encodings.y, type: 'nominal', axis:null, sort: 'descending' },
+      x: { field: vs_i.encodings.x, type: 'quantitative', scale: { domain: [0,1]} },
+      y: { field: vs_i.encodings.y, type: 'quantitative', scale: { domain: [0,1]}  },
       color: {field:vs_i.encodings.color, type: 'nominal', sort: 'descending', legend: true},
       detail: {field:vs_i.encodings.detail}, // I guess works
       //row: {field:vs_i.encodings.row}, // TODO (this vega lite)

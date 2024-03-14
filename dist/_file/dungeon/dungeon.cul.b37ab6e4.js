@@ -115,3 +115,6 @@ import { prng_alea } from 'https://cdn.jsdelivr.net/npm/esm-seedrandom/+esm'//'h
 export const random_seed = () => random_seed_in;
 export const seeded = () => prng_alea(random_seed());
 export const random = () => seeded({ random_seed_in: random_seed() })();
+
+// custom memo hash function for better perf than JSON.stringify:
+export const memo_hash = ({formula, model_id, input_cursor_id, ...o}) => Object.values(o);

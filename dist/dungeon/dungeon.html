@@ -4,17 +4,20 @@
 <title>Dungeon Generator 👹👾🔫 | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="../_import/custom-style.a7d4deec.css">
+<link rel="preload" as="style" href="../_import/custom-style.74b84d58.css">
 <link rel="preload" as="style" href="../_observablehq/stdlib/inputs.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="../_import/custom-style.a7d4deec.css">
+<link rel="stylesheet" type="text/css" href="../_import/custom-style.74b84d58.css">
 <link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.css">
 <link rel="modulepreload" href="../_observablehq/client.js">
 <link rel="modulepreload" href="../_observablehq/runtime.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.js">
+<link rel="modulepreload" href="../_import/graphing-calcs/editor.bundle.b93111cb.js">
 <link rel="modulepreload" href="../_import/components/helpers.114a7fce.js">
 <link rel="modulepreload" href="../_import/components/mini-calculang.3e8f8efa.js">
 <link rel="modulepreload" href="../_npm/vega-embed@6.24.0/+esm.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
 <link rel="modulepreload" href="../_npm/d3-require@1.3.0/+esm.js">
 <link rel="modulepreload" href="../_npm/compassql@0.21.2/+esm.js">
 <link rel="modulepreload" href="../_npm/@dagrejs/graphlib@2.1.13/+esm.js">
@@ -87,20 +90,39 @@
 import {define} from "../_observablehq/client.js";
 import {registerFile} from "../_observablehq/stdlib.js";
 
-registerFile("./dungeon.cul.js", {"name":"./dungeon.cul.js","mimeType":"text/javascript","path":"../_file/dungeon/dungeon.cul.3e12a3f8.js"});
+registerFile("./dungeon.cul.js", {"name":"./dungeon.cul.js","mimeType":"text/javascript","path":"../_file/dungeon/dungeon.cul.b37ab6e4.js"});
 
-define({id: "7e12fbc0", inline: true, inputs: ["view","Inputs","cul_Input"], body: (view,Inputs,cul_Input) => {
-view(Inputs.bind(Inputs.textarea({ rows:60, resize: true}), cul_Input))
+define({id: "65f48f7d", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","start_doc","doc","editor"], body: async (cul_default,Mutable) => {
+const {editor: editorCm, config: eslintConfig} = await import("../_import/graphing-calcs/editor.bundle.b93111cb.js");
+
+const start_doc = cul_default
+
+const doc = Mutable(start_doc) // I still have doc Input below, remove?
+
+const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
+return {editorCm,eslintConfig,start_doc,doc,editor};
 }});
 
-define({id: "af722839", inline: true, inputs: ["view","Inputs","esm"], body: (view,Inputs,esm) => {
-view(Inputs.textarea({value:esm,  rows:60, resize: true, disabled:true}))
+define({id: "1a748ae6", inline: true, inputs: ["display","editor"], body: (display,editor) => {
+display(editor.dom)
+}});
+
+define({id: "a91751cf", inline: true, inputs: ["view","Inputs","esm"], body: (view,Inputs,esm) => {
+view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))
 }});
 
 define({id: "7be5e906", inline: true, inputs: ["display"], body: async (display) => {
 display(await(
 "todo"
 ))
+}});
+
+define({id: "bd87104d", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
+display(Object.keys(introspection))
+}});
+
+define({id: "8094d046", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
+display(JSON.stringify([...introspection.cul_links]))
 }});
 
 define({id: "c4753b45", inline: true, inputs: ["view","Inputs","WIDTH_in_Input"], body: (view,Inputs,WIDTH_in_Input) => {
@@ -244,9 +266,9 @@ const field_viz = width => {
 return {field_viz};
 }});
 
-define({id: "3b63794c", inputs: ["compileWithMemo","cul","introspection2"], outputs: ["esm","introspection","inputs","formulae_not_inputs","model"], body: async (compileWithMemo,cul,introspection2) => {
-const esm = compileWithMemo(cul).code
-const introspection = introspection2(cul)
+define({id: "eb13376e", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
+const esm = compileWithMemo(doc)
+const introspection = introspection2(doc)
 //display(introspection.cul_input_map) todo put under devtools
 //display(introspection)
 
@@ -259,12 +281,16 @@ const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d =
 //display(formulae_not_inputs)
 
 
-const model = await import(URL.createObjectURL(new Blob([esm], { type: "text/javascript" })).toString())
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
 
 //display(model)
 
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
-return {esm,introspection,inputs,formulae_not_inputs,model};
+return {esm,introspection,inputs,formulae_not_inputs,u,model};
 }});
 
 define({id: "69f48d4a", outputs: ["FileAttachment","cul_default","calcuvizspec","compile","introspection2","compileWithMemo"], body: async () => {
@@ -303,16 +329,6 @@ const cul = Generators.input(cul_Input);
 return {embed,HEIGHT_in_Input,HEIGHT_in,WIDTH_in_Input,WIDTH_in,i_in_Input,i_in,random_seed_in_Input,random_seed_in,toggle_Input,toggle,cul_Input,cul};
 }});
 
-define({id: "4283e7bb", body: () => {
-// from https://observablehq.com/framework/lib/vega-lite
-// because embed doesn't work? (=> no tooltips)
-/*import * as vega from "npm:vega";
-import * as vegaLite from "npm:vega-lite";
-import * as vegaLiteApi from "npm:vega-lite-api";
-
-const vl = vegaLiteApi.register(vega, vegaLite);*/
-}});
-
 </script>
 <input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
 <label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
@@ -323,6 +339,7 @@ const vl = vegaLiteApi.register(vega, vegaLite);*/
   </ol>
   <ol>
     <li class="observablehq-link"><a href="../keep-car-cli">Keep 🚗 on the road</a></li>
+    <li class="observablehq-link"><a href="../pi-lattice">Pi 🥮 by lattice</a></li>
     <li class="observablehq-link"><a href="../tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link observablehq-link-active"><a href="./dungeon">Dungeon Generator 👹👾🔫</a></li>
     <li class="observablehq-link"><a href="../graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
@@ -335,19 +352,23 @@ const vl = vegaLiteApi.register(vega, vegaLite);*/
 <script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
+<div id="cell-65f48f7d" class="observablehq observablehq--block"></div>
 <div class="wrapper">
   <div class="lhs" style="background: lightgreen">
     <div class="grow">
     <h1>ƒ</h1>
+    <!-- can I collapse things responsively? -->
     <details class="calculang"><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
-    <span style="font-style: italic">editable!</span> 🧙‍♂️
-    <!--<pre class="f">--><span id="cell-7e12fbc0" class="observablehq--loading"></span><!--</pre>-->
+    <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
+    <span id="cell-1a748ae6" class="observablehq--loading"></span>
     <details><summary>javascript ✨</summary>
-    <span style="font-style: italic">generated from calculang</span> ⬆️ (memo option on)
-    <span id="cell-af722839" class="observablehq--loading"></span>
+    <span style="font-style: italic">generated from calculang</span> ⬆️
+    <span id="cell-a91751cf" class="observablehq--loading"></span>
     </details>
     <details><summary>dev tools 🧰</summary>
     <span id="cell-7be5e906" class="observablehq--loading"></span>
+    <span id="cell-bd87104d" class="observablehq--loading"></span>
+    <span id="cell-8094d046" class="observablehq--loading"></span>
     </details>
     </details>
     </div>
@@ -393,10 +414,9 @@ const vl = vegaLiteApi.register(vega, vegaLite);*/
 </div>
 <div id="cell-f95f20bf" class="observablehq observablehq--block"></div>
 <div id="cell-663c52d8" class="observablehq observablehq--block"></div>
-<div id="cell-3b63794c" class="observablehq observablehq--block"></div>
+<div id="cell-eb13376e" class="observablehq observablehq--block"></div>
 <div id="cell-69f48d4a" class="observablehq observablehq--block"></div>
 <div id="cell-9b16fa79" class="observablehq observablehq--block"></div>
-<div id="cell-4283e7bb" class="observablehq observablehq--block"></div>
 </main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev">calculang</a></div>

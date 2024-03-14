@@ -73,11 +73,16 @@ inside ${model.count_inside({...cursor})}
 
 pi approx ${model.pi_approximation({...cursor})}
 
-<!--count inside ${model.count_inside({...cursor, i_in: cursor.n_in ** 2})}
+<details><summary>📜</summary>
 
-${model.count_inside({...cursor, i_in: cursor.n_in ** 2}) / cursor.n_in ** 2}
+```js echo
+const pis = [5, 10, 20,30,50,55,60,65,70,75]
+  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({...cursor, n_in}), error: model.error({...cursor, n_in})}))
 
-${4 * model.count_inside({...cursor, i_in: cursor.n_in ** 2}) / cursor.n_in ** 2}-->
+display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximation: d3.format(',.10f'), error: d3.format(',.4f') }}))
+```
+
+</details>
 
 ---
 
@@ -186,7 +191,7 @@ display(spec)
 
 display(data_source)
 
-display(Inputs.table(data_source))
+//display(Inputs.table(data_source))
 ```
 
 ```js echo

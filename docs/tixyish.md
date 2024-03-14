@@ -243,9 +243,14 @@ const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d =
 //display(formulae_not_inputs)
 
 
-const model = await import(URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" })).toString())
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
 
 //display(model)
+
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
 
 ```

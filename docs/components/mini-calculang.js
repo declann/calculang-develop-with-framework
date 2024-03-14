@@ -352,7 +352,7 @@ export const compileWithMemo = input => {
     ${d}$(); // never run, but here to "trick" calculang graph logic
   };\n\n`).join('')
 
-  console.log("NEW", a)
+  //console.log("NEW", a)
 
   return compile(a)
 

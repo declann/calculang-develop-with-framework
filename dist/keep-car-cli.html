@@ -114,11 +114,13 @@ const {up} = await import("./_import/components/reactive-inputs.9b9e56b7.js");
 return {up};
 }});
 
-define({id: "a4f52625", inputs: ["Inputs"], outputs: ["minibinds"], body: (Inputs) => {
+define({id: "2c450f74", inputs: ["Inputs"], outputs: ["minibinds"], body: (Inputs) => {
 // define inputs
 const minibinds = ({
   bend_start_in: Inputs.range([0,10], {label:'bend start', step:0.02}),
   bend_angle_in: Inputs.range([0,5], {label:'bend angle (rads)', step:0.01, value: Math.PI/2-0.01}),
+  car_turning_rate_in: Inputs.range([-.1,.1], {label:'bend angle (rads)', step:0.001, value: Math.PI/2-0.01}),
+  cary0_in: Inputs.range([-5,5], {label:'car y0', step:0.01, value: 0}),
   //r_in: html`<span style="font-decoration: strikethrough">r_in</span>`,
 })
 return {minibinds};
@@ -189,8 +191,8 @@ display(spec2)
 return {data_source2};
 }});
 
-define({id: "348c99ce", inputs: ["viz2","data_source2"], body: (viz2,data_source2) => {
-viz2.view.data("data", data_source2).resize().run(); // turn off resize
+define({id: "08241b4e", inputs: ["viz2","data_source2"], body: (viz2,data_source2) => {
+viz2.view.data("data", data_source2)/*.resize()*/.run(); // turn off resize
 }});
 
 define({id: "d0ae8ae5", inputs: ["viz","data_source2"], body: (viz,data_source2) => {
@@ -485,13 +487,13 @@ return {FileAttachment,cul_default,calcuvizspec,calcudata,compile,introspection2
 </style>
 <p><em>and some other wip things</em></p>
 <div id="cell-ba5ae161" class="observablehq observablehq--block"></div>
-<div id="cell-a4f52625" class="observablehq observablehq--block"></div>
+<div id="cell-2c450f74" class="observablehq observablehq--block"></div>
 <div id="cell-5cbd303e" class="observablehq observablehq--block"></div>
 <div id="viz2"></div>
 <h3 id="inputs-ui%3A" tabindex="-1"><a class="observablehq-header-anchor" href="#inputs-ui%3A">inputs ui:</a></h3>
 <div id="cell-c72d4499" class="observablehq observablehq--block"></div>
 <div id="cell-5cdbd044" class="observablehq observablehq--block"></div>
-<div id="cell-348c99ce" class="observablehq observablehq--block"></div>
+<div id="cell-08241b4e" class="observablehq observablehq--block"></div>
 <div id="cell-d0ae8ae5" class="observablehq observablehq--block"></div>
 <hr>
 <div id="cell-1bd1fc7e" class="observablehq observablehq--block"></div>

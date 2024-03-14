@@ -38,6 +38,8 @@ import {up} from './components/reactive-inputs.js'
 const minibinds = ({
   bend_start_in: Inputs.range([0,10], {label:'bend start', step:0.02}),
   bend_angle_in: Inputs.range([0,5], {label:'bend angle (rads)', step:0.01, value: Math.PI/2-0.01}),
+  car_turning_rate_in: Inputs.range([-.1,.1], {label:'bend angle (rads)', step:0.001, value: Math.PI/2-0.01}),
+  cary0_in: Inputs.range([-5,5], {label:'car y0', step:0.01, value: 0}),
   //r_in: html`<span style="font-decoration: strikethrough">r_in</span>`,
 })
 ```
@@ -112,7 +114,7 @@ display(spec2)
 ```
 
 ```js
-viz2.view.data("data", data_source2).resize().run(); // turn off resize
+viz2.view.data("data", data_source2)/*.resize()*/.run(); // turn off resize
 ```
 
 ```js

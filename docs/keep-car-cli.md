@@ -3,7 +3,9 @@ title: Keep 🚗 on the road
 toc: false
 ---
 
-[Ref](https://worrydream.com/LadderOfAbstraction/)
+Ref: [Up and Down the Ladder of Abstraction](https://worrydream.com/LadderOfAbstraction/) by Bret Victor
+
+"The keep-the-car-on-the-road algorithm is a favorite example of Alan Kay when demonstrating Etoys" ...
 
 <style>
 @keyframes flash {
@@ -25,6 +27,7 @@ toc: false
 }
 </style>
 
+*and some other wip things*
 
 ```js
 import {up} from './components/reactive-inputs.js'

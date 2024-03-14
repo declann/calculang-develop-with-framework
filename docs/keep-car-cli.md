@@ -26,13 +26,6 @@ toc: false
 </style>
 
 
-# issues
-
-cursors should be separated for layer data !!!
-
----
-
-
 ```js
 import {up} from './components/reactive-inputs.js'
 ```

@@ -1,6 +1,7 @@
 ---
 title: ❤️ (old-style)
 toc: false
+draft: true
 ---
 
 # Graphing Calcs ❤️ (old-style)

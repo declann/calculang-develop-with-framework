@@ -5,8 +5,6 @@ toc: false
 
 # Editable Music 🎶
 
-<a href="https://raw.githubusercontent.com/declann/calculang-develop-with-framework/dev/docs/graphing-calcs/graphing-edit-music.md">view source</a>
-
 ```js
 //import {Tone} from 'npm:tonejs'
 import * as Tone from 'npm:tone'

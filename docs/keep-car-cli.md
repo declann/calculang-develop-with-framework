@@ -1,5 +1,5 @@
 ---
-title: keep-the-car-on-the-road algorithm CLI version
+title: Keep 🚗 on the road
 toc: false
 ---
 

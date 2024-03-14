@@ -45,8 +45,7 @@ toc: false
 </style>
 
 <div class="hero">
-  <h1>Hello!</h1>
   <p>Choose a thing on the left.</p>
   <p>They're things that <a href="https://calcwithdec.dev/about">I'm</a> working on with <a href="https://calculang.dev/">calculang<a>; a language for calculations.</p>
-  <p>Source code is <a href="https://github.com/declann/calculang-develop-with-framework/">on GitHub</a> and PRs/collaborations welcome!</p>
+  <p>Source code is <a href="https://github.com/declann/calculang-develop-with-framework/">on GitHub</a> and PRs/collaborations welcome! (soon merging into a new community gallery for calculang)</p>
 </div>

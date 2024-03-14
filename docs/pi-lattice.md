@@ -9,9 +9,16 @@ import {up} from './components/reactive-inputs.js'
 ```
 
 ```js
+display(introspection)
+```
+
+```js
 // define inputs
 const minibinds = ({
-  num_steps_in: Inputs.range([1,100], {label: '# steps', step: 1})
+  n_in: Inputs.range([1,75], {label: 'n', step: 1}),
+  // inclusive_in: Inputs.toggle() doesnt work ?!
+  inclusive_in: Inputs.range([0,1], {label:'inclusive off/on', step:1}),
+  //i_in: html`<input disabled>`
 })
 ```
 
@@ -50,9 +57,6 @@ display(model)
 display(cursor)
 ```
 
-```js
-view(t_in_Input)
-```
 
 ```js
 fake;
@@ -65,11 +69,15 @@ up(inputs_ui, cursor_Input, inputs, model, minibinds); // must keep minibinds se
 
 <div id="viz"></div>
 
-count inside ${model.count_inside({...cursor, i_in: cursor.num_steps_in ** 2})}
+inside ${model.count_inside({...cursor})}
 
-${model.count_inside({...cursor, i_in: cursor.num_steps_in ** 2}) / cursor.num_steps_in ** 2}
+pi approx ${model.pi_approximation({...cursor})}
 
-${4 * model.count_inside({...cursor, i_in: cursor.num_steps_in ** 2}) / cursor.num_steps_in ** 2}
+<!--count inside ${model.count_inside({...cursor, i_in: cursor.n_in ** 2})}
+
+${model.count_inside({...cursor, i_in: cursor.n_in ** 2}) / cursor.n_in ** 2}
+
+${4 * model.count_inside({...cursor, i_in: cursor.n_in ** 2}) / cursor.n_in ** 2}-->
 
 ---
 
@@ -104,13 +112,13 @@ const vs_i = {
 const domains = {
     //x_in: [..._.range(0,1,0.01), 1],
     //y_in: [..._.range(0,1,0.01), 1],
-    i_in: _.range(0,cursor.num_steps_in ** 2)
+    i_in: _.range(0,cursor.n_in ** 2)
   };
 
 const spec = ({
   // vega-lite
   //layer: [{
-    mark: {type:'point', tooltip:true},
+    mark: {type:'point', tooltip:true, filled:true},
     encoding: {
       x: { field: vs_i.encodings.x, type: 'quantitative', scale: { domain: [0,1]} },
       y: { field: vs_i.encodings.y, type: 'quantitative', scale: { domain: [0,1]}  },
@@ -129,7 +137,7 @@ const spec = ({
   // autosize breaks consistency when mappings change
   //autosize: { "type": "fit", "contains": "padding"},
   width: 400,//Math.min(400,rhs_width-30),
-  height: 150,
+  height: 300,
   background:'rgba(0,0,0,0)',
 })
 
@@ -176,25 +184,18 @@ const data_source = calcuvegadata({
 
 display(spec)
 
-//display(Inputs.table(data_source_cursor))
+display(data_source)
+
+display(Inputs.table(data_source))
 ```
 
 ```js echo
 viz.view.data("data", data_source).resize().run(); // turn off resize
 ```
 
-```js echo
-viz.view.signal('t_in', t_in).run()
-```
-
-
----
 
 ```js echo
 const size_in = 16
-
-const t_in_Input = Inputs.range([0,1000],{label:'t_in', step:1, value:0})//input(0);
-const t_in = Generators.input(t_in_Input);
 
 ```
 

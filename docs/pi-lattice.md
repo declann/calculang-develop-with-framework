@@ -56,21 +56,23 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
   <p>Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.</p>
   </details>
 </span>
-<span>Calculated area inside unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units squared; *4 ⇒</span>
+<span>Calculated area <strong>inside</strong> unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒</span>
 <h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>
 <span>⇒ error <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
+<span>(using πr<sup>2</sup> and r=1)</span>
   <div class="card" id="viz"></div>
 <details><summary>📜</summary>
 
 ```js
 const pis = [5, 10, 20,30,50,55,60,65,70,75]
-  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({ n_in}), error: model.error({ n_in})}))
+  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({ n_in}), proportion_inside: model.proportion_inside({ n_in}), error: model.error({ n_in})}))
 
 display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximation: d3.format(',.10f'), error: d3.format(',.4f') }}))
 ```
 
 </details>
-  <p><strong>See also</strong> more approximations for pi using calculang in my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>; and a separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
+
+  <p><strong>⚠️ This π approximation is not suitable for space travel.</strong> For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
 </div>
 </div>
 

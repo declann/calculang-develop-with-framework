@@ -58,7 +58,7 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
 </span>
 <span>Calculated area <strong>inside</strong> unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒</span>
 <h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>
-<span>⇒ error <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
+<span>⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
 <span>(using πr<sup>2</sup> and r=1)</span>
   <div class="card" id="viz"></div>
 <details><summary>📜</summary>

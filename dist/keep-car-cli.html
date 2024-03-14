@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Keep 🚗 on the road | some calculang things</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/custom-style.4c1ac317.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.4c1ac317.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_import/components/reactive-inputs.9b9e56b7.js">
+<link rel="modulepreload" href="./_npm/object-traversal@1.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/underscore@1.13.6/+esm.js">
+<link rel="modulepreload" href="./_import/components/helpers.114a7fce.js">
+<link rel="modulepreload" href="./_import/components/mini-calculang.3e8f8efa.js">
+<link rel="modulepreload" href="./_import/components/scrubber.a7df8a1e.js">
+<link rel="modulepreload" href="./_import/components/calcuvegadata.42318415.js">
+<link rel="modulepreload" href="./_npm/vega-embed@6.24.0/+esm.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-require@1.3.0/+esm.js">
+<link rel="modulepreload" href="./_npm/compassql@0.21.2/+esm.js">
+<link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.1.13/+esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
+<link rel="modulepreload" href="./_npm/lodash@4.17.21/+esm.js">
+<link rel="modulepreload" href="./_npm/d3@7.8.5/+esm.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/+esm.js">
+<link rel="modulepreload" href="./_npm/fast-json-patch@3.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/json-stringify-pretty-compact@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega@5.26.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-interpreter@1.0.5/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-lite@5.16.3/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-schema-url-parser@2.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-themes@2.14.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-tooltip@0.34.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-util@1.17.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-dataflow@5.7.5/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-transforms@4.11.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-view-transforms@4.5.9/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-encode@4.9.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-geo@4.4.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-force@4.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-hierarchy@4.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-label@1.2.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-regression@1.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-voronoi@4.2.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-wordcloud@4.1.4/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-crossfilter@4.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-statistics@1.9.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-time@2.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-loader@4.5.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scale@7.3.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-projection@1.6.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-view@5.11.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-format@1.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-functions@5.14.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-parser@6.2.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-runtime@6.1.4/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-expression@5.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-event-selector@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/+esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-canvas@1.2.7/+esm.js">
+<link rel="modulepreload" href="./_npm/topojson-client@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-selections@5.4.2/+esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/+esm.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+import {registerFile} from "./_observablehq/stdlib.js";
+
+registerFile("./cul/keep-car-cli.cul.js", {"name":"./cul/keep-car-cli.cul.js","mimeType":"application/javascript","path":"./_file/cul/keep-car-cli.cul.ee0465ee.js"});
+
+define({id: "ba5ae161", outputs: ["up"], body: async () => {
+const {up} = await import("./_import/components/reactive-inputs.9b9e56b7.js");
+
+return {up};
+}});
+
+define({id: "a4f52625", inputs: ["Inputs"], outputs: ["minibinds"], body: (Inputs) => {
+// define inputs
+const minibinds = ({
+  bend_start_in: Inputs.range([0,10], {label:'bend start', step:0.02}),
+  bend_angle_in: Inputs.range([0,5], {label:'bend angle (rads)', step:0.01, value: Math.PI/2-0.01}),
+  //r_in: html`<span style="font-decoration: strikethrough">r_in</span>`,
+})
+return {minibinds};
+}});
+
+define({id: "5cbd303e", inputs: ["minibinds","inputs_ui"], outputs: ["fake"], body: (minibinds,inputs_ui) => {
+minibinds; // when minibinds change, we really want to delete and recreate inputs
+document.querySelectorAll('.flash').forEach(d => d.remove())
+inputs_ui.dataset.inputs = '' // up ran first? so use fake to control order:
+const fake = ''
+return {fake};
+}});
+
+define({id: "c72d4499", inputs: ["_","d3","domains","embed"], outputs: ["domains2","spec2","viz2"], body: (_,d3,domains,embed) => {
+const domains2 = {
+    formula: /*formulae_not_inputs*/ ["road",/*"road2","roadm2",*/ "a1","a2","a3"],
+    t_in: _.range(0,500,1)
+  };
+
+const spec2 = ({
+  // vega-lite
+  layer: [{
+    mark: {type:'point', tooltip:true},
+    encoding: {
+      x: { field: 'carx', type: 'quantitative', scale: { domain: d3.extent(domains.x_in) } },
+      y: { field: 'cary', type: 'quantitative', scale: { domain: d3.extent(domains.y_in) } },
+      detail: { field: 't_in', type: 'nominal', sort: 'descending' },
+      color: { field: 'car_offroad', type: 'nominal' },
+    },
+    data: { name: "data" },
+  },
+  ],
+  datasets: {
+    data: [],
+    cursor: []
+  },
+  // autosize breaks consistency when mappings change
+  //autosize: { "type": "fit", "contains": "padding"},
+  width: 400,//Math.min(400,rhs_width-30),
+  height: 150,
+  background:'rgba(0,0,0,0)'
+})
+
+// interactivity via vega signals and listeners
+const viz2 = embed('#viz2', spec2, {patch: [{
+  path: "/signals",
+  op: "add",
+  value: [{
+    name: "animation",
+    //value: 8,
+  }]
+}]})
+return {domains2,spec2,viz2};
+}});
+
+define({id: "5cdbd044", inputs: ["calcuvegadata","model","spec","domains2","cursor","display","spec2"], outputs: ["data_source2"], body: (calcuvegadata,model,spec,domains2,cursor,display,spec2) => {
+const data_source2 = calcuvegadata({
+  models: [model],
+  spec: spec.layer[1],
+  domains: domains2,
+  input_cursors: [
+    cursor
+  ]
+})
+
+display(spec2)
+
+return {data_source2};
+}});
+
+define({id: "348c99ce", inputs: ["viz2","data_source2"], body: (viz2,data_source2) => {
+viz2.view.data("data", data_source2).resize().run(); // turn off resize
+}});
+
+define({id: "d0ae8ae5", inputs: ["viz","data_source2"], body: (viz,data_source2) => {
+viz.view.data("data2", data_source2).resize().run(); // turn off resize
+}});
+
+define({id: "1bd1fc7e", outputs: ["inputs_ui"], body: () => {
+const inputs_ui = document.createElement('div')
+return {inputs_ui};
+}});
+
+define({id: "ccf00d82", inputs: ["Inputs","Generators","display","inputs_ui"], outputs: ["cursor_Input","cursor"], body: (Inputs,Generators,display,inputs_ui) => {
+console.log("don't repeat")
+
+const cursor_Input = Inputs.input({})//Mutable({})
+const cursor = Generators.input(cursor_Input)
+
+display(inputs_ui)
+return {cursor_Input,cursor};
+}});
+
+define({id: "9b350580", inputs: ["display","inputs","model"], body: (display,inputs,model) => {
+display(inputs)
+
+display(model.cy({}))
+
+display(model)
+}});
+
+define({id: "73c08299", inputs: ["display","cursor"], body: (display,cursor) => {
+display(cursor)
+}});
+
+define({id: "d7b523c6", inputs: ["view","t_in_Input"], body: (view,t_in_Input) => {
+view(t_in_Input)
+}});
+
+define({id: "5fbcbf44", inputs: ["fake","cursor","up","inputs_ui","cursor_Input","inputs","model","minibinds"], body: (fake,cursor,up,inputs_ui,cursor_Input,inputs,model,minibinds) => {
+fake;
+cursor; // need to react to changes to cursor
+up(inputs_ui, cursor_Input, inputs, model, minibinds); // must keep minibinds sep. to pick up updates
+// because needs to detect removal for flash (above)
+}});
+
+define({id: "fb26b2f2", inputs: ["view","Inputs"], outputs: ["f0"], body: (view,Inputs) => {
+const f0 = view(Inputs.select(['offset','offroad'], {label: 'formula', value: 'offroad'}))
+return {f0};
+}});
+
+define({id: "0c552318", inputs: ["f0","_","d3","embed"], outputs: ["vs_i","domains","spec","viz"], body: (f0,_,d3,embed) => {
+const vs_i = {
+  encodings: {
+    x: 'x_in',
+    y: 'y_in',
+    color: f0,
+    size: '',
+    shape: '',
+    opacity: ''
+  }
+}
+
+const domains = {
+    formula: /*formulae_not_inputs*/ ["road",/*"road2","roadm2",*/ "a1","a2","a3"],
+    x_in: _.range(0,25,0.3),
+    y_in: _.range(-3,7,0.3)
+  };
+
+const spec = ({
+  // vega-lite
+  layer: [{
+    mark: {type:'rect', tooltip:true},
+    encoding: {
+      x: { field: vs_i.encodings.x, type: 'nominal', axis:null },
+      y: { field: vs_i.encodings.y, type: 'nominal', axis:null, sort: 'descending' },
+      color: {field:vs_i.encodings.color, type: 'nominal', scale: {range:'diverging'}, legend: false},
+      //detail: {field:vs_i.encodings.detail}, // I guess works
+      //row: {field:vs_i.encodings.row}, // TODO (this vega lite)
+      //col: {field:vs_i.encodings.col}, // TODO (this vega lite)
+      size: {field:vs_i.encodings.size},
+      shape: {field:vs_i.encodings.shape},
+      //anim__: {field:vs_i.encodings.anim},
+      opacity: vs_i.encodings.shape != '' ? {field:vs_i.encodings.shape} : {}, // OVERRIDES APPROACH?
+    },
+    data: { name: "data" },
+  },
+  {
+    mark: {type:'point', tooltip:true},
+    encoding: {
+      x: { field: 'carx', type: 'quantitative', scale: { domain: d3.extent(domains.x_in) } },
+      y: { field: 'cary', type: 'quantitative', scale: { domain: d3.extent(domains.y_in) } },
+      detail: { field: 't_in', type: 'nominal', sort: 'descending' },
+      color: {value: 'green'},
+            trick__: {field: 'car_angle'}
+
+      //color: { field: 'car_offroad', type: 'nominal' },
+    },
+    data: { name: "data2" },
+  },
+  {
+  "mark": {"type": "image", "width": 50, "height": 50},
+    transform: [{filter: "datum.t_in == t_in"}], // detect t_in by datum.thing search?
+    encoding: {
+      x: { field: 'carx', type: 'quantitative', scale: { domain: d3.extent(domains.x_in) } },
+      y: { field: 'cary', type: 'quantitative', scale: { domain: d3.extent(domains.y_in) } },
+      url: { value: '/_file/ffox.png',  type: 'nominal' }, // from https://freepngimg.com/png/11315-car-free-download-png
+      color: {value: 'green'},
+      size: {value:30},
+      opacity: {value:0.02}
+      //angle: {value: -10}
+      //color: { field: 'car_offroad', type: 'nominal' },
+    },
+    data: { name: "data2" },
+  },
+  {
+  "mark": {"type": "text", "width": 50, "height": 50, fontWeight:'bold', baseline: 'middle', align:'center'},
+    transform: [{filter: "datum.t_in == t_in"}, {calculate: "-datum.car_angle*57", "as" :"car_angle2"}],
+    encoding: {
+      x: { field: 'carx', type: 'quantitative', scale: { domain: d3.extent(domains.x_in) } },
+      y: { field: 'cary', type: 'quantitative', scale: { domain: d3.extent(domains.y_in) } },
+      text: { value: '🚗',  type: 'nominal' }, // from https://freepngimg.com/png/11315-car-free-download-png
+      color: {value: 'red'},
+      size: {value:30},
+      //detail: {field: 't_in'}
+      //angle: {value: 90},
+      angle: {field: "car_angle2", type:'quantitative', scale: {domain:[0,360],range:[0,360]}},
+      //color: { field: 'car_offroad', type: 'nominal' },
+    },
+    data: { name: "data2" },
+  },
+  /*{
+    transform: [{filter: `0 && datum.t_in == animation`}], // TODO lookup anim encoding
+    mark: {type:'point', point: false, filled: false, strokeWidth:5, tooltip:true},
+    encoding: {
+      opacity: {value: .5},
+      x: { field:vs_i.encodings.x, type: 'quantitative' },
+      y: { field:vs_i.encodings.y, type: 'quantitative' },
+      size: {value: 800},
+      //color: {field:vs_i.encodings.color, type: 'nominal'}
+    },
+    data: { name: "data" },
+  }*/
+  ],
+  // autosize breaks consistency when mappings change
+  //autosize: { "type": "fit", "contains": "padding"},
+  width: 400,//Math.min(400,rhs_width-30),
+  height: 150,
+  background:'rgba(0,0,0,0)',
+})
+
+// interactivity via vega signals and listeners
+const viz = embed('#viz', spec, {patch: [{
+  path: "/signals",
+  op: "add",
+  value: [{
+    name: "t_in",
+    //value: 8,
+  }]
+}]})
+return {vs_i,domains,spec,viz};
+}});
+
+define({id: "2b401859", inputs: ["spec"], outputs: ["traverseObj","uniq","p"], body: async (spec) => {
+const [traverseObj, {uniq}] = await Promise.all([import("./_npm/object-traversal@1.0.1/+esm.js"), import("./_npm/underscore@1.13.6/+esm.js")]);
+
+
+const p = (spec) => {
+
+  const mappings = (spec) => {
+  let v = [];
+  traverseObj.traverse(spec, (a) => {
+    //console.log(a);
+    if (a.key == "field") {
+      v.push({ field: a.value, input_domain: a.parent.input_domain });
+      //console.log("CAPTURE ", a); // CAPTURE MARK AND TYPE ALSO?
+    }
+  });
+  return /*_.*/uniq(v.map((d) => d.field)); // return {mapped, summary}
+  }
+
+  console.log('dn', mappings(spec))
+}
+
+p(spec)
+return {traverseObj,uniq,p};
+}});
+
+define({id: "89d97e70", inputs: ["calcuvegadata","model","spec","domains","cursor","display","Inputs","data_source2"], outputs: ["data_source"], body: (calcuvegadata,model,spec,domains,cursor,display,Inputs,data_source2) => {
+const data_source = calcuvegadata({
+  models: [model],
+  spec: spec.layer[0],
+  domains,
+  input_cursors: [
+    cursor
+  ]
+})
+
+display(spec)
+
+display(Inputs.table(data_source2))//).filter(d => d.x_in <0)))
+//display(Inputs.table(data_source_cursor))
+return {data_source};
+}});
+
+define({id: "f07510af", inputs: ["viz","data_source"], body: (viz,data_source) => {
+viz.view.data("data", data_source).resize().run(); // turn off resize
+}});
+
+define({id: "8881ae56", inputs: ["viz","t_in","display"], body: async (viz,t_in,display) => {
+display(await(
+viz.view.signal('t_in', t_in).run()
+))
+}});
+
+define({id: "7a169c21", inputs: ["Inputs","Generators"], outputs: ["size_in","t_in_Input","t_in"], body: (Inputs,Generators) => {
+const size_in = 16
+
+const t_in_Input = Inputs.range([0,1000],{label:'t_in', step:1, value:0})//input(0);
+const t_in = Generators.input(t_in_Input);
+
+return {size_in,t_in_Input,t_in};
+}});
+
+define({id: "45245902", inputs: ["compileWithMemo","cul_default","introspection2"], outputs: ["esm","introspection","inputs","formulae_not_inputs","model"], body: async (compileWithMemo,cul_default,introspection2) => {
+const esm = compileWithMemo(cul_default)
+const introspection = introspection2(cul_default)
+
+const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
+
+const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+
+
+const model = await import(URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" })).toString())
+return {esm,introspection,inputs,formulae_not_inputs,model};
+}});
+
+define({id: "fe6932b8", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo","Scrubber","calcuvegadata","embed_","embed"], body: async () => {
+const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}, {Scrubber}, {calcuvegadata}, {default: embed_}] = await Promise.all([import("./_observablehq/stdlib.js"), import("./_import/components/helpers.114a7fce.js"), import("./_import/components/mini-calculang.3e8f8efa.js"), import("./_import/components/scrubber.a7df8a1e.js"), import("./_import/components/calcuvegadata.42318415.js"), import("./_npm/vega-embed@6.24.0/+esm.js")]);
+
+const cul_default = await FileAttachment('./cul/keep-car-cli.cul.js').text()
+
+
+
+
+
+
+const embed = (a,b,options) => embed_(a,b, {renderer:'svg', ...options});
+return {FileAttachment,cul_default,calcuvizspec,calcudata,compile,introspection2,compileWithMemo,Scrubber,calcuvegadata,embed_,embed};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">some calculang things</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
+    <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
+    <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
+    <li class="observablehq-link"><a href="./shader/shader">Editable Shader 🧊</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<p>Ref: <a href="https://worrydream.com/LadderOfAbstraction/">Up and Down the Ladder of Abstraction</a> by Bret Victor</p>
+<p>"The keep-the-car-on-the-road algorithm is a favorite example of Alan Kay when demonstrating Etoys" ...</p>
+<style>
+@keyframes flash {
+  from { background-color: var(--theme-blue); }
+  to { background-color: none; }
+}
+.flash {
+  animation-name: flash;
+  animation-duration: 3s;
+}
+@keyframes flashout {
+  from { background-color: pink; }
+  to { opacity: 0.01; visibility:hidden; display:none }
+}
+.flashout {
+  animation-name: flashout;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+</style>
+<p><em>and some other wip things</em></p>
+<div id="cell-ba5ae161" class="observablehq observablehq--block"></div>
+<div id="cell-a4f52625" class="observablehq observablehq--block"></div>
+<div id="cell-5cbd303e" class="observablehq observablehq--block"></div>
+<div id="viz2"></div>
+<h3 id="inputs-ui%3A" tabindex="-1"><a class="observablehq-header-anchor" href="#inputs-ui%3A">inputs ui:</a></h3>
+<div id="cell-c72d4499" class="observablehq observablehq--block"></div>
+<div id="cell-5cdbd044" class="observablehq observablehq--block"></div>
+<div id="cell-348c99ce" class="observablehq observablehq--block"></div>
+<div id="cell-d0ae8ae5" class="observablehq observablehq--block"></div>
+<hr>
+<div id="cell-1bd1fc7e" class="observablehq observablehq--block"></div>
+<div id="cell-ccf00d82" class="observablehq observablehq--block"></div>
+<div id="cell-9b350580" class="observablehq observablehq--block"></div>
+<h3 id="inputs-cursor%3A" tabindex="-1"><a class="observablehq-header-anchor" href="#inputs-cursor%3A">inputs cursor:</a></h3>
+<div id="cell-73c08299" class="observablehq observablehq--block observablehq--loading"></div>
+<div id="cell-d7b523c6" class="observablehq observablehq--block observablehq--loading"></div>
+<div id="cell-5fbcbf44" class="observablehq observablehq--block"></div>
+<div id="cell-fb26b2f2" class="observablehq observablehq--block"></div>
+<div id="viz"></div>
+<hr>
+<h2 id="appendix-%26-source-code-of-%F0%9F%8E%A8" tabindex="-1"><a class="observablehq-header-anchor" href="#appendix-%26-source-code-of-%F0%9F%8E%A8">appendix &amp; source code of 🎨</a></h2>
+<p><em>showing selected source code of 🎨</em></p>
+<p>For complete source see <a href="https://github.com/declann/calculang-develop-with-framework/tree/dev">GitHub</a>.</p>
+<details><summary>notes</summary>this is Javascript and using tools and patterns that I repeat, but remember that calculang is unopinionated!<br>
+calculang/output is also highly portable and uniform.</details>
+<hr>
+<p><img src="./_file/ffox.71d75970.png" alt=""></p>
+<h2 id="visual-1-(main-output%2C-with-mouse-interactivity)" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-1-(main-output%2C-with-mouse-interactivity)">visual 1 (main output, with mouse interactivity)</a></h2>
+<div id="cell-0c552318" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> vs_i = {
+  <span class="hljs-attr">encodings</span>: {
+    <span class="hljs-attr">x</span>: <span class="hljs-string">'x_in'</span>,
+    <span class="hljs-attr">y</span>: <span class="hljs-string">'y_in'</span>,
+    <span class="hljs-attr">color</span>: f0,
+    <span class="hljs-attr">size</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">shape</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">opacity</span>: <span class="hljs-string">''</span>
+  }
+}
+
+<span class="hljs-keyword">const</span> domains = {
+    <span class="hljs-attr">formula</span>: <span class="hljs-comment">/*formulae_not_inputs*/</span> [<span class="hljs-string">"road"</span>,<span class="hljs-comment">/*"road2","roadm2",*/</span> <span class="hljs-string">"a1"</span>,<span class="hljs-string">"a2"</span>,<span class="hljs-string">"a3"</span>],
+    <span class="hljs-attr">x_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">25</span>,<span class="hljs-number">0.3</span>),
+    <span class="hljs-attr">y_in</span>: _.<span class="hljs-title function_">range</span>(-<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0.3</span>)
+  };
+
+<span class="hljs-keyword">const</span> spec = ({
+  <span class="hljs-comment">// vega-lite</span>
+  <span class="hljs-attr">layer</span>: [{
+    <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'rect'</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>},
+    <span class="hljs-attr">encoding</span>: {
+      <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">x</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">axis</span>:<span class="hljs-literal">null</span> },
+      <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">y</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">axis</span>:<span class="hljs-literal">null</span>, <span class="hljs-attr">sort</span>: <span class="hljs-string">'descending'</span> },
+      <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>:vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">color</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">range</span>:<span class="hljs-string">'diverging'</span>}, <span class="hljs-attr">legend</span>: <span class="hljs-literal">false</span>},
+      <span class="hljs-comment">//detail: {field:vs_i.encodings.detail}, // I guess works</span>
+      <span class="hljs-comment">//row: {field:vs_i.encodings.row}, // TODO (this vega lite)</span>
+      <span class="hljs-comment">//col: {field:vs_i.encodings.col}, // TODO (this vega lite)</span>
+      <span class="hljs-attr">size</span>: {<span class="hljs-attr">field</span>:vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">size</span>},
+      <span class="hljs-attr">shape</span>: {<span class="hljs-attr">field</span>:vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">shape</span>},
+      <span class="hljs-comment">//anim__: {field:vs_i.encodings.anim},</span>
+      <span class="hljs-attr">opacity</span>: vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">shape</span> != <span class="hljs-string">''</span> ? {<span class="hljs-attr">field</span>:vs_i.<span class="hljs-property">encodings</span>.<span class="hljs-property">shape</span>} : {}, <span class="hljs-comment">// OVERRIDES APPROACH?</span>
+    },
+    <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
+  },
+  {
+    <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>},
+    <span class="hljs-attr">encoding</span>: {
+      <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'carx'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: d3.<span class="hljs-title function_">extent</span>(domains.<span class="hljs-property">x_in</span>) } },
+      <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'cary'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: d3.<span class="hljs-title function_">extent</span>(domains.<span class="hljs-property">y_in</span>) } },
+      <span class="hljs-attr">detail</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'t_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">sort</span>: <span class="hljs-string">'descending'</span> },
+      <span class="hljs-attr">color</span>: {<span class="hljs-attr">value</span>: <span class="hljs-string">'green'</span>},
+            <span class="hljs-attr">trick__</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'car_angle'</span>}
+
+      <span class="hljs-comment">//color: { field: 'car_offroad', type: 'nominal' },</span>
+    },
+    <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data2"</span> },
+  },
+  {
+  <span class="hljs-string">"mark"</span>: {<span class="hljs-string">"type"</span>: <span class="hljs-string">"image"</span>, <span class="hljs-string">"width"</span>: <span class="hljs-number">50</span>, <span class="hljs-string">"height"</span>: <span class="hljs-number">50</span>},
+    <span class="hljs-attr">transform</span>: [{<span class="hljs-attr">filter</span>: <span class="hljs-string">"datum.t_in == t_in"</span>}], <span class="hljs-comment">// detect t_in by datum.thing search?</span>
+    <span class="hljs-attr">encoding</span>: {
+      <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'carx'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: d3.<span class="hljs-title function_">extent</span>(domains.<span class="hljs-property">x_in</span>) } },
+      <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'cary'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: d3.<span class="hljs-title function_">extent</span>(domains.<span class="hljs-property">y_in</span>) } },
+      <span class="hljs-attr">url</span>: { <span class="hljs-attr">value</span>: <span class="hljs-string">'/_file/ffox.png'</span>,  <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span> }, <span class="hljs-comment">// from https://freepngimg.com/png/11315-car-free-download-png</span>
+      <span class="hljs-attr">color</span>: {<span class="hljs-attr">value</span>: <span class="hljs-string">'green'</span>},
+      <span class="hljs-attr">size</span>: {<span class="hljs-attr">value</span>:<span class="hljs-number">30</span>},
+      <span class="hljs-attr">opacity</span>: {<span class="hljs-attr">value</span>:<span class="hljs-number">0.02</span>}
+      <span class="hljs-comment">//angle: {value: -10}</span>
+      <span class="hljs-comment">//color: { field: 'car_offroad', type: 'nominal' },</span>
+    },
+    <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data2"</span> },
+  },
+  {
+  <span class="hljs-string">"mark"</span>: {<span class="hljs-string">"type"</span>: <span class="hljs-string">"text"</span>, <span class="hljs-string">"width"</span>: <span class="hljs-number">50</span>, <span class="hljs-string">"height"</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">fontWeight</span>:<span class="hljs-string">'bold'</span>, <span class="hljs-attr">baseline</span>: <span class="hljs-string">'middle'</span>, <span class="hljs-attr">align</span>:<span class="hljs-string">'center'</span>},
+    <span class="hljs-attr">transform</span>: [{<span class="hljs-attr">filter</span>: <span class="hljs-string">"datum.t_in == t_in"</span>}, {<span class="hljs-attr">calculate</span>: <span class="hljs-string">"-datum.car_angle*57"</span>, <span class="hljs-string">"as"</span> :<span class="hljs-string">"car_angle2"</span>}],
+    <span class="hljs-attr">encoding</span>: {
+      <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'carx'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: d3.<span class="hljs-title function_">extent</span>(domains.<span class="hljs-property">x_in</span>) } },
+      <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'cary'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: d3.<span class="hljs-title function_">extent</span>(domains.<span class="hljs-property">y_in</span>) } },
+      <span class="hljs-attr">text</span>: { <span class="hljs-attr">value</span>: <span class="hljs-string">'🚗'</span>,  <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span> }, <span class="hljs-comment">// from https://freepngimg.com/png/11315-car-free-download-png</span>
+      <span class="hljs-attr">color</span>: {<span class="hljs-attr">value</span>: <span class="hljs-string">'red'</span>},
+      <span class="hljs-attr">size</span>: {<span class="hljs-attr">value</span>:<span class="hljs-number">30</span>},
+      <span class="hljs-comment">//detail: {field: 't_in'}</span>
+      <span class="hljs-comment">//angle: {value: 90},</span>
+      <span class="hljs-attr">angle</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">"car_angle2"</span>, <span class="hljs-attr">type</span>:<span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">360</span>],<span class="hljs-attr">range</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">360</span>]}},
+      <span class="hljs-comment">//color: { field: 'car_offroad', type: 'nominal' },</span>
+    },
+    <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data2"</span> },
+  },
+  <span class="hljs-comment">/*{
+    transform: [{filter: `0 &amp;&amp; datum.t_in == animation`}], // TODO lookup anim encoding
+    mark: {type:'point', point: false, filled: false, strokeWidth:5, tooltip:true},
+    encoding: {
+      opacity: {value: .5},
+      x: { field:vs_i.encodings.x, type: 'quantitative' },
+      y: { field:vs_i.encodings.y, type: 'quantitative' },
+      size: {value: 800},
+      //color: {field:vs_i.encodings.color, type: 'nominal'}
+    },
+    data: { name: "data" },
+  }*/</span>
+  ],
+  <span class="hljs-comment">// autosize breaks consistency when mappings change</span>
+  <span class="hljs-comment">//autosize: { "type": "fit", "contains": "padding"},</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-number">400</span>,<span class="hljs-comment">//Math.min(400,rhs_width-30),</span>
+  <span class="hljs-attr">height</span>: <span class="hljs-number">150</span>,
+  <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>,
+})
+
+<span class="hljs-comment">// interactivity via vega signals and listeners</span>
+<span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec, {<span class="hljs-attr">patch</span>: [{
+  <span class="hljs-attr">path</span>: <span class="hljs-string">"/signals"</span>,
+  <span class="hljs-attr">op</span>: <span class="hljs-string">"add"</span>,
+  <span class="hljs-attr">value</span>: [{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"t_in"</span>,
+    <span class="hljs-comment">//value: 8,</span>
+  }]
+}]})
+</code></pre>
+<p>new messing:</p>
+<div id="cell-2b401859" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> traverseObj <span class="hljs-keyword">from</span> <span class="hljs-string">"npm:object-traversal"</span>;
+<span class="hljs-keyword">import</span> {uniq} <span class="hljs-keyword">from</span> <span class="hljs-string">"npm:underscore"</span>;
+
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">p</span> = (<span class="hljs-params">spec</span>) =&gt; {
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">mappings</span> = (<span class="hljs-params">spec</span>) =&gt; {
+  <span class="hljs-keyword">let</span> v = [];
+  traverseObj.<span class="hljs-title function_">traverse</span>(spec, <span class="hljs-function">(<span class="hljs-params">a</span>) =&gt;</span> {
+    <span class="hljs-comment">//console.log(a);</span>
+    <span class="hljs-keyword">if</span> (a.<span class="hljs-property">key</span> == <span class="hljs-string">"field"</span>) {
+      v.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">field</span>: a.<span class="hljs-property">value</span>, <span class="hljs-attr">input_domain</span>: a.<span class="hljs-property">parent</span>.<span class="hljs-property">input_domain</span> });
+      <span class="hljs-comment">//console.log("CAPTURE ", a); // CAPTURE MARK AND TYPE ALSO?</span>
+    }
+  });
+  <span class="hljs-keyword">return</span> <span class="hljs-comment">/*_.*/</span><span class="hljs-title function_">uniq</span>(v.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">d</span>) =&gt;</span> d.<span class="hljs-property">field</span>)); <span class="hljs-comment">// return {mapped, summary}</span>
+  }
+
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'dn'</span>, <span class="hljs-title function_">mappings</span>(spec))
+}
+
+<span class="hljs-title function_">p</span>(spec)
+</code></pre>
+<div id="cell-89d97e70" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source = <span class="hljs-title function_">calcuvegadata</span>({
+  <span class="hljs-attr">models</span>: [model],
+  <span class="hljs-attr">spec</span>: spec.<span class="hljs-property">layer</span>[<span class="hljs-number">0</span>],
+  domains,
+  <span class="hljs-attr">input_cursors</span>: [
+    cursor
+  ]
+})
+
+<span class="hljs-title function_">display</span>(spec)
+
+<span class="hljs-title function_">display</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">table</span>(data_source2))<span class="hljs-comment">//).filter(d =&gt; d.x_in &lt;0)))</span>
+<span class="hljs-comment">//display(Inputs.table(data_source_cursor))</span>
+</code></pre>
+<div id="cell-f07510af" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source).<span class="hljs-title function_">resize</span>().<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
+</code></pre>
+<div id="cell-8881ae56" class="observablehq observablehq--block observablehq--loading"></div>
+<pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">signal</span>(<span class="hljs-string">'t_in'</span>, t_in).<span class="hljs-title function_">run</span>()
+</code></pre>
+<hr>
+<div id="cell-7a169c21" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> size_in = <span class="hljs-number">16</span>
+
+<span class="hljs-keyword">const</span> t_in_Input = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">0</span>,<span class="hljs-number">1000</span>],{<span class="hljs-attr">label</span>:<span class="hljs-string">'t_in'</span>, <span class="hljs-attr">step</span>:<span class="hljs-number">1</span>, <span class="hljs-attr">value</span>:<span class="hljs-number">0</span>})<span class="hljs-comment">//input(0);</span>
+<span class="hljs-keyword">const</span> t_in = <span class="hljs-title class_">Generators</span>.<span class="hljs-title function_">input</span>(t_in_Input);
+
+</code></pre>
+<div id="cell-45245902" class="observablehq observablehq--block"></div>
+<div id="cell-fe6932b8" class="observablehq observablehq--block"></div>
+</main>
+<footer id="observablehq-footer">
+<div>Made with 💓 and <a href="https://calculang.dev">calculang</a></div>
+</footer>
+</div>

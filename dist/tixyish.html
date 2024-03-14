@@ -3,116 +3,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>tixy-ish 🎨 | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="./_import/custom-style.css">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/custom-style.4c1ac317.css">
 <link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
-<link rel="stylesheet" type="text/css" href="./_import/custom-style.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.4c1ac317.css">
 <link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
-<link rel="modulepreload" href="./_import/components/calcuvegadata.js?sha=7a928fe52021581e13b89961406c20843351e50c35b764010ecfbe1f37ac76c4">
-<link rel="modulepreload" href="./_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a">
-<link rel="modulepreload" href="./_import/components/mini-calculang.js?sha=e4872dbaf95ee5ec0b810e1e943345f30adce8d8b8a1b25935091d07ef762bfa">
-<link rel="modulepreload" href="./_import/components/scrubber.js?sha=1acf720c74afa19787ae0c83487051939ab75585847f9bcb9c263ba7cee08215">
-<link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.js?sha=b2fd4ae8251ba29072449e09c51458852abc527fe5c5f9ab93b076b337882645">
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_import/components/scrubber.a7df8a1e.js">
+<link rel="modulepreload" href="./_npm/line-column@1.0.2/+esm.js">
+<link rel="modulepreload" href="./_npm/source-map-js@1.0.2/+esm.js">
+<link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.b93111cb.js">
+<link rel="modulepreload" href="./_import/components/calcuvegadata.42318415.js">
+<link rel="modulepreload" href="./_import/components/helpers.114a7fce.js">
+<link rel="modulepreload" href="./_import/components/mini-calculang.3e8f8efa.js">
+<link rel="modulepreload" href="./_npm/vega-embed@6.24.0/+esm.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/+esm.js">
 <link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.1.13/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/compassql@0.21.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-axis@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-brush@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-chord@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-color@3.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-contour@4.0.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-delaunay@6.0.4/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-dispatch@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-drag@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-dsv@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-ease@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-fetch@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-force@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-format@3.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-geo-projection@4.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-geo@3.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-hierarchy@3.1.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-interpolate@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-path@3.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-polygon@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-quadtree@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-random@3.0.1/+esm">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require@1.3.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-scale@4.0.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-selection@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-shape@3.2.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-time-format@4.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-time@3.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-timer@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-transition@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-zoom@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3@7.8.5/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/delaunator@5.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/fast-json-patch@3.1.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/htl@0.3.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/internmap@2.0.3/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/isarray@1.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/isobject@2.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/isoformat@0.2.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/json-stringify-pretty-compact@3.0.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/line-column@1.0.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/lodash@4.17.21/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/object-traversal@1.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/robust-predicates@3.0.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/source-map-js@1.0.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/underscore@1.13.6/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-canvas@1.2.7/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-crossfilter@4.1.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-dataflow@5.7.5/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-encode@4.9.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-event-selector@3.0.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-expression@5.1.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-force@4.2.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-format@1.1.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-functions@5.14.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-geo@4.4.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-hierarchy@4.1.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-interpreter@1.0.5/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-label@1.2.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-loader@4.5.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-parser@6.2.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-projection@1.6.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-regression@1.2.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-runtime@6.1.4/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scale@7.3.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scenegraph@4.11.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scenegraph@4.11.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-scenegraph@4.11.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-schema-url-parser@2.2.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-selections@5.4.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-statistics@1.9.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-themes@2.14.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-time@2.1.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-tooltip@0.34.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-transforms@4.11.0/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-util@1.17.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-view-transforms@4.5.9/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-view@5.11.1/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-voronoi@4.2.2/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega-wordcloud@4.1.4/+esm">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/vega@5.26.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
+<link rel="modulepreload" href="./_npm/object-traversal@1.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/underscore@1.13.6/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-require@1.3.0/+esm.js">
+<link rel="modulepreload" href="./_npm/compassql@0.21.2/+esm.js">
+<link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.1.13/+esm.js">
+<link rel="modulepreload" href="./_npm/lodash@4.17.21/+esm.js">
+<link rel="modulepreload" href="./_npm/d3@7.8.5/+esm.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/+esm.js">
+<link rel="modulepreload" href="./_npm/isarray@1.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/isobject@2.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/fast-json-patch@3.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/json-stringify-pretty-compact@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega@5.26.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-interpreter@1.0.5/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-lite@5.16.3/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-schema-url-parser@2.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-themes@2.14.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-tooltip@0.34.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-util@1.17.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-dataflow@5.7.5/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-transforms@4.11.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-view-transforms@4.5.9/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-encode@4.9.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-geo@4.4.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-force@4.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-hierarchy@4.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-label@1.2.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-regression@1.2.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-voronoi@4.2.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-wordcloud@4.1.4/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-crossfilter@4.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-statistics@1.9.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-time@2.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-loader@4.5.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scale@7.3.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-projection@1.6.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-view@5.11.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-format@1.1.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-functions@5.14.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-parser@6.2.1/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-runtime@6.1.4/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-expression@5.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-event-selector@3.0.1/+esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/+esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.2/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-canvas@1.2.7/+esm.js">
+<link rel="modulepreload" href="./_npm/topojson-client@3.1.0/+esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.0/+esm.js">
+<link rel="modulepreload" href="./_npm/vega-selections@5.4.2/+esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/+esm.js">
 <script type="module">
 
 import {define} from "./_observablehq/client.js";
+import {registerFile} from "./_observablehq/stdlib.js";
+
+registerFile("./cul/tixy.cul.js", {"name":"./cul/tixy.cul.js","mimeType":"application/javascript","path":"./_file/cul/tixy.cul.b798c2f7.js"});
 
 define({id: "a3e249e2", outputs: ["Scrubber","lineColumn","SourceMapConsumer"], body: async () => {
-const [{Scrubber}, lineColumn, {SourceMapConsumer}] = await Promise.all([import("./_import/components/scrubber.js?sha=1acf720c74afa19787ae0c83487051939ab75585847f9bcb9c263ba7cee08215"), import("https://cdn.jsdelivr.net/npm/line-column@1.0.2/+esm"), import("https://cdn.jsdelivr.net/npm/source-map-js@1.0.2/+esm")]);
+const [{Scrubber}, lineColumn, {SourceMapConsumer}] = await Promise.all([import("./_import/components/scrubber.a7df8a1e.js"), import("./_npm/line-column@1.0.2/+esm.js"), import("./_npm/source-map-js@1.0.2/+esm.js")]);
 
 
 
@@ -120,7 +123,7 @@ return {Scrubber,lineColumn,SourceMapConsumer};
 }});
 
 define({id: "751948f3", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","selection","editor"], body: async (cul_default,Mutable) => {
-const [{editor: editorCm, config: eslintConfig}, {calcuvegadata}] = await Promise.all([import("./_import/graphing-calcs/editor.bundle.js?sha=b2fd4ae8251ba29072449e09c51458852abc527fe5c5f9ab93b076b337882645"), import("./_import/components/calcuvegadata.js?sha=7a928fe52021581e13b89961406c20843351e50c35b764010ecfbe1f37ac76c4")]);
+const [{editor: editorCm, config: eslintConfig}, {calcuvegadata}] = await Promise.all([import("./_import/graphing-calcs/editor.bundle.b93111cb.js"), import("./_import/components/calcuvegadata.42318415.js")]);
 
 
 const start_doc = cul_default
@@ -305,7 +308,7 @@ const rhs_width = Generators.width(document.querySelector(".rhs")); // keep as a
 return {size_in,t_in_Input,t_in,rhs_width};
 }});
 
-define({id: "222def3f", inputs: ["compileWithMemo","doc","introspection2"], outputs: ["esm","introspection","inputs","formulae_not_inputs","model"], body: async (compileWithMemo,doc,introspection2) => {
+define({id: "4d16d616", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
 const esm = compileWithMemo(doc)
 const introspection = introspection2(doc)
 //display(introspection.cul_input_map)
@@ -320,16 +323,21 @@ const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d =
 //display(formulae_not_inputs)
 
 
-const model = await import(URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" })).toString())
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
 
 //display(model)
 
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
-return {esm,introspection,inputs,formulae_not_inputs,model};
+
+return {esm,introspection,inputs,formulae_not_inputs,u,model};
 }});
 
-define({id: "2fd2cf19", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo"], files: [{"name":"./cul/tixy.cul.js","mimeType":"application/javascript","path":"./_file/cul/tixy.cul.js"}], body: async () => {
-const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("./_observablehq/stdlib.js"), import("./_import/components/helpers.js?sha=c589c29e2b907858eb0c73bb4c6dfbd963870c441fb1d4a23a9ae14ba539407a"), import("./_import/components/mini-calculang.js?sha=e4872dbaf95ee5ec0b810e1e943345f30adce8d8b8a1b25935091d07ef762bfa")]);
+define({id: "2fd2cf19", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo"], body: async () => {
+const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("./_observablehq/stdlib.js"), import("./_import/components/helpers.114a7fce.js"), import("./_import/components/mini-calculang.3e8f8efa.js")]);
 
 const cul_default = await FileAttachment('./cul/tixy.cul.js').text()
 
@@ -339,7 +347,7 @@ return {FileAttachment,cul_default,calcuvizspec,calcudata,compile,introspection2
 }});
 
 define({id: "b1870f13", outputs: ["embed_","embed"], body: async () => {
-const {default: embed_} = await import("https://cdn.jsdelivr.net/npm/vega-embed@6.24.0/+esm");
+const {default: embed_} = await import("./_npm/vega-embed@6.24.0/+esm.js");
 
 const embed = (a,b,options) => embed_(a,b, {renderer:'svg', ...options});
 return {embed_,embed};
@@ -416,15 +424,13 @@ return {exec,selection_fn};
     <li class="observablehq-link"><a href="./">some calculang things</a></li>
   </ol>
   <ol>
+    <li class="observablehq-link"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
     <li class="observablehq-link observablehq-link-active"><a href="./tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
-    <li class="observablehq-link"><a href="./flower/flower">🌸 (old-style)</a></li>
-    <li class="observablehq-link"><a href="./graphing-calcs/graphing-calcs">❤️ (old-style)</a></li>
     <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
     <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
     <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
     <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
-    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit">Editable ❤️</a></li>
     <li class="observablehq-link"><a href="./shader/shader">Editable Shader 🧊</a></li>
   </ol>
 </nav>
@@ -440,7 +446,7 @@ return {exec,selection_fn};
     <div class="grow">
     <h1>ƒ</h1>
     <!-- can I collapse things responsively? -->
-    <details class="calculang" open><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
+    <details class="calculang" open=""><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
     <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
     <span id="cell-1a748ae6" class="observablehq--loading"></span>
     <details><summary>javascript ✨</summary>
@@ -458,7 +464,7 @@ return {exec,selection_fn};
   <div class="rhs" style="background: pink">
     <h1>🎨</h1>
     <div class="card">
-    <details open><summary>inputs ⚙️</summary>
+    <details open=""><summary>inputs ⚙️</summary>
     <span id="cell-67e018a0" class="observablehq--loading"></span>
     <!--<span id="cell-7cd39fa7" class="observablehq--loading"></span>-->
     </details>
@@ -466,17 +472,17 @@ return {exec,selection_fn};
   <div class="card" id="viz"></div>
   <h3>eval-on-select (select formula text, then activate with F9)</h3>
   <div class="card" id="viz2"></div>
-  <details open><summary>compiled selection (via sourcemap)</summary>
+  <details open=""><summary>compiled selection (via sourcemap)</summary>
   <pre><span id="cell-0663b417" class="observablehq--loading"></span></pre></details> <!-- editing html breaks my visuals -->
   </div>
 </div>
-<span><br>
 <br>
 <br>
 <br>
 <br>
 <br>
-</span><hr>
+<br>
+<hr>
 <h2 id="appendix-%26-source-code-of-%F0%9F%8E%A8" tabindex="-1"><a class="observablehq-header-anchor" href="#appendix-%26-source-code-of-%F0%9F%8E%A8">appendix &amp; source code of 🎨</a></h2>
 <p><em>showing selected source code of 🎨</em></p>
 <p>For complete source see <a href="https://github.com/declann/calculang-develop-with-framework/tree/dev">GitHub</a>.</p>
@@ -484,7 +490,7 @@ return {exec,selection_fn};
 calculang/output is also highly portable and uniform.</details>
 <hr>
 <h2 id="visual-1-(main-output%2C-with-mouse-interactivity)" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-1-(main-output%2C-with-mouse-interactivity)">visual 1 (main output, with mouse interactivity)</a></h2>
-<div><div id="cell-d69b9fcb" class="observablehq observablehq--block"></div>
+<div id="cell-d69b9fcb" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
   <span class="hljs-attr">title</span>: <span class="hljs-string">"v"</span>,
@@ -526,7 +532,7 @@ calculang/output is also highly portable and uniform.</details>
   }]
 }]})
 </code></pre>
-</div><div><div id="cell-3b876112" class="observablehq observablehq--block"></div>
+<div id="cell-3b876112" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source = <span class="hljs-title function_">calcuvegadata</span>({
   <span class="hljs-attr">models</span>: [model],
   spec,
@@ -539,13 +545,13 @@ calculang/output is also highly portable and uniform.</details>
   ]
 })
 </code></pre>
-</div><div><div id="cell-7087a911" class="observablehq observablehq--block"></div>
+<div id="cell-7087a911" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
 </code></pre>
-</div><div><div id="cell-1eb91a98" class="observablehq observablehq--block"></div>
+<div id="cell-1eb91a98" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> random_seed_in = <span class="hljs-string">'x'</span> <span class="hljs-comment">// reactive issues if mixed in mutable updates blocks</span>
 </code></pre>
-</div><div><div id="cell-af671647" class="observablehq observablehq--block"></div>
+<div id="cell-af671647" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> mousex_in = <span class="hljs-title class_">Mutable</span>(<span class="hljs-number">8</span>)
 <span class="hljs-keyword">const</span> mousey_in = <span class="hljs-title class_">Mutable</span>(<span class="hljs-number">8</span>)
 
@@ -557,9 +563,9 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
   mousey_in.<span class="hljs-property">value</span> = viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">signal</span>(<span class="hljs-string">'mousey'</span>)
 })
 </code></pre>
-</div><hr>
+<hr>
 <h2 id="visual-2" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-2">visual 2</a></h2>
-<div><div id="cell-b9cc4f0a" class="observablehq observablehq--block"></div>
+<div id="cell-b9cc4f0a" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec2 = ({
   <span class="hljs-comment">// vega-lite</span>
   <span class="hljs-attr">title</span>: <span class="hljs-string">"selection"</span>,
@@ -582,7 +588,7 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
 
 <span class="hljs-keyword">const</span> viz2 = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz2'</span>, spec2)
 </code></pre>
-</div><div><div id="cell-b91e7b65" class="observablehq observablehq--block"></div>
+<div id="cell-b91e7b65" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source2 = <span class="hljs-title function_">calcuvegadata</span>({
   <span class="hljs-attr">models</span>: [{<span class="hljs-attr">selection_fn</span>: <span class="hljs-function">(<span class="hljs-params">a</span>) =&gt;</span> <span class="hljs-title function_">selection_fn</span>(model,a)}],
   <span class="hljs-attr">spec</span>: spec2,
@@ -595,11 +601,11 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
   ]
 })
 </code></pre>
-</div><div><div id="cell-08241b4e" class="observablehq observablehq--block"></div>
+<div id="cell-08241b4e" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js">viz2.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source2)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
 </code></pre>
-</div><hr>
-<div><div id="cell-9e7e00b6" class="observablehq observablehq--block"></div>
+<hr>
+<div id="cell-9e7e00b6" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> size_in = <span class="hljs-number">16</span>
 
 <span class="hljs-keyword">const</span> t_in_Input = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">input</span>(<span class="hljs-number">0</span>);
@@ -607,7 +613,7 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
 
 <span class="hljs-keyword">const</span> rhs_width = <span class="hljs-title class_">Generators</span>.<span class="hljs-title function_">width</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">".rhs"</span>)); <span class="hljs-comment">// keep as a generator for reactivity</span>
 </code></pre>
-</div><div id="cell-222def3f" class="observablehq observablehq--block"></div>
+<div id="cell-4d16d616" class="observablehq observablehq--block"></div>
 <div id="cell-2fd2cf19" class="observablehq observablehq--block"></div>
 <div id="cell-b1870f13" class="observablehq observablehq--block"></div>
 <hr>
@@ -615,12 +621,12 @@ viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">a
 <div id="cell-6878cf4f" class="observablehq observablehq--block"></div>
 <div id="cell-178d48fc" class="observablehq observablehq--block"></div>
 <div id="cell-301ac0f1" class="observablehq observablehq--block"></div>
-<div><div id="cell-9109c35b" class="observablehq observablehq--block"></div>
+<div id="cell-9109c35b" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-comment">// all inputs must be maintianed here to pass to selection function</span>
 
 <span class="hljs-keyword">const</span> ins = ({<span class="hljs-attr">x_in</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">y_in</span>:<span class="hljs-number">8</span>, t_in, random_seed_in, mousex_in, mousey_in})
 </code></pre>
-</div><div id="cell-e58b7881" class="observablehq observablehq--block"></div>
+<div id="cell-e58b7881" class="observablehq observablehq--block"></div>
 <p>todo maintain eval selection range with edits? Alt.: don't react to edits by freezing into Mutable, but this is poor.
 and multi-selection (concatenating useful imo)</p>
 </main>

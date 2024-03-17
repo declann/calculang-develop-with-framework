@@ -89,7 +89,7 @@ upF(document.querySelector('#selected_formulae'), selected_formulae_Input, formu
 ```js
 //const selected_formulae = view(Inputs.checkbox(formulae_not_inputs, {label: "formulae",  value: ["npv", "total_cf"]/*formulae_not_inputs*/}));
 
-const selected_formulae_Input = Inputs.input({answer:true})
+const selected_formulae_Input = Inputs.input(Object.fromEntries(formulae_not_inputs.map(d => [d, true])))//({answer:true})
 const selected_formulae2 = Generators.input(selected_formulae_Input)
 ```
 ```js

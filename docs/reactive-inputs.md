@@ -111,14 +111,14 @@ const data = calcudata({
 
 const spec = ({
   // vega-lite
-  mark: {type:'text', tooltip:true, fontSize:20},
+  mark: {type:'text', tooltip:true, fontSize:20, align:'right', font:'monospace', fontWeight: 'bold'},
   encoding: {
     y: { field: 'formula', type: 'nominal' },
     color: { field: 'formula', type: 'nominal', legend: false },
     text: {field: 'value', type: 'nominal', format:',.2f'},
   },
   data: { name: "data" },
-  width: 200,
+  width: 400,
   //height: 200,
 })
 
@@ -189,3 +189,9 @@ esm_memo? esm.code : esm_nomemo.code
 ```
 
 </details>
+
+```js
+
+introspection.cul_links
+
+```

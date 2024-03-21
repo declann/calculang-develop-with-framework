@@ -127,11 +127,34 @@ pre {
   animation-duration: 3s;
 }
 @keyframes flashout {
-  from { background-color: pink; }
-  to { opacity: 0.01; visibility:hidden; display:none }
+  from {
+    background-color: pink;
+  }
+  to {
+    margin-top: -20px;
+    opacity: 0.01;
+    visibility: hidden;
+    display: none;
+    animation-timing-function: cubic-bezier(0.36, 0.97, 1, 1);
+  }
 }
 .flashout {
   animation-name: flashout;
   animation-duration: 3s;
   animation-fill-mode: forwards;
+}
+
+.code > summary {
+  opacity: 0.6;
+  font-size: 0.8em;
+  font-family: monospace;
+}
+.code > summary:hover {
+  opacity: 1;
+  font-size: 0.8em;
+  font-family: monospace;
+}
+
+.code > summary::marker {
+  content: '' 
 }

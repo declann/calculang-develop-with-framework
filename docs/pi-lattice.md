@@ -4,6 +4,19 @@ toc: false
 ---
 
 ```js
+// wrap echoed source code by details tag
+document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+  let wrapper = document.createElement('details');
+  wrapper.className = 'code'
+  let summary = document.createElement('summary')
+  summary.textContent = "code 👀"
+  wrapper.appendChild(summary)
+  el.parentNode.insertBefore(wrapper, el);
+  wrapper.appendChild(el);
+});
+```
+
+```js
 
 import {Scrubber} from './components/scrubber.js'
 
@@ -61,45 +74,6 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
 <span>⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
 <span>(using πr<sup>2</sup> and r=1)</span>
   <div class="card" id="viz"></div>
-<details><summary>📜</summary>
-
-```js
-const pis = [5, 10, 20,30,50,55,60,65,70,75]
-  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({ n_in}), proportion_inside: model.proportion_inside({ n_in}), error: model.error({ n_in})}))
-
-display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximation: d3.format(',.10f'), error: d3.format(',.4f') }}))
-```
-
-</details>
-
-  <p><strong>⚠️ This π approximation is not suitable for space travel.</strong> For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
-</div>
-</div>
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-
----
-
-
-## appendix & source code of 🎨
-
-*showing selected source code of 🎨*
-
-For complete source see [GitHub](https://github.com/declann/calculang-develop-with-framework/tree/dev).
-
-<details><summary>notes</summary>this is Javascript and using tools and patterns that I repeat, but remember that calculang is unopinionated!<br />
-calculang/output is also highly portable and uniform.</details>
-
----
-
-## visual 1
 
 ```js echo
 const spec = ({
@@ -139,6 +113,21 @@ const data_source = calcuvegadata({
 ```js echo
 viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
 ```
+
+<details><summary>📜</summary>
+
+```js echo
+const pis = [5, 10, 20,30,50,55,60,65,70,75]
+  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({ n_in}), proportion_inside: model.proportion_inside({ n_in}), error: model.error({ n_in})}))
+
+display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximation: d3.format(',.10f'), error: d3.format(',.4f') }}))
+```
+
+</details>
+
+  <p><strong>⚠️ This π approximation is not suitable for space travel.</strong> For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
+</div>
+</div>
 
 ```js
 

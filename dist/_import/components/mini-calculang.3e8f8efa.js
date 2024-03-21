@@ -14,7 +14,7 @@ const Babel = await require("@babel/standalone")
 // Framework-only
 
 
-import * as G from "../../_npm/@dagrejs/graphlib@2.1.13/+esm.js"
+import * as G from "../../_npm/@dagrejs/graphlib@2.2.1/+esm.js"
 //const G = await require("@dagrejs/graphlib")
 const alg = G.alg;
 

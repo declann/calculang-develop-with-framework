@@ -2,6 +2,7 @@
 title: Pi 🥮 by lattice
 toc: false
 ---
+
 ```js
 import {Scrubber} from './components/scrubber.js'
 ```
@@ -15,27 +16,27 @@ import {Scrubber} from './components/scrubber.js'
 
 <div class="card">
 <details open><summary>inputs ⚙️</summary>
-${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, alternate:false, loop:false,/*format:d => d3.format('.2f')(d)*/}), n_in_Input))}
+${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, loop:false}), n_in_Input))}
 </details>
 </div>
 
 Press **play** for an improving approximation of **π** based on approximating the area of a unit circle using a lattice!
 
-<details style="padding: 0.5rem; margin: 0.5rem"><summary style="">inspiration 🧙</summary>
+calculated area **inside** unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒
+
+### π ≈ ${model.pi_approximation({n_in}).toFixed(5)}
+
+⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span>
+
+(using πr<sup>2</sup> and r=1)
+
+<details style="padding: 0.2rem; margin: 0.2rem"><summary style="">inspiration 🧙</summary>
 
 [A Geogebra example](https://www.geogebra.org/m/kwty4hsz) I found linked in the [wikipedia article for Pi](https://www.geogebra.org/u/kmhkmh). I replicate this approach/numbers.
 
 Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.
 
 </details>
-
-calculated area **inside** unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒
-
-π ≈ ${model.pi_approximation({n_in}).toFixed(5)}
-
-⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span>
-
-(using πr<sup>2</sup> and r=1)
 
 ```js
 const viz_placeholder = html`<div id="viz" class="card"></div>`
@@ -93,7 +94,11 @@ display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximati
 
 </details>
 
-**⚠️ This π approximation is not suitable for space travel.** For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.
+---
+
+**⚠️ This π approximation is not suitable for space travel.**
+
+For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.
 
 </div>
 </div>
@@ -115,7 +120,7 @@ const cul_default = await FileAttachment('./cul/pi-lattice.cul.js').text()
 const n_in_Input = Inputs.input(2);
 const n_in = Generators.input(n_in_Input);
 
-const content_width =400//Generators.width(document.getElementById("content")); // keep as a generator for reactivity
+const content_width = Generators.width(document.getElementById("content")); // keep as a generator for reactivity
 
 
 // circular definition if I use cul_default ?!

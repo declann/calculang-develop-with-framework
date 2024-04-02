@@ -1,6 +1,16 @@
 @import url("observablehq:default.css");
 @import url("observablehq:theme-air.css");
 
+.rhs p {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.rhs details:not(.code) {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 #observablehq-main {
   max-width: 1500px;
 }

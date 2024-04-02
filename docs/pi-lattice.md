@@ -29,13 +29,13 @@ Given this is similar but simpler than the <a href="https://observablehq.com/@de
 
 </details>
 
-</span>
-<span>Calculated area <strong>inside</strong> unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒</span>
-<h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>
-<span>⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
-<span>(using πr<sup>2</sup> and  r=1)</span>
+calculated area **inside** unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒
 
-<div class="card" id="viz"></div>
+π ≈ ${model.pi_approximation({n_in}).toFixed(5)}
+
+⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span>
+
+(using πr<sup>2</sup> and r=1)
 
 ```js
 const viz_placeholder = html`<div id="viz" class="card"></div>`
@@ -43,9 +43,8 @@ const viz_placeholder = html`<div id="viz" class="card"></div>`
 display(viz_placeholder)
 ```
 
-
 ```js echo
-const spec = ({//
+const spec = ({
   // vega-lite
   title: "points",
   mark: {type:'point', tooltip:true, filled:true},
@@ -65,9 +64,6 @@ const spec = ({//
 // interactivity via vega signals and listeners
 const viz = embed('#viz', spec)
 ```
-
-
-
 
 ```js echo
 const data_source = calcuvegadata({
@@ -97,7 +93,8 @@ display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximati
 
 </details>
 
-  <p><strong>⚠️ This π approximation is not suitable for space travel.</strong> For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
+**⚠️ This π approximation is not suitable for space travel.** For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.
+
 </div>
 </div>
 

@@ -13,20 +13,22 @@ import {Scrubber} from './components/scrubber.js'
   
 # 🎨 Pi by lattice 🥮
 
-  <div class="card">
-    <details open><summary>inputs ⚙️</summary>
-    ${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, alternate:false, loop:false,/*format:d => d3.format('.2f')(d)*/}), n_in_Input))}
-    </details>
-    </div>
-  <span>Press <strong>play</strong> for an improving approximation of <strong>π</strong> based on approximating the area of a unit circle using a lattice!</span>
-  <details style="background:lightgreen; padding: 0.5rem; margin: 0.5rem; border: 1px solid blue"><summary style="font-weight:bold">calculang 🔍💬🧮</summary>
-  <span>This pi approximation is made with <a href="https://calculang.dev">calculang<a>, <span style="font-weight:bold">a language for calculations for transparency and certainty about numbers</span> 🔍💬🧮<br/>
-  <p>On left/top, you can find and edit the formulas (but this is WIP and very dangerous).
-  <p>Better to find the source code <a href="https://github.com/declann/calculang-develop-with-framework/">on GitHub</a> and PRs are welcome.</p>
-  </details>
-  <details style="padding: 0.5rem; margin: 0.5rem"><summary style="">inspiration 🧙</summary><p><a href="https://www.geogebra.org/m/kwty4hsz">A Geogebra example</a> I found linked in the <a href="https://www.geogebra.org/u/kmhkmh">wikipedia article for Pi</a>. I replicate this approach/numbers.</p>
-  <p>Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.</p>
-  </details>
+<div class="card">
+<details open><summary>inputs ⚙️</summary>
+${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, alternate:false, loop:false,/*format:d => d3.format('.2f')(d)*/}), n_in_Input))}
+</details>
+</div>
+
+Press **play** for an improving approximation of **π** based on approximating the area of a unit circle using a lattice!
+
+<details style="padding: 0.5rem; margin: 0.5rem"><summary style="">inspiration 🧙</summary>
+
+[A Geogebra example](https://www.geogebra.org/m/kwty4hsz) I found linked in the [wikipedia article for Pi](https://www.geogebra.org/u/kmhkmh). I replicate this approach/numbers.
+
+Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.
+
+</details>
+
 </span>
 <span>Calculated area <strong>inside</strong> unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒</span>
 <h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>

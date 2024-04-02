@@ -2,24 +2,16 @@
 title: Pi 🥮 by lattice
 toc: false
 ---
-
-# This CAN be more maintainable
-
-# There are unusual "invalid module" errors
-
-# And see FW issue [1192](https://github.com/observablehq/framework/issues/1192)
-
-
 ```js
 import {Scrubber} from './components/scrubber.js'
-
-
 ```
 
+<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
+
 <div id="wrapper" class="wrapper">
-  <div id="content" class="rhs side">
+<div id="content" class="rhs side">
   
-<h1>🎨 Pi by lattice 🥮</h1>
+# 🎨 Pi by lattice 🥮
 
   <div class="card">
     <details open><summary>inputs ⚙️</summary>
@@ -39,9 +31,16 @@ import {Scrubber} from './components/scrubber.js'
 <span>Calculated area <strong>inside</strong> unit circle = ${model.proportion_inside({n_in}).toFixed(5)} units<sup>2</sup> (1 quadrant); *4 ⇒</span>
 <h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>
 <span>⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
-<span>(using πr<sup>2</sup> and r=1)</span>
+<span>(using πr<sup>2</sup> and  r=1)</span>
 
 <div class="card" id="viz"></div>
+
+```js
+const viz_placeholder = html`<div id="viz" class="card"></div>`
+
+display(viz_placeholder)
+```
+
 
 ```js echo
 const spec = ({//
@@ -64,6 +63,9 @@ const spec = ({//
 // interactivity via vega signals and listeners
 const viz = embed('#viz', spec)
 ```
+
+
+
 
 ```js echo
 const data_source = calcuvegadata({
@@ -96,8 +98,6 @@ display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximati
   <p><strong>⚠️ This π approximation is not suitable for space travel.</strong> For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang">Monte Carlo methods</a>.</p>
 </div>
 </div>
-
-<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 
 

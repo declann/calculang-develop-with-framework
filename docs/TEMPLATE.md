@@ -7,7 +7,7 @@ TEMPLATE.md provides:
 
 ```js
 // wrap echoed source code by details tag
-/*document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+document.querySelectorAll('.observablehq-pre-container').forEach(el => {
   let wrapper = document.createElement('details');
   wrapper.className = 'code'
   let summary = document.createElement('summary')
@@ -15,9 +15,9 @@ TEMPLATE.md provides:
   wrapper.appendChild(summary)
   el.parentNode.insertBefore(wrapper, el);
   wrapper.appendChild(el);
-});*/
+});
 
-//document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));
+document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));
 ```
 
 ```js

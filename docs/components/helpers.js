@@ -1,20 +1,20 @@
 // https://observablehq.com/@declann/little-calculang-helpers
 // copied at feb 15 24
 
-import {require} from "npm:d3-require";
+// AWFUL, led to multiple unstable invalid module errors
+//import {require} from "npm:d3-require";
 
-let tidy = await require("@tidyjs/tidy@2.5.1/dist/umd/tidy.min.js")
+import * as tidy from 'npm:@tidyjs/tidy'
+
+// invalid module error some times ?!?!
+//let tidy = await require("@tidyjs/tidy@2.5.1/dist/umd/tidy.min.js")
 
 //cql = require('compassql')
 
 import * as cql from "npm:compassql";
 
 
-console.log(tidy)
-
-console.log(cql)
-
-export const a = () => {console.log(tidy, cql)}
+//export const a = () => {console.log(tidy, cql)}
 
 
 
@@ -113,7 +113,7 @@ export const calcudata = ({
   console.log(o);
 
   // optional pivot, done
-  if (pivot)
+  if (pivot)// console.error('DECLAN REMOVED THIS')
     return tidy.tidy(
       o,
       tidy.pivotWider({ namesFrom: "formula", valuesFrom: "value" })

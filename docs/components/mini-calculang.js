@@ -3,10 +3,11 @@
 //const babel = require('@babel/standalone')
 
 //https://unpkg.com/@babel/standalone/babel.min.js
-import {require} from "npm:d3-require";
+//import {require} from "npm:d3-require";
 
 //import * as Babel from 'https://unpkg.com/@babel/standalone/babel.js';
-const Babel = await require("@babel/standalone")
+//const Babel = await require("@babel/standalone")
+import * as Babel from 'npm:@babel/standalone'
 
 
 //console.log('hello', babel)

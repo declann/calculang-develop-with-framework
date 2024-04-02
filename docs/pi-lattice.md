@@ -1,5 +1,5 @@
 ---
-title: Pi 🥮 by lattice
+title: Pi 🥮 by lattice (GALLERY DEV)
 toc: false
 ---
 

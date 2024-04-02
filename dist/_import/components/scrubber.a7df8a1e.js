@@ -1,4 +1,4 @@
-import {html} from "../../_npm/htl@0.3.1/+esm.js";
+import {html} from "../../_npm/htl@0.3.1/_esm.js";
 import * as Inputs from "../../_observablehq/stdlib/inputs.js";
 
 // by Mike Bostock

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>some calculang things</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/custom-style.ac4188bc.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.ac4188bc.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.443fb9c8.js">
+<link rel="modulepreload" href="./_import/components/calcuvegadata.c9d96908.js">
+<link rel="modulepreload" href="./_import/components/helpers.157d4a5a.js">
+<link rel="modulepreload" href="./_import/components/mini-calculang.571c25e7.js">
+<link rel="modulepreload" href="./_npm/vega-embed@6.24.0/_esm.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
+<link rel="modulepreload" href="./_npm/object-traversal@1.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/underscore@1.13.6/_esm.js">
+<link rel="modulepreload" href="./_npm/@tidyjs/tidy@2.5.2/_esm.js">
+<link rel="modulepreload" href="./_npm/compassql@0.21.2/_esm.js">
+<link rel="modulepreload" href="./_npm/@babel/standalone@7.24.3/_esm.js">
+<link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.2.1/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/fast-json-patch@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/json-stringify-pretty-compact@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega@5.28.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-interpreter@1.0.5/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-lite@5.17.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-schema-url-parser@2.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-themes@2.14.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-tooltip@0.34.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@2.12.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-util@1.17.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-dataflow@5.7.5/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-transforms@4.11.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-view-transforms@4.5.9/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-encode@4.9.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-geo@4.4.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-force@4.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-hierarchy@4.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-label@1.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-regression@1.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-voronoi@4.2.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-wordcloud@4.1.4/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-crossfilter@4.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-statistics@1.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-time@2.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-loader@4.5.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-scale@7.3.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-projection@1.6.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-view@5.12.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-format@1.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-functions@5.14.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-parser@6.3.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-runtime@6.1.4/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-expression@5.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-event-selector@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@1.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-canvas@1.2.7/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/topojson-client@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-selections@5.4.2/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/_esm.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+
+define({id: "9ebd6f81", body: () => {
+// DISABLING TO TEST HOT RELOAD
+
+// wrap echoed source code by details tag
+/*document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+  let wrapper = document.createElement('details');
+  wrapper.className = 'code'
+  let summary = document.createElement('summary')
+  summary.textContent = "code 👀"
+  wrapper.appendChild(summary)
+  el.parentNode.insertBefore(wrapper, el);
+  wrapper.appendChild(el);
+});
+
+document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));*/
+}});
+
+define({id: "5675774d", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","editor"], body: async (cul_default,Mutable) => {
+const [{editor: editorCm, config: eslintConfig}, {calcuvegadata}] = await Promise.all([import("./_import/graphing-calcs/editor.bundle.443fb9c8.js"), import("./_import/components/calcuvegadata.c9d96908.js")]);
+
+
+
+
+const start_doc = cul_default
+
+const doc = Mutable(start_doc) // I still have doc Input below, remove?
+
+const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
+return {editorCm,eslintConfig,calcuvegadata,start_doc,doc,editor};
+}});
+
+define({id: "1a748ae6", inline: true, inputs: ["display","editor"], body: (display,editor) => {
+display(editor.dom)
+}});
+
+define({id: "a91751cf", inline: true, inputs: ["view","Inputs","esm"], body: (view,Inputs,esm) => {
+view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))
+}});
+
+define({id: "7be5e906", inline: true, inputs: ["display"], body: async (display) => {
+display(await(
+"todo"
+))
+}});
+
+define({id: "bd87104d", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
+display(Object.keys(introspection))
+}});
+
+define({id: "8094d046", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
+display(JSON.stringify([...introspection.cul_links]))
+}});
+
+define({id: "eb13376e", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
+const esm = compileWithMemo(doc)
+const introspection = introspection2(doc)
+//display(introspection.cul_input_map) todo put under devtools
+//display(introspection)
+
+const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
+
+//display(Object.values(introspection.cul_functions))
+//display([...introspection.cul_functions.values()])
+
+const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+//display(formulae_not_inputs)
+
+
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
+
+//display(model)
+
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
+
+return {esm,introspection,inputs,formulae_not_inputs,u,model};
+}});
+
+define({id: "7dfec1d7", outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async () => {
+const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: embed}] = await Promise.all([import("./_import/components/helpers.157d4a5a.js"), import("./_import/components/mini-calculang.571c25e7.js"), import("./_npm/vega-embed@6.24.0/_esm.js")]);
+
+
+
+return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">some calculang things</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./TEMPLATE">Untitled</a></li>
+    <li class="observablehq-link"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
+    <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
+    <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
+    <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
+    <li class="observablehq-link"><a href="./shader/shader">Editable Shader 🧊</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type), h2:first-child, :not(h1) + h2">
+<nav>
+</nav>
+</aside>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<!--
+TEMPLATE.md provides:
+- collabsible code blocks
+- editor
+- JS bits: model (obv), calcuvegadata, embed, compile etc.
+  -->
+<div id="cell-9ebd6f81" class="observablehq observablehq--block"></div>
+<div id="cell-5675774d" class="observablehq observablehq--block"></div>
+<div id="lhs" class="lhs side">
+  <div class="grow">
+  <h1>ƒ</h1>
+  <!-- can I collapse things responsively? -->
+  <details class="calculang" open=""><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
+  <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
+  <span id="cell-1a748ae6" class="observablehq--loading"></span>
+  <details><summary>javascript ✨</summary>
+  <span style="font-style: italic">generated from calculang</span> ⬆️
+  <span id="cell-a91751cf" class="observablehq--loading"></span>
+  </details>
+  <details><summary>dev tools 🧰</summary>
+  <span id="cell-7be5e906" class="observablehq--loading"></span>
+  <span id="cell-bd87104d" class="observablehq--loading"></span>
+  <span id="cell-8094d046" class="observablehq--loading"></span>
+  </details>
+  </details>
+  </div>
+</div>
+<div id="cell-eb13376e" class="observablehq observablehq--block"></div>
+<div id="cell-7dfec1d7" class="observablehq observablehq--block"></div>
+</main>
+<footer id="observablehq-footer">
+<div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>
+</footer>
+</div>

@@ -4,97 +4,100 @@
 <title>Editable Game of Life | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="../_import/custom-style.3a2e8c3d.css">
+<link rel="preload" as="style" href="../_import/custom-style.ac4188bc.css">
 <link rel="preload" as="style" href="../_observablehq/stdlib/inputs.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="../_import/custom-style.3a2e8c3d.css">
+<link rel="stylesheet" type="text/css" href="../_import/custom-style.ac4188bc.css">
 <link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.css">
 <link rel="modulepreload" href="../_observablehq/client.js">
 <link rel="modulepreload" href="../_observablehq/runtime.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.js">
-<link rel="modulepreload" href="../_import/graphing-calcs/editor.bundle.b93111cb.js">
-<link rel="modulepreload" href="../_import/components/helpers.114a7fce.js">
-<link rel="modulepreload" href="../_import/components/mini-calculang.3e8f8efa.js">
-<link rel="modulepreload" href="../_npm/vega-embed@6.24.0/+esm.js">
+<link rel="modulepreload" href="../_import/graphing-calcs/editor.bundle.443fb9c8.js">
+<link rel="modulepreload" href="../_import/components/helpers.157d4a5a.js">
+<link rel="modulepreload" href="../_import/components/mini-calculang.571c25e7.js">
+<link rel="modulepreload" href="../_npm/vega-embed@6.24.0/_esm.js">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
-<link rel="modulepreload" href="../_npm/d3-require@1.3.0/+esm.js">
-<link rel="modulepreload" href="../_npm/compassql@0.21.2/+esm.js">
-<link rel="modulepreload" href="../_npm/@dagrejs/graphlib@2.2.1/+esm.js">
+<link rel="modulepreload" href="../_npm/@tidyjs/tidy@2.5.2/_esm.js">
+<link rel="modulepreload" href="../_npm/compassql@0.21.2/_esm.js">
+<link rel="modulepreload" href="../_npm/@babel/standalone@7.24.3/_esm.js">
+<link rel="modulepreload" href="../_npm/@dagrejs/graphlib@2.2.1/_esm.js">
 <link rel="modulepreload" href="../_observablehq/stdlib/xlsx.js">
-<link rel="modulepreload" href="../_npm/lodash@4.17.21/+esm.js">
+<link rel="modulepreload" href="../_npm/lodash@4.17.21/_esm.js">
 <link rel="modulepreload" href="../_observablehq/stdlib/inputs.js">
-<link rel="modulepreload" href="../_npm/htl@0.3.1/+esm.js">
-<link rel="modulepreload" href="../_npm/isoformat@0.2.1/+esm.js">
-<link rel="modulepreload" href="../_npm/exceljs@4.4.0/+esm.js">
-<link rel="modulepreload" href="../_npm/fast-json-patch@3.1.1/+esm.js">
-<link rel="modulepreload" href="../_npm/json-stringify-pretty-compact@3.0.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega@5.28.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-interpreter@1.0.5/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-lite@5.17.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-schema-url-parser@2.2.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-themes@2.14.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-tooltip@0.34.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-util@1.17.2/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-dataflow@5.7.5/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-transforms@4.11.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-view-transforms@4.5.9/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-encode@4.9.2/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-geo@4.4.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-force@4.2.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-hierarchy@4.1.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-label@1.2.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-regression@1.2.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-voronoi@4.2.2/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-wordcloud@4.1.4/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-crossfilter@4.1.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-statistics@1.9.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-time@2.1.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-loader@4.5.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-scenegraph@4.11.2/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-scale@7.3.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-projection@1.6.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-view@5.12.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-format@1.1.1/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-functions@5.14.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-parser@6.3.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-runtime@6.1.4/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-expression@5.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-event-selector@3.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-array@3.2.4/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-interpolate@3.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-geo@3.1.1/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-color@3.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-canvas@1.2.7/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-force@3.0.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-hierarchy@3.1.2/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-delaunay@6.0.4/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-time@3.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-dsv@3.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/topojson-client@3.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-shape@3.2.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-path@3.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-scale@4.0.2/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-geo-projection@4.0.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-timer@3.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-format@3.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-time-format@4.1.0/+esm.js">
-<link rel="modulepreload" href="../_npm/vega-selections@5.4.2/+esm.js">
-<link rel="modulepreload" href="../_npm/internmap@2.0.3/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-quadtree@3.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/d3-dispatch@3.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/delaunator@5.0.1/+esm.js">
-<link rel="modulepreload" href="../_npm/robust-predicates@3.0.2/+esm.js">
+<link rel="modulepreload" href="../_npm/htl@0.3.1/_esm.js">
+<link rel="modulepreload" href="../_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="../_npm/exceljs@4.4.0/_esm.js">
+<link rel="modulepreload" href="../_npm/fast-json-patch@3.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/json-stringify-pretty-compact@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega@5.28.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-interpreter@1.0.5/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-lite@5.17.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-schema-url-parser@2.2.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-themes@2.14.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-tooltip@0.34.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-array@2.12.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-util@1.17.2/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-dataflow@5.7.5/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-transforms@4.11.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-view-transforms@4.5.9/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-encode@4.9.2/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-geo@4.4.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-force@4.2.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-hierarchy@4.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-label@1.2.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-regression@1.2.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-voronoi@4.2.2/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-wordcloud@4.1.4/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-crossfilter@4.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-statistics@1.9.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-time@2.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-loader@4.5.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-scenegraph@4.11.2/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-scale@7.3.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-projection@1.6.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-view@5.12.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-format@1.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-functions@5.14.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-parser@6.3.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-runtime@6.1.4/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-expression@5.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-event-selector@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/internmap@1.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-canvas@1.2.7/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/topojson-client@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-geo-projection@4.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/vega-selections@5.4.2/_esm.js">
+<link rel="modulepreload" href="../_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/robust-predicates@3.0.2/_esm.js">
 <script type="module">
 
 import {define} from "../_observablehq/client.js";
 import {registerFile} from "../_observablehq/stdlib.js";
 
-registerFile("./cul/game-of-life.cul.js", {"name":"./cul/game-of-life.cul.js","mimeType":"text/javascript","path":"../_file/graphing-calcs/cul/game-of-life.cul.a9de12ae.js"});
-registerFile("./game-of-life.xlsx", {"name":"./game-of-life.xlsx","mimeType":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","path":"../_file/graphing-calcs/game-of-life.0b138375.xlsx"});
+registerFile("./cul/game-of-life.cul.js", {"name":"./cul/game-of-life.cul.js","mimeType":"text/javascript","path":"../_file/graphing-calcs/cul/game-of-life.cul.a9de12ae.js","lastModified":1709145417946});
+registerFile("./game-of-life.xlsx", {"name":"./game-of-life.xlsx","mimeType":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","path":"../_file/graphing-calcs/game-of-life.0b138375.xlsx","lastModified":1709145418034});
 
 define({id: "7314992c", inputs: ["FileAttachment"], outputs: ["workbook","size_in"], body: async (FileAttachment) => {
-const workbook = await FileAttachment('./game-of-life.xlsx').xlsx()
+const workbook = await FileAttachment("./game-of-life.xlsx").xlsx()
 
 const size_in = 24
 
@@ -104,7 +107,7 @@ return {workbook,size_in};
 }});
 
 define({id: "c5098edb", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","start_doc","doc","editor"], body: async (cul_default,Mutable) => {
-const {editor: editorCm, config: eslintConfig} = await import("../_import/graphing-calcs/editor.bundle.b93111cb.js");
+const {editor: editorCm, config: eslintConfig} = await import("../_import/graphing-calcs/editor.bundle.443fb9c8.js");
 
 
 
@@ -201,9 +204,9 @@ return {esm,introspection,inputs,formulae_not_inputs,model};
 }});
 
 define({id: "4a8d68c0", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo"], body: async () => {
-const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("../_observablehq/stdlib.js"), import("../_import/components/helpers.114a7fce.js"), import("../_import/components/mini-calculang.3e8f8efa.js")]);
+const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("../_observablehq/stdlib.js"), import("../_import/components/helpers.157d4a5a.js"), import("../_import/components/mini-calculang.571c25e7.js")]);
 
-const cul_default = await FileAttachment('./cul/game-of-life.cul.js').text()
+const cul_default = await FileAttachment("./cul/game-of-life.cul.js").text()
 
 
 
@@ -211,7 +214,7 @@ return {FileAttachment,cul_default,calcuvizspec,calcudata,compile,introspection2
 }});
 
 define({id: "7f6e9684", inputs: ["Inputs","Generators"], outputs: ["embed","n_in_Input","n_in","g_in_Input","g_in"], body: async (Inputs,Generators) => {
-const {default: embed} = await import("../_npm/vega-embed@6.24.0/+esm.js");
+const {default: embed} = await import("../_npm/vega-embed@6.24.0/_esm.js");
 
 const n_in_Input = Inputs.input(8);
 const n_in = Generators.input(n_in_Input);
@@ -242,8 +245,9 @@ const vl = vegaLiteApi.register(vega, vegaLite);*/
     <li class="observablehq-link"><a href="../">some calculang things</a></li>
   </ol>
   <ol>
+    <li class="observablehq-link"><a href="../TEMPLATE">Untitled</a></li>
     <li class="observablehq-link"><a href="../keep-car-cli">Keep 🚗 on the road</a></li>
-    <li class="observablehq-link"><a href="../pi-lattice">Pi 🥮 by lattice</a></li>
+    <li class="observablehq-link"><a href="../pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="../reactive-inputs">reactive inputs</a></li>
     <li class="observablehq-link"><a href="../tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link"><a href="../dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
@@ -304,6 +308,6 @@ const vl = vegaLiteApi.register(vega, vegaLite);*/
 <div id="cell-4283e7bb" class="observablehq observablehq--block"></div>
 </main>
 <footer id="observablehq-footer">
-<div>Made with 💓 and <a href="https://calculang.dev">calculang</a></div>
+<div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>
 </footer>
 </div>

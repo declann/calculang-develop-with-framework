@@ -1,3 +1,7 @@
+import type MarkdownIt from "markdown-it";
+import MarkdownItFootnote from "markdown-it-footnote";
+import { include } from "@mdit/plugin-include";
+
 // See https://observablehq.com/framework/config for documentation.
 export default {
   // The project’s title; used in the sidebar and webpage titles.
@@ -26,4 +30,17 @@ export default {
   pager: false, // whether to show previous & next links in the footer
   // root: "docs", // path to the source root for preview
   // output: "dist", // path to the output root for build
+
+  markdownIt: (md: MarkdownIt) => md.use(MarkdownItFootnote).use(include, {
+    // your options, currentPath is required
+    currentPath: (env) => env.filePath,
+    /*resolvePath: (path, cwd) => {
+      if (path.startsWith("@src")) {
+        return path.replace("@src", "path/to/src/folder");
+      }
+  
+      //return path.join(cwd, path);
+    },*/
+    })
+
 };

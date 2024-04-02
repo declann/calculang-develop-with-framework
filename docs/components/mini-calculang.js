@@ -344,7 +344,7 @@ export const compileWithMemo = input => {
     a = a.replaceAll(' ' + d + ' =', ' ' + d+ '$=') // conserve positions hack !
   })
 
-  a += "import {memoize} from 'https://cdn.jsdelivr.net/npm/underscore/+esm'//'https://esm.run/underscore';\n\n"
+  //a += "import {memoize} from 'https://cdn.jsdelivr.net/npm/underscore/+esm'//'https://esm.run/underscore';\n\n"
 
   a = a + formulae_not_inputs.map(d => `\n// memoization\n\nexport const ${d}$m = memoize(${d}$, ${has_memo_hash ? "memo_hash$" : "JSON.stringify"});\nexport const ${d} = (a) => {
     return ${d}$m(a);
@@ -354,7 +354,31 @@ export const compileWithMemo = input => {
 
   //console.log("NEW", a)
 
-  return compile(a)
+  let out = compile(a)
+
+  return {...out, code: out.code + `
+
+  // from https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-esm.js
+
+  // Memoize an expensive function by storing its results.
+  function memoize(func, hasher) {
+    var memoize = function(key) {
+      var cache = memoize.cache;
+      var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+      if (!has$1(cache, address)) cache[address] = func.apply(this, arguments);
+      return cache[address];
+    };
+    memoize.cache = {};
+    return memoize;
+  }
+
+  // Internal function to check whether \`key\` is an own property name of \`obj\`.
+function has$1(obj, key) {
+  return obj != null && Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+
+`}
 
 
   // import {memoize} from 'https://esm.run/underscore';

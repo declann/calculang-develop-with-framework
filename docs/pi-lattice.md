@@ -3,58 +3,25 @@ title: Pi 🥮 by lattice
 toc: false
 ---
 
-```js
-// wrap echoed source code by details tag
-document.querySelectorAll('.observablehq-pre-container').forEach(el => {
-  let wrapper = document.createElement('details');
-  wrapper.className = 'code'
-  let summary = document.createElement('summary')
-  summary.textContent = "code 👀"
-  wrapper.appendChild(summary)
-  el.parentNode.insertBefore(wrapper, el);
-  wrapper.appendChild(el);
-});
-```
+# This CAN be more maintainable
+
+# There are unusual "invalid module" errors
+
+# And see FW issue [1192](https://github.com/observablehq/framework/issues/1192)
+
 
 ```js
-
 import {Scrubber} from './components/scrubber.js'
 
-import {editor as editorCm, config as eslintConfig} from './graphing-calcs/editor.bundle.js'
 
-import {calcuvegadata} from './components/calcuvegadata.js'
-
-
-const start_doc = cul_default
-
-const doc = Mutable(start_doc) // I still have doc Input below, remove?
-
-const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
 ```
 
-<div class="wrapper">
-  <div class="lhs" style="background: lightgreen">
-    <div class="grow">
-    <h1>ƒ</h1>
-    <!-- can I collapse things responsively? -->
-    <details class="calculang"><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
-    <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
-    ${display(editor.dom)}
-    <details><summary>javascript ✨</summary>
-    <span style="font-style: italic">generated from calculang</span> ⬆️
-    ${view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))}
-    </details>
-    <details><summary>dev tools 🧰</summary>
-    ${"todo"}
-    ${display(Object.keys(introspection))}
-    ${display(JSON.stringify([...introspection.cul_links]))}
-    </details>
-    </details>
-    </div>
-  </div>
-  <div class="rhs" style="background: pink">
-    <h1>🎨 Pi by lattice 🥮</h1>
-    <div class="card">
+<div id="wrapper" class="wrapper">
+  <div id="content" class="rhs side">
+  
+<h1>🎨 Pi by lattice 🥮</h1>
+
+  <div class="card">
     <details open><summary>inputs ⚙️</summary>
     ${view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, alternate:false, loop:false,/*format:d => d3.format('.2f')(d)*/}), n_in_Input))}
     </details>
@@ -73,10 +40,11 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
 <h3>π ≈ ${model.pi_approximation({n_in}).toFixed(5)}</h3>
 <span>⇒ error ≈ <span style="font-weight:bold;color:red">${model.error({n_in}).toFixed(5)}</span></span>
 <span>(using πr<sup>2</sup> and r=1)</span>
-  <div class="card" id="viz"></div>
+
+<div class="card" id="viz"></div>
 
 ```js echo
-const spec = ({
+const spec = ({//
   // vega-lite
   title: "points",
   mark: {type:'point', tooltip:true, filled:true},
@@ -88,8 +56,8 @@ const spec = ({
   },
   data: { name: "data" },
   autosize: { "type": "fit", "contains": "padding"},
-  width: Math.min(500,rhs_width-30),//Math.min(400,rhs_width),
-  height: Math.min(500,rhs_width-30)/1.2,//Math.min(400,rhs_width-30),
+  width: Math.min(500,content_width-30),//Math.min(400,content_width),
+  height: Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
   background:'rgba(0,0,0,0)'
 })
 
@@ -129,32 +97,10 @@ display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximati
 </div>
 </div>
 
-```js
-
-const esm = compileWithMemo(doc)
-const introspection = introspection2(doc)
-//display(introspection.cul_input_map) todo put under devtools
-//display(introspection)
-
-const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
-
-//display(Object.values(introspection.cul_functions))
-//display([...introspection.cul_functions.values()])
-
-const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
-//display(formulae_not_inputs)
+<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 
-const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
-console.log(`creating ${u}`)
 
-const model = await import(u)
-
-//display(model)
-
-invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
-
-```
 
 
 ```js
@@ -162,19 +108,15 @@ import {FileAttachment} from "npm:@observablehq/stdlib";
 
 const cul_default = await FileAttachment('./cul/pi-lattice.cul.js').text()
 
-import { calcuvizspec } from "./components/helpers.js"
-
-import { compile, introspection2, compileWithMemo } from "./components/mini-calculang.js"
 ```
 
 
 ```js
-import embed from 'npm:vega-embed';
 
 const n_in_Input = Inputs.input(2);
 const n_in = Generators.input(n_in_Input);
 
-const rhs_width = Generators.width(document.querySelector(".rhs")); // keep as a generator for reactivity
+const content_width =400//Generators.width(document.getElementById("content")); // keep as a generator for reactivity
 
 
 // circular definition if I use cul_default ?!

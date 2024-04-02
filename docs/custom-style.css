@@ -72,7 +72,7 @@ pre {
   margin: 1rem 0;
 }
 
-.wrapper > div {
+.wrapper > div.side {
   padding: 0.5rem;
   /*max-height:50vh;*/
   border-radius: 20px;
@@ -85,6 +85,14 @@ pre {
 .lhs, .rhs {
   display: flex;
   flex-flow: column;
+}
+
+.rhs {
+  background: pink;
+}
+
+.lhs {
+  background: lightgreen;
 }
 
 

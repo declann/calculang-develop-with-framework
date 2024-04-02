@@ -1,12 +1,12 @@
 @import url("observablehq:default.css");
 @import url("observablehq:theme-air.css");
 
-.rhs p {
+#content p {
   margin-top: 0;
   margin-bottom: 4px;
 }
 
-.rhs details:not(.code) {
+#content details:not(.code) {
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -82,7 +82,7 @@ pre {
   margin: 1rem 0;
 }
 
-.wrapper > div.side {
+.wrapper > div {
   padding: 0.5rem;
   /*max-height:50vh;*/
   border-radius: 20px;
@@ -92,12 +92,12 @@ pre {
 }
 
 
-.lhs, .rhs {
+.lhs, #content {
   display: flex;
   flex-flow: column;
 }
 
-.rhs {
+#content {
   background: pink;
 }
 

@@ -6,10 +6,8 @@ TEMPLATE.md provides:
   -->
 
 ```js
-// DISABLING TO TEST HOT RELOAD
-
 // wrap echoed source code by details tag
-/*document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+document.querySelectorAll('.observablehq-pre-container').forEach(el => {
   let wrapper = document.createElement('details');
   wrapper.className = 'code'
   let summary = document.createElement('summary')
@@ -19,7 +17,13 @@ TEMPLATE.md provides:
   wrapper.appendChild(el);
 });
 
-document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));*/
+//document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));
+
+/*document.querySelectorAll('div.observablehq--block').forEach(div => {
+  if (div.innerHTML === '') div.remove();
+})*/
+
+// above dom manips all cause new els on hot reload..
 ```
 
 ```js
@@ -37,6 +41,7 @@ const doc = Mutable(start_doc) // I still have doc Input below, remove?
 const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
 ```
 
+<div id="wrapper" class="wrapper">
 <div id="lhs" class="lhs side">
   <div class="grow">
   <h1>ƒ</h1>
@@ -78,7 +83,8 @@ console.log(`creating ${u}`)
 
 const model = await import(u)
 
-//display(model)
+
+display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
@@ -92,5 +98,7 @@ import { calcuvizspec } from "./components/helpers.js"
 import { compile, introspection2, compileWithMemo } from "./components/mini-calculang.js"
 
 import embed from 'npm:vega-embed';
+
+display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 ```

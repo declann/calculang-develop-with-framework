@@ -180,3 +180,8 @@ pre {
 pre {
   white-space: pre;
 }
+
+/* support hot reload and grid layout (remove empty OJS blocks added by TEMPLATE.md */
+div:has(> div.hide-empty-block) {
+  display: none;
+}

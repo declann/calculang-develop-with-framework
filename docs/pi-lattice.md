@@ -9,7 +9,7 @@ import {Scrubber} from './components/scrubber.js'
 
 <!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
-<div id="wrapper" class="wrapper">
+<!--<div id="wrapper" class="wrapper">-->
 <div id="content">
   
 # 🎨 Pi by lattice 🥮
@@ -57,8 +57,9 @@ const spec = ({
   },
   data: { name: "data" },
   autosize: { "type": "fit", "contains": "padding"},
-  width: Math.min(500,content_width-30),//Math.min(400,content_width),
-  height: Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
+  // no reactive w/h due to https://github.com/observablehq/framework/issues/1194
+  width: 400,//Math.min(500,content_width-30),//Math.min(400,content_width),
+  height: 400-30,//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
   background:'rgba(0,0,0,0)'
 })
 
@@ -103,6 +104,8 @@ For better approximations check my <a href="https://observablehq.com/@declann/it
 </div>
 </div>
 
+</div><!-- close tag started in template -->
+
 
 
 
@@ -120,7 +123,9 @@ const cul_default = await FileAttachment('./cul/pi-lattice.cul.js').text()
 const n_in_Input = Inputs.input(2);
 const n_in = Generators.input(n_in_Input);
 
-const content_width = Generators.width(document.getElementById("content")); // keep as a generator for reactivity
+// I CAN'T USE reactive width because hot reload will wipe it to 0
+// https://github.com/observablehq/framework/issues/1194
+const content_width = Generators.width(document.getElementById("content2")); // keep as a generator for reactivity
 
 
 // circular definition if I use cul_default ?!

@@ -13,12 +13,6 @@ ${view(Inputs.bind(Inputs.range([0,200], {step:1, label:'generation'}), g_in_Inp
 </details>
 </div>
 
-<details><summary>Performance notes</summary>
-<ul><li>initial grid as a function input is very important to take stress off naive memo with JSON stringify hash</li>
-<li>at 50x50, rendering appears a bottleneck; bypass calcudata? (object structure poor)</li>
-<li>stream data to vega, or render to canvas or css grid? (with animation?) (somehow vega svg faster than vega canvas and I think FF faster than chromium)</li>
-<li>memory usage is out of control: manually try memo eviction strategies</li></ul></details>
-
 ```js
 const viz_placeholder = html`<div id="viz" class="card"></div>`
 
@@ -64,8 +58,21 @@ const data_source = calcuvegadata({
 viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
 ```
 
+<details open><summary>Performance notes (old)</summary>
+
+- initial grid as a function input is very important to take stress off naive memo with JSON stringify hash
+
+- at 50x50, rendering appears a bottleneck; bypass calcudata? (object structure poor)
+
+- ~~stream data to vega~~, or render to canvas or css grid? (with animation?) (somehow vega svg faster than vega canvas and I think FF faster than chromium)
+
+- memory usage is out of control: manually try memo eviction strategies
+
+</details>
+
 </div>
 </div>
+
 
 </div><!-- close tag started in template -->
 

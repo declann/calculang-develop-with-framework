@@ -354,11 +354,6 @@ TEMPLATE.md provides:
 <span id="cell-17b08d0d" class="observablehq--loading"></span>
 </details>
 </div>
-<details><summary>Performance notes</summary>
-<ul><li>initial grid as a function input is very important to take stress off naive memo with JSON stringify hash</li>
-<li>at 50x50, rendering appears a bottleneck; bypass calcudata? (object structure poor)</li>
-<li>stream data to vega, or render to canvas or css grid? (with animation?) (somehow vega svg faster than vega canvas and I think FF faster than chromium)</li>
-<li>memory usage is out of control: manually try memo eviction strategies</li></ul></details>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
 <div id="cell-51394648" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
@@ -396,6 +391,22 @@ TEMPLATE.md provides:
 <div id="cell-7087a911" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
 </code></pre>
+<details open=""><summary>Performance notes (old)</summary>
+<ul>
+<li>
+<p>initial grid as a function input is very important to take stress off naive memo with JSON stringify hash</p>
+</li>
+<li>
+<p>at 50x50, rendering appears a bottleneck; bypass calcudata? (object structure poor)</p>
+</li>
+<li>
+<p><s>stream data to vega</s>, or render to canvas or css grid? (with animation?) (somehow vega svg faster than vega canvas and I think FF faster than chromium)</p>
+</li>
+<li>
+<p>memory usage is out of control: manually try memo eviction strategies</p>
+</li>
+</ul>
+</details>
 </div>
 </div>
 <!-- close tag started in template -->

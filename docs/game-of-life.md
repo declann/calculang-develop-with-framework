@@ -22,7 +22,7 @@ display(viz_placeholder)
 ```js echo
 const spec = ({
   // vega-lite
-  mark: {type:'point', point: false, filled: true, tooltip:false},
+  mark: {type:'point', point: false, filled: true, tooltip:true},
   encoding: {
     x: { field: 'x_in', type: 'ordinal', grid:false },
     y: { field: 'y_in', type: 'ordinal', grid:false },

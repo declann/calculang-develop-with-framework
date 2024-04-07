@@ -205,10 +205,10 @@ display(viz_placeholder)
 return {viz_placeholder};
 }});
 
-define({id: "51394648", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
+define({id: "dd5ce8df", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
 const spec = ({
   // vega-lite
-  mark: {type:'point', point: false, filled: true, tooltip:false},
+  mark: {type:'point', point: false, filled: true, tooltip:true},
   encoding: {
     x: { field: 'x_in', type: 'ordinal', grid:false },
     y: { field: 'y_in', type: 'ordinal', grid:false },
@@ -355,10 +355,10 @@ TEMPLATE.md provides:
 </details>
 </div>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
-<div id="cell-51394648" class="observablehq observablehq--block"></div>
+<div id="cell-dd5ce8df" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
-  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">false</span>},
+  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>},
   <span class="hljs-attr">encoding</span>: {
     <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'ordinal'</span>, <span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span> },
     <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'y_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'ordinal'</span>, <span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span> },

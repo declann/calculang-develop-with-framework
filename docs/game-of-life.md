@@ -9,7 +9,7 @@ toc: false
   
 <div class="card">
 <details open><summary>inputs ⚙️</summary>
-${view(Inputs.bind(Inputs.range([0,200], {step:1, label:'generation'}), g_in_Input))}
+${view(Inputs.bind(Inputs.range([0,300], {step:1, label:'generation'}), g_in_Input))}
 </details>
 </div>
 
@@ -94,7 +94,7 @@ const cul_default = await FileAttachment('./graphing-calcs/cul/game-of-life.cul.
 ```js
 const workbook = await FileAttachment('./graphing-calcs/game-of-life.xlsx').xlsx()
 
-const size_in = 24
+const size_in = 50
 
 //display(workbook)
 //display(Object.values(workbook.sheet("Sheet1")[0]))

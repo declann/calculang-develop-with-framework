@@ -194,8 +194,8 @@ const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: emb
 return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
 }});
 
-define({id: "17b08d0d", inline: true, inputs: ["view","Inputs","g_in_Input"], body: (view,Inputs,g_in_Input) => {
-view(Inputs.bind(Inputs.range([0,200], {step:1, label:'generation'}), g_in_Input))
+define({id: "e294a54a", inline: true, inputs: ["view","Inputs","g_in_Input"], body: (view,Inputs,g_in_Input) => {
+view(Inputs.bind(Inputs.range([0,300], {step:1, label:'generation'}), g_in_Input))
 }});
 
 define({id: "73f05601", inputs: ["html","display"], outputs: ["viz_placeholder"], body: (html,display) => {
@@ -254,10 +254,10 @@ const cul_default = await FileAttachment("./graphing-calcs/cul/game-of-life.cul.
 return {FileAttachment,cul_default};
 }});
 
-define({id: "20716723", inputs: ["FileAttachment"], outputs: ["workbook","size_in"], body: async (FileAttachment) => {
+define({id: "37ce0ed2", inputs: ["FileAttachment"], outputs: ["workbook","size_in"], body: async (FileAttachment) => {
 const workbook = await FileAttachment("./graphing-calcs/game-of-life.xlsx").xlsx()
 
-const size_in = 24
+const size_in = 50
 
 //display(workbook)
 //display(Object.values(workbook.sheet("Sheet1")[0]))
@@ -351,7 +351,7 @@ TEMPLATE.md provides:
 <div id="content">
 <div class="card">
 <details open=""><summary>inputs ⚙️</summary>
-<span id="cell-17b08d0d" class="observablehq--loading"></span>
+<span id="cell-e294a54a" class="observablehq--loading"></span>
 </details>
 </div>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
@@ -411,7 +411,7 @@ TEMPLATE.md provides:
 </div>
 <!-- close tag started in template -->
 <div id="cell-6f08b52e" class="observablehq observablehq--block"></div>
-<div id="cell-20716723" class="observablehq observablehq--block"></div>
+<div id="cell-37ce0ed2" class="observablehq observablehq--block"></div>
 <div id="cell-9d9765f1" class="observablehq observablehq--block"></div>
 <div id="cell-67113230" class="observablehq observablehq--block"></div>
 <div id="cell-f471652c" class="observablehq observablehq--block"></div>

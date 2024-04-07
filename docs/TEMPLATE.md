@@ -6,7 +6,7 @@ TEMPLATE.md provides:
   -->
 
 ```js
-// wrap echoed source code by details tag
+// wrap echoed source code by details tag; hot reload breaks this but ok for now
 document.querySelectorAll('.observablehq-pre-container').forEach(el => {
   let wrapper = document.createElement('details');
   wrapper.className = 'code'

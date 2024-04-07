@@ -58,7 +58,7 @@ const data_source = calcuvegadata({
 viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
 ```
 
-<details open><summary>Performance notes (old)</summary>
+<details><summary>Performance notes (old)</summary>
 
 - initial grid as a function input is very important to take stress off naive memo with JSON stringify hash
 

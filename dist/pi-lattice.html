@@ -4,10 +4,10 @@
 <title>Pi 🥮 by lattice (GALLERY DEV) | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/custom-style.ac4188bc.css">
+<link rel="preload" as="style" href="./_import/custom-style.9bddc0ff.css">
 <link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/custom-style.ac4188bc.css">
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.9bddc0ff.css">
 <link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
@@ -117,11 +117,9 @@ const {Scrubber} = await import("./_import/components/scrubber.a7df8a1e.js");
 return {Scrubber};
 }});
 
-define({id: "9ebd6f81", body: () => {
-// DISABLING TO TEST HOT RELOAD
-
-// wrap echoed source code by details tag
-/*document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+define({id: "dcd4fa01", body: () => {
+// wrap echoed source code by details tag; hot reload breaks this but ok for now
+document.querySelectorAll('.observablehq-pre-container').forEach(el => {
   let wrapper = document.createElement('details');
   wrapper.className = 'code'
   let summary = document.createElement('summary')
@@ -131,7 +129,13 @@ define({id: "9ebd6f81", body: () => {
   wrapper.appendChild(el);
 });
 
-document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));*/
+//document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));
+
+/*document.querySelectorAll('div.observablehq--block').forEach(div => {
+  if (div.innerHTML === '') div.remove();
+})*/
+
+// above dom manips all cause new els on hot reload..
 }});
 
 define({id: "5675774d", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","editor"], body: async (cul_default,Mutable) => {
@@ -170,7 +174,7 @@ define({id: "8094d046", inline: true, inputs: ["display","introspection"], body:
 display(JSON.stringify([...introspection.cul_links]))
 }});
 
-define({id: "eb13376e", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
+define({id: "fecc9901", inputs: ["compileWithMemo","doc","introspection2","display","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,display,invalidation) => {
 const esm = compileWithMemo(doc)
 const introspection = introspection2(doc)
 //display(introspection.cul_input_map) todo put under devtools
@@ -190,17 +194,20 @@ console.log(`creating ${u}`)
 
 const model = await import(u)
 
-//display(model)
+
+display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
 return {esm,introspection,inputs,formulae_not_inputs,u,model};
 }});
 
-define({id: "7dfec1d7", outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async () => {
+define({id: "55dc193b", inputs: ["display"], outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async (display) => {
 const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: embed}] = await Promise.all([import("./_import/components/helpers.157d4a5a.js"), import("./_import/components/mini-calculang.571c25e7.js"), import("./_npm/vega-embed@6.24.0/_esm.js")]);
 
 
+
+display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
 }});
@@ -234,7 +241,7 @@ display(viz_placeholder)
 return {viz_placeholder};
 }});
 
-define({id: "0c507a6d", inputs: ["content_width","embed"], outputs: ["spec","viz"], body: (content_width,embed) => {
+define({id: "832d295b", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
 const spec = ({
   // vega-lite
   title: "points",
@@ -247,8 +254,9 @@ const spec = ({
   },
   data: { name: "data" },
   autosize: { "type": "fit", "contains": "padding"},
-  width: Math.min(500,content_width-30),//Math.min(400,content_width),
-  height: Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
+  // no reactive w/h due to https://github.com/observablehq/framework/issues/1194
+  width: 400,//Math.min(500,content_width-30),//Math.min(400,content_width),
+  height: 400-30,//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
   background:'rgba(0,0,0,0)'
 })
 
@@ -291,11 +299,13 @@ const cul_default = await FileAttachment("./cul/pi-lattice.cul.js").text()
 return {FileAttachment,cul_default};
 }});
 
-define({id: "eb7d1490", inputs: ["Inputs","Generators","cul_default"], outputs: ["n_in_Input","n_in","content_width","cul_Input","cul"], body: (Inputs,Generators,cul_default) => {
+define({id: "60d26adb", inputs: ["Inputs","Generators","cul_default"], outputs: ["n_in_Input","n_in","content_width","cul_Input","cul"], body: (Inputs,Generators,cul_default) => {
 const n_in_Input = Inputs.input(2);
 const n_in = Generators.input(n_in_Input);
 
-const content_width = Generators.width(document.getElementById("content")); // keep as a generator for reactivity
+// I CAN'T USE reactive width because hot reload will wipe it to 0
+// https://github.com/observablehq/framework/issues/1194
+const content_width = Generators.width(document.getElementById("content2")); // keep as a generator for reactivity
 
 
 // circular definition if I use cul_default ?!
@@ -337,8 +347,9 @@ TEMPLATE.md provides:
 - editor
 - JS bits: model (obv), calcuvegadata, embed, compile etc.
   -->
-<div id="cell-9ebd6f81" class="observablehq observablehq--block"></div>
+<div id="cell-dcd4fa01" class="observablehq observablehq--block"></div>
 <div id="cell-5675774d" class="observablehq observablehq--block"></div>
+<div id="wrapper" class="wrapper">
 <div id="lhs" class="lhs side">
   <div class="grow">
   <h1>ƒ</h1>
@@ -358,9 +369,9 @@ TEMPLATE.md provides:
   </details>
   </div>
 </div>
-<div id="cell-eb13376e" class="observablehq observablehq--block"></div>
-<div id="cell-7dfec1d7" class="observablehq observablehq--block"></div>
-<div id="wrapper" class="wrapper">
+<div id="cell-fecc9901" class="observablehq observablehq--block"></div>
+<div id="cell-55dc193b" class="observablehq observablehq--block"></div>
+<!--<div id="wrapper" class="wrapper">-->
 <div id="content">
 <h1 id="%F0%9F%8E%A8-pi-by-lattice-%F0%9F%A5%AE" tabindex="-1"><a class="observablehq-header-anchor" href="#%F0%9F%8E%A8-pi-by-lattice-%F0%9F%A5%AE">🎨 Pi by lattice 🥮</a></h1>
 <div class="card">
@@ -378,7 +389,7 @@ TEMPLATE.md provides:
 <p>Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang" target="_blank" rel="noopener noreferrer">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.</p>
 </details>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
-<div id="cell-0c507a6d" class="observablehq observablehq--block"></div>
+<div id="cell-832d295b" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
   <span class="hljs-attr">title</span>: <span class="hljs-string">"points"</span>,
@@ -391,8 +402,9 @@ TEMPLATE.md provides:
   },
   <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
   <span class="hljs-attr">autosize</span>: { <span class="hljs-string">"type"</span>: <span class="hljs-string">"fit"</span>, <span class="hljs-string">"contains"</span>: <span class="hljs-string">"padding"</span>},
-  <span class="hljs-attr">width</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">500</span>,content_width-<span class="hljs-number">30</span>),<span class="hljs-comment">//Math.min(400,content_width),</span>
-  <span class="hljs-attr">height</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">500</span>,content_width-<span class="hljs-number">30</span>)/<span class="hljs-number">1.2</span>,<span class="hljs-comment">//Math.min(400,content_width-30),</span>
+  <span class="hljs-comment">// no reactive w/h due to https://github.com/observablehq/framework/issues/1194</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-number">400</span>,<span class="hljs-comment">//Math.min(500,content_width-30),//Math.min(400,content_width),</span>
+  <span class="hljs-attr">height</span>: <span class="hljs-number">400</span>-<span class="hljs-number">30</span>,<span class="hljs-comment">//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),</span>
   <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>
 })
 
@@ -427,8 +439,9 @@ TEMPLATE.md provides:
 <p>For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day" target="_blank" rel="noopener noreferrer">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang" target="_blank" rel="noopener noreferrer">Monte Carlo methods</a>.</p>
 </div>
 </div>
+<!-- close tag started in template -->
 <div id="cell-a2a5a609" class="observablehq observablehq--block"></div>
-<div id="cell-eb7d1490" class="observablehq observablehq--block"></div>
+<div id="cell-60d26adb" class="observablehq observablehq--block"></div>
 </main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>

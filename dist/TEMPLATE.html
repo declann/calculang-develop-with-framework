@@ -4,10 +4,10 @@
 <title>some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/custom-style.ac4188bc.css">
+<link rel="preload" as="style" href="./_import/custom-style.9bddc0ff.css">
 <link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/custom-style.ac4188bc.css">
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.9bddc0ff.css">
 <link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
@@ -92,11 +92,9 @@
 
 import {define} from "./_observablehq/client.js";
 
-define({id: "9ebd6f81", body: () => {
-// DISABLING TO TEST HOT RELOAD
-
-// wrap echoed source code by details tag
-/*document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+define({id: "dcd4fa01", body: () => {
+// wrap echoed source code by details tag; hot reload breaks this but ok for now
+document.querySelectorAll('.observablehq-pre-container').forEach(el => {
   let wrapper = document.createElement('details');
   wrapper.className = 'code'
   let summary = document.createElement('summary')
@@ -106,7 +104,13 @@ define({id: "9ebd6f81", body: () => {
   wrapper.appendChild(el);
 });
 
-document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));*/
+//document.getElementById('wrapper').insertBefore(document.getElementById('lhs'),document.getElementById('content'));
+
+/*document.querySelectorAll('div.observablehq--block').forEach(div => {
+  if (div.innerHTML === '') div.remove();
+})*/
+
+// above dom manips all cause new els on hot reload..
 }});
 
 define({id: "5675774d", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","editor"], body: async (cul_default,Mutable) => {
@@ -145,7 +149,7 @@ define({id: "8094d046", inline: true, inputs: ["display","introspection"], body:
 display(JSON.stringify([...introspection.cul_links]))
 }});
 
-define({id: "eb13376e", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
+define({id: "fecc9901", inputs: ["compileWithMemo","doc","introspection2","display","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,display,invalidation) => {
 const esm = compileWithMemo(doc)
 const introspection = introspection2(doc)
 //display(introspection.cul_input_map) todo put under devtools
@@ -165,17 +169,20 @@ console.log(`creating ${u}`)
 
 const model = await import(u)
 
-//display(model)
+
+display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
 return {esm,introspection,inputs,formulae_not_inputs,u,model};
 }});
 
-define({id: "7dfec1d7", outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async () => {
+define({id: "55dc193b", inputs: ["display"], outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async (display) => {
 const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: embed}] = await Promise.all([import("./_import/components/helpers.157d4a5a.js"), import("./_import/components/mini-calculang.571c25e7.js"), import("./_npm/vega-embed@6.24.0/_esm.js")]);
 
 
+
+display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
 }});
@@ -215,8 +222,9 @@ TEMPLATE.md provides:
 - editor
 - JS bits: model (obv), calcuvegadata, embed, compile etc.
   -->
-<div id="cell-9ebd6f81" class="observablehq observablehq--block"></div>
+<div id="cell-dcd4fa01" class="observablehq observablehq--block"></div>
 <div id="cell-5675774d" class="observablehq observablehq--block"></div>
+<div id="wrapper" class="wrapper">
 <div id="lhs" class="lhs side">
   <div class="grow">
   <h1>ƒ</h1>
@@ -236,9 +244,9 @@ TEMPLATE.md provides:
   </details>
   </div>
 </div>
-<div id="cell-eb13376e" class="observablehq observablehq--block"></div>
-<div id="cell-7dfec1d7" class="observablehq observablehq--block"></div>
-</main>
+<div id="cell-fecc9901" class="observablehq observablehq--block"></div>
+<div id="cell-55dc193b" class="observablehq observablehq--block"></div>
+</div></main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>
 </footer>

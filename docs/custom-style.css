@@ -182,6 +182,6 @@ pre {
 }
 
 /* support hot reload and grid layout (remove empty OJS blocks added by TEMPLATE.md */
-div:has(> div.hide-empty-block) {
+/*div:has(> div.hide-empty-block) {
   display: none;
-}
+} better alt is wrapping in a div with display:none*/

@@ -62,6 +62,8 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
   </div>
 </div>
 
+<div style="display:none">
+
 ```js
 
 const esm = compileWithMemo(doc)
@@ -84,7 +86,7 @@ console.log(`creating ${u}`)
 const model = await import(u)
 
 
-display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
+//display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
@@ -99,6 +101,8 @@ import { compile, introspection2, compileWithMemo } from "./components/mini-calc
 
 import embed from 'npm:vega-embed';
 
-display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
+//display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 ```
+
+</div>

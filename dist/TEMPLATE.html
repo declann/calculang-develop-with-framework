@@ -4,10 +4,10 @@
 <title>some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_import/custom-style.9bddc0ff.css">
+<link rel="preload" as="style" href="./_import/custom-style.ac4188bc.css">
 <link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_import/custom-style.9bddc0ff.css">
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.ac4188bc.css">
 <link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
@@ -149,7 +149,7 @@ define({id: "8094d046", inline: true, inputs: ["display","introspection"], body:
 display(JSON.stringify([...introspection.cul_links]))
 }});
 
-define({id: "fecc9901", inputs: ["compileWithMemo","doc","introspection2","display","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,display,invalidation) => {
+define({id: "8e1060c2", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
 const esm = compileWithMemo(doc)
 const introspection = introspection2(doc)
 //display(introspection.cul_input_map) todo put under devtools
@@ -170,19 +170,19 @@ console.log(`creating ${u}`)
 const model = await import(u)
 
 
-display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
+//display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
 return {esm,introspection,inputs,formulae_not_inputs,u,model};
 }});
 
-define({id: "55dc193b", inputs: ["display"], outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async (display) => {
+define({id: "053d168e", outputs: ["calcuvizspec","compile","introspection2","compileWithMemo","embed"], body: async () => {
 const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: embed}] = await Promise.all([import("./_import/components/helpers.157d4a5a.js"), import("./_import/components/mini-calculang.571c25e7.js"), import("./_npm/vega-embed@6.24.0/_esm.js")]);
 
 
 
-display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
+//display(Object.assign(document.createElement('div'), {className: 'hide-empty-block'}))
 
 return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
 }});
@@ -197,6 +197,7 @@ return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
   </ol>
   <ol>
     <li class="observablehq-link observablehq-link-active"><a href="./TEMPLATE">Untitled</a></li>
+    <li class="observablehq-link"><a href="./game-of-life">Game of Life (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
     <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
@@ -244,8 +245,10 @@ TEMPLATE.md provides:
   </details>
   </div>
 </div>
-<div id="cell-fecc9901" class="observablehq observablehq--block"></div>
-<div id="cell-55dc193b" class="observablehq observablehq--block"></div>
+<div style="display:none">
+<div id="cell-8e1060c2" class="observablehq observablehq--block"></div>
+<div id="cell-053d168e" class="observablehq observablehq--block"></div>
+</div>
 </div></main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>

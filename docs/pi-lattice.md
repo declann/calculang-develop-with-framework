@@ -9,7 +9,6 @@ import {Scrubber} from './components/scrubber.js'
 
 <!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
-<!--<div id="wrapper" class="wrapper">-->
 <div id="content">
   
 # 🎨 Pi by lattice 🥮

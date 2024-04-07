@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Pi 🥮 by lattice (GALLERY DEV) | some calculang things</title>
+<title>Game of Life (GALLERY DEV) | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
 <link rel="preload" as="style" href="./_import/custom-style.ac4188bc.css">
@@ -12,14 +12,11 @@
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.js">
-<link rel="modulepreload" href="./_import/components/scrubber.a7df8a1e.js">
 <link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.443fb9c8.js">
 <link rel="modulepreload" href="./_import/components/calcuvegadata.c9d96908.js">
 <link rel="modulepreload" href="./_import/components/helpers.157d4a5a.js">
 <link rel="modulepreload" href="./_import/components/mini-calculang.571c25e7.js">
 <link rel="modulepreload" href="./_npm/vega-embed@6.24.0/_esm.js">
-<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
-<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
 <link rel="modulepreload" href="./_npm/object-traversal@1.0.1/_esm.js">
@@ -28,9 +25,12 @@
 <link rel="modulepreload" href="./_npm/compassql@0.21.2/_esm.js">
 <link rel="modulepreload" href="./_npm/@babel/standalone@7.24.3/_esm.js">
 <link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.2.1/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/xlsx.js">
 <link rel="modulepreload" href="./_npm/lodash@4.17.21/_esm.js">
-<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
 <link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/exceljs@4.4.0/_esm.js">
 <link rel="modulepreload" href="./_npm/fast-json-patch@3.1.1/_esm.js">
 <link rel="modulepreload" href="./_npm/json-stringify-pretty-compact@3.0.0/_esm.js">
 <link rel="modulepreload" href="./_npm/vega@5.28.0/_esm.js">
@@ -40,36 +40,6 @@
 <link rel="modulepreload" href="./_npm/vega-themes@2.14.0/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-tooltip@0.34.0/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-array@2.12.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-random@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-util@1.17.2/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-dataflow@5.7.5/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-transforms@4.11.1/_esm.js">
@@ -97,25 +67,37 @@
 <link rel="modulepreload" href="./_npm/vega-expression@5.1.0/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-event-selector@3.0.1/_esm.js">
 <link rel="modulepreload" href="./_npm/internmap@1.0.1/_esm.js">
-<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
-<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-canvas@1.2.7/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
 <link rel="modulepreload" href="./_npm/topojson-client@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
 <link rel="modulepreload" href="./_npm/vega-selections@5.4.2/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
 <link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/_esm.js">
 <script type="module">
 
 import {define} from "./_observablehq/client.js";
 import {registerFile} from "./_observablehq/stdlib.js";
 
-registerFile("./cul/pi-lattice.cul.js", {"name":"./cul/pi-lattice.cul.js","mimeType":"text/javascript","path":"./_file/cul/pi-lattice.cul.6c76f302.js","lastModified":1710606534769});
-
-define({id: "e0e45ac8", outputs: ["Scrubber"], body: async () => {
-const {Scrubber} = await import("./_import/components/scrubber.a7df8a1e.js");
-
-return {Scrubber};
-}});
+registerFile("./graphing-calcs/cul/game-of-life.cul.js", {"name":"./graphing-calcs/cul/game-of-life.cul.js","mimeType":"text/javascript","path":"./_file/graphing-calcs/cul/game-of-life.cul.a9de12ae.js","lastModified":1712494937430});
+registerFile("./graphing-calcs/game-of-life.xlsx", {"name":"./graphing-calcs/game-of-life.xlsx","mimeType":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","path":"./_file/graphing-calcs/game-of-life.0b138375.xlsx","lastModified":1709145418034});
 
 define({id: "dcd4fa01", body: () => {
 // wrap echoed source code by details tag; hot reload breaks this but ok for now
@@ -212,26 +194,8 @@ const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: emb
 return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
 }});
 
-define({id: "da0b398f", inline: true, inputs: ["view","Inputs","Scrubber","_","n_in_Input"], body: (view,Inputs,Scrubber,_,n_in_Input) => {
-view(Inputs.bind(Scrubber(_.range(2,76), {value: 10, delay: 1000/10, autoplay: false, loop:false}), n_in_Input))
-}});
-
-define({id: "79eba418", inline: true, inputs: ["model","n_in","display"], body: async (model,n_in,display) => {
-display(await(
-model.proportion_inside({n_in}).toFixed(5)
-))
-}});
-
-define({id: "490c4272", inline: true, inputs: ["model","n_in","display"], body: async (model,n_in,display) => {
-display(await(
-model.pi_approximation({n_in}).toFixed(5)
-))
-}});
-
-define({id: "632312b7", inline: true, inputs: ["model","n_in","display"], body: async (model,n_in,display) => {
-display(await(
-model.error({n_in}).toFixed(5)
-))
+define({id: "17b08d0d", inline: true, inputs: ["view","Inputs","g_in_Input"], body: (view,Inputs,g_in_Input) => {
+view(Inputs.bind(Inputs.range([0,200], {step:1, label:'generation'}), g_in_Input))
 }});
 
 define({id: "73f05601", inputs: ["html","display"], outputs: ["viz_placeholder"], body: (html,display) => {
@@ -241,23 +205,21 @@ display(viz_placeholder)
 return {viz_placeholder};
 }});
 
-define({id: "832d295b", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
+define({id: "51394648", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
 const spec = ({
   // vega-lite
-  title: "points",
-  mark: {type:'point', tooltip:true, filled:true},
+  mark: {type:'point', point: false, filled: true, tooltip:false},
   encoding: {
-    x: { field: 'x', type: 'quantitative', scale: { domain: [0,1]} },
-    y: { field: 'y', type: 'quantitative', scale: { domain: [0,1]}  },
-    color: {field: 'inside', type: 'nominal', sort: 'descending'},
-    detail: {field: 'i_in', type: 'nominal'},
+    x: { field: 'x_in', type: 'ordinal', grid:false },
+    y: { field: 'y_in', type: 'ordinal', grid:false },
+    //row: { name: 'formula', domain: formulae_not_inputs },
+    color: { field: 'alive', legend: true },
+    shape: {value:'square'}
   },
+  width:180, //Math.min(300,width-150), // messy !!! container width works but overstates
+  height: 180,
+  background:'rgba(0,0,0,0)',
   data: { name: "data" },
-  autosize: { "type": "fit", "contains": "padding"},
-  // no reactive w/h due to https://github.com/observablehq/framework/issues/1194
-  width: 400,//Math.min(500,content_width-30),//Math.min(400,content_width),
-  height: 400-30,//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
-  background:'rgba(0,0,0,0)'
 })
 
 // interactivity via vega signals and listeners
@@ -265,15 +227,16 @@ const viz = embed('#viz', spec)
 return {spec,viz};
 }});
 
-define({id: "75d08f24", inputs: ["calcuvegadata","model","spec","_","n_in"], outputs: ["data_source"], body: (calcuvegadata,model,spec,_,n_in) => {
+define({id: "24fd748e", inputs: ["calcuvegadata","model","spec","_","size_in","initial_grid_function_in","g_in"], outputs: ["data_source"], body: (calcuvegadata,model,spec,_,size_in,initial_grid_function_in,g_in) => {
 const data_source = calcuvegadata({
   models: [model],
   spec,
   domains: {
-    i_in: _.range(0,n_in*n_in)
+    x_in: _.range(0,size_in),
+    y_in: _.range(0,size_in),
   },
   input_cursors: [
-    { n_in }
+    { size_in, initial_grid_function_in, g_in }
   ]
 })
 return {data_source};
@@ -283,36 +246,48 @@ define({id: "7087a911", inputs: ["viz","data_source"], body: (viz,data_source) =
 viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
 }});
 
-define({id: "6d02e9a3", inputs: ["model","display","Inputs","d3"], outputs: ["pis"], body: (model,display,Inputs,d3) => {
-const pis = [5, 10, 20,30,50,55,60,65,70,75]
-  .map(n_in => ({n_in, pi_approximation: model.pi_approximation({ n_in}), proportion_inside: model.proportion_inside({ n_in}), error: model.error({ n_in})}))
-
-display(Inputs.table(pis, {sort: 'n_in', reverse: true, format: { pi_approximation: d3.format(',.10f'), error: d3.format(',.4f') }}))
-return {pis};
-}});
-
-define({id: "a2a5a609", outputs: ["FileAttachment","cul_default"], body: async () => {
+define({id: "6f08b52e", outputs: ["FileAttachment","cul_default"], body: async () => {
 const {FileAttachment} = await import("./_observablehq/stdlib.js");
 
-const cul_default = await FileAttachment("./cul/pi-lattice.cul.js").text()
+const cul_default = await FileAttachment("./graphing-calcs/cul/game-of-life.cul.js").text()
 
 return {FileAttachment,cul_default};
 }});
 
-define({id: "60d26adb", inputs: ["Inputs","Generators","cul_default"], outputs: ["n_in_Input","n_in","content_width","cul_Input","cul"], body: (Inputs,Generators,cul_default) => {
-const n_in_Input = Inputs.input(2);
-const n_in = Generators.input(n_in_Input);
+define({id: "20716723", inputs: ["FileAttachment"], outputs: ["workbook","size_in"], body: async (FileAttachment) => {
+const workbook = await FileAttachment("./graphing-calcs/game-of-life.xlsx").xlsx()
 
+const size_in = 24
+
+//display(workbook)
+//display(Object.values(workbook.sheet("Sheet1")[0]))
+return {workbook,size_in};
+}});
+
+define({id: "9d9765f1", inputs: ["_","workbook"], outputs: ["initial_grid_in0","initial_grid_function_in"], body: (_,workbook) => {
+const initial_grid_in0 = _.range(0,50).map(d => Object.values(workbook.sheet("Sheet1")[d]))
+const initial_grid_function_in = () => initial_grid_in0//({x_in,y_in}) => initial_grid_in0[y_in][x_in]
+return {initial_grid_in0,initial_grid_function_in};
+}});
+
+define({id: "67113230", inputs: ["Inputs","Generators"], outputs: ["g_in_Input","g_in"], body: (Inputs,Generators) => {
+const g_in_Input = Inputs.input(0);
+const g_in = Generators.input(g_in_Input);
+
+return {g_in_Input,g_in};
+}});
+
+define({id: "f471652c", inputs: ["Inputs","cul_default","Generators"], outputs: ["cul_Input","cul"], body: (Inputs,cul_default,Generators) => {
 // I CAN'T USE reactive width because hot reload will wipe it to 0
 // https://github.com/observablehq/framework/issues/1194
-const content_width = Generators.width(document.getElementById("content2")); // keep as a generator for reactivity
+//const content_width = Generators.width(document.getElementById("content2")); // keep as a generator for reactivity
 
 
 // circular definition if I use cul_default ?!
 const cul_Input = Inputs.input(cul_default);
 const cul = Generators.input(cul_Input);
 
-return {n_in_Input,n_in,content_width,cul_Input,cul};
+return {cul_Input,cul};
 }});
 
 </script>
@@ -325,9 +300,9 @@ return {n_in_Input,n_in,content_width,cul_Input,cul};
   </ol>
   <ol>
     <li class="observablehq-link"><a href="./TEMPLATE">Untitled</a></li>
-    <li class="observablehq-link"><a href="./game-of-life">Game of Life (GALLERY DEV)</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./game-of-life">Game of Life (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
-    <li class="observablehq-link observablehq-link-active"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
     <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
@@ -341,7 +316,6 @@ return {n_in_Input,n_in,content_width,cul_Input,cul};
 <script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
-<div id="cell-e0e45ac8" class="observablehq observablehq--block"></div>
 <!--
 TEMPLATE.md provides:
 - collabsible code blocks
@@ -375,75 +349,61 @@ TEMPLATE.md provides:
 <div id="cell-053d168e" class="observablehq observablehq--block"></div>
 </div>
 <div id="content">
-<h1 id="%F0%9F%8E%A8-pi-by-lattice-%F0%9F%A5%AE" tabindex="-1"><a class="observablehq-header-anchor" href="#%F0%9F%8E%A8-pi-by-lattice-%F0%9F%A5%AE">🎨 Pi by lattice 🥮</a></h1>
 <div class="card">
 <details open=""><summary>inputs ⚙️</summary>
-<span id="cell-da0b398f" class="observablehq--loading"></span>
+<span id="cell-17b08d0d" class="observablehq--loading"></span>
 </details>
 </div>
-<p>Press <strong>play</strong> for an improving approximation of <strong>π</strong> based on approximating the area of a unit circle using a lattice!</p>
-<p>calculated area <strong>inside</strong> unit circle = <span id="cell-79eba418" class="observablehq--loading"></span> units<sup>2</sup> (1 quadrant); *4 ⇒</p>
-<h3 id="%CF%80-%E2%89%88" tabindex="-1"><a class="observablehq-header-anchor" href="#%CF%80-%E2%89%88">π ≈ <span id="cell-490c4272" class="observablehq--loading"></span></a></h3>
-<p>⇒ error ≈ <span style="font-weight:bold;color:red"><span id="cell-632312b7" class="observablehq--loading"></span></span></p>
-<p>(using πr<sup>2</sup> and r=1)</p>
-<details style="padding: 0.2rem; margin: 0.2rem"><summary style="">inspiration 🧙</summary>
-<p><a href="https://www.geogebra.org/m/kwty4hsz" target="_blank" rel="noopener noreferrer">A Geogebra example</a> I found linked in the <a href="https://www.geogebra.org/u/kmhkmh" target="_blank" rel="noopener noreferrer">wikipedia article for Pi</a>. I replicate this approach/numbers.</p>
-<p>Given this is similar but simpler than the <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang" target="_blank" rel="noopener noreferrer">Monte Carlo Pi</a> approximation I reproduced last year, I'm not sure why this approach isn't more common.</p>
-</details>
+<details><summary>Performance notes</summary>
+<ul><li>initial grid as a function input is very important to take stress off naive memo with JSON stringify hash</li>
+<li>at 50x50, rendering appears a bottleneck; bypass calcudata? (object structure poor)</li>
+<li>stream data to vega, or render to canvas or css grid? (with animation?) (somehow vega svg faster than vega canvas and I think FF faster than chromium)</li>
+<li>memory usage is out of control: manually try memo eviction strategies</li></ul></details>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
-<div id="cell-832d295b" class="observablehq observablehq--block"></div>
+<div id="cell-51394648" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
-  <span class="hljs-attr">title</span>: <span class="hljs-string">"points"</span>,
-  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>, <span class="hljs-attr">filled</span>:<span class="hljs-literal">true</span>},
+  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">false</span>},
   <span class="hljs-attr">encoding</span>: {
-    <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]} },
-    <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'y'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: { <span class="hljs-attr">domain</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]}  },
-    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'inside'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">sort</span>: <span class="hljs-string">'descending'</span>},
-    <span class="hljs-attr">detail</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'i_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>},
+    <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'ordinal'</span>, <span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span> },
+    <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'y_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'ordinal'</span>, <span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span> },
+    <span class="hljs-comment">//row: { name: 'formula', domain: formulae_not_inputs },</span>
+    <span class="hljs-attr">color</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'alive'</span>, <span class="hljs-attr">legend</span>: <span class="hljs-literal">true</span> },
+    <span class="hljs-attr">shape</span>: {<span class="hljs-attr">value</span>:<span class="hljs-string">'square'</span>}
   },
+  <span class="hljs-attr">width</span>:<span class="hljs-number">180</span>, <span class="hljs-comment">//Math.min(300,width-150), // messy !!! container width works but overstates</span>
+  <span class="hljs-attr">height</span>: <span class="hljs-number">180</span>,
+  <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>,
   <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
-  <span class="hljs-attr">autosize</span>: { <span class="hljs-string">"type"</span>: <span class="hljs-string">"fit"</span>, <span class="hljs-string">"contains"</span>: <span class="hljs-string">"padding"</span>},
-  <span class="hljs-comment">// no reactive w/h due to https://github.com/observablehq/framework/issues/1194</span>
-  <span class="hljs-attr">width</span>: <span class="hljs-number">400</span>,<span class="hljs-comment">//Math.min(500,content_width-30),//Math.min(400,content_width),</span>
-  <span class="hljs-attr">height</span>: <span class="hljs-number">400</span>-<span class="hljs-number">30</span>,<span class="hljs-comment">//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),</span>
-  <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>
 })
 
 <span class="hljs-comment">// interactivity via vega signals and listeners</span>
 <span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec)
 </code></pre>
-<div id="cell-75d08f24" class="observablehq observablehq--block"></div>
+<div id="cell-24fd748e" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source = <span class="hljs-title function_">calcuvegadata</span>({
   <span class="hljs-attr">models</span>: [model],
   spec,
   <span class="hljs-attr">domains</span>: {
-    <span class="hljs-attr">i_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,n_in*n_in)
+    <span class="hljs-attr">x_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in),
+    <span class="hljs-attr">y_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in),
   },
   <span class="hljs-attr">input_cursors</span>: [
-    { n_in }
+    { size_in, initial_grid_function_in, g_in }
   ]
 })
 </code></pre>
 <div id="cell-7087a911" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
 </code></pre>
-<details><summary>📜</summary>
-<div id="cell-6d02e9a3" class="observablehq observablehq--block"></div>
-<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> pis = [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">50</span>,<span class="hljs-number">55</span>,<span class="hljs-number">60</span>,<span class="hljs-number">65</span>,<span class="hljs-number">70</span>,<span class="hljs-number">75</span>]
-  .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">n_in</span> =&gt;</span> ({n_in, <span class="hljs-attr">pi_approximation</span>: model.<span class="hljs-title function_">pi_approximation</span>({ n_in}), <span class="hljs-attr">proportion_inside</span>: model.<span class="hljs-title function_">proportion_inside</span>({ n_in}), <span class="hljs-attr">error</span>: model.<span class="hljs-title function_">error</span>({ n_in})}))
-
-<span class="hljs-title function_">display</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">table</span>(pis, {<span class="hljs-attr">sort</span>: <span class="hljs-string">'n_in'</span>, <span class="hljs-attr">reverse</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">format</span>: { <span class="hljs-attr">pi_approximation</span>: d3.<span class="hljs-title function_">format</span>(<span class="hljs-string">',.10f'</span>), <span class="hljs-attr">error</span>: d3.<span class="hljs-title function_">format</span>(<span class="hljs-string">',.4f'</span>) }}))
-</code></pre>
-</details>
-<hr>
-<p><strong>⚠️ This π approximation is not suitable for space travel.</strong></p>
-<p>For better approximations check my <a href="https://observablehq.com/@declann/its-pi-day" target="_blank" rel="noopener noreferrer">post from last year</a>. See also, separate approximation using <a href="https://observablehq.com/@declann/monte-carlo-pi?collection=@declann/calculang" target="_blank" rel="noopener noreferrer">Monte Carlo methods</a>.</p>
 </div>
 </div>
 <!-- close tag started in template -->
-<div id="cell-a2a5a609" class="observablehq observablehq--block"></div>
-<div id="cell-60d26adb" class="observablehq observablehq--block"></div>
+<div id="cell-6f08b52e" class="observablehq observablehq--block"></div>
+<div id="cell-20716723" class="observablehq observablehq--block"></div>
+<div id="cell-9d9765f1" class="observablehq observablehq--block"></div>
+<div id="cell-67113230" class="observablehq observablehq--block"></div>
+<div id="cell-f471652c" class="observablehq observablehq--block"></div>
 </main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>

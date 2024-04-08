@@ -237,12 +237,6 @@ const dateFns = await import("https://esm.run/date-fns");
 return {dateFns};
 }});
 
-define({id: "48c610a5", inputs: ["view","Inputs"], outputs: ["date_in"], body: (view,Inputs) => {
-// updates to current date
-const date_in = view(Inputs.date({label: "date", value: new Date()}))
-return {date_in};
-}});
-
 define({id: "0ba52c7c", inline: true, inputs: ["d3","date_in","display"], body: async (d3,date_in,display) => {
 display(await(
 d3.utcFormat("%B %d, %Y")(date_in)
@@ -254,6 +248,12 @@ const viz_placeholder = html`<div id="viz" class="card"></div>`
 
 display(viz_placeholder)
 return {viz_placeholder};
+}});
+
+define({id: "48c610a5", inputs: ["view","Inputs"], outputs: ["date_in"], body: (view,Inputs) => {
+// updates to current date
+const date_in = view(Inputs.date({label: "date", value: new Date()}))
+return {date_in};
 }});
 
 define({id: "39a096cb", inputs: ["view","Inputs"], outputs: ["model_option"], body: (view,Inputs) => {
@@ -441,9 +441,9 @@ TEMPLATE.md provides:
 </div>
 <div id="cell-d5068057" class="observablehq observablehq--block"></div>
 <div id="cell-76f0c930" class="observablehq observablehq--block"></div>
-<div id="cell-48c610a5" class="observablehq observablehq--block"></div>
 <h3 style="margin-bottom:-20px"><span id="cell-0ba52c7c" class="observablehq--loading"></span></h3>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
+<div id="cell-48c610a5" class="observablehq observablehq--block"></div>
 <div id="cell-39a096cb" class="observablehq observablehq--block"></div>
 <p>🚧 <em>even though I replicate numbers, I need to do some DST and other time-related thinking</em></p>
 <div id="cell-6e83b90b" class="observablehq observablehq--block"></div>

@@ -45,17 +45,17 @@ import {addDays, addMinutes} from 'npm:date-fns'
 import * as dateFns from 'https://esm.run/date-fns';
 ```
 
-```js
-// updates to current date
-const date_in = view(Inputs.date({label: "date", value: new Date()}))
-```
-
 <h3 style="margin-bottom:-20px">${d3.utcFormat("%B %d, %Y")(date_in)}</h3>
 
 ```js
 const viz_placeholder = html`<div id="viz" class="card"></div>`
 
 display(viz_placeholder)
+```
+
+```js
+// updates to current date
+const date_in = view(Inputs.date({label: "date", value: new Date()}))
 ```
 
 ```js

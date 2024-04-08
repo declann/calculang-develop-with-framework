@@ -79,12 +79,12 @@ const spec = ({
     x: {grid:false,field: 'azimuth_obj', type: 'quantitative', axis: {title: 'azimuth (rads)'}, scale: {zero: false, domain: !clip2 ? [-3,3] : [-0.5,2.5]}},
     shape: {field: 'model_id'},
     order: {field: 'model_id', sort:'descending'},
-    color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:false, scale: {scheme: 'lightmulti'}
+    color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}
     }
   },
   background: '#00000000',
   width:500*.8 * (clip1 ? 1 : 0.5),
-  height:400*.6 * (clip1 ? 1 : 0.5),
+  height:400*.8 * (clip1 ? 1 : 0.5),
   data: { name: "data" },
 })
 

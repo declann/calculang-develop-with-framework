@@ -261,7 +261,7 @@ const model_option = view(Inputs.select(["calculang","suncalc","both (layered)"]
 return {model_option};
 }});
 
-define({id: "ebf53e0c", inputs: ["clip2","clip1","embed"], outputs: ["spec","viz"], body: (clip2,clip1,embed) => {
+define({id: "6e83b90b", inputs: ["clip2","clip1","embed"], outputs: ["spec","viz"], body: (clip2,clip1,embed) => {
 const spec = ({
   // vega-lite
   mark: {type:'point', size:400, filled:true,tooltip:true, clip:false, strokeWidth:0.2},
@@ -276,12 +276,12 @@ const spec = ({
     x: {grid:false,field: 'azimuth_obj', type: 'quantitative', axis: {title: 'azimuth (rads)'}, scale: {zero: false, domain: !clip2 ? [-3,3] : [-0.5,2.5]}},
     shape: {field: 'model_id'},
     order: {field: 'model_id', sort:'descending'},
-    color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:false, scale: {scheme: 'lightmulti'}
+    color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}
     }
   },
   background: '#00000000',
   width:500*.8 * (clip1 ? 1 : 0.5),
-  height:400*.6 * (clip1 ? 1 : 0.5),
+  height:400*.8 * (clip1 ? 1 : 0.5),
   data: { name: "data" },
 })
 
@@ -446,7 +446,7 @@ TEMPLATE.md provides:
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
 <div id="cell-39a096cb" class="observablehq observablehq--block"></div>
 <p>🚧 <em>even though I replicate numbers, I need to do some DST and other time-related thinking</em></p>
-<div id="cell-ebf53e0c" class="observablehq observablehq--block"></div>
+<div id="cell-6e83b90b" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
   <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">size</span>:<span class="hljs-number">400</span>, <span class="hljs-attr">filled</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>, <span class="hljs-attr">clip</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">strokeWidth</span>:<span class="hljs-number">0.2</span>},
@@ -461,12 +461,12 @@ TEMPLATE.md provides:
     <span class="hljs-attr">x</span>: {<span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">field</span>: <span class="hljs-string">'azimuth_obj'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">axis</span>: {<span class="hljs-attr">title</span>: <span class="hljs-string">'azimuth (rads)'</span>}, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">zero</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>: !clip2 ? [-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>] : [-<span class="hljs-number">0.5</span>,<span class="hljs-number">2.5</span>]}},
     <span class="hljs-attr">shape</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'model_id'</span>},
     <span class="hljs-attr">order</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'model_id'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'descending'</span>},
-    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'time_in'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'ascending'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">timeUnit</span>: <span class="hljs-string">'hoursminutes'</span>, <span class="hljs-attr">legend</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">scheme</span>: <span class="hljs-string">'lightmulti'</span>}
+    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'time_in'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'ascending'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">timeUnit</span>: <span class="hljs-string">'hoursminutes'</span>, <span class="hljs-attr">legend</span>:<span class="hljs-literal">true</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">scheme</span>: <span class="hljs-string">'lightmulti'</span>}
     }
   },
   <span class="hljs-attr">background</span>: <span class="hljs-string">'#00000000'</span>,
   <span class="hljs-attr">width</span>:<span class="hljs-number">500</span>*<span class="hljs-number">.8</span> * (clip1 ? <span class="hljs-number">1</span> : <span class="hljs-number">0.5</span>),
-  <span class="hljs-attr">height</span>:<span class="hljs-number">400</span>*<span class="hljs-number">.6</span> * (clip1 ? <span class="hljs-number">1</span> : <span class="hljs-number">0.5</span>),
+  <span class="hljs-attr">height</span>:<span class="hljs-number">400</span>*<span class="hljs-number">.8</span> * (clip1 ? <span class="hljs-number">1</span> : <span class="hljs-number">0.5</span>),
   <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
 })
 

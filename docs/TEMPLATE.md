@@ -45,8 +45,8 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
 <div id="lhs" class="lhs side">
   <div class="grow">
   <h1>ƒ</h1>
-  <!-- can I collapse things responsively? -->
-  <details class="calculang" open><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
+  <!-- can I collapse things responsively? check sidebar code in client.js and styling -->
+  <details class="calculang"><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
   <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
   ${display(editor.dom)}
   <details><summary>javascript ✨</summary>

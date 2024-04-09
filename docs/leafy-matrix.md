@@ -13,6 +13,8 @@ import {Scrubber} from './components/scrubber.js'
   
 # Leafy matrix 🍂🧑‍💻
 
+Leaf from Lu Wilson [@TodePond ](https://twitter.com/TodePond/status/1777580961938407797)
+
 <div class="card">
 <details open><summary>inputs ⚙️</summary>
 ${view(Inputs.bind(Scrubber(_.range(0,100), {value: 10, delay: 15, autoplay: false, loop:false}), n_in_Input))}

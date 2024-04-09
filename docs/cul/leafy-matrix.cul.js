@@ -67,9 +67,12 @@ const options = "hElL0WrlD!##'.-!##"
 
 export const t = () => v() ? options[Math.floor(random({x_in:x(),y_in:y()})*options.length)] : ' '
 
+// mapped to color
 export const c = () => v() ? random({x_in:x(),y_in:y(), n_in:n()}) : 0
+// mapped to size
 export const s = () => random({x_in:x(),y_in:y(), n_in:n()}) + v() ? 10.5 : 0
 
+// for random frames
 export const n = () => n_in
 
 

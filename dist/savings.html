@@ -347,7 +347,7 @@ display(viz_placeholder)
 return {viz_placeholder};
 }});
 
-define({id: "ea8287be", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
+define({id: "d5fb5cb2", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
 const spec = ({
   // vega-lite
     encoding: {
@@ -380,7 +380,7 @@ const spec = ({
       select: {
         type: "point",
         //on: "mousemove{0,50}",
-        on: "mouseup, touchup, [mousedown, mouseup] > mousemove",
+        on: "[touchdown, touchup] > touchmove, mouseup, touchup, [mousedown, mouseup] > mousemove",
         //on: "[touchdown, touchup] > touchmove, [mousedown, mouseup] > mousemove", //{10, 100}",
         //        on: "[mousedown, mouseup] > mousemove",
         nearest: true,
@@ -540,7 +540,7 @@ TEMPLATE.md provides:
 <p><em>Projected savings balance at end of year <strong><span id="cell-21b4d763" class="observablehq--loading"></span></strong> is <strong>€ <span id="cell-4e222409" class="observablehq--loading"></span></strong></em></p>
 <p>💡 <em>Click a number to highlight workings</em></p>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
-<div id="cell-ea8287be" class="observablehq observablehq--block"></div>
+<div id="cell-d5fb5cb2" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
     <span class="hljs-attr">encoding</span>: {
@@ -573,7 +573,7 @@ TEMPLATE.md provides:
       <span class="hljs-attr">select</span>: {
         <span class="hljs-attr">type</span>: <span class="hljs-string">"point"</span>,
         <span class="hljs-comment">//on: "mousemove{0,50}",</span>
-        <span class="hljs-attr">on</span>: <span class="hljs-string">"mouseup, touchup, [mousedown, mouseup] &gt; mousemove"</span>,
+        <span class="hljs-attr">on</span>: <span class="hljs-string">"[touchdown, touchup] &gt; touchmove, mouseup, touchup, [mousedown, mouseup] &gt; mousemove"</span>,
         <span class="hljs-comment">//on: "[touchdown, touchup] &gt; touchmove, [mousedown, mouseup] &gt; mousemove", //{10, 100}",</span>
         <span class="hljs-comment">//        on: "[mousedown, mouseup] &gt; mousemove",</span>
         <span class="hljs-attr">nearest</span>: <span class="hljs-literal">true</span>,

@@ -119,7 +119,7 @@ const spec = ({
       select: {
         type: "point",
         //on: "mousemove{0,50}",
-        on: "mouseup, touchup, [mousedown, mouseup] > mousemove",
+        on: "[touchdown, touchup] > touchmove, mouseup, touchup, [mousedown, mouseup] > mousemove",
         //on: "[touchdown, touchup] > touchmove, [mousedown, mouseup] > mousemove", //{10, 100}",
         //        on: "[mousedown, mouseup] > mousemove",
         nearest: true,

@@ -13,6 +13,7 @@
 <link rel="modulepreload" href="./_observablehq/runtime.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.js">
 <link rel="modulepreload" href="./_import/components/scrubber.a7df8a1e.js">
+<link rel="modulepreload" href="./_npm/source-map-js@1.2.0/_esm.js">
 <link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.443fb9c8.js">
 <link rel="modulepreload" href="./_import/components/calcuvegadata.c9d96908.js">
 <link rel="modulepreload" href="./_import/components/helpers.157d4a5a.js">
@@ -117,6 +118,60 @@ const {Scrubber} = await import("./_import/components/scrubber.a7df8a1e.js");
 return {Scrubber};
 }});
 
+define({id: "893b36ab", inputs: ["esm","introspection","cursor","model"], outputs: ["SourceMapConsumer","map","cul_scope_id","calls_annotations","fns_annotations"], body: async (esm,introspection,cursor,model) => {
+const {SourceMapConsumer} = await import("./_npm/source-map-js@1.2.0/_esm.js");
+
+const map = new SourceMapConsumer(esm.map);
+
+const cul_scope_id = 0
+
+const calls_annotations = 
+  [...introspection.cul_links].filter(d => d.reason == 'call')
+        .map((d) => ({
+        ...d,
+        mjs_loc: {
+          start: map.generatedPositionFor({
+            ...d.loc.start,
+            source: esm.map.sources[0] //`${only_entrypoint_no_cul_js}-nomemo.cul.js` // todo update !
+          }),
+          end: map.generatedPositionFor({
+            ...d.loc.end,
+            source: esm.map.sources[0] //`${only_entrypoint_no_cul_js}-nomemo.cul.js`
+          })
+        }
+      }))
+      .map((d) => ({
+        ...d,
+        mjs: esm.code
+          .split("\n")
+        [d.mjs_loc.start.line - 1].substring(
+          d.mjs_loc.start.column,
+          d.mjs_loc.end.column
+        )
+      })) // assuming completely on one line
+      .map(d => {
+  const selection_fn = new Function("model", "{"+Object.keys(cursor).join(",")+"}", `Object.assign(window, model); return ({value:${d.mjs}, cursor: ${d.mjs.slice(d.from.length-2)}})`) // using hacky way to get cursor, for calculang-at-fosdem I used babel: `is` function
+  return {...d, ...selection_fn(model, cursor)}
+})
+
+const fns_annotations = [...introspection.cul_functions.values()].filter(
+        (d) =>
+          d.reason == "definition" /*input definition doesn't have a loc*/ &&
+          d.cul_scope_id == cul_scope_id
+      )
+      .map(d => {
+        const dd = {...d}
+        dd.inputs = [...introspection.cul_input_map['0_'+d.name]]
+
+        const selection_fn = new Function("model", "{"+dd.inputs.join(",")+"}", `Object.assign(window, model); return ${d.name}({${dd.inputs.join(",")}})`)
+
+        dd.v = selection_fn(model,cursor)
+
+        return dd //return selection_fn(model, c)
+      })
+return {SourceMapConsumer,map,cul_scope_id,calls_annotations,fns_annotations};
+}});
+
 define({id: "dcd4fa01", body: () => {
 // wrap echoed source code by details tag; hot reload breaks this but ok for now
 document.querySelectorAll('.observablehq-pre-container').forEach(el => {
@@ -160,18 +215,28 @@ define({id: "a91751cf", inline: true, inputs: ["view","Inputs","esm"], body: (vi
 view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))
 }});
 
-define({id: "7be5e906", inline: true, inputs: ["display"], body: async (display) => {
-display(await(
-"todo"
-))
+define({id: "26245c6d", inputs: ["Mutable"], outputs: ["cursor","setCursor"], body: (Mutable) => {
+const cursor = Mutable({}) // every input should be in, but with what values?
+
+const setCursor = (k,v) => {
+  cursor.value = {...cursor.value, [k]:v};
+}
+return {cursor,setCursor};
 }});
 
-define({id: "bd87104d", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
-display(Object.keys(introspection))
+define({id: "a76371a0", inputs: ["Mutable"], outputs: ["formula","setFormula"], body: (Mutable) => {
+const formula = Mutable("")
+
+const setFormula = (v) => {
+  formula.value = v
+}
+return {formula,setFormula};
 }});
 
-define({id: "8094d046", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
-display(JSON.stringify([...introspection.cul_links]))
+define({id: "7367542a", inputs: ["display","calls_annotations","fns_annotations","introspection"], body: (display,calls_annotations,fns_annotations,introspection) => {
+display(calls_annotations)
+display(fns_annotations.map(d => d.v))
+display(introspection)
 }});
 
 define({id: "8e1060c2", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
@@ -320,6 +385,7 @@ return {n_in_Input,n_in,content_width,cul_Input,cul};
     <li class="observablehq-link observablehq-link-active"><a href="./leafy-matrix">Leafy matrix 🍂🧑‍💻 (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
+    <li class="observablehq-link"><a href="./savings">Savings Calculator 🪙🪙 (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./sun-moon-paths">☀️ and 🌝 Paths (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
@@ -340,6 +406,7 @@ TEMPLATE.md provides:
 - editor
 - JS bits: model (obv), calcuvegadata, embed, compile etc.
   -->
+<div id="cell-893b36ab" class="observablehq observablehq--block"></div>
 <div id="cell-dcd4fa01" class="observablehq observablehq--block"></div>
 <div id="cell-5675774d" class="observablehq observablehq--block"></div>
 <div id="wrapper" class="wrapper">
@@ -347,17 +414,18 @@ TEMPLATE.md provides:
   <div class="grow">
   <h1>ƒ</h1>
   <!-- can I collapse things responsively? check sidebar code in client.js and styling -->
-  <details class="calculang"><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
+  <details class="calculang" open=""><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
   <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
   <span id="cell-1a748ae6" class="observablehq--loading"></span>
   <details><summary>javascript ✨</summary>
   <span style="font-style: italic">generated from calculang</span> ⬆️
   <span id="cell-a91751cf" class="observablehq--loading"></span>
   </details>
-  <details><summary>dev tools 🧰</summary>
-  <span id="cell-7be5e906" class="observablehq--loading"></span>
-  <span id="cell-bd87104d" class="observablehq--loading"></span>
-  <span id="cell-8094d046" class="observablehq--loading"></span>
+  <details open=""><summary>dev tools 🧰</summary>
+<p><em>reactive workings (todo):</em></p>
+<div id="cell-26245c6d" class="observablehq observablehq--block"></div>
+<div id="cell-a76371a0" class="observablehq observablehq--block"></div>
+<div id="cell-7367542a" class="observablehq observablehq--block"></div>
   </details>
   </details>
   </div>

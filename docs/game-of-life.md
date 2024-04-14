@@ -3,6 +3,16 @@ title: Game of Life (GALLERY DEV)
 toc: false
 ---
 
+```js
+setA('g_in',g_in)
+setA('size_in',size_in)
+setA('initial_grid_function_in',initial_grid_function_in)
+```
+
+```js
+const c = ({...a})
+```
+
 <!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 <div id="content">
@@ -49,7 +59,7 @@ const data_source = calcuvegadata({
     y_in: _.range(0,size_in),
   },
   input_cursors: [
-    { size_in, initial_grid_function_in, g_in }
+    { ...c }
   ]
 })
 ```

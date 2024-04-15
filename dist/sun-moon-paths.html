@@ -29,7 +29,6 @@
 <link rel="modulepreload" href="./_npm/compassql@0.21.2/_esm.js">
 <link rel="modulepreload" href="./_npm/@babel/standalone@7.24.3/_esm.js">
 <link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.2.1/_esm.js">
-<link rel="modulepreload" href="./_npm/lodash@4.17.21/_esm.js">
 <link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
 <link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
@@ -326,7 +325,7 @@ const model_option = view(Inputs.select(["calculang","suncalc","both (layered)"]
 return {model_option};
 }});
 
-define({id: "6e83b90b", inputs: ["clip2","clip1","embed"], outputs: ["spec","viz"], body: (clip2,clip1,embed) => {
+define({id: "82a20f8c", inputs: ["clip2","clip1","embed"], outputs: ["spec","viz"], body: (clip2,clip1,embed) => {
 const spec = ({
   // vega-lite
   mark: {type:'point', size:400, filled:true,tooltip:true, clip:false, strokeWidth:0.2},
@@ -340,9 +339,9 @@ const spec = ({
     y: {grid: false,field: 'altitude_obj', type:'quantitative', axis: { values: [0,1], title: 'altitude (rads)'}, scale: {ticks: [0],zero: false, domain: clip2 ? [0,1] : [-1,1.5]}},
     x: {grid:false,field: 'azimuth_obj', type: 'quantitative', axis: {title: 'azimuth (rads)'}, scale: {zero: false, domain: !clip2 ? [-3,3] : [-0.5,2.5]}},
     shape: {field: 'model_id'},
+    color: {field: 'obj_in'},
     order: {field: 'model_id', sort:'descending'},
-    color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}
-    }
+    //color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}}
   },
   background: '#00000000',
   width:500*.8 * (clip1 ? 1 : 0.5),
@@ -355,22 +354,33 @@ const viz = embed('#viz', spec, {actions:true})
 return {spec,viz};
 }});
 
-define({id: "d14c3fc3", inputs: ["calcuvegadata","model_option","model","suncalc_js_wrapped","spec","date_in","_","addMinutes","lat_in","lng_in"], outputs: ["data_source"], body: (calcuvegadata,model_option,model,suncalc_js_wrapped,spec,date_in,_,addMinutes,lat_in,lng_in) => {
+define({id: "7bd9fbd7", inputs: ["view","Inputs"], outputs: ["mins"], body: (view,Inputs) => {
+const mins = view(Inputs.range([0,10000], {value:0, step:1,label:'mins'}))
+return {mins};
+}});
+
+define({id: "5a479a78", inputs: ["calcuvegadata","model_option","model","suncalc_js_wrapped","spec","lat_in","lng_in","addMinutes","date_in","mins"], outputs: ["data_source"], body: (calcuvegadata,model_option,model,suncalc_js_wrapped,spec,lat_in,lng_in,addMinutes,date_in,mins) => {
 const data_source = calcuvegadata({
   models: model_option == 'calculang' ? [model] : model_option.includes('both') ? [model, suncalc_js_wrapped] : [suncalc_js_wrapped],
   spec,
   domains: {
     obj_in: ['sun','moon'],
-    date_in: [date_in],
+    //date_in: [ addMinutes(date_in,mins*40)],
     // all days (for analemma)
     //date_in: [new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(), ..._.range(0,365+1, 5).map(d => addDays(date_in, d))/*, ..._.range(1,121).map(d => addDays(date_in, -d))*/],//[new Date()],//[new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(), ..._.range(0,365+1, 5).map(d => addDays(date_in, d))/*, ..._.range(1,121).map(d => addDays(date_in, -d))*/],
-    time_in: _.range(0,25.1,1).map(hrs => addMinutes(date_in, hrs*60))
+    //time_in: _.range(0,25.1,1).map(hrs => addMinutes(date_in, hrs*60))
   },
   input_cursors: [
-    { lat_in, lng_in, date_in }
+    { lat_in, lng_in, date_in: addMinutes(date_in,mins*40), time_in: addMinutes(date_in,mins*40) }
   ]
 })
 return {data_source};
+}});
+
+define({id: "472d3f5e", inputs: ["addMinutes","date_in","mins","display"], body: async (addMinutes,date_in,mins,display) => {
+display(await(
+addMinutes(date_in,mins*40)
+))
 }});
 
 define({id: "c5046e01", inputs: ["viz","data_source"], body: (viz,data_source) => {
@@ -445,6 +455,7 @@ return {cul_Input,cul};
     <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
     <li class="observablehq-link"><a href="./savings">Savings Calculator 🪙🪙 (GALLERY DEV)</a></li>
     <li class="observablehq-link observablehq-link-active"><a href="./sun-moon-paths">☀️ and 🌝 Paths (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./sun-moon-paths2">☀️ and 🌝 Paths 2 (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
     <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
@@ -515,7 +526,7 @@ TEMPLATE.md provides:
 <div id="cell-48c610a5" class="observablehq observablehq--block"></div>
 <div id="cell-39a096cb" class="observablehq observablehq--block"></div>
 <p>🚧 <em>even though I replicate numbers, I need to do some DST and other time-related thinking</em></p>
-<div id="cell-6e83b90b" class="observablehq observablehq--block"></div>
+<div id="cell-82a20f8c" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
   <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">size</span>:<span class="hljs-number">400</span>, <span class="hljs-attr">filled</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>, <span class="hljs-attr">clip</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">strokeWidth</span>:<span class="hljs-number">0.2</span>},
@@ -529,9 +540,9 @@ TEMPLATE.md provides:
     <span class="hljs-attr">y</span>: {<span class="hljs-attr">grid</span>: <span class="hljs-literal">false</span>,<span class="hljs-attr">field</span>: <span class="hljs-string">'altitude_obj'</span>, <span class="hljs-attr">type</span>:<span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">axis</span>: { <span class="hljs-attr">values</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>], <span class="hljs-attr">title</span>: <span class="hljs-string">'altitude (rads)'</span>}, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">ticks</span>: [<span class="hljs-number">0</span>],<span class="hljs-attr">zero</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>: clip2 ? [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>] : [-<span class="hljs-number">1</span>,<span class="hljs-number">1.5</span>]}},
     <span class="hljs-attr">x</span>: {<span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">field</span>: <span class="hljs-string">'azimuth_obj'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">axis</span>: {<span class="hljs-attr">title</span>: <span class="hljs-string">'azimuth (rads)'</span>}, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">zero</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>: !clip2 ? [-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>] : [-<span class="hljs-number">0.5</span>,<span class="hljs-number">2.5</span>]}},
     <span class="hljs-attr">shape</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'model_id'</span>},
+    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'obj_in'</span>},
     <span class="hljs-attr">order</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'model_id'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'descending'</span>},
-    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'time_in'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'ascending'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">timeUnit</span>: <span class="hljs-string">'hoursminutes'</span>, <span class="hljs-attr">legend</span>:<span class="hljs-literal">true</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">scheme</span>: <span class="hljs-string">'lightmulti'</span>}
-    }
+    <span class="hljs-comment">//color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}}</span>
   },
   <span class="hljs-attr">background</span>: <span class="hljs-string">'#00000000'</span>,
   <span class="hljs-attr">width</span>:<span class="hljs-number">500</span>*<span class="hljs-number">.8</span> * (clip1 ? <span class="hljs-number">1</span> : <span class="hljs-number">0.5</span>),
@@ -542,22 +553,11 @@ TEMPLATE.md provides:
 <span class="hljs-comment">// interactivity via vega signals and listeners</span>
 <span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec, {<span class="hljs-attr">actions</span>:<span class="hljs-literal">true</span>})
 </code></pre>
-<div id="cell-d14c3fc3" class="observablehq observablehq--block"></div>
-<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source = <span class="hljs-title function_">calcuvegadata</span>({
-  <span class="hljs-attr">models</span>: model_option == <span class="hljs-string">'calculang'</span> ? [model] : model_option.<span class="hljs-title function_">includes</span>(<span class="hljs-string">'both'</span>) ? [model, suncalc_js_wrapped] : [suncalc_js_wrapped],
-  spec,
-  <span class="hljs-attr">domains</span>: {
-    <span class="hljs-attr">obj_in</span>: [<span class="hljs-string">'sun'</span>,<span class="hljs-string">'moon'</span>],
-    <span class="hljs-attr">date_in</span>: [date_in],
-    <span class="hljs-comment">// all days (for analemma)</span>
-    <span class="hljs-comment">//date_in: [new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(), ..._.range(0,365+1, 5).map(d =&gt; addDays(date_in, d))/*, ..._.range(1,121).map(d =&gt; addDays(date_in, -d))*/],//[new Date()],//[new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(), ..._.range(0,365+1, 5).map(d =&gt; addDays(date_in, d))/*, ..._.range(1,121).map(d =&gt; addDays(date_in, -d))*/],</span>
-    <span class="hljs-attr">time_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">25.1</span>,<span class="hljs-number">1</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">hrs</span> =&gt;</span> <span class="hljs-title function_">addMinutes</span>(date_in, hrs*<span class="hljs-number">60</span>))
-  },
-  <span class="hljs-attr">input_cursors</span>: [
-    { lat_in, lng_in, date_in }
-  ]
-})
+<div id="cell-7bd9fbd7" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> mins = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">0</span>,<span class="hljs-number">10000</span>], {<span class="hljs-attr">value</span>:<span class="hljs-number">0</span>, <span class="hljs-attr">step</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">label</span>:<span class="hljs-string">'mins'</span>}))
 </code></pre>
+<div id="cell-5a479a78" class="observablehq observablehq--block"></div>
+<div id="cell-472d3f5e" class="observablehq observablehq--block observablehq--loading"></div>
 <div id="cell-c5046e01" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>();
 </code></pre>

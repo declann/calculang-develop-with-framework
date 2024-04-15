@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Savings Calculator 🪙🪙 (GALLERY DEV) | some calculang things</title>
+<title>☀️ and 🌝 Paths 2 (GALLERY DEV) | some calculang things</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
 <link rel="preload" as="style" href="./_import/custom-style.ac4188bc.css">
@@ -18,6 +18,9 @@
 <link rel="modulepreload" href="./_import/components/helpers.157d4a5a.js">
 <link rel="modulepreload" href="./_import/components/mini-calculang.571c25e7.js">
 <link rel="modulepreload" href="./_npm/vega-embed@6.24.0/_esm.js">
+<link rel="modulepreload" href="./_npm/date-fns@3.6.0/_esm.js">
+<link rel="modulepreload" href="https://esm.run/date-fns">
+<link rel="modulepreload" href="./_npm/suncalc@1.9.0/_esm.js">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
 <link rel="modulepreload" href="./_npm/object-traversal@1.0.1/_esm.js">
@@ -26,7 +29,6 @@
 <link rel="modulepreload" href="./_npm/compassql@0.21.2/_esm.js">
 <link rel="modulepreload" href="./_npm/@babel/standalone@7.24.3/_esm.js">
 <link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.2.1/_esm.js">
-<link rel="modulepreload" href="./_npm/lodash@4.17.21/_esm.js">
 <link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
 <link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
@@ -107,50 +109,9 @@
 <script type="module">
 
 import {define} from "./_observablehq/client.js";
+import {registerFile} from "./_observablehq/stdlib.js";
 
-define({id: "6a5b0dde", inputs: ["highlights","formula","cursor","data_source","display","Inputs"], outputs: ["highlight","current","data_source_with_highlights"], body: (highlights,formula,cursor,data_source,display,Inputs) => {
-function highlight(d) {
-  let ans = false
-  highlights.forEach(e => {
-    //Object.keys()
-    if (e.cursor.year_in == d.year_in && e.from.split('_')[1] == d.formula) // loop through domains? or all keys? (alternatives surely better) Only limited things mapped to visual
-      ans = true
-  })
-  return ans
-}
-
-function current(d) {
-  let ans = false
-  if (d.formula == formula && d.year_in == cursor.year_in)
-    ans = true
-  return ans
-}
-
-const data_source_with_highlights = data_source.map(
-  d => ({...d, highlight: highlight(d), current: current(d)})
-)
-
-display(Inputs.table(data_source_with_highlights))
-return {highlight,current,data_source_with_highlights};
-}});
-
-define({id: "6a76f8c8", inputs: ["display","Inputs","calls_annotations","formula"], outputs: ["highlights"], body: (display,Inputs,calls_annotations,formula) => {
-display(Inputs.table(calls_annotations))
-display(Inputs.table(calls_annotations.map(d=>d.cursor)))
-display(formula)
-
-const highlights =  calls_annotations.map(d => ({...d, /*ambiguous (from/to better)*/ formula:d.to.split('_')[1]}))
-    .filter(d => d.formula == formula)
-return {highlights};
-}});
-
-define({id: "c9424726", inputs: ["setCursor","duration_in","year_in","interest_rate_in","annual_payment_in","setFormula"], body: (setCursor,duration_in,year_in,interest_rate_in,annual_payment_in,setFormula) => {
-setCursor('duration_in',duration_in)
-setCursor('year_in',year_in)
-setCursor('interest_rate_in',interest_rate_in)
-setCursor('annual_payment_in',annual_payment_in)
-setFormula('balance')
-}});
+registerFile("./cul/suncalc.cul.js", {"name":"./cul/suncalc.cul.js","mimeType":"text/javascript","path":"./_file/cul/suncalc.cul.b04bd5fd.js","lastModified":1712590995224});
 
 define({id: "893b36ab", inputs: ["esm","introspection","cursor","model"], outputs: ["SourceMapConsumer","map","cul_scope_id","calls_annotations","fns_annotations"], body: async (esm,introspection,cursor,model) => {
 const {SourceMapConsumer} = await import("./_npm/source-map-js@1.2.0/_esm.js");
@@ -311,32 +272,38 @@ const [{calcuvizspec}, {compile, introspection2, compileWithMemo}, {default: emb
 return {calcuvizspec,compile,introspection2,compileWithMemo,embed};
 }});
 
-define({id: "2d15ea74", inputs: ["view","Inputs"], outputs: ["duration_in"], body: (view,Inputs) => {
-const duration_in = view(Inputs.range([0,2000], {label:'duration', step: 1, value: 5}))
-return {duration_in};
+define({id: "43272b02", body: () => {
+//import {location} from './components/location.js'
 }});
 
-define({id: "da8447e8", inputs: ["duration_in","view","Inputs"], outputs: ["year_in","annual_payment_in","interest_rate_in2"], body: (duration_in,view,Inputs) => {
-const year_in = duration_in//view(Inputs.range([-1,duration_in], {label:'year', step: 1, value: 5}))
-const annual_payment_in = view(Inputs.range([0, 20000], {label:'annual payment', step: 100, value: 1000}))
-const interest_rate_in2 = view(Inputs.range([-10, 10], { label:'interest rate (%pa)', step:0.1, value: 4}))
-return {year_in,annual_payment_in,interest_rate_in2};
+define({id: "b68b4a30", body: () => {
+//display(location({value: [14.420917, 50.087008], label: "Position"}))
 }});
 
-define({id: "77ca9e0a", inputs: ["interest_rate_in2"], outputs: ["interest_rate_in"], body: (interest_rate_in2) => {
-const interest_rate_in = interest_rate_in2/100
-return {interest_rate_in};
+define({id: "2d3652c1", inputs: ["view","Inputs"], outputs: ["lat_in","lng_in","clip1","clip2"], body: (view,Inputs) => {
+const lat_in = view(Inputs.range([-360,360], {label: 'latitude', value: 53.694712}))
+const lng_in = view(Inputs.range([-360,360], {label: 'longitude', value: -6.475492}))
+
+const clip1 = view(Inputs.toggle({value:true}))
+const clip2 = view(Inputs.toggle())
+return {lat_in,lng_in,clip1,clip2};
 }});
 
-define({id: "21b4d763", inline: true, inputs: ["cursor","display"], body: async (cursor,display) => {
+define({id: "d5068057", outputs: ["addDays","addMinutes"], body: async () => {
+const {addDays, addMinutes} = await import("./_npm/date-fns@3.6.0/_esm.js");
+//import {UTCDate} from 'npm:@date-fns/utc' // needed to add offset, allow for DST
+return {addDays,addMinutes};
+}});
+
+define({id: "76f0c930", outputs: ["dateFns"], body: async () => {
+const dateFns = await import("https://esm.run/date-fns");
+
+return {dateFns};
+}});
+
+define({id: "0ba52c7c", inline: true, inputs: ["d3","date_in","display"], body: async (d3,date_in,display) => {
 display(await(
-cursor.year_in
-))
-}});
-
-define({id: "4e222409", inline: true, inputs: ["d3","model","cursor","display"], body: async (d3,model,cursor,display) => {
-display(await(
-d3.format(',.2f')(model.balance(cursor))
+d3.utcFormat("%B %d, %Y")(date_in)
 ))
 }});
 
@@ -347,117 +314,128 @@ display(viz_placeholder)
 return {viz_placeholder};
 }});
 
-define({id: "d5fb5cb2", inputs: ["embed"], outputs: ["spec","viz"], body: (embed) => {
+define({id: "48c610a5", inputs: ["view","Inputs"], outputs: ["date_in"], body: (view,Inputs) => {
+// updates to current date
+const date_in = view(Inputs.date({label: "date", value: new Date()}))
+return {date_in};
+}});
+
+define({id: "39a096cb", inputs: ["view","Inputs"], outputs: ["model_option"], body: (view,Inputs) => {
+const model_option = view(Inputs.select(["calculang","suncalc","both (layered)"], {value:"calculang", label: 'models 👀',width:100}))
+return {model_option};
+}});
+
+define({id: "82a20f8c", inputs: ["clip2","clip1","embed"], outputs: ["spec","viz"], body: (clip2,clip1,embed) => {
 const spec = ({
   // vega-lite
-    encoding: {
-    x: { field: 'formula', type: 'nominal', "axis": {"labelAngle": 0, "orient": "top", title:null, "labelLimit": 300, labelFontSize: 20} },
-    y: { field: 'year_in'/*, axis: {titleFontSize:20, labelFontSize: 30, } */ },
-    color: {field: 'formula', legend: false},
-    text: {field: 'value', format:',.2f'},
-    size: {value: 12}
+  mark: {type:'point', size:400, filled:true,tooltip:true, clip:false, strokeWidth:0.2},
+  //transform: [{calculate: 'datum.obj_in == "moon" ? (datum.eclipse_guestimate < 0.005 ? "🌚" : "🌝") : "☀️"', as: 'annotation'},{calculate: 'datum.eclipse_guestimate < 0.0016 ? true : false', as: 'eclipse'}],
+  encoding: {
+    stroke: {field:'obj_in'},
+    strokeWidth: {value: 2},
+    strokeOpacity: {value:200},
+    opacity: {value: 0.8},
+    size: {value: 150},
+    y: {grid: false,field: 'altitude_obj', type:'quantitative', axis: { values: [0,1], title: 'altitude (rads)'}, scale: {ticks: [0],zero: false, domain: clip2 ? [0,1] : [-1,1.5]}},
+    x: {grid:false,field: 'azimuth_obj', type: 'quantitative', axis: {title: 'azimuth (rads)'}, scale: {zero: false, domain: !clip2 ? [-3,3] : [-0.5,2.5]}},
+    shape: {field: 'model_id'},
+    color: {field: 'obj_in'},
+    order: {field: 'model_id', sort:'descending'},
+    //color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}}
   },
-  layer: [
-
-    {
-      mark: {type:'text', fontWeight:'bold', dx:2, dy:2},
-      transform: [{filter: "datum.highlight"}],
-      encoding: {
-            size: {value: 15},
-        color: {value:'yellow'}
-      }
-    },
-    {
-      mark: {type:'text', tooltip:false, from: 'data'},
-            //transform: [{filter: "!datum.current"}], // messes selection; better out or using conditional size
-      encoding: {
-        size: { value: 12, condition: {test: 'datum.current', value: 1} }
-      },
-        params: [
-    {
-      name: "formula",
-      //value: { ray_angle_in: 0 },
-      select: {
-        type: "point",
-        //on: "mousemove{0,50}",
-        on: "[touchdown, touchup] > touchmove, mouseup, touchup, [mousedown, mouseup] > mousemove",
-        //on: "[touchdown, touchup] > touchmove, [mousedown, mouseup] > mousemove", //{10, 100}",
-        //        on: "[mousedown, mouseup] > mousemove",
-        nearest: true,
-        toggle: false,
-        clear: false,
-        encodings: ["x", "y"]
-      }
-    }
-  ]
-
-    },
-    {
-      mark: {type:'text', fontWeight:'bold', dx:0, dy:0},
-      transform: [{filter: "datum.current"}],
-      encoding: {
-        color: {value:'black'},
-        size: {value: 14}
-      }
-    },
-  ],
-
+  background: '#00000000',
+  width:500*.8 * (clip1 ? 1 : 0.5),
+  height:400*.8 * (clip1 ? 1 : 0.5),
   data: { name: "data" },
-  autosize: { "type": "fit", "contains": "padding"},
-  // no reactive w/h due to https://github.com/observablehq/framework/issues/1194
-  width: 450,//Math.min(500,content_width-30),//Math.min(400,content_width),
-  height: 300-30,//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),
-  background:'rgba(0,0,0,0)',
 })
 
 // interactivity via vega signals and listeners
-const viz = embed('#viz', spec)
+const viz = embed('#viz', spec, {actions:true})
 return {spec,viz};
 }});
 
-define({id: "1a5d8bdc", inputs: ["calcuvegadata","model","spec","formulae_not_inputs","_","cursor"], outputs: ["data_source"], body: (calcuvegadata,model,spec,formulae_not_inputs,_,cursor) => {
+define({id: "7bd9fbd7", inputs: ["view","Inputs"], outputs: ["mins"], body: (view,Inputs) => {
+const mins = view(Inputs.range([0,10000], {value:0, step:1,label:'mins'}))
+return {mins};
+}});
+
+define({id: "5a479a78", inputs: ["calcuvegadata","model_option","model","suncalc_js_wrapped","spec","lat_in","lng_in","addMinutes","date_in","mins"], outputs: ["data_source"], body: (calcuvegadata,model_option,model,suncalc_js_wrapped,spec,lat_in,lng_in,addMinutes,date_in,mins) => {
 const data_source = calcuvegadata({
-  models: [model],
+  models: model_option == 'calculang' ? [model] : model_option.includes('both') ? [model, suncalc_js_wrapped] : [suncalc_js_wrapped],
   spec,
   domains: {
-    formula: formulae_not_inputs,
-    year_in: _.range(0,cursor.duration_in+0.1),
+    obj_in: ['sun','moon'],
+    //date_in: [ addMinutes(date_in,mins*40)],
+    // all days (for analemma)
+    //date_in: [new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(), ..._.range(0,365+1, 5).map(d => addDays(date_in, d))/*, ..._.range(1,121).map(d => addDays(date_in, -d))*/],//[new Date()],//[new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(), ..._.range(0,365+1, 5).map(d => addDays(date_in, d))/*, ..._.range(1,121).map(d => addDays(date_in, -d))*/],
+    //time_in: _.range(0,25.1,1).map(hrs => addMinutes(date_in, hrs*60))
   },
   input_cursors: [
-    { ...cursor }
+    { lat_in, lng_in, date_in: addMinutes(date_in,mins*40), time_in: addMinutes(date_in,mins*40) }
   ]
 })
 return {data_source};
 }});
 
-define({id: "c3632db6", inputs: ["viz","data_source_with_highlights"], body: (viz,data_source_with_highlights) => {
-// is this data_source_with_highlights data flow ok ... ?
-viz.view.data("data", data_source_with_highlights).resize().run(); // turn off resize
+define({id: "472d3f5e", inputs: ["addMinutes","date_in","mins","display"], body: async (addMinutes,date_in,mins,display) => {
+display(await(
+addMinutes(date_in,mins*40)
+))
 }});
 
-define({id: "b482fd9e", inputs: ["viz","setCursor","setFormula"], body: (viz,setCursor,setFormula) => {
-viz.view.addSignalListener("formula", (a, b) => {
-  setCursor('year_in', b.year_in[0])
-  setFormula(b.formula[0])
-});
+define({id: "c5046e01", inputs: ["viz","data_source"], body: (viz,data_source) => {
+viz.view.data("data", data_source)/*.resize()*/.run();
 }});
 
-define({id: "1f64ce68", outputs: ["FileAttachment","cul_default"], body: async () => {
+define({id: "25a5a22a", inputs: ["date_in"], outputs: ["SunCalc","suncalc_js_wrapped"], body: async (date_in) => {
+const {default: SunCalc} = await import("./_npm/suncalc@1.9.0/_esm.js");
+// wrapper around SunCalc: the JS model by Vladimir Agafonkin I replicate
+// which itself is bassed on Astronomy Answers formulae: https://aa.quae.nl/en/reken/hemelpositie.html
+
+// wrapper allows me to call it consistent with calculang model
+// so I can layer onto the same visual
+// to check calculang numbers/progress
+
+// the JS model is suncalc_js_wrapped
+// the calculang model is simply model, as in other examples
+
+
+const suncalc_js_wrapped = {
+  time_composed: ({date_in, time_in}) => new Date(date_in.getFullYear(), date_in.getMonth(), date_in.getDate(), time_in.getHours(), time_in.getMinutes(), time_in.getSeconds()),
+
+  altitude_obj: ({obj_in, date_in, time_in, lat_in, lng_in }) => {
+    const time_composed = suncalc_js_wrapped.time_composed({date_in,time_in});
+
+    if (obj_in == 'sun') return SunCalc.getPosition(time_composed, lat_in, lng_in).altitude
+    else return SunCalc.getMoonPosition(time_composed, lat_in, lng_in).altitude
+  },
+
+  azimuth_obj: ({obj_in, time_in, lat_in, lng_in }) => {
+    const time_composed = suncalc_js_wrapped.time_composed({date_in,time_in});
+
+    if (obj_in == 'sun') return SunCalc.getPosition(time_composed, lat_in, lng_in).azimuth
+    else return SunCalc.getMoonPosition(time_composed, lat_in, lng_in).azimuth
+  },
+}
+return {SunCalc,suncalc_js_wrapped};
+}});
+
+define({id: "74249e07", outputs: ["FileAttachment","cul_default"], body: async () => {
 const {FileAttachment} = await import("./_observablehq/stdlib.js");
 
-const cul_default = await (await fetch('https://calculang.dev/models/savings/savings.cul.js')).text()
+const cul_default = await FileAttachment("./cul/suncalc.cul.js").text()
 return {FileAttachment,cul_default};
 }});
 
-define({id: "8b6ee963", inputs: ["Generators","Inputs","cul_default"], outputs: ["content_width","cul_Input","cul"], body: (Generators,Inputs,cul_default) => {
-// I CAN'T USE reactive width because hot reload will wipe it to 0
+define({id: "a4540a15", inputs: ["Inputs","cul_default","Generators"], outputs: ["cul_Input","cul"], body: (Inputs,cul_default,Generators) => {
 // https://github.com/observablehq/framework/issues/1194
-const content_width = Generators.width(document.getElementById("content2")); // keep as a generator for reactivity
+//const content_width = Generators.width(document.getElementById("content2")); // keep as a generator for reactivity
+
 
 // circular definition if I use cul_default ?!
 const cul_Input = Inputs.input(cul_default);
 const cul = Generators.input(cul_Input);
-return {content_width,cul_Input,cul};
+return {cul_Input,cul};
 }});
 
 </script>
@@ -475,9 +453,9 @@ return {content_width,cul_Input,cul};
     <li class="observablehq-link"><a href="./leafy-matrix">Leafy matrix 🍂🧑‍💻 (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
-    <li class="observablehq-link observablehq-link-active"><a href="./savings">Savings Calculator 🪙🪙 (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./savings">Savings Calculator 🪙🪙 (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./sun-moon-paths">☀️ and 🌝 Paths (GALLERY DEV)</a></li>
-    <li class="observablehq-link"><a href="./sun-moon-paths2">☀️ and 🌝 Paths 2 (GALLERY DEV)</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./sun-moon-paths2">☀️ and 🌝 Paths 2 (GALLERY DEV)</a></li>
     <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
     <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
     <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
@@ -490,11 +468,6 @@ return {content_width,cul_Input,cul};
 <script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
-<details><summary>debug things</summary>
-<div id="cell-6a5b0dde" class="observablehq observablehq--block"></div>
-<div id="cell-6a76f8c8" class="observablehq observablehq--block"></div>
-</details>
-<div id="cell-c9424726" class="observablehq observablehq--block"></div>
 <!--
 TEMPLATE.md provides:
 - collabsible code blocks
@@ -530,111 +503,102 @@ TEMPLATE.md provides:
 <div id="cell-053d168e" class="observablehq observablehq--block"></div>
 </div>
 <div id="content">
-<h1 id="savings-calculator-%F0%9F%AA%99%F0%9F%AA%99" tabindex="-1"><a class="observablehq-header-anchor" href="#savings-calculator-%F0%9F%AA%99%F0%9F%AA%99">Savings Calculator 🪙🪙</a></h1>
+<h1 id="path-of-%E2%98%80%EF%B8%8F-and-%F0%9F%8C%9D" tabindex="-1"><a class="observablehq-header-anchor" href="#path-of-%E2%98%80%EF%B8%8F-and-%F0%9F%8C%9D">Path of ☀️ and 🌝</a></h1>
+<p>Replicating sun/moon position calcs from <a href="https://github.com/mourner/suncalc/tree/master" target="_blank" rel="noopener noreferrer">SunCalc</a>; compare results by layering both models below!</p>
 <div class="card">
-<details open=""><summary>inputs ⚙️</summary>
-<div id="cell-2d15ea74" class="observablehq observablehq--block"></div>
-<div id="cell-da8447e8" class="observablehq observablehq--block"></div>
-<div id="cell-77ca9e0a" class="observablehq observablehq--block"></div>
+<details><summary>location 🌎 (default: Brú na Bóinne, Ireland)</summary>
+<div id="cell-43272b02" class="observablehq observablehq--block"></div>
+<div id="cell-b68b4a30" class="observablehq observablehq--block"></div>
+<div id="cell-2d3652c1" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> lat_in = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([-<span class="hljs-number">360</span>,<span class="hljs-number">360</span>], {<span class="hljs-attr">label</span>: <span class="hljs-string">'latitude'</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">53.694712</span>}))
+<span class="hljs-keyword">const</span> lng_in = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([-<span class="hljs-number">360</span>,<span class="hljs-number">360</span>], {<span class="hljs-attr">label</span>: <span class="hljs-string">'longitude'</span>, <span class="hljs-attr">value</span>: -<span class="hljs-number">6.475492</span>}))
+
+<span class="hljs-keyword">const</span> clip1 = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">toggle</span>({<span class="hljs-attr">value</span>:<span class="hljs-literal">true</span>}))
+<span class="hljs-keyword">const</span> clip2 = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">toggle</span>())
+</code></pre>
+<p><em>date below</em></p>
 </details>
 </div>
-<p><em>Projected savings balance at end of year <strong><span id="cell-21b4d763" class="observablehq--loading"></span></strong> is <strong>€ <span id="cell-4e222409" class="observablehq--loading"></span></strong></em></p>
-<p>💡 <em>Click a number to highlight workings</em></p>
+<div id="cell-d5068057" class="observablehq observablehq--block"></div>
+<div id="cell-76f0c930" class="observablehq observablehq--block"></div>
+<h3 style="margin-bottom:-20px"><span id="cell-0ba52c7c" class="observablehq--loading"></span></h3>
+<p>ISSUE: WHEN ADD MINUTES, THERES A DEVIATION</p>
 <div id="cell-73f05601" class="observablehq observablehq--block"></div>
-<div id="cell-d5fb5cb2" class="observablehq observablehq--block"></div>
+<div id="cell-48c610a5" class="observablehq observablehq--block"></div>
+<div id="cell-39a096cb" class="observablehq observablehq--block"></div>
+<p>🚧 <em>even though I replicate numbers, I need to do some DST and other time-related thinking</em></p>
+<div id="cell-82a20f8c" class="observablehq observablehq--block"></div>
 <pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
   <span class="hljs-comment">// vega-lite</span>
-    <span class="hljs-attr">encoding</span>: {
-    <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'formula'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-string">"axis"</span>: {<span class="hljs-string">"labelAngle"</span>: <span class="hljs-number">0</span>, <span class="hljs-string">"orient"</span>: <span class="hljs-string">"top"</span>, <span class="hljs-attr">title</span>:<span class="hljs-literal">null</span>, <span class="hljs-string">"labelLimit"</span>: <span class="hljs-number">300</span>, <span class="hljs-attr">labelFontSize</span>: <span class="hljs-number">20</span>} },
-    <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'year_in'</span><span class="hljs-comment">/*, axis: {titleFontSize:20, labelFontSize: 30, } */</span> },
-    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'formula'</span>, <span class="hljs-attr">legend</span>: <span class="hljs-literal">false</span>},
-    <span class="hljs-attr">text</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'value'</span>, <span class="hljs-attr">format</span>:<span class="hljs-string">',.2f'</span>},
-    <span class="hljs-attr">size</span>: {<span class="hljs-attr">value</span>: <span class="hljs-number">12</span>}
+  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">size</span>:<span class="hljs-number">400</span>, <span class="hljs-attr">filled</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">tooltip</span>:<span class="hljs-literal">true</span>, <span class="hljs-attr">clip</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">strokeWidth</span>:<span class="hljs-number">0.2</span>},
+  <span class="hljs-comment">//transform: [{calculate: 'datum.obj_in == "moon" ? (datum.eclipse_guestimate &lt; 0.005 ? "🌚" : "🌝") : "☀️"', as: 'annotation'},{calculate: 'datum.eclipse_guestimate &lt; 0.0016 ? true : false', as: 'eclipse'}],</span>
+  <span class="hljs-attr">encoding</span>: {
+    <span class="hljs-attr">stroke</span>: {<span class="hljs-attr">field</span>:<span class="hljs-string">'obj_in'</span>},
+    <span class="hljs-attr">strokeWidth</span>: {<span class="hljs-attr">value</span>: <span class="hljs-number">2</span>},
+    <span class="hljs-attr">strokeOpacity</span>: {<span class="hljs-attr">value</span>:<span class="hljs-number">200</span>},
+    <span class="hljs-attr">opacity</span>: {<span class="hljs-attr">value</span>: <span class="hljs-number">0.8</span>},
+    <span class="hljs-attr">size</span>: {<span class="hljs-attr">value</span>: <span class="hljs-number">150</span>},
+    <span class="hljs-attr">y</span>: {<span class="hljs-attr">grid</span>: <span class="hljs-literal">false</span>,<span class="hljs-attr">field</span>: <span class="hljs-string">'altitude_obj'</span>, <span class="hljs-attr">type</span>:<span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">axis</span>: { <span class="hljs-attr">values</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>], <span class="hljs-attr">title</span>: <span class="hljs-string">'altitude (rads)'</span>}, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">ticks</span>: [<span class="hljs-number">0</span>],<span class="hljs-attr">zero</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>: clip2 ? [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>] : [-<span class="hljs-number">1</span>,<span class="hljs-number">1.5</span>]}},
+    <span class="hljs-attr">x</span>: {<span class="hljs-attr">grid</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">field</span>: <span class="hljs-string">'azimuth_obj'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">axis</span>: {<span class="hljs-attr">title</span>: <span class="hljs-string">'azimuth (rads)'</span>}, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">zero</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>: !clip2 ? [-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>] : [-<span class="hljs-number">0.5</span>,<span class="hljs-number">2.5</span>]}},
+    <span class="hljs-attr">shape</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'model_id'</span>},
+    <span class="hljs-attr">color</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'obj_in'</span>},
+    <span class="hljs-attr">order</span>: {<span class="hljs-attr">field</span>: <span class="hljs-string">'model_id'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'descending'</span>},
+    <span class="hljs-comment">//color: {field: 'time_in', sort:'ascending', type: 'quantitative', timeUnit: 'hoursminutes', legend:true, scale: {scheme: 'lightmulti'}}</span>
   },
-  <span class="hljs-attr">layer</span>: [
-
-    {
-      <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'text'</span>, <span class="hljs-attr">fontWeight</span>:<span class="hljs-string">'bold'</span>, <span class="hljs-attr">dx</span>:<span class="hljs-number">2</span>, <span class="hljs-attr">dy</span>:<span class="hljs-number">2</span>},
-      <span class="hljs-attr">transform</span>: [{<span class="hljs-attr">filter</span>: <span class="hljs-string">"datum.highlight"</span>}],
-      <span class="hljs-attr">encoding</span>: {
-            <span class="hljs-attr">size</span>: {<span class="hljs-attr">value</span>: <span class="hljs-number">15</span>},
-        <span class="hljs-attr">color</span>: {<span class="hljs-attr">value</span>:<span class="hljs-string">'yellow'</span>}
-      }
-    },
-    {
-      <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'text'</span>, <span class="hljs-attr">tooltip</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">from</span>: <span class="hljs-string">'data'</span>},
-            <span class="hljs-comment">//transform: [{filter: "!datum.current"}], // messes selection; better out or using conditional size</span>
-      <span class="hljs-attr">encoding</span>: {
-        <span class="hljs-attr">size</span>: { <span class="hljs-attr">value</span>: <span class="hljs-number">12</span>, <span class="hljs-attr">condition</span>: {<span class="hljs-attr">test</span>: <span class="hljs-string">'datum.current'</span>, <span class="hljs-attr">value</span>: <span class="hljs-number">1</span>} }
-      },
-        <span class="hljs-attr">params</span>: [
-    {
-      <span class="hljs-attr">name</span>: <span class="hljs-string">"formula"</span>,
-      <span class="hljs-comment">//value: { ray_angle_in: 0 },</span>
-      <span class="hljs-attr">select</span>: {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">"point"</span>,
-        <span class="hljs-comment">//on: "mousemove{0,50}",</span>
-        <span class="hljs-attr">on</span>: <span class="hljs-string">"[touchdown, touchup] &gt; touchmove, mouseup, touchup, [mousedown, mouseup] &gt; mousemove"</span>,
-        <span class="hljs-comment">//on: "[touchdown, touchup] &gt; touchmove, [mousedown, mouseup] &gt; mousemove", //{10, 100}",</span>
-        <span class="hljs-comment">//        on: "[mousedown, mouseup] &gt; mousemove",</span>
-        <span class="hljs-attr">nearest</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">toggle</span>: <span class="hljs-literal">false</span>,
-        <span class="hljs-attr">clear</span>: <span class="hljs-literal">false</span>,
-        <span class="hljs-attr">encodings</span>: [<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>]
-      }
-    }
-  ]
-
-    },
-    {
-      <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'text'</span>, <span class="hljs-attr">fontWeight</span>:<span class="hljs-string">'bold'</span>, <span class="hljs-attr">dx</span>:<span class="hljs-number">0</span>, <span class="hljs-attr">dy</span>:<span class="hljs-number">0</span>},
-      <span class="hljs-attr">transform</span>: [{<span class="hljs-attr">filter</span>: <span class="hljs-string">"datum.current"</span>}],
-      <span class="hljs-attr">encoding</span>: {
-        <span class="hljs-attr">color</span>: {<span class="hljs-attr">value</span>:<span class="hljs-string">'black'</span>},
-        <span class="hljs-attr">size</span>: {<span class="hljs-attr">value</span>: <span class="hljs-number">14</span>}
-      }
-    },
-  ],
-
+  <span class="hljs-attr">background</span>: <span class="hljs-string">'#00000000'</span>,
+  <span class="hljs-attr">width</span>:<span class="hljs-number">500</span>*<span class="hljs-number">.8</span> * (clip1 ? <span class="hljs-number">1</span> : <span class="hljs-number">0.5</span>),
+  <span class="hljs-attr">height</span>:<span class="hljs-number">400</span>*<span class="hljs-number">.8</span> * (clip1 ? <span class="hljs-number">1</span> : <span class="hljs-number">0.5</span>),
   <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
-  <span class="hljs-attr">autosize</span>: { <span class="hljs-string">"type"</span>: <span class="hljs-string">"fit"</span>, <span class="hljs-string">"contains"</span>: <span class="hljs-string">"padding"</span>},
-  <span class="hljs-comment">// no reactive w/h due to https://github.com/observablehq/framework/issues/1194</span>
-  <span class="hljs-attr">width</span>: <span class="hljs-number">450</span>,<span class="hljs-comment">//Math.min(500,content_width-30),//Math.min(400,content_width),</span>
-  <span class="hljs-attr">height</span>: <span class="hljs-number">300</span>-<span class="hljs-number">30</span>,<span class="hljs-comment">//Math.min(500,content_width-30)/1.2,//Math.min(400,content_width-30),</span>
-  <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>,
 })
 
 <span class="hljs-comment">// interactivity via vega signals and listeners</span>
-<span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec)
+<span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec, {<span class="hljs-attr">actions</span>:<span class="hljs-literal">true</span>})
 </code></pre>
-<div id="cell-1a5d8bdc" class="observablehq observablehq--block"></div>
-<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source = <span class="hljs-title function_">calcuvegadata</span>({
-  <span class="hljs-attr">models</span>: [model],
-  spec,
-  <span class="hljs-attr">domains</span>: {
-    <span class="hljs-attr">formula</span>: formulae_not_inputs,
-    <span class="hljs-attr">year_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,cursor.<span class="hljs-property">duration_in</span>+<span class="hljs-number">0.1</span>),
+<div id="cell-7bd9fbd7" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> mins = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">0</span>,<span class="hljs-number">10000</span>], {<span class="hljs-attr">value</span>:<span class="hljs-number">0</span>, <span class="hljs-attr">step</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">label</span>:<span class="hljs-string">'mins'</span>}))
+</code></pre>
+<div id="cell-5a479a78" class="observablehq observablehq--block"></div>
+<div id="cell-472d3f5e" class="observablehq observablehq--block observablehq--loading"></div>
+<div id="cell-c5046e01" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>();
+</code></pre>
+<p><em>SunCalc wrapper for comparisons:</em></p>
+<div id="cell-25a5a22a" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-comment">// wrapper around SunCalc: the JS model by Vladimir Agafonkin I replicate</span>
+<span class="hljs-comment">// which itself is bassed on Astronomy Answers formulae: https://aa.quae.nl/en/reken/hemelpositie.html</span>
+
+<span class="hljs-comment">// wrapper allows me to call it consistent with calculang model</span>
+<span class="hljs-comment">// so I can layer onto the same visual</span>
+<span class="hljs-comment">// to check calculang numbers/progress</span>
+
+<span class="hljs-comment">// the JS model is suncalc_js_wrapped</span>
+<span class="hljs-comment">// the calculang model is simply model, as in other examples</span>
+
+<span class="hljs-keyword">import</span> {<span class="hljs-keyword">default</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">SunCalc</span>} <span class="hljs-keyword">from</span> <span class="hljs-string">'npm:suncalc'</span>
+
+<span class="hljs-keyword">const</span> suncalc_js_wrapped = {
+  <span class="hljs-attr">time_composed</span>: <span class="hljs-function">(<span class="hljs-params">{date_in, time_in}</span>) =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(date_in.<span class="hljs-title function_">getFullYear</span>(), date_in.<span class="hljs-title function_">getMonth</span>(), date_in.<span class="hljs-title function_">getDate</span>(), time_in.<span class="hljs-title function_">getHours</span>(), time_in.<span class="hljs-title function_">getMinutes</span>(), time_in.<span class="hljs-title function_">getSeconds</span>()),
+
+  <span class="hljs-attr">altitude_obj</span>: <span class="hljs-function">(<span class="hljs-params">{obj_in, date_in, time_in, lat_in, lng_in }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> time_composed = suncalc_js_wrapped.<span class="hljs-title function_">time_composed</span>({date_in,time_in});
+
+    <span class="hljs-keyword">if</span> (obj_in == <span class="hljs-string">'sun'</span>) <span class="hljs-keyword">return</span> <span class="hljs-title class_">SunCalc</span>.<span class="hljs-title function_">getPosition</span>(time_composed, lat_in, lng_in).<span class="hljs-property">altitude</span>
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-title class_">SunCalc</span>.<span class="hljs-title function_">getMoonPosition</span>(time_composed, lat_in, lng_in).<span class="hljs-property">altitude</span>
   },
-  <span class="hljs-attr">input_cursors</span>: [
-    { ...cursor }
-  ]
-})
-</code></pre>
-<div id="cell-c3632db6" class="observablehq observablehq--block"></div>
-<pre data-language="js"><code class="language-js"><span class="hljs-comment">// is this data_source_with_highlights data flow ok ... ?</span>
-viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source_with_highlights).<span class="hljs-title function_">resize</span>().<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
-</code></pre>
-<div id="cell-b482fd9e" class="observablehq observablehq--block"></div>
-<pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">addSignalListener</span>(<span class="hljs-string">"formula"</span>, <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
-  <span class="hljs-title function_">setCursor</span>(<span class="hljs-string">'year_in'</span>, b.<span class="hljs-property">year_in</span>[<span class="hljs-number">0</span>])
-  <span class="hljs-title function_">setFormula</span>(b.<span class="hljs-property">formula</span>[<span class="hljs-number">0</span>])
-});
+
+  <span class="hljs-attr">azimuth_obj</span>: <span class="hljs-function">(<span class="hljs-params">{obj_in, time_in, lat_in, lng_in }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> time_composed = suncalc_js_wrapped.<span class="hljs-title function_">time_composed</span>({date_in,time_in});
+
+    <span class="hljs-keyword">if</span> (obj_in == <span class="hljs-string">'sun'</span>) <span class="hljs-keyword">return</span> <span class="hljs-title class_">SunCalc</span>.<span class="hljs-title function_">getPosition</span>(time_composed, lat_in, lng_in).<span class="hljs-property">azimuth</span>
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-title class_">SunCalc</span>.<span class="hljs-title function_">getMoonPosition</span>(time_composed, lat_in, lng_in).<span class="hljs-property">azimuth</span>
+  },
+}
 </code></pre>
 </div>
 </div>
 <!-- close tag started in template -->
-<div id="cell-1f64ce68" class="observablehq observablehq--block"></div>
-<div id="cell-8b6ee963" class="observablehq observablehq--block"></div>
+<div id="cell-74249e07" class="observablehq observablehq--block"></div>
+<div id="cell-a4540a15" class="observablehq observablehq--block"></div>
 </main>
 <footer id="observablehq-footer">
 <div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>

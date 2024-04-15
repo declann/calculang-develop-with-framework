@@ -1,5 +1,5 @@
 ---
-title: ☀️ and 🌝 Paths (GALLERY DEV)
+title: ☀️ and 🌝 Paths 2 (GALLERY DEV)
 toc: false
 ---
 
@@ -46,6 +46,8 @@ import * as dateFns from 'https://esm.run/date-fns';
 ```
 
 <h3 style="margin-bottom:-20px">${d3.utcFormat("%B %d, %Y")(date_in)}</h3>
+
+ISSUE: WHEN ADD MINUTES, THERES A DEVIATION
 
 ```js
 const viz_placeholder = html`<div id="viz" class="card"></div>`

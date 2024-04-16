@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>some calculang things</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/custom-style.321a7a7f.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.321a7a7f.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<script type="module">
+
+import "./_observablehq/client.js";
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link observablehq-link-active"><a href="./">some calculang things</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./TEMPLATE">Untitled</a></li>
+    <li class="observablehq-link"><a href="./game-of-life">Game of Life (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
+    <li class="observablehq-link"><a href="./leafy-matrix">Leafy matrix 🍂🧑‍💻 (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
+    <li class="observablehq-link"><a href="./savings">Savings Calculator 🪙🪙 (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./sun-moon-paths">☀️ and 🌝 Paths (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./sun-moon-paths2">☀️ and 🌝 Paths 2 (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./tixyish">tixy-ish 🎨</a></li>
+    <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
+    <li class="observablehq-link"><a href="./shader/shader">Editable Shader 🧊</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<style>
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--sans-serif);
+  margin: 4rem 0 8rem;
+  text-wrap: balance;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 2rem 0;
+  max-width: none;
+  font-size: 14vw;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h2 {
+  margin: 0;
+  max-width: 34em;
+  font-size: 20px;
+  font-style: initial;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--theme-foreground-muted);
+}
+
+@media (min-width: 640px) {
+  .hero h1 {
+    font-size: 90px;
+  }
+}
+
+</style>
+<div class="hero">
+  <p>Choose a thing on the left.</p>
+  <p>They're things that <a href="https://calcwithdec.dev/about" target="_blank" rel="noopener noreferrer">I'm</a> working on with <a href="https://calculang.dev/" target="_blank" rel="noopener noreferrer">calculang</a><a>; a language for calculations.</a></p><a>
+  </a><p><a>Source code is </a><a href="https://github.com/declann/calculang-develop-with-framework/" target="_blank" rel="noopener noreferrer">on GitHub</a> and PRs/collaborations welcome! (soon merging into a new community gallery for calculang)</p>
+</div>
+</main>
+<footer id="observablehq-footer">
+<div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>
+</footer>
+</div>

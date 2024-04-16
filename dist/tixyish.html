@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>tixy-ish 🎨 | some calculang things</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/custom-style.321a7a7f.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/custom-style.321a7a7f.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_import/components/scrubber.a7df8a1e.js">
+<link rel="modulepreload" href="./_npm/line-column@1.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/source-map-js@1.2.0/_esm.js">
+<link rel="modulepreload" href="./_import/graphing-calcs/editor.bundle.bd946e5a.js">
+<link rel="modulepreload" href="./_import/components/calcuvegadata.efde4ea6.js">
+<link rel="modulepreload" href="./_import/components/helpers.ff138b39.js">
+<link rel="modulepreload" href="./_import/components/mini-calculang.571c25e7.js">
+<link rel="modulepreload" href="./_npm/vega-embed@6.24.0/_esm.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3-require/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm">
+<link rel="modulepreload" href="./_npm/object-traversal@1.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/underscore@1.13.6/_esm.js">
+<link rel="modulepreload" href="./_npm/@tidyjs/tidy@2.5.2/_esm.js">
+<link rel="modulepreload" href="./_npm/compassql@0.21.2/_esm.js">
+<link rel="modulepreload" href="./_npm/@babel/standalone@7.24.3/_esm.js">
+<link rel="modulepreload" href="./_npm/@dagrejs/graphlib@2.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/lodash@4.17.21/_esm.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/isarray@1.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/isobject@2.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/fast-json-patch@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/json-stringify-pretty-compact@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega@5.28.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-interpreter@1.0.5/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-lite@5.17.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-schema-url-parser@2.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-themes@2.14.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-tooltip@0.34.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@2.12.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-util@1.17.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-dataflow@5.7.5/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-transforms@4.11.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-view-transforms@4.5.9/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-encode@4.9.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-geo@4.4.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-force@4.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-hierarchy@4.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-label@1.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-regression@1.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-voronoi@4.2.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-wordcloud@4.1.4/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-crossfilter@4.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-statistics@1.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-time@2.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-loader@4.5.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-scenegraph@4.11.2/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-scale@7.3.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-projection@1.6.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-view@5.12.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-format@1.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-functions@5.14.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-parser@6.3.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-runtime@6.1.4/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-expression@5.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-event-selector@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@1.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-canvas@1.2.7/_esm.js">
+<link rel="modulepreload" href="./_npm/topojson-client@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo-projection@4.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/vega-selections@5.4.2/_esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/_esm.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+import {registerFile} from "./_observablehq/stdlib.js";
+
+registerFile("./cul/tixy.cul.js", {"name":"./cul/tixy.cul.js","mimeType":"text/javascript","path":"./_file/cul/tixy.cul.b798c2f7.js","lastModified":1712500412143});
+
+define({id: "a3e249e2", outputs: ["Scrubber","lineColumn","SourceMapConsumer"], body: async () => {
+const [{Scrubber}, lineColumn, {SourceMapConsumer}] = await Promise.all([import("./_import/components/scrubber.a7df8a1e.js"), import("./_npm/line-column@1.0.2/_esm.js"), import("./_npm/source-map-js@1.2.0/_esm.js")]);
+
+
+
+return {Scrubber,lineColumn,SourceMapConsumer};
+}});
+
+define({id: "751948f3", inputs: ["cul_default","Mutable"], outputs: ["editorCm","eslintConfig","calcuvegadata","start_doc","doc","selection","editor"], body: async (cul_default,Mutable) => {
+const [{editor: editorCm, config: eslintConfig}, {calcuvegadata}] = await Promise.all([import("./_import/graphing-calcs/editor.bundle.bd946e5a.js"), import("./_import/components/calcuvegadata.efde4ea6.js")]);
+
+
+const start_doc = cul_default
+
+const doc = Mutable(start_doc) // I still have doc Input below, remove?
+
+const selection = Mutable({from:{line:7,column:23}, to:{line:7,column:65}})
+
+const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}, updateSelection: s => {selection.value = s}})
+return {editorCm,eslintConfig,calcuvegadata,start_doc,doc,selection,editor};
+}});
+
+define({id: "1a748ae6", inline: true, inputs: ["display","editor"], body: (display,editor) => {
+display(editor.dom)
+}});
+
+define({id: "a91751cf", inline: true, inputs: ["view","Inputs","esm"], body: (view,Inputs,esm) => {
+view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))
+}});
+
+define({id: "7be5e906", inline: true, inputs: ["display"], body: async (display) => {
+display(await(
+"todo"
+))
+}});
+
+define({id: "bd87104d", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
+display(Object.keys(introspection))
+}});
+
+define({id: "8094d046", inline: true, inputs: ["display","introspection"], body: (display,introspection) => {
+display(JSON.stringify([...introspection.cul_links]))
+}});
+
+define({id: "67e018a0", inline: true, inputs: ["view","Inputs","Scrubber","_","d3","t_in_Input"], body: (view,Inputs,Scrubber,_,d3,t_in_Input) => {
+view(Inputs.bind(Scrubber(_.range(0,8,1/20), {delay: 1000/20, autoplay: true, alternate:true, format:d => d3.format('.2f')(d)}), t_in_Input))
+}});
+
+define({id: "7cd39fa7", inline: true, inputs: ["t_in","display"], body: async (t_in,display) => {
+display(await(
+/*view(Inputs.bind(Inputs.range([0,8], {step:0.1}), t_in_Input))*/t_in
+))
+}});
+
+define({id: "0663b417", inline: true, inputs: ["display","selection_esm"], body: (display,selection_esm) => {
+display(selection_esm)
+}});
+
+define({id: "d69b9fcb", inputs: ["_","size_in","rhs_width","embed"], outputs: ["spec","viz"], body: (_,size_in,rhs_width,embed) => {
+const spec = ({
+  // vega-lite
+  title: "v",
+  mark: {type:'point', point: false, filled: true},
+  encoding: {
+    x: { field: 'x_in', type: 'quantitative', domain: _.range(0,size_in), scale: {nice:false, domain:[-1,16]} },
+    y: { field: 'y_in', type: 'quantitative', domain: _.range(0,size_in), sort:'descending', scale: {nice:false, domain:[-1,16]} },
+    size: { field: 'abs_v_clamped', type: 'quantitative', scale: {domain:[0,1]} },
+    //color: {value: 'red'}
+    color: { field: 'positive', type: 'nominal', scale: {domain:[false, true], range: ['orange','red'] }}, // todo color calcd from model?
+    shape: { field: 'positive', type: 'nominal', scale: {domain:[false, true], range: ['diamond','circle'] }} // todo color calcd from model?
+  },
+  data: { name: "data" },
+  datasets: {
+    data: [],
+  },
+  autosize: { "type": "fit", "contains": "padding"},
+  width: Math.min(400,rhs_width-30),
+  height: 300,
+  background:'rgba(0,0,0,0)'
+})
+
+// interactivity via vega signals and listeners
+const viz = embed('#viz', spec, {patch: [{
+  path: "/signals",
+  op: "add",
+  value: [{
+    name: "mousex",
+    value: 8,
+    on: [
+      {"events": "mousemove{30}", "update": (size_in-1)+"*x()/range('x')[1]"}
+    ]
+  },{
+    name: "mousey",
+    value: 8,
+    on: [
+      {"events": "mousemove{30}", "update": (size_in-1)+"*y()/range('y')[1]"}
+    ]
+  }]
+}]})
+return {spec,viz};
+}});
+
+define({id: "3b876112", inputs: ["calcuvegadata","model","spec","_","size_in","t_in","mousex_in","mousey_in","random_seed_in"], outputs: ["data_source"], body: (calcuvegadata,model,spec,_,size_in,t_in,mousex_in,mousey_in,random_seed_in) => {
+const data_source = calcuvegadata({
+  models: [model],
+  spec,
+  domains: {
+    x_in: _.range(0,size_in),
+    y_in: _.range(0,size_in)
+  },
+  input_cursors: [
+    { t_in, mousex_in, mousey_in, random_seed_in }
+  ]
+})
+return {data_source};
+}});
+
+define({id: "7087a911", inputs: ["viz","data_source"], body: (viz,data_source) => {
+viz.view.data("data", data_source)/*.resize()*/.run(); // turn off resize
+}});
+
+define({id: "1eb91a98", outputs: ["random_seed_in"], body: () => {
+const random_seed_in = 'x' // reactive issues if mixed in mutable updates blocks
+return {random_seed_in};
+}});
+
+define({id: "af671647", inputs: ["Mutable","viz"], outputs: ["mousex_in","mousey_in"], body: (Mutable,viz) => {
+const mousex_in = Mutable(8)
+const mousey_in = Mutable(8)
+
+viz.view.addSignalListener('mousex', a => {
+  console.log('mousex', a)
+  mousex_in.value = viz.view.signal('mousex')
+})
+viz.view.addSignalListener('mousey', a => {
+  mousey_in.value = viz.view.signal('mousey')
+})
+return {mousex_in,mousey_in};
+}});
+
+define({id: "b9cc4f0a", inputs: ["rhs_width","embed"], outputs: ["spec2","viz2"], body: (rhs_width,embed) => {
+const spec2 = ({
+  // vega-lite
+  title: "selection",
+  mark: {type:'text', point: false, filled: true},
+  encoding: {
+    x: { field: 'x_in', type: 'quantitative', scale: {nice:false, domain:[-1,16]} },
+    y: { field: 'y_in', type: 'quantitative', sort:'descending', scale: {nice:false, domain:[-1,16]} },
+    text: { field: 'selection_fn', format: ('.1f') },
+    color: { field: 'selection_fn', type: 'quantitative', legend: false/*, scale: {domain:[0,1] }*/}
+  },
+  data: { name: "data" },
+  datasets: {
+    data: [],
+  },
+  autosize: { "type": "fit", "contains": "padding"},
+  width: Math.min(500,rhs_width-30),
+  height: 300,
+  background:'rgba(0,0,0,0)'
+})
+
+const viz2 = embed('#viz2', spec2)
+return {spec2,viz2};
+}});
+
+define({id: "b91e7b65", inputs: ["calcuvegadata","selection_fn","model","spec2","_","size_in","t_in","mousex_in","mousey_in","random_seed_in"], outputs: ["data_source2"], body: (calcuvegadata,selection_fn,model,spec2,_,size_in,t_in,mousex_in,mousey_in,random_seed_in) => {
+const data_source2 = calcuvegadata({
+  models: [{selection_fn: (a) => selection_fn(model,a)}],
+  spec: spec2,
+  domains: {
+    x_in: _.range(0,size_in),
+    y_in: _.range(0,size_in)
+  },
+  input_cursors: [
+    { t_in, mousex_in, mousey_in, random_seed_in }
+  ]
+})
+return {data_source2};
+}});
+
+define({id: "08241b4e", inputs: ["viz2","data_source2"], body: (viz2,data_source2) => {
+viz2.view.data("data", data_source2)/*.resize()*/.run(); // turn off resize
+}});
+
+define({id: "9e7e00b6", inputs: ["Inputs","Generators"], outputs: ["size_in","t_in_Input","t_in","rhs_width"], body: (Inputs,Generators) => {
+const size_in = 16
+
+const t_in_Input = Inputs.input(0);
+const t_in = Generators.input(t_in_Input);
+
+const rhs_width = Generators.width(document.querySelector(".rhs")); // keep as a generator for reactivity
+return {size_in,t_in_Input,t_in,rhs_width};
+}});
+
+define({id: "4d16d616", inputs: ["compileWithMemo","doc","introspection2","invalidation"], outputs: ["esm","introspection","inputs","formulae_not_inputs","u","model"], body: async (compileWithMemo,doc,introspection2,invalidation) => {
+const esm = compileWithMemo(doc)
+const introspection = introspection2(doc)
+//display(introspection.cul_input_map)
+//display(introspection)
+
+const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
+
+//display(Object.values(introspection.cul_functions))
+//display([...introspection.cul_functions.values()])
+
+const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1).map(d => d.name)
+//display(formulae_not_inputs)
+
+
+const u = URL.createObjectURL(new Blob([esm.code], { type: "text/javascript" }))
+console.log(`creating ${u}`)
+
+const model = await import(u)
+
+//display(model)
+
+invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
+
+
+return {esm,introspection,inputs,formulae_not_inputs,u,model};
+}});
+
+define({id: "2fd2cf19", outputs: ["FileAttachment","cul_default","calcuvizspec","calcudata","compile","introspection2","compileWithMemo"], body: async () => {
+const [{FileAttachment}, {calcuvizspec, calcudata}, {compile, introspection2, compileWithMemo}] = await Promise.all([import("./_observablehq/stdlib.js"), import("./_import/components/helpers.ff138b39.js"), import("./_import/components/mini-calculang.571c25e7.js")]);
+
+const cul_default = await FileAttachment("./cul/tixy.cul.js").text()
+
+
+
+return {FileAttachment,cul_default,calcuvizspec,calcudata,compile,introspection2,compileWithMemo};
+}});
+
+define({id: "b1870f13", outputs: ["embed_","embed"], body: async () => {
+const {default: embed_} = await import("./_npm/vega-embed@6.24.0/_esm.js");
+
+const embed = (a,b,options) => embed_(a,b, {renderer:'svg', ...options});
+return {embed_,embed};
+}});
+
+define({id: "6878cf4f", inputs: ["SourceMapConsumer","esm","selection","display"], outputs: ["sourcemap","selection_start","selection_end","esm_split"], body: (SourceMapConsumer,esm,selection,display) => {
+const sourcemap = new SourceMapConsumer(esm.map)
+
+const selection_start = sourcemap.generatedPositionFor({...selection.from, source:"unknown"})
+const selection_end = sourcemap.generatedPositionFor({...selection.to, source:"unknown"})
+
+const esm_split = esm.code.split('\n')
+
+display(selection_start)
+display(selection_end)
+return {sourcemap,selection_start,selection_end,esm_split};
+}});
+
+define({id: "178d48fc", inputs: ["esm","index_start","index_end"], outputs: ["selection_esm"], body: (esm,index_start,index_end) => {
+const selection_esm = esm.code.slice(index_start+1,index_end+1)
+return {selection_esm};
+}});
+
+define({id: "301ac0f1", inputs: ["lineColumn","esm","selection_start","selection_end","display","selection"], outputs: ["index_start","index_end"], body: (lineColumn,esm,selection_start,selection_end,display,selection) => {
+const index_start =lineColumn.default(esm.code).toIndex(selection_start)
+const index_end =lineColumn.default(esm.code).toIndex(selection_end)
+
+display("selection:")
+display(selection)
+return {index_start,index_end};
+}});
+
+define({id: "9109c35b", inputs: ["t_in","random_seed_in","mousex_in","mousey_in"], outputs: ["ins"], body: (t_in,random_seed_in,mousex_in,mousey_in) => {
+// all inputs must be maintianed here to pass to selection function
+
+const ins = ({x_in: 8, y_in:8, t_in, random_seed_in, mousex_in, mousey_in})
+return {ins};
+}});
+
+define({id: "e58b7881", inputs: ["selection_esm","ins","display","model"], outputs: ["exec","selection_fn"], body: (selection_esm,ins,display,model) => {
+//const x_in = 3;
+
+
+const exec = selection_esm
+
+//const exec_f = new Function("model", "x_in", `return ${exec}`)(model, x_in)
+
+//display(exec_f) // Works
+
+//display(new Function("model", "{x_in,y_in}", `window.bb = 10; return bb+x_in+y_in`)(model, ins)) // works
+
+
+// super dangerous and insecure window assignment here but trying as alt to manual replacement; for manual replacement see reactive workings
+// TOFIX when i integrate reactive workings
+const selection_fn = new Function("model", "{"+Object.keys(ins).join(",")+"}", `Object.assign(window, model); return ${exec}`)
+
+display(selection_fn(model, ins))
+
+
+//display(new Function("model", "{x_in,y_in}", `return x_in+y_in`)(model, ins)) // works
+
+
+//display(bb)
+
+return {exec,selection_fn};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">some calculang things</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./TEMPLATE">Untitled</a></li>
+    <li class="observablehq-link"><a href="./game-of-life">Game of Life (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./keep-car-cli">Keep 🚗 on the road</a></li>
+    <li class="observablehq-link"><a href="./leafy-matrix">Leafy matrix 🍂🧑‍💻 (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./pi-lattice">Pi 🥮 by lattice (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./reactive-inputs">reactive inputs</a></li>
+    <li class="observablehq-link"><a href="./savings">Savings Calculator 🪙🪙 (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./sun-moon-paths">☀️ and 🌝 Paths (GALLERY DEV)</a></li>
+    <li class="observablehq-link"><a href="./sun-moon-paths2">☀️ and 🌝 Paths 2 (GALLERY DEV)</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./tixyish">tixy-ish 🎨</a></li>
+    <li class="observablehq-link"><a href="./dungeon/dungeon">Dungeon Generator 👹👾🔫</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol-sand">Falling Sand (early)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm-gol">Editable Game of Life</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-cm">Editable ❤️ CM (preview)</a></li>
+    <li class="observablehq-link"><a href="./graphing-calcs/graphing-edit-music">Editable Music 🎶 (beta)</a></li>
+    <li class="observablehq-link"><a href="./shader/shader">Editable Shader 🧊</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div id="cell-a3e249e2" class="observablehq observablehq--block"></div>
+<h1 id="tixy-ish" tabindex="-1"><a class="observablehq-header-anchor" href="#tixy-ish">tixy-ish</a></h1>
+<p>Inspired by <a href="https://twitter.com/aemkei/status/1323399877611708416" target="_blank" rel="noopener noreferrer">tixy.land</a>; in development; <a href="https://github.com/declann/calculang-develop-with-framework/docs/tixyish.md" target="_blank" rel="noopener noreferrer">open to contributions</a>!</p>
+<div id="cell-751948f3" class="observablehq observablehq--block"></div>
+<div class="wrapper">
+  <div class="lhs" style="background: lightgreen">
+    <div class="grow">
+    <h1>ƒ</h1>
+    <!-- can I collapse things responsively? -->
+    <details class="calculang" open=""><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
+    <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
+    <span id="cell-1a748ae6" class="observablehq--loading"></span>
+    <details><summary>javascript ✨</summary>
+    <span style="font-style: italic">generated from calculang</span> ⬆️
+    <span id="cell-a91751cf" class="observablehq--loading"></span>
+    </details>
+    <details><summary>dev tools 🧰</summary>
+    <span id="cell-7be5e906" class="observablehq--loading"></span>
+    <span id="cell-bd87104d" class="observablehq--loading"></span>
+    <span id="cell-8094d046" class="observablehq--loading"></span>
+    </details>
+    </details>
+    </div>
+  </div>
+  <div class="rhs" style="background: pink">
+    <h1>🎨</h1>
+    <div class="card">
+    <details open=""><summary>inputs ⚙️</summary>
+    <span id="cell-67e018a0" class="observablehq--loading"></span>
+    <!--<span id="cell-7cd39fa7" class="observablehq--loading"></span>-->
+    </details>
+    </div>
+  <div class="card" id="viz"></div>
+  <h3>eval-on-select (select formula text, then activate with F9)</h3>
+  <div class="card" id="viz2"></div>
+  <details open=""><summary>compiled selection (via sourcemap)</summary>
+  <pre><span id="cell-0663b417" class="observablehq--loading"></span></pre></details> <!-- editing html breaks my visuals -->
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<h2 id="appendix-%26-source-code-of-%F0%9F%8E%A8" tabindex="-1"><a class="observablehq-header-anchor" href="#appendix-%26-source-code-of-%F0%9F%8E%A8">appendix &amp; source code of 🎨</a></h2>
+<p><em>showing selected source code of 🎨</em></p>
+<p>For complete source see <a href="https://github.com/declann/calculang-develop-with-framework/tree/dev" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+<details><summary>notes</summary>this is Javascript and using tools and patterns that I repeat, but remember that calculang is unopinionated!<br>
+calculang/output is also highly portable and uniform.</details>
+<hr>
+<h2 id="visual-1-(main-output%2C-with-mouse-interactivity)" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-1-(main-output%2C-with-mouse-interactivity)">visual 1 (main output, with mouse interactivity)</a></h2>
+<div id="cell-d69b9fcb" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec = ({
+  <span class="hljs-comment">// vega-lite</span>
+  <span class="hljs-attr">title</span>: <span class="hljs-string">"v"</span>,
+  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'point'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>},
+  <span class="hljs-attr">encoding</span>: {
+    <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">domain</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in), <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
+    <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'y_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">domain</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in), <span class="hljs-attr">sort</span>:<span class="hljs-string">'descending'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
+    <span class="hljs-attr">size</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'abs_v_clamped'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]} },
+    <span class="hljs-comment">//color: {value: 'red'}</span>
+    <span class="hljs-attr">color</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'positive'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>], <span class="hljs-attr">range</span>: [<span class="hljs-string">'orange'</span>,<span class="hljs-string">'red'</span>] }}, <span class="hljs-comment">// todo color calcd from model?</span>
+    <span class="hljs-attr">shape</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'positive'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'nominal'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">domain</span>:[<span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>], <span class="hljs-attr">range</span>: [<span class="hljs-string">'diamond'</span>,<span class="hljs-string">'circle'</span>] }} <span class="hljs-comment">// todo color calcd from model?</span>
+  },
+  <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
+  <span class="hljs-attr">datasets</span>: {
+    <span class="hljs-attr">data</span>: [],
+  },
+  <span class="hljs-attr">autosize</span>: { <span class="hljs-string">"type"</span>: <span class="hljs-string">"fit"</span>, <span class="hljs-string">"contains"</span>: <span class="hljs-string">"padding"</span>},
+  <span class="hljs-attr">width</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">400</span>,rhs_width-<span class="hljs-number">30</span>),
+  <span class="hljs-attr">height</span>: <span class="hljs-number">300</span>,
+  <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>
+})
+
+<span class="hljs-comment">// interactivity via vega signals and listeners</span>
+<span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec, {<span class="hljs-attr">patch</span>: [{
+  <span class="hljs-attr">path</span>: <span class="hljs-string">"/signals"</span>,
+  <span class="hljs-attr">op</span>: <span class="hljs-string">"add"</span>,
+  <span class="hljs-attr">value</span>: [{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"mousex"</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-attr">on</span>: [
+      {<span class="hljs-string">"events"</span>: <span class="hljs-string">"mousemove{30}"</span>, <span class="hljs-string">"update"</span>: (size_in-<span class="hljs-number">1</span>)+<span class="hljs-string">"*x()/range('x')[1]"</span>}
+    ]
+  },{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"mousey"</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-attr">on</span>: [
+      {<span class="hljs-string">"events"</span>: <span class="hljs-string">"mousemove{30}"</span>, <span class="hljs-string">"update"</span>: (size_in-<span class="hljs-number">1</span>)+<span class="hljs-string">"*y()/range('y')[1]"</span>}
+    ]
+  }]
+}]})
+</code></pre>
+<div id="cell-3b876112" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source = <span class="hljs-title function_">calcuvegadata</span>({
+  <span class="hljs-attr">models</span>: [model],
+  spec,
+  <span class="hljs-attr">domains</span>: {
+    <span class="hljs-attr">x_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in),
+    <span class="hljs-attr">y_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in)
+  },
+  <span class="hljs-attr">input_cursors</span>: [
+    { t_in, mousex_in, mousey_in, random_seed_in }
+  ]
+})
+</code></pre>
+<div id="cell-7087a911" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js">viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
+</code></pre>
+<div id="cell-1eb91a98" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> random_seed_in = <span class="hljs-string">'x'</span> <span class="hljs-comment">// reactive issues if mixed in mutable updates blocks</span>
+</code></pre>
+<div id="cell-af671647" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> mousex_in = <span class="hljs-title class_">Mutable</span>(<span class="hljs-number">8</span>)
+<span class="hljs-keyword">const</span> mousey_in = <span class="hljs-title class_">Mutable</span>(<span class="hljs-number">8</span>)
+
+viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">addSignalListener</span>(<span class="hljs-string">'mousex'</span>, <span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'mousex'</span>, a)
+  mousex_in.<span class="hljs-property">value</span> = viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">signal</span>(<span class="hljs-string">'mousex'</span>)
+})
+viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">addSignalListener</span>(<span class="hljs-string">'mousey'</span>, <span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> {
+  mousey_in.<span class="hljs-property">value</span> = viz.<span class="hljs-property">view</span>.<span class="hljs-title function_">signal</span>(<span class="hljs-string">'mousey'</span>)
+})
+</code></pre>
+<hr>
+<h2 id="visual-2" tabindex="-1"><a class="observablehq-header-anchor" href="#visual-2">visual 2</a></h2>
+<div id="cell-b9cc4f0a" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> spec2 = ({
+  <span class="hljs-comment">// vega-lite</span>
+  <span class="hljs-attr">title</span>: <span class="hljs-string">"selection"</span>,
+  <span class="hljs-attr">mark</span>: {<span class="hljs-attr">type</span>:<span class="hljs-string">'text'</span>, <span class="hljs-attr">point</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">filled</span>: <span class="hljs-literal">true</span>},
+  <span class="hljs-attr">encoding</span>: {
+    <span class="hljs-attr">x</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'x_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
+    <span class="hljs-attr">y</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'y_in'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">sort</span>:<span class="hljs-string">'descending'</span>, <span class="hljs-attr">scale</span>: {<span class="hljs-attr">nice</span>:<span class="hljs-literal">false</span>, <span class="hljs-attr">domain</span>:[-<span class="hljs-number">1</span>,<span class="hljs-number">16</span>]} },
+    <span class="hljs-attr">text</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'selection_fn'</span>, <span class="hljs-attr">format</span>: (<span class="hljs-string">'.1f'</span>) },
+    <span class="hljs-attr">color</span>: { <span class="hljs-attr">field</span>: <span class="hljs-string">'selection_fn'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'quantitative'</span>, <span class="hljs-attr">legend</span>: <span class="hljs-literal">false</span><span class="hljs-comment">/*, scale: {domain:[0,1] }*/</span>}
+  },
+  <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"data"</span> },
+  <span class="hljs-attr">datasets</span>: {
+    <span class="hljs-attr">data</span>: [],
+  },
+  <span class="hljs-attr">autosize</span>: { <span class="hljs-string">"type"</span>: <span class="hljs-string">"fit"</span>, <span class="hljs-string">"contains"</span>: <span class="hljs-string">"padding"</span>},
+  <span class="hljs-attr">width</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">500</span>,rhs_width-<span class="hljs-number">30</span>),
+  <span class="hljs-attr">height</span>: <span class="hljs-number">300</span>,
+  <span class="hljs-attr">background</span>:<span class="hljs-string">'rgba(0,0,0,0)'</span>
+})
+
+<span class="hljs-keyword">const</span> viz2 = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz2'</span>, spec2)
+</code></pre>
+<div id="cell-b91e7b65" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> data_source2 = <span class="hljs-title function_">calcuvegadata</span>({
+  <span class="hljs-attr">models</span>: [{<span class="hljs-attr">selection_fn</span>: <span class="hljs-function">(<span class="hljs-params">a</span>) =&gt;</span> <span class="hljs-title function_">selection_fn</span>(model,a)}],
+  <span class="hljs-attr">spec</span>: spec2,
+  <span class="hljs-attr">domains</span>: {
+    <span class="hljs-attr">x_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in),
+    <span class="hljs-attr">y_in</span>: _.<span class="hljs-title function_">range</span>(<span class="hljs-number">0</span>,size_in)
+  },
+  <span class="hljs-attr">input_cursors</span>: [
+    { t_in, mousex_in, mousey_in, random_seed_in }
+  ]
+})
+</code></pre>
+<div id="cell-08241b4e" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js">viz2.<span class="hljs-property">view</span>.<span class="hljs-title function_">data</span>(<span class="hljs-string">"data"</span>, data_source2)<span class="hljs-comment">/*.resize()*/</span>.<span class="hljs-title function_">run</span>(); <span class="hljs-comment">// turn off resize</span>
+</code></pre>
+<hr>
+<div id="cell-9e7e00b6" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> size_in = <span class="hljs-number">16</span>
+
+<span class="hljs-keyword">const</span> t_in_Input = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">input</span>(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">const</span> t_in = <span class="hljs-title class_">Generators</span>.<span class="hljs-title function_">input</span>(t_in_Input);
+
+<span class="hljs-keyword">const</span> rhs_width = <span class="hljs-title class_">Generators</span>.<span class="hljs-title function_">width</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">".rhs"</span>)); <span class="hljs-comment">// keep as a generator for reactivity</span>
+</code></pre>
+<div id="cell-4d16d616" class="observablehq observablehq--block"></div>
+<div id="cell-2fd2cf19" class="observablehq observablehq--block"></div>
+<div id="cell-b1870f13" class="observablehq observablehq--block"></div>
+<hr>
+<p>eval-on-select</p>
+<div id="cell-6878cf4f" class="observablehq observablehq--block"></div>
+<div id="cell-178d48fc" class="observablehq observablehq--block"></div>
+<div id="cell-301ac0f1" class="observablehq observablehq--block"></div>
+<div id="cell-9109c35b" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-comment">// all inputs must be maintianed here to pass to selection function</span>
+
+<span class="hljs-keyword">const</span> ins = ({<span class="hljs-attr">x_in</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">y_in</span>:<span class="hljs-number">8</span>, t_in, random_seed_in, mousex_in, mousey_in})
+</code></pre>
+<div id="cell-e58b7881" class="observablehq observablehq--block"></div>
+<p>todo maintain eval selection range with edits? Alt.: don't react to edits by freezing into Mutable, but this is poor.
+and multi-selection (concatenating useful imo)</p>
+</main>
+<footer id="observablehq-footer">
+<div>Made with 💓 and <a href="https://calculang.dev" target="_blank" rel="noopener noreferrer">calculang</a></div>
+</footer>
+</div>

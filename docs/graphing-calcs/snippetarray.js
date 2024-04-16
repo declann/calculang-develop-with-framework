@@ -10,24 +10,24 @@ const jssnippetarray = {
 		"scope": "javascript",
 		"prefix": "culin",
 		"body": 
-			"export const ${1:name} = () => ${1:name}_in"
+			"export const ${1:inputname} = () => ${1:inputname}_in"
 		
 	},
 	"cul function": { // make make a block and expression type?
 		"scope": "javascript",
 		"prefix": "cul",
-		"body": "export const ${1:name} = () => ${99:0 // formula body}"
+		"body": "export const ${1:formulaname} = () => ${99:0 // formula body}"
 	},
   /////
 	"cul function expression": {
 		"scope": "javascript",
 		"prefix": "cule",
-		"body": "export const ${1:name} = () => ${99:0 // formula body}"
+		"body": "export const ${1:formulaname} = () => ${99:0 // formula body}"
 	},
 	"cul function block": { 
 		"scope": "javascript",
 		"prefix": "culb",
-		"body": "export const ${1:name} = () => {\n" +
+		"body": "export const ${1:formulaname} = () => {\n" +
       "  ${99:return 0 // formula body}\n" +
     "}"
 	},

@@ -36,9 +36,11 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "rimraf": "^5.0.5",
     "@calculang/calculang-js": "^0.1.0-alpha.6",
     "@mdit/plugin-include": "^0.8.0",
-    "markdown-it-footnote": "^4.0.0"
+    "@rollup/plugin-typescript": "^11.1.6",
+    "markdown-it-footnote": "^4.0.0",
+    "rimraf": "^5.0.5",
+    "tslib": "^2.6.2"
   }
 }

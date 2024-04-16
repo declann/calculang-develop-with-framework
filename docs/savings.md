@@ -3,7 +3,15 @@ title: Savings Calculator 🪙🪙 (GALLERY DEV)
 toc: false
 ---
 
-<details><summary>debug things</summary>
+```js
+import {up} from './components/reactive-inputs2.js'
+```
+
+```js
+// needed (empty ok)
+const excludes = ["duration_in", "year_in", "annual_payment_in", "interest_rate_in"]
+```
+
 
 ```js
 
@@ -17,9 +25,10 @@ function highlight(d) {
   return ans
 }
 
+// + current row ?
 function current(d) {
   let ans = false
-  if (d.formula == formula && d.year_in == cursor.year_in)
+  if (d.formula == formula && d.year_in == cursor2.year_in)
     ans = true
   return ans
 }
@@ -28,19 +37,14 @@ const data_source_with_highlights = data_source.map(
   d => ({...d, highlight: highlight(d), current: current(d)})
 )
 
-display(Inputs.table(data_source_with_highlights))
 ```
 
 ```js
-display(Inputs.table(calls_annotations))
-display(Inputs.table(calls_annotations.map(d=>d.cursor)))
-display(formula)
 
 const highlights =  calls_annotations.map(d => ({...d, /*ambiguous (from/to better)*/ formula:d.to.split('_')[1]}))
     .filter(d => d.formula == formula)
 ```
 
-</details>
 
 ```js
 setCursor('duration_in',duration_in)
@@ -64,7 +68,7 @@ const duration_in = view(Inputs.range([0,2000], {label:'duration', step: 1, valu
 ```
 
 ```js
-const year_in = duration_in//view(Inputs.range([-1,duration_in], {label:'year', step: 1, value: 5}))
+const year_in = view(Inputs.range([-1,duration_in], {label:'year', step: 1, value: 5})) // I need to do bind things for 2-way sync?
 const annual_payment_in = view(Inputs.range([0, 20000], {label:'annual payment', step: 100, value: 1000}))
 const interest_rate_in2 = view(Inputs.range([-10, 10], { label:'interest rate (%pa)', step:0.1, value: 4}))
 ```
@@ -73,10 +77,12 @@ const interest_rate_in2 = view(Inputs.range([-10, 10], { label:'interest rate (%
 const interest_rate_in = interest_rate_in2/100
 ```
 
+
+
 </details>
 </div>
 
-*Projected savings balance at end of year **${cursor.year_in}** is **€ ${d3.format(',.2f')(model.balance(cursor))}***
+*Projected savings balance at end of year **${cursor2.year_in}** is **€ ${d3.format(',.2f')(model.balance(cursor2))}***
 
 💡 *Click a number to highlight workings*
 
@@ -159,10 +165,10 @@ const data_source = calcuvegadata({
   spec,
   domains: {
     formula: formulae_not_inputs,
-    year_in: _.range(0,cursor.duration_in+0.1),
+    year_in: _.range(0,cursor2.duration_in+0.1),
   },
   input_cursors: [
-    { ...cursor }
+    { ...cursor2 }
   ]
 })
 ```
@@ -190,6 +196,7 @@ viz.view.addSignalListener("formula", (a, b) => {
 import {FileAttachment} from "npm:@observablehq/stdlib";
 
 const cul_default = await (await fetch('https://calculang.dev/models/savings/savings.cul.js')).text()
+//https://cdn.jsdelivr.net/gh/declann/calculang-miscellaneous-models@main/models/cashflows/simple-cfs.cul.js
 ```
 
 

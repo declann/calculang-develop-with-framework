@@ -2,9 +2,11 @@
 
 // guided by node_modules/codemirror/dist/index.js
 
+
+
 import { lineNumbers, highlightActiveLineGutter, highlightSpecialChars, highlightTrailingWhitespace, drawSelection, dropCursor, /*rectangularSelection, crosshairCursor,*/ highlightActiveLine, keymap, scrollPastEnd } from '@codemirror/view';
-import { EditorView, ViewPlugin, Decoration } from '@codemirror/view';
-import { EditorState, EditorSelection } from '@codemirror/state';
+import { EditorView, ViewPlugin, Decoration, Tooltip, showTooltip } from '@codemirror/view';
+import { EditorState, EditorSelection, StateField } from '@codemirror/state';
 import { foldGutter, indentOnInput, syntaxHighlighting, defaultHighlightStyle, bracketMatching, foldKeymap, syntaxTree, foldAll } from '@codemirror/language';
 import { history, defaultKeymap, historyKeymap } from '@codemirror/commands';
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
@@ -15,6 +17,110 @@ import { introspection2 } from "../components/mini-calculang-rollup.js"
 
 //import { EditorView, basicSetup } from "codemirror"
 import { javascript, javascriptLanguage, esLint } from "@codemirror/lang-javascript"
+
+const tooltipsNamePos = {};
+
+const cursorTooltipField = StateField.define({
+  create: getCursorTooltips,
+
+  update(tooltips, tr) {
+    //debugger;
+    //if (!tr.docChanged/* && !tr.selection*/) return tooltips
+
+    let introspection_new
+    try { // without a try inevitable errors break plugin (though should be off when not readonly !)
+      // TODO wrap in readonly
+      introspection_new = introspection2(tr.state.doc.toString())
+    } catch (e) { introspection_new = introspection }
+    introspection = introspection_new
+
+    // introspection not updated in time
+    const things = [...(/*introspection ??*/ introspection).cul_functions.values()].filter(
+      (d) =>
+        d.reason == "definition" /*input definition doesn't have a loc*/ &&
+        d.cul_scope_id == 0
+    )
+
+    return things.map(d => {
+      const tooltip = tooltips.find(t => t.pos == tooltipsNamePos[d.name])
+      if (tooltip) {
+        tooltipsNamePos[d.name] = d.loc.start.line == d.loc.end.line ? tr.state.doc.line(d.loc.start.line).from + "export const = () =".length + d.name.length : tr.state.doc.line(d.loc.start.line).to
+        return ({...tooltip, pos:tooltipsNamePos[d.name]})
+      }
+
+      tooltipsNamePos[d.name] = d.loc.start.line == d.loc.end.line ? tr.state.doc.line(d.loc.start.line).from + "export const = () =".length + d.name.length : tr.state.doc.line(d.loc.start.line).to
+
+      return ({
+        pos: tooltipsNamePos[d.name],//+"export const balance =".length,
+        above: true,
+        strictSide: false,
+        arrow: false,
+        create: () => {
+          let dom = document.createElement("div")
+          dom.id = d.name
+          dom.className = "cm-tooltip-cursor" // input => input
+          //dom.textContent = '⏳'
+          return {dom}
+        }
+    
+      })
+      
+    })
+  },
+
+  provide: f => showTooltip.computeN([f], state => state.field(f))
+})
+
+function getCursorTooltips(state) {
+  //debugger;
+
+  // duping introspection calls !!!
+
+  return [...(introspection ?? introspection2(state.doc.toString())).cul_functions.values()].filter(
+    (d) =>
+      d.reason == "definition" /*input definition doesn't have a loc*/ &&
+      d.cul_scope_id == 0
+  ).map(d => {
+    tooltipsNamePos[d.name] = d.loc.start.line == d.loc.end.line ? state.doc.line(d.loc.start.line).from + "export const = () =".length + d.name.length : state.doc.line(d.loc.start.line).to
+    return ({
+    pos: tooltipsNamePos[d.name],//+"export const balance =".length,
+    above: true,
+    strictSide: false,
+    arrow: false,
+    create: () => {
+      let dom = document.createElement("div")
+      dom.id = d.name
+      dom.className = "cm-tooltip-cursor" // input => input
+      //dom.textContent = '⏳'
+      return {dom}
+    }
+
+  })})
+}
+    
+
+const cursorTooltipBaseTheme = EditorView.baseTheme({
+  ".cm-tooltip.cm-tooltip-cursor": {
+    //backgroundColor: "yellow",
+    //color: "black",
+    //border: "none",
+    padding: "2px 3px",
+    //borderRadius: "4px",
+    /*"& .cm-tooltip-arrow:before": {
+      borderTopColor: "yellow"
+    },
+    "& .cm-tooltip-arrow:after": {
+      borderTopColor: "transparent"
+    }*/
+  }
+})
+
+export function cursorTooltip() {
+  return [cursorTooltipField, cursorTooltipBaseTheme]
+}
+
+
+
 
 
 /////// linting ///
@@ -157,8 +263,9 @@ const identifier_decorations = view => {
         if (node.name == "VariableDefinition") {
           let name = view.state.doc.sliceString(node.from, node.to);
           if (formulae_all.includes(name)) {
+            //debugger
             decorations.push(
-              Decoration.mark({ class: "calculang_title" }).range(
+              Decoration.mark({ class: "calculang_title" + (inputs.includes(name + "_in") ? " calculang_title_input" : "") }).range(
                 node.from,
                 node.to
               )
@@ -203,7 +310,7 @@ let editor = ({ doc, update, updateSelection }) => {
   return new EditorView({
     doc,
     extensions: [
-      EditorView.updateListener.of(u => { if (!i++) foldAll(u.view); console.log('hihi', u.docChanged); let new_s = u.state.doc.toString(); if (u.docChanged) { /*update(u)*/; console.log('DN update listener plugin NOT !!! called an update') }; }),
+      EditorView.updateListener.of(u => { /*if (!i++) foldAll(u.view);*/ console.log('hihi', u.docChanged); let new_s = u.state.doc.toString(); if (u.docChanged) { /*update(u)*/; console.log('DN update listener plugin NOT !!! called an update') }; }),
       javascript(),
 
       EditorState.readOnly.of(readonly),
@@ -262,6 +369,8 @@ let editor = ({ doc, update, updateSelection }) => {
           activeDark: 'DarkGreen',
         }
       }),
+
+      cursorTooltip(),
 
 
       // TODO add cul snippets! & capture tabs proper

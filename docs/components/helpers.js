@@ -277,3 +277,14 @@ export const calcuvizspec = ({
 
   return spec_post_process(c_spec);
 }
+
+
+export const function_inputs_table = (introspection) => {
+  let inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort();
+  let formulae_objs = [...introspection.cul_functions.values()].filter(d => d.reason == 'definition' && inputs.indexOf(d.name+'_in') == -1);
+
+  return `formula | ${inputs/*.map(d => d.slice(0, -3))*/.join(' | ')}
+-------- | ${inputs.map(d => ':--------:').join(' | ')}
+ | ${inputs.map(d => '<!--<img width=80/>-->').join(' | ')}
+${formulae_objs.map(f => `${f.name} | ${inputs.map(d => /*this will only work if I populate negs in cul_functions OR if I use cul_links. f.negs.includes(d) ? 'NEG' : */ (introspection.cul_input_map['0_' + f.name].has(d) ? '✔️' : '')).join(' | ')}`).join('\n')}`;
+}

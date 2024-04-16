@@ -3,6 +3,13 @@ import {html} from "npm:htl";
 // cursor is an Input element
 export const up = function (el, cursor,inputs, model, minibinds) { // not reactive to inputs top-level: inputs refers to this argument
   console.log('up called')
+
+  cursor.addEventListener('up', _ => {console.log('SIGNALLLLL', _, cursor.value)
+    //console.log(document.getElementById('year_in'))
+
+    //document.querySelector('input[placeholder="year_in"]') = 
+}) 
+
   if (!model) { model = {}; const a = Object.values(inputs); a.forEach(d => {model[d.slice(0,-3)] = () => 1})}
   let first = false;
   if (el.dataset.inputs == undefined) {
@@ -21,7 +28,7 @@ export const up = function (el, cursor,inputs, model, minibinds) { // not reacti
       s.id = i
       s.classList.add('flash','input')
       //s.textContent = i
-      const b = minibinds[i] || html`${i} <input type=number step="any" placeholder=${i} value=${(cursor.value[i] != undefined) ? cursor.value[i] : model[i.slice(0,-3)]({})}>`//html`${i} <input type=number onchange=${(e) => {cursor.value = {...cursor.value, [i]: (+e.target.value)}}} placeholder=${i} value=${(cursor.value[i] != undefined) ? cursor.value[i] : model[i[0].slice(0,-3)]({})}>`
+      const b = minibinds[i] || html`${i} <input placeholder=${i} value=${(cursor.value[i] != undefined && cursor.value[i] != NaN) ? cursor.value[i] : model[i.slice(0,-3)]({})}>`//html`${i} <input type=number onchange=${(e) => {cursor.value = {...cursor.value, [i]: (+e.target.value)}}} placeholder=${i} value=${(cursor.value[i] != undefined) ? cursor.value[i] : model[i[0].slice(0,-3)]({})}>`
       //if (b) {
         b.value = (cursor.value[i] != undefined /* need to capture 0s! */) ? cursor.value[i] : model[i.slice(0,-3)]({})
       //} else {

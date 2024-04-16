@@ -38,7 +38,7 @@ const calls_annotations =
       })) // assuming completely on one line
       .map(d => {
   const selection_fn = new Function("model", "{"+Object.keys(cursor).join(",")+"}", `Object.assign(window, model); return ({value:${d.mjs}, cursor: ${d.mjs.slice(d.from.length-2)}})`) // using hacky way to get cursor, for calculang-at-fosdem I used babel: `is` function
-  return {...d, ...selection_fn(model, cursor)}
+  return {...d, ...selection_fn(model, cursor2)}
 })
 
 const fns_annotations = [...introspection.cul_functions.values()].filter(
@@ -52,15 +52,25 @@ const fns_annotations = [...introspection.cul_functions.values()].filter(
 
         const selection_fn = new Function("model", "{"+dd.inputs.join(",")+"}", `Object.assign(window, model); return ${d.name}({${dd.inputs.join(",")}})`)
 
-        dd.v = selection_fn(model,cursor)
+        dd.v = selection_fn(model, cursor2)
 
         return dd //return selection_fn(model, c)
       })
 ```
 
 ```js
+
+
+
+const selection_start = map.generatedPositionFor({...selection.from, source:"unknown"})
+const selection_end = map.generatedPositionFor({...selection.to, source:"unknown"})
+
+const esm_split = esm.code.split('\n')
+```
+
+```js
 // wrap echoed source code by details tag; hot reload breaks this but ok for now
-document.querySelectorAll('.observablehq-pre-container').forEach(el => {
+document.querySelectorAll('.observablehq-pre-container:has(> pre[data-language="js"])').forEach(el => {
   let wrapper = document.createElement('details');
   wrapper.className = 'code'
   let summary = document.createElement('summary')
@@ -91,7 +101,9 @@ const start_doc = cul_default
 
 const doc = Mutable(start_doc) // I still have doc Input below, remove?
 
-const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}})
+const selection = Mutable({from:{line:1,column:1}, to:{line:1,column:2}})
+
+const editor = editorCm({doc: start_doc, update: update => {doc.value = update.state.doc.toString();}, updateSelection: s => {selection.value = s}})
 ```
 
 <div id="wrapper" class="wrapper">
@@ -102,13 +114,42 @@ const editor = editorCm({doc: start_doc, update: update => {doc.value = update.s
   <details class="calculang" open><summary class="calculang" style="margin-bottom:10px">calculang ✍️</summary>
   <span style="font-style: italic">editable and dangerous!</span> 🧙‍♂️⚠️
   ${display(editor.dom)}
-  <details><summary>javascript ✨</summary>
-  <span style="font-style: italic">generated from calculang</span> ⬆️
-  ${view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))}
-  </details>
   <details open><summary>dev tools 🧰</summary>
 
-*reactive workings (todo):*
+```js
+display(inputs_ui)
+```
+
+
+```js
+import * as marked from 'npm:marked'
+
+const e = document.createElement('div')
+e.innerHTML = marked.parse(function_inputs_table(introspection))
+
+display(e)
+
+function_inputs_table(introspection)
+```
+
+
+```js
+// for F9, not sure if I want to include? Or replace with optional markers?
+// Or put in a panel?
+// Do selection eval? (like in tixy)
+import * as lineColumn from 'npm:line-column';
+const index_start =lineColumn.default(esm.code).toIndex(selection_start)
+const index_end =lineColumn.default(esm.code).toIndex(selection_end)
+
+const selection_esm = esm.code.slice(index_start+1,index_end+1)
+
+```
+
+#### select-F9 🧙‍♂️ javascript
+
+<pre style="font-size:0.5em">
+${selection_esm} <!-- editing html breaks my visuals -->
+</pre>
 
 ```js
 const cursor = Mutable({}) // every input should be in, but with what values?
@@ -126,13 +167,24 @@ const setFormula = (v) => {
 }
 ```
 
+<details><summary>reactive workings</summary>
+
 ```js
 display(calls_annotations)
 display(fns_annotations.map(d => d.v))
 display(introspection)
 ```
 
+</details>
+
   </details>
+
+<details><summary style="font-size:1em">complete javascript ✨</summary>
+  <span style="font-style: italic">generated from calculang</span> ⬆️
+  ${view(Inputs.textarea({value:esm.code, rows:60, resize: true, disabled:true}))}
+  </details>
+
+
   </details>
   </div>
 </div>
@@ -170,7 +222,7 @@ invalidation.then(() => {console.log(`revoking ${u}`); URL.revokeObjectURL(u)});
 
 ```js
 
-import { calcuvizspec } from "./components/helpers.js"
+import { calcuvizspec, function_inputs_table, graph_functions } from "./components/helpers.js"
 
 import { compile, introspection2, compileWithMemo } from "./components/mini-calculang.js"
 
@@ -180,4 +232,55 @@ import embed from 'npm:vega-embed';
 
 ```
 
+REACTIVE FORMULAS:
+
+```js
+// page needs to provide excludes
+const dependencies = inputs.filter(d => !excludes.includes(d))
+
+
+```
+
+```js
+fns_annotations.forEach(d => {
+  if (document.getElementById(d.name))
+  document.getElementById(d.name).innerHTML = d3.format(',.2f')(d.v) + "<div class='cm-tooltip-arrow' />"
+});
+```
+
+REACTIVE INPUTS:
+
+
+```js
+document.querySelectorAll('.inputs .flash').forEach(d => d.remove())
+inputs_ui.dataset.inputs = '' // up ran first? so use fake to control order:
+const fake = ''
+```
+
+```js
+const inputs_ui = document.createElement('div')
+inputs_ui.className = 'inputs'
+```
+
+```js
+console.log("don't repeat")
+
+const extra_cursor_Input = Inputs.input({})
+const extra_cursor = Generators.input(extra_cursor_Input)
+```
+
+```js
+const cursor2 = ({...cursor, ...extra_cursor})
+```
+
+```js
+fake;
+//extra_cursor; // need to react to changes to cursor
+up(inputs_ui, extra_cursor_Input, dependencies, model, {}); // must keep minibinds sep. to pick up updates
+// because needs to detect removal for flash (above)
+```
+
+
 </div>
+
+

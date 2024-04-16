@@ -1,4 +1,4 @@
-# a DX pattern for calculang, using Framework
+# a DX pattern for calculang, using Framework 
 
 Possibilities:
 

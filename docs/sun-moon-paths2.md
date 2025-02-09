@@ -98,7 +98,7 @@ const viz = embed('#viz', spec, {actions:true})
 
 
 ```js echo
-const mins = view(Inputs.range([0,10000], {value:0, step:1,label:'mins'}))
+const mins = view(Inputs.range([0,10000], {value:0, step:1,label:'mins (FASTER)'}))
 ```
 
 ```js

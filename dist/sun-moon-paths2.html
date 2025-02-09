@@ -351,8 +351,8 @@ const viz = embed('#viz', spec, {actions:true})
 return {spec,viz};
 }});
 
-define({id: "7bd9fbd7", inputs: ["view","Inputs"], outputs: ["mins"], body: (view,Inputs) => {
-const mins = view(Inputs.range([0,10000], {value:0, step:1,label:'mins'}))
+define({id: "35362e53", inputs: ["view","Inputs"], outputs: ["mins"], body: (view,Inputs) => {
+const mins = view(Inputs.range([0,10000], {value:0, step:1,label:'mins (FASTER)'}))
 return {mins};
 }});
 
@@ -553,8 +553,8 @@ TEMPLATE.md provides:
 <span class="hljs-comment">// interactivity via vega signals and listeners</span>
 <span class="hljs-keyword">const</span> viz = <span class="hljs-title function_">embed</span>(<span class="hljs-string">'#viz'</span>, spec, {<span class="hljs-attr">actions</span>:<span class="hljs-literal">true</span>})
 </code></pre>
-<div class="observablehq observablehq--block"><!--:7bd9fbd7:--></div>
-<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> mins = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">0</span>,<span class="hljs-number">10000</span>], {<span class="hljs-attr">value</span>:<span class="hljs-number">0</span>, <span class="hljs-attr">step</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">label</span>:<span class="hljs-string">'mins'</span>}))
+<div class="observablehq observablehq--block"><!--:35362e53:--></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> mins = <span class="hljs-title function_">view</span>(<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">0</span>,<span class="hljs-number">10000</span>], {<span class="hljs-attr">value</span>:<span class="hljs-number">0</span>, <span class="hljs-attr">step</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">label</span>:<span class="hljs-string">'mins (FASTER)'</span>}))
 </code></pre>
 <div class="observablehq observablehq--block"><!--:5a479a78:--></div>
 <div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:472d3f5e:--></div>

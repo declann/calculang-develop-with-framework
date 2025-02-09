@@ -7,7 +7,7 @@ toc: false
 import {Scrubber} from './components/scrubber.js'
 ```
 
-<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
+<!-- @include: /home/declan/repos/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 <div id="content">
   

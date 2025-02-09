@@ -13,7 +13,7 @@ setA('initial_grid_function_in',initial_grid_function_in)
 const c = ({...a})
 ```
 
-<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
+<!-- @include: /home/declan/repos/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 <div id="content">
   

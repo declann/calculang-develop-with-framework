@@ -3,13 +3,13 @@ title: ☀️ and 🌝 Paths 2 (GALLERY DEV)
 toc: false
 ---
 
-<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
+<!-- @include: /home/declan/repos/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 <div id="content">
 
-# Path of ☀️ and 🌝
+# Path of ☀️ and 🌝 ii
 
-Replicating sun/moon position calcs from [SunCalc](https://github.com/mourner/suncalc/tree/master); compare results by layering both models below!
+Replicating sun/moon position calcs from [SunCalc](https://github.com/mourner/suncalc/tree/master); compare results by layering both models below! (incomplete)
   
 <div class="card">
 <details><summary>location 🌎 (default: Brú na Bóinne, Ireland)</summary>
@@ -47,7 +47,9 @@ import * as dateFns from 'https://esm.run/date-fns';
 
 <h3 style="margin-bottom:-20px">${d3.utcFormat("%B %d, %Y")(date_in)}</h3>
 
-ISSUE: WHEN ADD MINUTES, THERES A DEVIATION
+<br/>
+
+ISSUE: WHEN ADD MINUTES, THERES A DEVIATION BETWEEN MODELS
 
 ```js
 const viz_placeholder = html`<div id="viz" class="card"></div>`

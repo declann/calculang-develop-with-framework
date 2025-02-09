@@ -3,7 +3,7 @@ title: ☀️ and 🌝 Paths (GALLERY DEV)
 toc: false
 ---
 
-<!-- @include: /home/declan/MESSING/GitHub/calculang-develop-with-framework/docs/TEMPLATE.md -->
+<!-- @include: /home/declan/repos/calculang-develop-with-framework/docs/TEMPLATE.md -->
 
 <div id="content">
 
